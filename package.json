@@ -1,0 +1,26 @@
+{
+  "name": "chaos-studio-web",
+  "version": "0.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp serve"
+  },
+  "author": "eternal0",
+  "license": "n/a",
+  "dependencies": {
+    "coffee-script": "^1.8.0",
+    "bootstrap": "^3.3.2",
+    "gulp": "^3.8.8",
+    "gulp-browserify": "^0.5.0",
+    "gulp-concat": "^2.4.0",
+    "gulp-coffee":"^1.0.0",
+    "gulp-open": "^0.2.8",
+    "gulp-react": "^1.0.1",
+    "gulp-webserver": "^0.9.0",
+    "gutil": "^1.6.0",
+    "react": "^0.11.2",
+    "reactify": "^0.14.1"
+  }
+}
