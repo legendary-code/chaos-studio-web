@@ -5,3 +5,5 @@ class Configuration
 
     @settlingIterations = 1000
     @searchIterations = 10000
+
+module.exports = Configuration

@@ -22,4 +22,5 @@ class LyapunovExponent extends SearchCriterion
     dv = Math.sqrt(delta * delta / dimensions)
     nearValue = (v + dv for v in initialValue)
 
+module.exports = LyapunovExponent
 

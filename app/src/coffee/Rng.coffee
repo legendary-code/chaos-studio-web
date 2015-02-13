@@ -3,3 +3,5 @@ class Rng
   reset: (seed) ->
     @seed = seed
   next: ->
+
+module.exports = Rng

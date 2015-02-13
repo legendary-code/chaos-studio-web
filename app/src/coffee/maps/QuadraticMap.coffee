@@ -17,3 +17,5 @@ class QuadraticMap extends Map
       v[0]*v[1]*c[23] + v[0]*v[2]*c[24] + v[1]*v[2]*c[25] +
       v[0]*c[26] + v[1]*c[27] + v[2]*c[28] + c[29]
     ]
+
+module.exports = QuadraticMap

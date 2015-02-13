@@ -18,12 +18,12 @@ class AttractorFinder
 
             onStatus "Picking new coefficients..."
 
-            for i in [1..map.coefficients]
+            for [1..map.coefficients]
                 coefficients.push rng.next * 2 - 1
 
-            for d in [1..map.dimensions]
+            for [1..map.dimensions]
                 initialValue.push rng.next * 2 - 1
-            value = initialValue[:]
+            value = initialValue[..]
 
             context = new Context(configuration, initialValue, coefficients)
 
@@ -63,3 +63,5 @@ class AttractorFinder
                 values.push value
 
             onComplete values
+
+module.exports = AttractorFinder
