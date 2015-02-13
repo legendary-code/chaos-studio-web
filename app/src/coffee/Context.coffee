@@ -1,2 +1,4 @@
+# Configuration and current search params
+
 class Context
-  constructor: (@map, @rng, @coefficients) ->
+  constructor: (@configuration, @initialValue, @coefficients) ->

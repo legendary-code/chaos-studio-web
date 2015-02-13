@@ -1,4 +1,5 @@
 class Rng
-  constructor: (@seed) ->
-  reset: ->
+  constructor: ->
+  reset: (seed) ->
+    @seed = seed
   next: ->
