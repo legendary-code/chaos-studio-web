@@ -1,67 +1,86 @@
-Context = require 'Context'
+Context = require './Context'
+Bounds = require './Bounds'
 
 class AttractorFinder
-    constructor: (@configuration, @onStatus, @onComplete) ->
-    find: ->
-        map = configuration.map
-        rng = configuration.rng
-        found = false
+  constructor: (@configuration, @onStatus, @onComplete) ->
 
-        while !found
-            coefficients = []
-            initialValue = []
-            value = []
-            values = []
+  find: ->
+    map = @configuration.map
+    rng = @configuration.rng
+    found = false
 
-            # TODO: use time as seed
-            rng.reset 0
+    while !found
+      coefficients = []
+      initialValue = []
+      value = []
+      values = []
 
-            onStatus "Picking new coefficients..."
+      rng.reset if Date.now then Date.now() else Date().getTime()
+      @onStatus "Picking new coefficients..."
 
-            for [1..map.coefficients]
-                coefficients.push rng.next * 2 - 1
+      for i in [1..map.coefficients()] by 1
+        coefficients.push rng.next() * 2 - 1
 
-            for [1..map.dimensions]
-                initialValue.push rng.next * 2 - 1
-            value = initialValue[..]
+      for i in [1..map.dimensions()] by 1
+        initialValue.push rng.next() * 2 - 1
+      value = initialValue[..]
 
-            context = new Context(configuration, initialValue, coefficients)
+      context = new Context(@configuration, initialValue, coefficients)
+      bounds = new Bounds
+      abort = false
 
-            # settle
-            onStatus "Settling potential attractor..."
-            for i in [1..configuration.settlingIterations]
-                value = map.apply(value, coefficients)
-                # TODO: check out of bounds
+      console.log(context)
+      # settle
+      @onStatus "Settling potential attractor..."
+      for i in [1..@configuration.settlingIterations] by 1
+        value = map.apply(value, coefficients)
+        bounds.update(value)
+        if !bounds.isValid()
+          abort = true
+          break
 
-            for criterion in configuration.criteria
-                criterion.reset value
+      continue if abort
 
-            # search
-            onStatus "Applying search criteria..."
-            abort = false
+      # search
+      @onStatus "Applying search criteria..."
+      criteria = @configuration.criteria.map (clazz) -> new clazz(context)
 
-            for i in [1..configuration.searchIterations]
-                value = map.apply(value, coefficients)
-                values.push value
-                # TODO: continue computing bounds
-                for criterion in configuration.criteria
-                    result = criterion.test value
-                    if !result
-                        abort = true
-                        break
+      for criterion in criteria
+        criterion.reset value
 
-                if abort
-                    break
+      for i in [1..@configuration.searchIterations] by 1
+        value = map.apply(value, coefficients)
+        values.push value
 
-            if abort
-                continue
+        bounds.update(value)
 
-            onStatus "Generating remaining points"
+        if !bounds.isValid()
+          abort = true
+          break
 
-            for i in [1..configuration.totalIterations - configuration.searchIterations]
-                value = map.apply(value, coefficients)
-                values.push value
+        for criterion in criteria
+          result = criterion.test value
+          if !result
+            abort = true
+            break
 
-            onComplete values
+        break if abort
+
+      continue if abort
+
+      @onStatus "Generating remaining points"
+
+      remainingIterations = @configuration.totalIterations - @configuration.searchIterations
+      for i in [1..remainingIterations] by 1
+        value = map.apply(value, coefficients)
+        values.push value
+
+      @onStatus "Normalizing points"
+
+      for i in [0...values.length]
+        values[i] = bounds.normalize(values[i])
+
+      @onComplete values
+      found = true
 
 module.exports = AttractorFinder

@@ -15,7 +15,7 @@ class LyapunovExponent extends SearchCriterion
   reset: (initialValue) ->
     innerSum = 0
     delta = 1 / precision
-    dimensions = @context.map.dimensions
+    dimensions = @context.configuration.map.dimensions
     samples = 0
     attempts = 0
 
