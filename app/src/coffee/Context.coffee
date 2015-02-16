@@ -1,6 +1,6 @@
 # Configuration and current search params
 
 class Context
-  constructor: (@configuration, @initialValue, @coefficients) ->
+  constructor: (@configuration, @map, @rng, @criteria, @initialValue, @coefficients) ->
 
 module.exports = Context

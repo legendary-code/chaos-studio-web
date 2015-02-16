@@ -1,8 +1,9 @@
 Map = require '../Map'
 
 class QuadraticMap extends Map
-  name: -> "Quadratic Map"
-  coefficients: -> 30
+  @name = "Quadratic Map"
+  @coefficients = 30
+
   apply: (v,c) ->
     [
       v[0]*v[0]*c[0] + v[1]*v[1]*c[1] + v[2]*v[2]*c[2] +

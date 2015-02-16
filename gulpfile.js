@@ -6,9 +6,14 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     port = process.env.port || 7080;
 
-gulp.task('copylibs', function() {
+gulp.task('copycss', function() {
     return gulp.src('./node_modules/bootstrap/dist/css/bootstrap.min.css')
                .pipe(gulp.dest('./app/dist/css'));
+});
+
+gulp.task('copyjs', function() {
+    return gulp.src('./node_modules/three/three.min.js')
+               .pipe(gulp.dest('./app/dist/js'));
 });
 
 gulp.task('coffee', function() {
@@ -32,7 +37,7 @@ gulp.task('css', function() {
                .pipe(gulp.dest('./app/dist/css'));
 });
 
-gulp.task('compile', ['copylibs', 'html', 'coffee', 'css', 'js']);
+gulp.task('compile', ['copycss', 'copyjs', 'html', 'coffee', 'css', 'js']);
 
 gulp.task('browserify', ['compile'], function() {
     return gulp.src('./app/link/js/main.js')

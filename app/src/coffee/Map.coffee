@@ -1,7 +1,8 @@
 class Map
-  name: ->
-  dimensions: -> 3
-  coefficients: ->
+  @name = undefined
+  @dimensions = 3
+  @coefficients = undefined
+
   apply: (value, coefficients) ->
 
 module.exports = Map

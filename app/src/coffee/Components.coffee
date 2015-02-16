@@ -12,8 +12,8 @@ DefaultRng = require './rngs/DefaultRng'
 components.rngs = [DefaultRng, MersenneTwister]
 
 # Criteria
-FractalDimension = require './criteria/FractalDimension'
+#FractalDimension = require './criteria/FractalDimension'
 LyapunovExponent = require './criteria/LyapunovExponent'
-components.criteria = [FractalDimension, LyapunovExponent]
+components.criteria = [LyapunovExponent]
 
 module.exports = components
