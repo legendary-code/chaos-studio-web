@@ -11,17 +11,24 @@
   "license": "n/a",
   "dependencies": {
     "coffee-script": "^1.9.0",
-    "bootstrap": "^3.3.2",
+    "d3": "^3.5.5",
+    "event-stream": "^3.2.2",
     "gulp": "^3.8.8",
     "gulp-browserify": "^0.5.0",
+    "gulp-coffee": "^1.0.0",
     "gulp-concat": "^2.4.0",
-    "gulp-coffee":"^1.0.0",
+    "gulp-less": "^3.0.0",
     "gulp-open": "^0.2.8",
     "gulp-react": "^1.0.1",
+    "gulp-uglify": "^1.1.0",
     "gulp-webserver": "^0.9.0",
     "gutil": "^1.6.0",
-    "react": "^0.11.2",
+    "less-plugin-clean-css": "^1.5.0",
+    "material-ui": "^0.7.0",
+    "react": "^0.12.0",
+    "react-router": "^0.12.0",
     "reactify": "^0.14.1",
-    "three": "^0.69.0"
+    "three": "^0.69.0",
+    "uglify-js": "^2.4.16"
   }
 }

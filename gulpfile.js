@@ -4,18 +4,52 @@ var gulp = require('gulp'),
     browserify = require('gulp-browserify'),
     coffee = require('gulp-coffee'),
     concat = require('gulp-concat'),
+    es = require('event-stream'),
+    less = require('gulp-less'),
+    uglify = require('gulp-uglify'),
     port = process.env.port || 7080;
 
-gulp.task('copycss', function() {
-    return gulp.src('./node_modules/bootstrap/dist/css/bootstrap.min.css')
-               .pipe(gulp.dest('./app/dist/css'));
+var LessPluginCleanCSS = require('less-plugin-clean-css'),
+    cleancss = new LessPluginCleanCSS({ advanced: true });
+/**
+ * Build happens in two phases:
+ * 1) Stage - copies/compiles all various less, js, css, etc. files from libs and src folder to 'link' folder for final packaging
+ * 2) Link - finalizes files, by compiling less files, browserifying, minifying, etc. into the final 'dist' folder
+ */
+
+/* LIBRARIES */
+
+gulp.task('three', function() {
+    return gulp.src('./node_modules/three/three.js')
+               .pipe(gulp.dest('./app/link/js'));
 });
 
-gulp.task('copyjs', function() {
-    return gulp.src('./node_modules/three/three.min.js')
-               .pipe(gulp.dest('./app/dist/js'));
+gulp.task('d3', function() {
+    return gulp.src('./node_modules/d3/d3.js')
+               .pipe(gulp.dest('./app/link/js'));
 });
 
+gulp.task('react-router', function() {
+    return gulp.src('./node_modules/react-router/modules/index.js')
+               .pipe(browserify())
+               .pipe(concat('react-router.js'))
+               .pipe(gulp.dest('./app/link/js'));
+});
+
+gulp.task('material-ui', function() {
+    return es.merge(
+        gulp.src('./node_modules/material-ui/lib/index.js')
+            .pipe(browserify())
+            .pipe(concat('material-ui.js'))
+            .pipe(gulp.dest('./app/link/js')),
+        gulp.src('./node_modules/material-ui/src/less/**/*.less')
+            .pipe(gulp.dest('./app/link/less/material-ui')),
+        gulp.src('./node_modules/material-ui/src/less/**/*.css')
+            .pipe(gulp.dest('./app/link/less/material-ui'))
+    );
+});
+
+/* STAGING TASKS */
 gulp.task('coffee', function() {
     return gulp.src('./app/src/coffee/**/*.coffee')
                .pipe(coffee({bare:true}).on('error', gutil.log))
@@ -32,33 +66,49 @@ gulp.task('js', function() {
                .pipe(gulp.dest('./app/link/js'));
 });
 
-gulp.task('css', function() {
-    return gulp.src('./app/src/css/**/*.css')
-               .pipe(gulp.dest('./app/dist/css'));
+gulp.task('less', function() {
+    return gulp.src('./app/src/less/**/*.less')
+               .pipe(gulp.dest('./app/link/less'));
 });
 
-gulp.task('compile', ['copycss', 'copyjs', 'html', 'coffee', 'css', 'js']);
+/* LINK TASKS */
 
-gulp.task('browserify', ['compile'], function() {
+gulp.task('link-js', ['stage'], function() {
     return gulp.src('./app/link/js/main.js')
                .pipe(browserify({ transform: 'reactify' }))
+               //.pipe(uglify())
                .pipe(gulp.dest('./app/dist/js'));
 });
 
-// launch browser
-gulp.task('server', ['browserify'], function() {
+gulp.task('link-less', ['stage'], function() {
+    return gulp.src('./app/link/less/main.less')
+               .pipe(less({ plugins: [cleancss] }))
+               .pipe(gulp.dest('./app/dist/css'));
+});
+
+/* BUILD PHASES */
+
+gulp.task('libs', ['material-ui', 'd3', 'three']);
+
+gulp.task('stage', ['libs', 'html', 'coffee', 'less', 'js']);
+
+gulp.task('link', ['stage', 'link-js', 'link-less']);
+
+/* SERVER & BROWSER TASKS */
+
+gulp.task('server', ['link'], function() {
     return gulp.src('./app/dist')
                .pipe(webserver({
-                    livereload: true,
+                    livereload: false,
                     directoryListing: false,
                     open: true
                 }));
 });
 
-gulp.task('watch', ['browserify'], function() {
-    return gulp.watch('./app/src/**/*.*', ['browserify']);
+gulp.task('watch', ['link'], function() {
+    return gulp.watch('./app/src/**/*.*', ['link']);
 });
 
-gulp.task('default', ['browserify']);
+gulp.task('default', ['link']);
 
 gulp.task('serve', ['server', 'watch']);

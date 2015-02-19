@@ -1,10 +1,17 @@
 /** @jsx React.DOM */
 var React = require('react'),
-    App = require('./App');
+    Router = require('react-router'),
+    Routes = require('./routes'),
+    injectTapEventPlugin = require("react-tap-event-plugin");
 
-require('./Components');
+injectTapEventPlugin();
 
-React.renderComponent(
-    <App />,
-    document.getElementById('app')
-);
+Router
+    .create({
+        routes: Routes,
+        scrollBehavior: Router.ScrollToTopBehavior
+    })
+    .run(function(Handler){
+        React.render(<Handler />, document.getElementById('app'));
+    });
+
