@@ -1,2 +1,36 @@
 @import "material-ui/scaffolding.less";
 @import "material-ui/components.less";
+
+@import "colors.less";
+
+/* custom font icons */
+@import "font-icons/style.less";
+
+/* pages */
+@import "pages/home-page.less";
+@import "pages/search-dialog.less";
+
+.mui-app-canvas {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .mui-app-bar {
+    .icon-button {
+      float: right;
+      margin-right: -16px;
+      margin-left: 16px;
+    }
+  }
+}
+
+.viewport {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 64px;
+  bottom: 0;
+  margin: auto;
+  background-color: black;
+}

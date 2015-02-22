@@ -2,11 +2,11 @@ var gulp = require('gulp'),
     gutil = require('gutil'),
     webserver = require('gulp-webserver'),
     browserify = require('gulp-browserify'),
-    coffee = require('gulp-coffee'),
     concat = require('gulp-concat'),
     es = require('event-stream'),
     less = require('gulp-less'),
     uglify = require('gulp-uglify'),
+    traceur = require('gulp-traceur'),
     port = process.env.port || 7080;
 
 var LessPluginCleanCSS = require('less-plugin-clean-css'),
@@ -50,11 +50,6 @@ gulp.task('material-ui', function() {
 });
 
 /* STAGING TASKS */
-gulp.task('coffee', function() {
-    return gulp.src('./app/src/coffee/**/*.coffee')
-               .pipe(coffee({bare:true}).on('error', gutil.log))
-               .pipe(gulp.dest('./app/link/js'));
-});
 
 gulp.task('html', function() {
     return gulp.src('./app/src/html/index.html')
@@ -63,11 +58,12 @@ gulp.task('html', function() {
 
 gulp.task('js', function() {
     return gulp.src('./app/src/js/**/*.js')
+               .pipe(traceur())
                .pipe(gulp.dest('./app/link/js'));
 });
 
 gulp.task('less', function() {
-    return gulp.src('./app/src/less/**/*.less')
+    return gulp.src('./app/src/less/**/*.*')
                .pipe(gulp.dest('./app/link/less'));
 });
 
@@ -90,7 +86,7 @@ gulp.task('link-less', ['stage'], function() {
 
 gulp.task('libs', ['material-ui', 'd3', 'three']);
 
-gulp.task('stage', ['libs', 'html', 'coffee', 'less', 'js']);
+gulp.task('stage', ['libs', 'html', 'less', 'js']);
 
 gulp.task('link', ['stage', 'link-js', 'link-less']);
 
