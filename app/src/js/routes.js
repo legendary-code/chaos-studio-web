@@ -6,8 +6,8 @@ var Router = require('react-router'),
 
     /* Components */
     Master = require('./components/Master'),
-    Home = require('./components/Home'),
-    Explore = require('./components/Explore');
+    Home = require('./pages/Home'),
+    Explore = require('./pages/Explore');
 
 var Routes = (
     <Route name="root" path="/" handler={Master}>

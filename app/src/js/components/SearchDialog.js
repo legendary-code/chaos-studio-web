@@ -4,7 +4,9 @@ var React = require('react'),
     Dialog = mui.Dialog,
     FlatButton = mui.FlatButton,
     DropDownMenu = mui.DropDownMenu,
-    Components = require('../Components');
+    Tabs = mui.Tabs,
+    Tab = mui.Tab,
+    Components = require('../chaos/Components');
 
 var SearchDialog = React.createClass({
     render: function() {
@@ -20,10 +22,16 @@ var SearchDialog = React.createClass({
 
         return (
             <Dialog ref="dialog" title="Find Attractor" actions={actions}>
-                <div>
-                    <h2>Map</h2>
-                    <DropDownMenu menuItems={mapMenuItems} />
-                </div>
+                <Tabs>
+                    <Tab label="Basic">
+                        <div>
+                            <h2>Map</h2>
+                            <DropDownMenu menuItems={mapMenuItems} />
+                        </div>
+                    </Tab>
+                    <Tab label="Advanced">
+                    </Tab>
+                </Tabs>
             </Dialog>
         );
     },

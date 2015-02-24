@@ -2,10 +2,6 @@ var SearchCriterion = require('../SearchCriterion'),
     Point = require('../Point');
 
 class LyapunovExponent extends SearchCriterion {
-    var LOG2 = 0.69314718055994530941723212145819;
-    var _max, _min, _precision, _minIterations;
-
-
     get max() {
         return _max;
     }
@@ -79,7 +75,7 @@ class LyapunovExponent extends SearchCriterion {
             this._samples++;
         }
 
-        this._lyapunov = this.LOG2 * (this._innerSum / this._samples);
+        this._lyapunov = LyapunovExponent.LOG2 * (this._innerSum / this._samples);
 
         if (this._samples >= this._minIterations && (this._lyapunov < this._min || this._lyapunov > this._max)) {
             console.log("Lyapunov: " + this._lyapunov);
@@ -89,6 +85,9 @@ class LyapunovExponent extends SearchCriterion {
         return true;
     }
 }
+
+// Constants
+LyapunovExponent.LOG2 = 0.69314718055994530941723212145819;
 
 module.exports = LyapunovExponent;
 

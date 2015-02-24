@@ -1,8 +1,6 @@
 /* Configuration and current search params */
 
 class Context {
-    var _configuration, _criteria, _initialValue, _coefficients, _map, _rng;
-
     constructor(configuration, map, rng, criteria, initialValue, coefficients) {
         this._configuration = configuration;
         this._map = map;

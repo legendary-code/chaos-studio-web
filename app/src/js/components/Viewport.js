@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
-var React = require('react');
-var THREE = require('three');
+var React = require('react'),
+    THREE = require('three');
 
 var Viewport = React.createClass({
     getInitialState: function() {

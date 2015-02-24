@@ -3,8 +3,6 @@ var Context = require('./Context'),
     Point = require('./Point');
 
 class AttractorFinder {
-    var _configuration, _onStatus, _onComplete;
-
     constructor(configuration, onStatus, onComplete) {
         this._configuration = configuration;
         this._onStatus = onStatus;

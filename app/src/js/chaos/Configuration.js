@@ -1,8 +1,6 @@
 /* Configuration required for finding attractors */
 
 class Configuration {
-    var _settlingIterations, _searchIterations, _totalIterations, _map, _rng, _criteria;
-
     constructor(map, rng, criteria) {
         this._settlingIterations = 1000;
         this._searchIterations = 1000;

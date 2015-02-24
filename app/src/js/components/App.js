@@ -2,9 +2,9 @@
 var React = require('react'),
     Viewport = require('./Viewport'),
     Menu = require('./Menu'),
-    Configuration = require('./Configuration'),
-    AttractorFinder = require('./AttractorFinder'),
-    components = require('./Components');
+    Configuration = require('../chaos/Configuration'),
+    AttractorFinder = require('../chaos/AttractorFinder'),
+    components = require('../chaos/Components');
 
 var App = React.createClass({
     search: function() {

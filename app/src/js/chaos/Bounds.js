@@ -1,8 +1,6 @@
 var Point = require('./Point');
 
 class Bounds {
-    var _min, _max;
-
     constructor() {
         this._min = [Infinity, Infinity, Infinity];
         this._max = [-Infinity, -Infinity, -Infinity];

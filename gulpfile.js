@@ -1,13 +1,15 @@
 var gulp = require('gulp'),
-    gutil = require('gutil'),
     webserver = require('gulp-webserver'),
-    browserify = require('gulp-browserify'),
-    concat = require('gulp-concat'),
+
+    browserify = require('browserify'),
+    reactify = require('reactify'),
+    es6ify = require('es6ify'),
+
+    source = require('vinyl-source-stream'),
+
     es = require('event-stream'),
     less = require('gulp-less'),
-    uglify = require('gulp-uglify'),
-    traceur = require('gulp-traceur'),
-    port = process.env.port || 7080;
+    uglify = require('gulp-uglify');
 
 var LessPluginCleanCSS = require('less-plugin-clean-css'),
     cleancss = new LessPluginCleanCSS({ advanced: true });
@@ -16,6 +18,18 @@ var LessPluginCleanCSS = require('less-plugin-clean-css'),
  * 1) Stage - copies/compiles all various less, js, css, etc. files from libs and src folder to 'link' folder for final packaging
  * 2) Link - finalizes files, by compiling less files, browserifying, minifying, etc. into the final 'dist' folder
  */
+
+var bundleLibrary = function(entryFile, targetFile, destination) {
+    var bundler = browserify(entryFile, {debug: true});
+    var stream = bundler.bundle();
+
+    stream.on('error', function(err) {
+        console.error(err);
+    });
+
+    return stream.pipe(source(targetFile))
+                 .pipe(gulp.dest(destination));
+};
 
 /* LIBRARIES */
 
@@ -30,18 +44,12 @@ gulp.task('d3', function() {
 });
 
 gulp.task('react-router', function() {
-    return gulp.src('./node_modules/react-router/modules/index.js')
-               .pipe(browserify())
-               .pipe(concat('react-router.js'))
-               .pipe(gulp.dest('./app/link/js'));
+    return bundleLibrary('./node_modules/react-router/modules/index.js', 'react-router.js', './app/link/js');
 });
 
 gulp.task('material-ui', function() {
     return es.merge(
-        gulp.src('./node_modules/material-ui/lib/index.js')
-            .pipe(browserify())
-            .pipe(concat('material-ui.js'))
-            .pipe(gulp.dest('./app/link/js')),
+        bundleLibrary('./node_modules/material-ui/lib/index.js', 'material-ui.js', './app/link/js'),
         gulp.src('./node_modules/material-ui/src/less/**/*.less')
             .pipe(gulp.dest('./app/link/less/material-ui')),
         gulp.src('./node_modules/material-ui/src/less/**/*.css')
@@ -57,9 +65,12 @@ gulp.task('html', function() {
 });
 
 gulp.task('js', function() {
-    return gulp.src('./app/src/js/**/*.js')
-               .pipe(traceur())
-               .pipe(gulp.dest('./app/link/js'));
+    return es.merge(
+        gulp.src('./app/src/js/**/*.jsx')
+            .pipe(gulp.dest('./app/link/js')),
+        gulp.src('./app/src/js/**/*.js')
+            .pipe(gulp.dest('./app/link/js'))
+    );
 });
 
 gulp.task('less', function() {
@@ -70,10 +81,22 @@ gulp.task('less', function() {
 /* LINK TASKS */
 
 gulp.task('link-js', ['stage'], function() {
-    return gulp.src('./app/link/js/main.js')
-               .pipe(browserify({ transform: 'reactify' }))
-               //.pipe(uglify())
-               .pipe(gulp.dest('./app/dist/js'));
+    var entryFile = './app/link/js/main.js';
+    es6ify.traceurOverrides = {experimental : true};
+
+    var bundler = browserify(es6ify.runtime, {debug: true})
+                    .add(entryFile)
+                    .transform(reactify)
+                    .transform(es6ify);
+                    //.transform(uglify);
+
+    var stream = bundler.bundle();
+    stream.on('error', function(err) {
+        console.error(err);
+    });
+
+    return stream.pipe(source('main.js'))
+                 .pipe(gulp.dest('./app/dist/js'));
 });
 
 gulp.task('link-less', ['stage'], function() {

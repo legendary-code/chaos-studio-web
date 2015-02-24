@@ -1,10 +1,10 @@
 /** @jsx React.DOM */
 var React = require('react'),
-    AppBarWithNav = require('./AppBarWithNav'),
-    Viewport = require('./Viewport'),
+    AppBarWithNav = require('../components/AppBarWithNav'),
+    Viewport = require('../components/Viewport'),
     mui = require('material-ui'),
     IconButton = mui.IconButton,
-    SearchDialog = require('./SearchDialog');
+    SearchDialog = require('../components/SearchDialog');
 
 var Explore = React.createClass({
     render: function() {
