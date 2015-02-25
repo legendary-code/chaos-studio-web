@@ -20,13 +20,13 @@ var SearchDialog = React.createClass({
         };
     },
     render: function() {
-        var mapMenuItems = Components.maps.map(function(map) {
-            return { payload: map, text: map.displayName }
+        var mapMenuItems = Components.maps.map(function(TMap) {
+            return { payload: new TMap(), text: map.displayName }
         });
 
         var actions = [
             <FlatButton label="Cancel" secondary={true} />,
-            <FlatButton label="Search" primary={true} />
+            <FlatButton label="Search" primary={true} onClick={this._onSearchClick} />
         ];
 
         var lyapunovExponentLabelClass = this.state.lyapunovExponentEnabled ? 'value-label' : 'disabled-value-label';
@@ -38,7 +38,7 @@ var SearchDialog = React.createClass({
                     <Tab label="Basic">
                         <div>
                             <h3>Map</h3>
-                            <DropDownMenu menuItems={mapMenuItems} />
+                            <DropDownMenu ref="mapDropDownMenu" menuItems={mapMenuItems} />
                         </div>
                     </Tab>
                     <Tab label="Advanced">
@@ -82,13 +82,13 @@ var SearchDialog = React.createClass({
             </Dialog>
         );
     },
-    show: function() {
+    show() {
         this.refs.dialog.show();
     },
-    _onSwitchLyapunov: function(e, value) {
+    _onSwitchLyapunov(e, value) {
         this.setState({lyapunovExponentEnabled: value});
     },
-    _onSwitchFractal: function(e, value) {
+    _onSwitchFractal(e, value) {
         this.setState({fractalDimensionEnabled: value});
     },
     _onChangeLyapunovExponentMin(e, value) {
@@ -96,6 +96,25 @@ var SearchDialog = React.createClass({
     },
     _onChangeFractalDimensionMin(e, value) {
         this.setState({fractalDimensionMin: value});
+    },
+    _onSearchClick() {
+        if(this.props.onSearchClick) {
+            let config = {
+                map: this.refs.mapDropDownMenu.getValue(),
+                criteria: []
+            };
+
+            if (this.state.lyapunovExponentEnabled) {
+                let criterion = new LyapunovExponent();
+                criterion.min = this.state.lyapunovExponentMin;
+                //criterion.max = this.state.lyapunovExponentMax;
+                config.criteria.push(criterion);
+            }
+
+            // TODO: Fractal
+
+            this.props.onSearchClick(config);
+        }
     }
 });
 

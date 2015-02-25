@@ -10,14 +10,12 @@ class AttractorFinder {
     }
 
     find() {
-        let map = new this._configuration.map();
-        let rng = new this._configuration.rng();
+        let map = this._configuration.map();
+        let rng = this._configuration.rng();
         let found = false;
         let dimensions = this._configuration.map.dimensions;
         let numCoefficients = this._configuration.map.coefficients;
-        let criteria = this._configuration.criteria.map((clazz) => {
-            return new clazz();
-        });
+        let criteria = this._configuration.criteria;
 
         while (!found) {
             let coefficients = [];

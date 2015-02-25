@@ -1,7 +1,15 @@
 var SearchCriterion = require('../SearchCriterion'),
-    Point = require('../Point');
+    Point = require('../Point'),
+    PropTypes = require('../PropTypes');
 
 class LyapunovExponent extends SearchCriterion {
+    static get props() {
+        return {
+            min: PropTypes.range(-1.0, 1.0),
+            max: PropTypes.range(-1.0, 1.0)
+        };
+    }
+
     get max() {
         return _max;
     }
