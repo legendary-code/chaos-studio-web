@@ -34,7 +34,7 @@ var SearchDialog = React.createClass({
 
         return (
             <Dialog ref="dialog" title="Find Attractor" actions={actions} className="search-dialog">
-                <Tabs>
+                <Tabs tabWidth={80}>
                     <Tab label="Basic">
                         <div>
                             <h3>Map</h3>
