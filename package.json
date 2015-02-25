@@ -10,6 +10,8 @@
   "author": "eternal0",
   "license": "n/a",
   "dependencies": {
+    "6to5": "^3.6.5",
+    "6to5ify": "^4.1.1",
     "browserify": "^9.0.3",
     "d3": "^3.5.5",
     "es6ify": "^1.6.0",
@@ -22,6 +24,7 @@
     "material-ui": "^0.7.0",
     "react": "^0.12.0",
     "react-router": "^0.12.0",
+    "react-tools": "^0.12.2",
     "reactify": "^0.14.1",
     "three": "^0.69.0",
     "traceur": "0.0.85",

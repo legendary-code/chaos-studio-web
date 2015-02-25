@@ -1,9 +1,9 @@
 var gulp = require('gulp'),
     webserver = require('gulp-webserver'),
 
-    browserify = require('browserify'),
+    Browserify = require('browserify'),
     reactify = require('reactify'),
-    es6ify = require('es6ify'),
+    to5ify = require('6to5ify'),
 
     source = require('vinyl-source-stream'),
 
@@ -20,15 +20,13 @@ var LessPluginCleanCSS = require('less-plugin-clean-css'),
  */
 
 var bundleLibrary = function(entryFile, targetFile, destination) {
-    var bundler = browserify(entryFile, {debug: true});
-    var stream = bundler.bundle();
-
-    stream.on('error', function(err) {
-        console.error(err);
-    });
-
-    return stream.pipe(source(targetFile))
-                 .pipe(gulp.dest(destination));
+    return new Browserify(entryFile, {debug: true})
+                .bundle()
+                .on('error', function(err) {
+                    console.error(err);
+                })
+                .pipe(source(targetFile))
+                .pipe(gulp.dest(destination));
 };
 
 /* LIBRARIES */
@@ -81,22 +79,15 @@ gulp.task('less', function() {
 /* LINK TASKS */
 
 gulp.task('link-js', ['stage'], function() {
-    var entryFile = './app/link/js/main.js';
-    es6ify.traceurOverrides = {experimental : true};
-
-    var bundler = browserify(es6ify.runtime, {debug: true})
-                    .add(entryFile)
-                    .transform(reactify)
-                    .transform(es6ify);
-                    //.transform(uglify);
-
-    var stream = bundler.bundle();
-    stream.on('error', function(err) {
-        console.error(err);
-    });
-
-    return stream.pipe(source('main.js'))
-                 .pipe(gulp.dest('./app/dist/js'));
+    return new Browserify('./app/link/js/main.js')
+                .transform(reactify, {es6: true, target: 'es5'})
+                .transform(to5ify)
+                .bundle()
+                .on('error', function(err) {
+                    console.error(err);
+                })
+                .pipe(source('main.js'))
+                .pipe(gulp.dest('./app/dist/js'));
 });
 
 gulp.task('link-less', ['stage'], function() {

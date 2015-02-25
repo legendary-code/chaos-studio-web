@@ -1,3 +1,39 @@
-.mui-drop-down-menu {
-  width: 300px;
+.search-dialog {
+  @disabled-text-color: fade(@body-text-color, 30%);
+
+  .mui-drop-down-menu {
+    width: 300px;
+  }
+
+  /* Prevent switch from taking up entire space */
+  .mui-enhanced-switch {
+    width: auto;
+    float: left;
+
+    .mui-switch-label {
+      width: auto;
+    }
+
+    .mui-enhanced-switch-input {
+      width: auto;
+    }
+  }
+
+  .checkbox-label-group {
+    height: 24px;
+
+    .value-label {
+      position: relative;
+      float: right;
+      display: table-column;
+      color: @body-text-color;
+    }
+
+    .disabled-value-label {
+      position: relative;
+      float: right;
+      display: table-column;
+      color: @disabled-text-color;
+    }
+  }
 }
