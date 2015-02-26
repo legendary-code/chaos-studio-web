@@ -9,9 +9,9 @@ class LyapunovExponent extends SearchCriterion {
 
     static get params() {
         return {
-            min: Types.number("min", 0.015, -10.0, 10.0, 2),
-            max: Types.number("max", 10.0, -10.0, 10.0, 2),
-            minIterations: Types.number("minimum iterations", 100, 1, 1000, 0)
+            min: Types.number("min", -10.0, 10.0, 2),
+            max: Types.number("max", -10.0, 10.0, 2),
+            minIterations: Types.number("minimum iterations", 1, 1000, 0)
         };
     }
 

@@ -4,7 +4,7 @@ var React = require('react'),
 
 var NumberParam = React.createClass({
     getInitialState() {
-        return { value: this.props.type.defaultValue };
+        return { value: this.props.component[this.props.name] || 0 };
     },
     render() {
         let param = this.props.type;
@@ -20,7 +20,7 @@ var NumberParam = React.createClass({
                     </label>
                 </div>
                 <Slider
-                    defaultValue={param.defaultValue}
+                    defaultValue={this.state.value}
                     min={param.min}
                     max={param.max}
                     onChange={this._onChange} />

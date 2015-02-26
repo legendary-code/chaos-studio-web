@@ -10,11 +10,19 @@ var React = require('react'),
     Components = require('../chaos/Components');
 
 var SearchDialog = React.createClass({
-    render: function() {
-        let mapMenuItems = Components.maps.map(function(TMap) {
-            return { payload: new TMap(), text: TMap.displayName }
+    getInitialState() {
+        let TMap = Components.maps[0];
+        let criteria = Components.criteria.map((TCriterion) => {
+            return new TCriterion();
         });
 
+        return {
+            map: new TMap(),
+            criteria: criteria
+        };
+    },
+
+    render: function() {
         let actions = [
             <FlatButton label="Cancel" secondary={true} />,
             <FlatButton label="Search" primary={true} onClick={this._onSearchClick} />
@@ -22,15 +30,15 @@ var SearchDialog = React.createClass({
 
         let criteriaPanels = [];
 
-        for (let TComponent of Components.criteria) {
-            criteriaPanels.push(<ComponentPanel type={TComponent} style='listItem' />);
+        for (let component of this.state.criteria) {
+            criteriaPanels.push(<ComponentPanel component={component} style='listItem' />);
         }
 
         return (
             <Dialog ref="dialog" title="Find Attractor" actions={actions} className="search-dialog">
                 <Tabs tabWidth={80}>
                     <Tab label="Map">
-                        <DropDownMenu ref="mapDropDownMenu" menuItems={mapMenuItems} />
+                        <ComponentPanel style="dropDown" types={Components.maps} component={this.state.map} />
                     </Tab>
                     <Tab label="Criteria">
                         {criteriaPanels}

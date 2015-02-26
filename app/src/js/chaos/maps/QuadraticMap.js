@@ -1,6 +1,14 @@
-var Map = require('../Map');
+var Map = require('../Map'),
+    Types = require('../Types');
 
 class QuadraticMap extends Map {
+
+    static get params() {
+        return {
+            test: Types.number("Test param", 0, 10, 0)
+        };
+    }
+
     static get displayName() {
         return "Quadratic";
     }

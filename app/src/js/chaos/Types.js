@@ -2,11 +2,10 @@
 
 class Types {
     /* A numeric value */
-    static number(label, defaultValue, min, max, decimals) {
+    static number(label, min, max, decimals) {
         return {
             type: 'number',
             label: label,
-            defaultValue: defaultValue,
             min: min,
             max: max,
             decimals: decimals
