@@ -24,21 +24,21 @@ var SearchDialog = React.createClass({
 
     render: function() {
         let actions = [
-            <FlatButton label="Cancel" secondary={true} />,
-            <FlatButton label="Search" primary={true} onClick={this._onSearchClick} />
+            <FlatButton label="Cancel" secondary={true} onTouchTap={this._onCancelClick} />,
+            <FlatButton label="Search" primary={true} onTouchTap={this._onSearchClick} />
         ];
 
         let criteriaPanels = [];
 
-        for (let component of this.state.criteria) {
-            criteriaPanels.push(<ComponentPanel component={component} style='listItem' />);
+        for (let criterion of this.state.criteria) {
+            criteriaPanels.push(<ComponentPanel key={criterion.type} component={criterion} style='listItem' />);
         }
 
         return (
             <Dialog ref="dialog" title="Find Attractor" actions={actions} className="search-dialog">
                 <Tabs tabWidth={80}>
                     <Tab label="Map">
-                        <ComponentPanel style="dropDown" types={Components.maps} component={this.state.map} />
+                        <ComponentPanel key="map" style="dropDown" types={Components.maps} component={this.state.map} />
                     </Tab>
                     <Tab label="Criteria">
                         {criteriaPanels}
@@ -50,10 +50,12 @@ var SearchDialog = React.createClass({
     show() {
         this.refs.dialog.show();
     },
+    _onCancelClick() {
+        this.refs.dialog.dismiss();
+    },
     _onSearchClick() {
         if(this.props.onSearchClick) {
-            let config = null;
-            this.props.onSearchClick(config);
+            this.props.onSearchClick(this.state);
         }
     }
 });
