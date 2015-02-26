@@ -1,45 +1,18 @@
 var SearchCriterion = require('../SearchCriterion'),
     Point = require('../Point'),
-    PropTypes = require('../PropTypes');
+    Types = require('../Types');
 
 class LyapunovExponent extends SearchCriterion {
-    static get props() {
+    static get displayName() {
+        return "Lyapunov Exponent";
+    }
+
+    static get params() {
         return {
-            min: PropTypes.range(-1.0, 1.0),
-            max: PropTypes.range(-1.0, 1.0)
+            min: Types.number("min", 0.015, -10.0, 10.0, 2),
+            max: Types.number("max", 10.0, -10.0, 10.0, 2),
+            minIterations: Types.number("minimum iterations", 100, 1, 1000, 0)
         };
-    }
-
-    get max() {
-        return _max;
-    }
-
-    set max(value) {
-        _max = value;
-    }
-
-    get min() {
-        return _min;
-    }
-
-    set min(value) {
-        _min = value;
-    }
-
-    get precision() {
-        return _precision;
-    }
-
-    set precision(value) {
-        _precision = value;
-    }
-
-    get minIterations() {
-        return _minIterations;
-    }
-
-    set minIterations(value) {
-        _minIterations = value;
     }
 
     constructor() {
@@ -47,6 +20,38 @@ class LyapunovExponent extends SearchCriterion {
         this._min = 0.015;
         this._precision = 1e11;
         this._minIterations = 100;
+    }
+
+    get max() {
+        return this._max;
+    }
+
+    set max(value) {
+        this._max = value;
+    }
+
+    get min() {
+        return this._min;
+    }
+
+    set min(value) {
+        this._min = value;
+    }
+
+    get precision() {
+        return this._precision;
+    }
+
+    set precision(value) {
+        this._precision = value;
+    }
+
+    get minIterations() {
+        return this._minIterations;
+    }
+
+    set minIterations(value) {
+        this._minIterations = value;
     }
 
     reset(context, initialValue) {

@@ -1,5 +1,6 @@
-class Map {
-    static get displayName() { }
+var Component = require('./Component');
+
+class Map extends Component {
     static get dimensions() { return 3; }
     static get coefficients() { }
     apply(value, coefficients) { }

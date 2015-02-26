@@ -23,22 +23,56 @@
       width: auto;
     }
   }
+}
 
-  .checkbox-label-group {
-    height: 24px;
+.param-label-group {
+  height: 24px;
 
-    .value-label {
-      position: relative;
-      float: right;
-      display: table-column;
-      color: @body-text-color;
-    }
+  .param-description-label {
+    position: relative;
+    float: left;
+    display: table-column;
+    color: @body-text-color;
+  }
 
-    .disabled-value-label {
-      position: relative;
-      float: right;
-      display: table-column;
-      color: @disabled-text-color;
+  .param-value-label {
+    position: relative;
+    float: right;
+    display: table-column;
+    color: @body-text-color;
+  }
+}
+
+.component-panel {
+  height: auto;
+  margin: 8px;
+
+  .component-panel-container {
+    padding: 8px;
+
+    .component-panel-header {
+      height: 24px;
+      margin-bottom: 16px;
+
+      .component-panel-header-label {
+        font-size: 20px;
+        display: inline;
+        float: left;
+      }
+
+      .component-panel-delete-button {
+        display: inline;
+        position: relative;
+        float: right;
+        width: 24px;
+        height: 24px;
+
+        .mui-font-icon {
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+      }
     }
   }
 }

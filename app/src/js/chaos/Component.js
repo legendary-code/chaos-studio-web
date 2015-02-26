@@ -1,5 +1,7 @@
 class Component {
-    static get props() { }
+    static get params() { }
+    static get displayName() { }
+    get type() { return this.constructor; }
 }
 
 module.exports = Component;
