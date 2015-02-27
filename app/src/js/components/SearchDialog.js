@@ -7,18 +7,20 @@ var React = require('react'),
     Tabs = mui.Tabs,
     Tab = mui.Tab,
     ComponentPanel = require('./ComponentPanel'),
-    Components = require('../chaos/Components');
+    ComponentList = require('./ComponentList'),
+    Components = require('../chaos/Components'),
+    ChaosDispatcher = require('../dispatcher/ChaosDispatcher'),
+    SearchConfigurationStore = require('../stores/SearchConfigurationStore'),
+    Actions = require('../actions/Actions');
 
 var SearchDialog = React.createClass({
     getInitialState() {
-        let TMap = Components.maps[0];
-        let criteria = Components.criteria.map((TCriterion) => {
-            return new TCriterion();
-        });
+        let configuration = SearchConfigurationStore.configuration;
 
         return {
-            map: new TMap(),
-            criteria: criteria
+            map: configuration.map.clone(),
+            criteria: configuration.criteria.map((criterion) => { return criterion.clone(); }),
+            rng: configuration.rng.clone()
         };
     },
 
@@ -28,20 +30,24 @@ var SearchDialog = React.createClass({
             <FlatButton label="Search" primary={true} onTouchTap={this._onSearchClick} />
         ];
 
-        let criteriaPanels = [];
-
-        for (let criterion of this.state.criteria) {
-            criteriaPanels.push(<ComponentPanel key={criterion.type} component={criterion} style='listItem' />);
-        }
-
         return (
             <Dialog ref="dialog" title="Find Attractor" actions={actions} className="search-dialog">
                 <Tabs tabWidth={80}>
                     <Tab label="Map">
-                        <ComponentPanel key="map" style="dropDown" types={Components.maps} component={this.state.map} />
+                        <ComponentPanel
+                            key="map"
+                            style="dropDown"
+                            types={Components.maps}
+                            component={this.state.map}
+                            onComponentChanged={this._onMapChanged}/>
                     </Tab>
                     <Tab label="Criteria">
-                        {criteriaPanels}
+                        <ComponentList
+                            key="criteria"
+                            components={this.state.criteria}
+                            types={Components.criteria}
+                            onComponentDelete={this._onCriterionDelete}
+                            onComponentAdd={this._onCriterionAdd} />
                     </Tab>
                 </Tabs>
             </Dialog>
@@ -54,9 +60,32 @@ var SearchDialog = React.createClass({
         this.refs.dialog.dismiss();
     },
     _onSearchClick() {
+        ChaosDispatcher.dispatch(Actions.CHANGE_SEARCH_CONFIGURATION, this.state);
+
         if(this.props.onSearchClick) {
             this.props.onSearchClick(this.state);
         }
+    },
+    _onCriterionDelete(criterion) {
+        let criteria = this.state.criteria;
+        criteria.splice(criteria.indexOf(criterion), 1);
+
+        this.setState({
+            criteria: criteria
+        });
+    },
+    _onCriterionAdd(TCriterion) {
+        let criteria = this.state.criteria;
+        criteria.push(new TCriterion());
+
+        this.setState({
+            criteria: criteria
+        });
+    },
+    _onMapChanged(TMap) {
+        this.setState({
+            map: new TMap()
+        });
     }
 });
 

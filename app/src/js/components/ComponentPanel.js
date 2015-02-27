@@ -14,28 +14,8 @@ var React = require('react'),
     IconButton = mui.IconButton;
 
 var ComponentPanel = React.createClass({
-    getInitialState() {
-        switch (this.props.style) {
-            case 'dropDown':
-                if (!this.props.types) {
-                    throw "types required for dropDown style";
-                }
-
-                return {component: this.props.component || new this.props.types[0]};
-
-            case 'listItem':
-                if (!this.props.component) {
-                    throw "component required for listItem style";
-                }
-                return {component: this.props.component};
-
-            default:
-                throw "unknown style " + this.props.style;
-        }
-    },
-
     render() {
-        let params = this.state.component.type.params;
+        let params = this.props.component.type.params;
         let paramsSection;
 
         if (params) {
@@ -48,7 +28,7 @@ var ComponentPanel = React.createClass({
                 let param = params[name];
                 switch (param.type) {
                     case 'number':
-                        paramControls.push(<NumberParam name={name} type={param} component={this.state.component} />);
+                        paramControls.push(<NumberParam name={name} type={param} component={this.props.component} />);
                         break;
                     case 'range':
                     case 'boolean':
@@ -74,7 +54,7 @@ var ComponentPanel = React.createClass({
     renderDropDown(paramsSection) {
         let selectedIndex = 0;
         let i = 0;
-        let componentType = this.state.component.type;
+        let componentType = this.props.component ? this.props.component.type : null;
 
         let menuItems = this.props.types.map(function (TComponent) {
             if (componentType === TComponent) {
@@ -83,7 +63,7 @@ var ComponentPanel = React.createClass({
 
             i++;
 
-            return {payload: new TComponent(), text: TComponent.displayName}
+            return {payload: TComponent, text: TComponent.displayName};
         });
 
         return (
@@ -92,7 +72,7 @@ var ComponentPanel = React.createClass({
                     <div className="component-panel-container">
                         <div className="component-panel-container">
                             <div className="component-panel-header">
-                                <DropDownMenu menuItems={menuItems} />
+                                <DropDownMenu menuItems={menuItems} onChange={this._onDropDownChanged} />
                             </div>
 
                             <div className="component-panel-params">
@@ -111,7 +91,7 @@ var ComponentPanel = React.createClass({
                 <Paper>
                     <div className="component-panel-container">
                         <div className="component-panel-header">
-                            <label className="component-panel-header-label">{this.state.component.type.displayName}</label>
+                            <label className="component-panel-header-label">{this.props.component.type.displayName}</label>
                             <IconButton
                                 className="component-panel-delete-button"
                                 iconClassName="icon-cancel"
@@ -128,19 +108,15 @@ var ComponentPanel = React.createClass({
     },
 
     _onDeleteClick() {
-        if (this.props.onDeleteClick) {
-            this.props.onDeleteClick(this);
+        if (this.props.onComponentDelete) {
+            this.props.onComponentDelete(this.props.component);
         }
     },
 
-    _onDropDownChanged(e, TComponent) {
-        let newComponent = new TComponent();
-
-        if (this.props.onComponentReplaced) {
-            this.props.onComponentReplaced(newComponent);
+    _onDropDownChanged(e, index, TComponent) {
+        if (this.props.onComponentChanged) {
+            this.props.onComponentChanged(TComponent);
         }
-
-        this.setState({component: newComponent});
     }
 });
 
