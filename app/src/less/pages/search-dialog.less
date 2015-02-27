@@ -7,7 +7,7 @@
   }
 
   .mui-drop-down-menu {
-    width: 300px;
+    min-width: 300px;
   }
 
   /* Prevent switch from taking up entire space */
@@ -81,12 +81,24 @@
   height: auto;
   margin: 8px;
 
+  .component-list-header-paper {
+    margin: 8px;
+    
+    &.hidden {
+      display: none;
+    }
+  }
+
   .component-list-container {
     padding: 8px;
 
     .component-list-header {
       height: 24px;
       margin-bottom: 32px;
+
+      .component-list-drop-down {
+        min-width: 300px;
+      }
 
       .component-list-add-button {
         display: inline;
