@@ -1,4 +1,4 @@
-/** @jsx React.DOM */
+
 var React = require('react'),
     mui = require('material-ui'),
     Dialog = mui.Dialog,
@@ -9,6 +9,7 @@ var React = require('react'),
     ComponentPanel = require('./ComponentPanel'),
     ComponentList = require('./ComponentList'),
     Components = require('../chaos/Components'),
+    Configuration = require('../chaos/Configuration'),
     ChaosDispatcher = require('../dispatcher/ChaosDispatcher'),
     SearchConfigurationStore = require('../stores/SearchConfigurationStore'),
     Actions = require('../actions/Actions');
@@ -60,7 +61,10 @@ var SearchDialog = React.createClass({
         this.refs.dialog.dismiss();
     },
     _onSearchClick() {
-        ChaosDispatcher.dispatch(Actions.CHANGE_SEARCH_CONFIGURATION, this.state);
+        this.refs.dialog.dismiss();
+
+        let configuration = new Configuration(this.state.map, this.state.criteria, this.state.rng);
+        ChaosDispatcher.dispatch(Actions.CHANGE_SEARCH_CONFIGURATION, configuration);
 
         if(this.props.onSearchClick) {
             this.props.onSearchClick(this.state);

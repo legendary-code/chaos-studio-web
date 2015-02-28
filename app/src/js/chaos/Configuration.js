@@ -5,13 +5,13 @@ var QuadraticMap = require('./maps/QuadraticMap'),
 
 
 class Configuration {
-    constructor() {
+    constructor(map, criteria, rng) {
         this._settlingIterations = 1000;
         this._searchIterations = 1000;
         this._totalIterations = 1000000;
-        this._map = new QuadraticMap();
-        this._rng = new DefaultRng();
-        this._criteria = [ new LyapunovExponent() ];
+        this._map = map;
+        this._rng = rng;
+        this._criteria = criteria;
     }
 
     get settlingIterations() { return this._settlingIterations; }

@@ -1,14 +1,27 @@
-/** @jsx React.DOM */
+
 var React = require('react'),
+    mui = require('material-ui'),
+    Paper = mui.Paper,
     THREE = require('three');
 
 var Viewport = React.createClass({
     getInitialState: function() {
-        return {};
+        return { searching: false };
     },
+
     render: function() {
-        return <div className="viewport" ref="viewport"></div>
+        let hidden = this.state.searching ? "" : "hidden";
+
+        return (
+            <div className="viewport" ref="viewport">
+                <Paper className={"search-progress-container " + hidden}>
+                    <img src="./svg/lorentz.svg" />
+                    <label className="mui-font-style-headline">Searching</label>
+                </Paper>
+            </div>
+        )
     },
+
     handleResize: function() {
         var viewport = this.refs.viewport.getDOMNode();
         var width = viewport.clientWidth;
@@ -19,6 +32,7 @@ var Viewport = React.createClass({
 
         this.setState({renderer: renderer});
     },
+
     componentDidMount: function() {
         var viewport = this.refs.viewport.getDOMNode();
         var width = viewport.clientWidth;
@@ -60,6 +74,7 @@ var Viewport = React.createClass({
     normalize: function(value) {
         return (value * 2.0) - 1.0;
     },
+
     setRenderData: function(points) {
         var prevGeom = this.state.geometry;
         var prevCloud = this.state.cloud;

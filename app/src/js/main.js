@@ -1,4 +1,8 @@
 /** @jsx React.DOM */
+window.__DEV__ = true;
+
+require('babel/polyfill');
+
 var React = require('react'),
     Router = require('react-router'),
     Routes = require('./routes'),

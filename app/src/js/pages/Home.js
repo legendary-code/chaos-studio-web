@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 var React = require('react'),
     AppBarWithNav = require('../components/AppBarWithNav'),
     mui = require('material-ui'),

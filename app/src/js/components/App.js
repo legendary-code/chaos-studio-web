@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 var React = require('react'),
     Viewport = require('./Viewport'),
     Menu = require('./Menu'),

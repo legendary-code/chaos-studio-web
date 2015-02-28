@@ -59,7 +59,7 @@ class LyapunovExponent extends SearchCriterion {
         this._delta = 1 / this._precision;
         this._samples = 0;
 
-        let dimensions = context.configuration.map.dimensions;
+        let dimensions = context.configuration.map.type.dimensions;
         let dv = Math.sqrt(this._delta * this._delta / dimensions);
         this._nearValue = [];
         for (var i = 0; i < 3; i++) {

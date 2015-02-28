@@ -1,5 +1,3 @@
-/** @jsx React.DOM */
-
 var React = require('react'),
     Router = require('react-router'),
     mui = require('material-ui'),

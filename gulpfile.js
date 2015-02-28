@@ -3,7 +3,7 @@ var gulp = require('gulp'),
 
     Browserify = require('browserify'),
     reactify = require('reactify'),
-    to5ify = require('6to5ify'),
+    babelify = require('babelify'),
 
     source = require('vinyl-source-stream'),
 
@@ -30,6 +30,15 @@ var bundleLibrary = function(entryFile, targetFile, destination) {
 };
 
 /* LIBRARIES */
+
+gulp.task('threadpool-js', function() {
+    return es.merge(
+        gulp.src('./node_modules/threadpool-js/dist/evalworker.min.js')
+            .pipe(gulp.dest('./app/dist/js')),
+        gulp.src('./node_modules/threadpool-js/dist/threadpool.min.js')
+            .pipe(gulp.dest('./app/link/js'))
+    );
+});
 
 gulp.task('three', function() {
     return gulp.src('./node_modules/three/three.js')
@@ -76,12 +85,18 @@ gulp.task('less', function() {
                .pipe(gulp.dest('./app/link/less'));
 });
 
+gulp.task('svg', function() {
+    return gulp.src('./app/src/svg/**/*.*')
+        .pipe(gulp.dest('./app/dist/svg'));
+});
+
+
 /* LINK TASKS */
 
 gulp.task('link-js', ['stage'], function() {
     return new Browserify('./app/link/js/main.js')
                 .transform(reactify, {es6: true, target: 'es5'})
-                .transform(to5ify)
+                .transform(babelify)
                 .bundle()
                 .on('error', function(err) {
                     console.error(err);
@@ -98,9 +113,9 @@ gulp.task('link-less', ['stage'], function() {
 
 /* BUILD PHASES */
 
-gulp.task('libs', ['material-ui', 'd3', 'three']);
+gulp.task('libs', ['material-ui', 'd3', 'three', 'threadpool-js']);
 
-gulp.task('stage', ['libs', 'html', 'less', 'js']);
+gulp.task('stage', ['libs', 'html', 'less', 'js', 'svg']);
 
 gulp.task('link', ['stage', 'link-js', 'link-less']);
 

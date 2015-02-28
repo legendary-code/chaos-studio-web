@@ -1,5 +1,6 @@
 var Store = require('./Store'),
     Actions = require('../actions/Actions'),
+    Configuration = require('../chaos/Configuration'),
     QuadraticMap = require('../chaos/maps/QuadraticMap'),
     LyapunovExponent = require('../chaos/criteria/LyapunovExponent'),
     DefaultRng = require( '../chaos/rngs/DefaultRng');
@@ -7,11 +8,15 @@ var Store = require('./Store'),
 class SearchConfigurationStore extends Store {
     constructor() {
         super.constructor();
-        this._configuration = {
-            map: new QuadraticMap(),
-            criteria: [ new LyapunovExponent() ],
-            rng: new DefaultRng()
-        };
+        this._configuration = new Configuration(
+            new QuadraticMap(),
+            [ new LyapunovExponent() ],
+            new DefaultRng()
+        );
+    }
+
+    get configuration() {
+        return this._configuration;
     }
 
     _invoke(action) {
@@ -25,10 +30,6 @@ class SearchConfigurationStore extends Store {
         }
 
         return true;
-    }
-
-    get configuration() {
-        return this._configuration;
     }
 }
 

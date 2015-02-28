@@ -1,6 +1,7 @@
 var Context = require('./Context'),
     Bounds = require('./Bounds'),
-    Point = require('./Point');
+    Point = require('./Point'),
+    Threading = require('../threading/Threading');
 
 class AttractorFinder {
     constructor(configuration, onStatus, onComplete) {
@@ -10,14 +11,19 @@ class AttractorFinder {
     }
 
     find() {
-        let map = this._configuration.map();
-        let rng = this._configuration.rng();
-        let found = false;
-        let dimensions = this._configuration.map.dimensions;
-        let numCoefficients = this._configuration.map.coefficients;
+        Threading.runAsync(this._find.bind(this));
+    }
+
+    *_find() {
+        let map = this._configuration.map;
+        let rng = this._configuration.rng;
+        let dimensions = this._configuration.map.type.dimensions;
+        let numCoefficients = this._configuration.map.type.coefficients;
         let criteria = this._configuration.criteria;
 
-        while (!found) {
+        while (true) {
+            yield undefined;
+
             let coefficients = [];
             let initialValue = [];
             let value = [];
@@ -106,7 +112,7 @@ class AttractorFinder {
             }
 
             this._onComplete(values);
-            found = true;
+            break;
         }
     }
 }

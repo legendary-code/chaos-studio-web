@@ -3,12 +3,12 @@ var EventEmitter = require('events').EventEmitter,
 
 class Store extends EventEmitter {
     constructor() {
-        ChaosDispatcher.register(this._invokeWithEmit);
+        ChaosDispatcher.register(this._invokeWithEmit.bind(this));
     }
 
     _invokeWithEmit(action) {
-        if (_invoke(action)) {
-            _emit();
+        if (this._invoke(action)) {
+            this._emit();
         }
     }
 

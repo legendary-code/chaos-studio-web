@@ -7,7 +7,7 @@ class Bounds {
     }
 
     update(point) {
-        for (i = 0; i < 3; i++) {
+        for (let i = 0; i < 3; i++) {
             if (point[i] < this._min[i])
                 this._min[i] = point[i];
             if (point[i] > this._max[i])
