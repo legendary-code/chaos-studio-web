@@ -28,7 +28,7 @@ var ComponentPanel = React.createClass({
                 let param = params[name];
                 switch (param.type) {
                     case 'number':
-                        paramControls.push(<NumberParam name={name} type={param} component={this.props.component} />);
+                        paramControls.push(<NumberParam name={name} type={param} key={name} component={this.props.component} />);
                         break;
                     case 'range':
                     case 'boolean':

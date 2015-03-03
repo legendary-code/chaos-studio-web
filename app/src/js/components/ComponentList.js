@@ -28,22 +28,23 @@ let ComponentList = React.createClass({
             menuItems.push({text: ''});
         }
 
-        let hidden = availableTypes.length == 0;
-        let className = "component-list-header-paper " + (hidden ? "hidden" : "");
+        let disabled = availableTypes.length == 0;
 
         return (
             <div className="component-list">
-                <Paper className={className}>
+                <Paper className="component-list-header-paper">
                     <div className="component-list-container">
                         <div className="component-list-header">
                             <DropDownMenu
                                 ref="typesDropDown"
                                 menuItems={menuItems}
                                 className="component-list-drop-down"
+                                disabled={disabled}
                                 onChange={this._onDropDownChanged} />
                             <IconButton
                                 className="component-list-add-button"
                                 iconClassName="icon-add-circle-outline"
+                                disabled={disabled}
                                 onClick={this._onAddClick} />
                         </div>
                     </div>

@@ -6,7 +6,7 @@ var React = require('react'),
     AttractorFinder = require('../chaos/AttractorFinder'),
     mui = require('material-ui'),
     IconButton = mui.IconButton,
-    SearchDialog = require('../components/SearchDialog');
+    SettingsDialog = require('../components/SettingsDialog');
 
 var Explore = React.createClass({
     render: function() {
@@ -15,14 +15,14 @@ var Explore = React.createClass({
                 className="icon-button"
                 iconClassName="icon-visibility"
                 linkButton={true}
-                onTouchTap={this.searchTouchTap} />
+                onTouchTap={this._searchTouchTap} />
         );
 
         var settingsButton = (
             <IconButton
                 className="icon-button"
                 iconClassName="icon-settings"
-                href="https://github.com/eternal0/chaos-studio-web"
+                onTouchTap={this._settingsTouchTap}
                 linkButton={true} />
         );
 
@@ -33,17 +33,9 @@ var Explore = React.createClass({
                 {searchButton}
                 </AppBarWithNav>
                 <Viewport ref="viewport" />
-                <SearchDialog ref="searchDialog" onSearchClick={this._onSearchClick} />
+                <SettingsDialog ref="settingsDialog" />
             </div>
         );
-    },
-
-    _onSearchClick() {
-        this.refs.viewport.setState({searching: true});
-
-        let config = SearchConfigurationStore.configuration;
-        let finder = new AttractorFinder(config, function(msg) { console.log(msg); }.bind(this), this._onSearchComplete.bind(this));
-        finder.find();
     },
 
     _onSearchComplete(points) {
@@ -51,8 +43,16 @@ var Explore = React.createClass({
         this.refs.viewport.setRenderData(points);
     },
 
-    searchTouchTap: function() {
-        this.refs.searchDialog.show();
+    _searchTouchTap() {
+        this.refs.viewport.setState({searching: true});
+
+        let config = SearchConfigurationStore.configuration;
+        let finder = new AttractorFinder(config, function(msg) { console.log(msg); }.bind(this), this._onSearchComplete.bind(this));
+        finder.find();
+    },
+
+    _settingsTouchTap() {
+        this.refs.settingsDialog.show();
     }
 });
 

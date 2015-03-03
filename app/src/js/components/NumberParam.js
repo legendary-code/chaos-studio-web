@@ -20,9 +20,10 @@ var NumberParam = React.createClass({
                     </label>
                 </div>
                 <Slider
-                    defaultValue={this.state.value}
+                    value={this.state.value}
                     min={param.min}
                     max={param.max}
+                    key={this.props.name}
                     onChange={this._onChange} />
             </div>
         );

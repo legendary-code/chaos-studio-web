@@ -14,7 +14,7 @@ var React = require('react'),
     SearchConfigurationStore = require('../stores/SearchConfigurationStore'),
     Actions = require('../actions/Actions');
 
-var SearchDialog = React.createClass({
+var SettingsDialog = React.createClass({
     getInitialState() {
         let configuration = SearchConfigurationStore.configuration;
 
@@ -28,11 +28,11 @@ var SearchDialog = React.createClass({
     render: function() {
         let actions = [
             <FlatButton label="Cancel" secondary={true} onTouchTap={this._onCancelClick} />,
-            <FlatButton label="Search" primary={true} onTouchTap={this._onSearchClick} />
+            <FlatButton label="Save" primary={true} onTouchTap={this._onSaveClick} />
         ];
 
         return (
-            <Dialog ref="dialog" title="Find Attractor" actions={actions} className="search-dialog">
+            <Dialog ref="dialog" title="Settings" actions={actions} className="settings-dialog" onShow={this._onShow}>
                 <Tabs tabWidth={80}>
                     <Tab label="Map">
                         <ComponentPanel
@@ -57,18 +57,17 @@ var SearchDialog = React.createClass({
     show() {
         this.refs.dialog.show();
     },
+    _onShow() {
+        this.setState(this.getInitialState())
+    },
     _onCancelClick() {
         this.refs.dialog.dismiss();
     },
-    _onSearchClick() {
+    _onSaveClick() {
         this.refs.dialog.dismiss();
 
         let configuration = new Configuration(this.state.map, this.state.criteria, this.state.rng);
         ChaosDispatcher.dispatch(Actions.CHANGE_SEARCH_CONFIGURATION, configuration);
-
-        if(this.props.onSearchClick) {
-            this.props.onSearchClick(this.state);
-        }
     },
     _onCriterionDelete(criterion) {
         let criteria = this.state.criteria;
@@ -93,4 +92,4 @@ var SearchDialog = React.createClass({
     }
 });
 
-module.exports = SearchDialog;
+module.exports = SettingsDialog;
