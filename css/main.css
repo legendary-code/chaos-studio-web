@@ -1,0 +1,530 @@
+/* Resets */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none; }
+
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+@media only screen and (orientation: landscape), only screen and (orientation: portrait) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px; } }
+@media only screen and (min-width: 992px), only screen and (min-width: 768px) {
+  .container {
+    padding-left: 24px;
+    padding-right: 24px; } }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+/* Variables */
+h1, .font-display-4 {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 112px;
+  line-height: 128px;
+  font-weight: 300;
+  letter-spacing: -7px;
+  color: rgba(0, 0, 0, 0.54); }
+
+h2, .font-display-3 {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 56px;
+  line-height: 64px;
+  font-weight: 400;
+  letter-spacing: -2px;
+  color: rgba(0, 0, 0, 0.54); }
+
+h3, .font-display-2 {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 45px;
+  line-height: 48px;
+  font-weight: 400;
+  letter-spacing: -1px;
+  color: rgba(0, 0, 0, 0.54); }
+
+h4, .font-display-1 {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 34px;
+  line-height: 40px;
+  font-weight: 400;
+  letter-spacing: -1px;
+  color: rgba(0, 0, 0, 0.54); }
+
+h5, .font-headline {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: black; }
+
+title, .font-title {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: black; }
+
+.font-subhead {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: black; }
+  @media only screen and (min-width: 992px) {
+    .font-subhead {
+      font-size: 15px; } }
+
+span, .font-body-2 {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: black; }
+  @media only screen and (min-width: 992px) {
+    span, .font-body-2 {
+      font-size: 13px; } }
+
+p, .font-body-1 {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: black; }
+  @media only screen and (min-width: 992px) {
+    p, .font-body-1 {
+      font-size: 13px; } }
+
+caption, .font-caption {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: rgba(0, 0, 0, 0.54); }
+
+.font-nav-button {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: black;
+  letter-spacing: 0; }
+
+.font-button {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: black;
+  letter-spacing: 0;
+  text-transform: uppercase; }
+
+/* Make elements not selectable by default to avoid annoying highlighting issues */
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+/* Mixins */
+.ripple {
+  display: block;
+  position: absolute;
+  background-color: #c5cae9;
+  border-radius: 50%;
+  opacity: 0.5;
+  transform: scale(0);
+  -o-transform: scale(0);
+  -ms-transform: scale(0);
+  -moz-transform: scale(0);
+  -webkit-transform: scale(0);
+  animation: ripple 0.5s linear;
+  -o-animation: ripple 0.5s linear;
+  -moz-animation: ripple 0.5s linear;
+  -webkit-animation: ripple 0.5s linear; }
+
+@keyframes ripple {
+  100% {
+    opacity: 0;
+    transform: scale(2.5);
+    -o-transform: scale(2.5);
+    -ms-transform: scale(2.5);
+    -moz-transform: scale(2.5);
+    -webkit-transform: scale(2.5); } }
+
+@-o-keyframes ripple {
+  100% {
+    opacity: 0;
+    transform: scale(2.5);
+    -o-transform: scale(2.5);
+    -ms-transform: scale(2.5);
+    -moz-transform: scale(2.5);
+    -webkit-transform: scale(2.5); } }
+
+@-moz-keyframes ripple {
+  100% {
+    opacity: 0;
+    transform: scale(2.5);
+    -o-transform: scale(2.5);
+    -ms-transform: scale(2.5);
+    -moz-transform: scale(2.5);
+    -webkit-transform: scale(2.5); } }
+
+@-webkit-keyframes ripple {
+  100% {
+    opacity: 0;
+    transform: scale(2.5);
+    -o-transform: scale(2.5);
+    -ms-transform: scale(2.5);
+    -moz-transform: scale(2.5);
+    -webkit-transform: scale(2.5); } }
+
+/* Components */
+.app-bar {
+  background-color: #3f51b5;
+  display: block;
+  position: fixed;
+  width: 100vw;
+  overflow: hidden;
+  z-index: 1000000;
+  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12); }
+  .app-bar label {
+    color: #ffffff; }
+  @media only screen and (orientation: portrait) {
+    .app-bar {
+      height: 56px;
+      line-height: 56px; }
+      .app-bar label {
+        line-height: 56px; } }
+  @media only screen and (orientation: landscape) {
+    .app-bar {
+      height: 48px;
+      line-height: 48px; }
+      .app-bar label {
+        line-height: 48px; } }
+  @media only screen and (min-width: 992px), only screen and (min-width: 768px) {
+    .app-bar {
+      height: 64px;
+      line-height: 64px; }
+      .app-bar label {
+        line-height: 64px; } }
+  @media only screen and (orientation: portrait) {
+    .app-bar .button {
+      top: 4px; } }
+  @media only screen and (orientation: landscape) {
+    .app-bar .button {
+      top: 0; } }
+  @media only screen and (min-width: 992px), only screen and (min-width: 768px) {
+    .app-bar .button {
+      top: 8px; } }
+  .app-bar .button.left {
+    left: -16px; }
+  .app-bar .button.right {
+    right: -16px; }
+
+.icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  position: relative; }
+  .icon.icon-menu {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24h-24z" fill="none"/><path d="M3 18h18v-2h-18v2zm0-5h18v-2h-18v2zm0-7v2h18v-2h-18z" fill="#ffffff"/></svg>') no-repeat 0 0/24px 24px; }
+  .icon.icon-home {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3l-10-9-10 9h3v8z" fill="#616161"/><path d="M0 0h24v24h-24z" fill="none"/></svg>') no-repeat 0 0/24px 24px; }
+  .icon.icon-info-outline {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24h-24z" fill="none"/><path d="M11 17h2v-6h-2v6zm1-15c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-11h2v-2h-2v2z" fill="#616161"/></svg>') no-repeat 0 0/24px 24px; }
+  .icon.icon-search {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27c.98-1.14 1.57-2.62 1.57-4.23 0-3.59-2.91-6.5-6.5-6.5s-6.5 2.91-6.5 6.5 2.91 6.5 6.5 6.5c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99 1.49-1.49-4.99-5zm-6 0c-2.49 0-4.5-2.01-4.5-4.5s2.01-4.5 4.5-4.5 4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5z" fill="#616161"/><path d="M0 0h24v24h-24z" fill="none"/></svg>') no-repeat 0 0/24px 24px; }
+  .icon.icon-settings {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24h-24z" fill="none"/><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65c-.03-.24-.24-.42-.49-.42h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zm-7.43 2.52c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" fill="#616161"/></svg>') no-repeat 0 0/24px 24px; }
+  .icon.icon-github {
+    background: url('data:image/svg+xml;utf8,<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve"><path fill-rule="evenodd" clip-rule="evenodd" fill="#616161" d="M11.999,2.468c-5.397,0-9.773,4.376-9.773,9.774 c0,4.318,2.8,7.981,6.684,9.274c0.489,0.09,0.667-0.212,0.667-0.471c0-0.232-0.008-0.847-0.013-1.662 c-2.719,0.591-3.292-1.31-3.292-1.31c-0.444-1.129-1.085-1.43-1.085-1.43c-0.887-0.606,0.067-0.594,0.067-0.594 c0.981,0.069,1.497,1.007,1.497,1.007c0.872,1.494,2.288,1.062,2.844,0.812c0.089-0.632,0.341-1.062,0.621-1.307 c-2.17-0.247-4.452-1.085-4.452-4.83c0-1.067,0.381-1.939,1.006-2.623C6.67,8.86,6.334,7.867,6.866,6.521 c0,0,0.821-0.263,2.688,1.002c0.78-0.217,1.616-0.325,2.447-0.329c0.83,0.004,1.666,0.112,2.447,0.329 c1.866-1.265,2.685-1.002,2.685-1.002c0.533,1.346,0.198,2.339,0.097,2.587c0.626,0.683,1.005,1.556,1.005,2.623 c0,3.755-2.285,4.581-4.463,4.823c0.351,0.302,0.664,0.898,0.664,1.81c0,1.307-0.012,2.361-0.012,2.681 c0,0.261,0.176,0.565,0.672,0.47c3.88-1.295,6.678-4.956,6.678-9.273C21.774,6.843,17.397,2.468,11.999,2.468z"/></svg>') no-repeat 0 0/24px 24px; }
+
+.button {
+  display: inline-block;
+  position: relative;
+  height: 48px; }
+  .button .button-inner {
+    background-color: #3f51b5;
+    position: relative;
+    display: inline-block;
+    padding: 0 8px;
+    margin: 6px 4px;
+    height: 36px;
+    border: 0 none;
+    overflow: hidden;
+    outline: 0; }
+    .button .button-inner * {
+      cursor: pointer; }
+    .button .button-inner.label {
+      min-width: 64px; }
+    .button .button-inner.raised {
+      box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+      transition: box-shadow 0.1s linear;
+      -o-transition: box-shadow 0.1s linear;
+      -moz-transition: box-shadow 0.1s linear;
+      -webkit-transition: box-shadow 0.1s linear; }
+      .button .button-inner.raised:active {
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16); }
+    .button .button-inner .icon {
+      margin-top: 6px;
+      margin-bottom: 6px; }
+    .button .button-inner label {
+      line-height: 36px;
+      height: 36px;
+      display: inline-block;
+      float: left;
+      margin-left: 8px; }
+
+.nav-drawer {
+  display: inline-block;
+  background-color: #ffffff;
+  position: fixed;
+  height: 100vh;
+  width: 90vw;
+  z-index: 1000001;
+  overflow-y: auto;
+  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+  /* Prevent animation on initial load */ }
+  @media only screen and (orientation: portrait) {
+    .nav-drawer {
+      width: calc(100vw - 56px);
+      max-width: 280px; } }
+  @media only screen and (orientation: landscape) {
+    .nav-drawer {
+      width: calc(100vw - 48px);
+      max-width: 240px; } }
+  @media only screen and (min-width: 992px), only screen and (min-width: 768px) {
+    .nav-drawer {
+      width: calc(100vw - 64px);
+      max-width: 320px; } }
+  .nav-drawer.preload {
+    animation: none !important;
+    -o-animation: none !important;
+    -moz-animation: none !important;
+    -webkit-animation: none !important; }
+  .nav-drawer.hidden {
+    left: -320px;
+    animation: hide-animation 0.2s;
+    -o-animation: hide-animation 0.2s;
+    -moz-animation: hide-animation 0.2s;
+    -webkit-animation: hide-animation 0.2s; }
+  .nav-drawer:not(.hidden) {
+    left: 0;
+    animation: show-animation 0.2s;
+    -o-animation: show-animation 0.2s;
+    -moz-animation: show-animation 0.2s;
+    -webkit-animation: show-animation 0.2s; }
+
+@keyframes show-animation {
+  0% {
+    opacity: 0;
+    left: -320px; }
+
+  1% {
+    opacity: 1; }
+
+  100% {
+    left: 0; } }
+
+@-o-keyframes show-animation {
+  0% {
+    opacity: 0;
+    left: -320px; }
+
+  1% {
+    opacity: 1; }
+
+  100% {
+    left: 0; } }
+
+@-moz-keyframes show-animation {
+  0% {
+    opacity: 0;
+    left: -320px; }
+
+  1% {
+    opacity: 1; }
+
+  100% {
+    left: 0; } }
+
+@-webkit-keyframes show-animation {
+  0% {
+    opacity: 0;
+    left: -320px; }
+
+  1% {
+    opacity: 1; }
+
+  100% {
+    left: 0; } }
+
+@keyframes hide-animation {
+  0% {
+    left: 0; }
+
+  99% {
+    opacity: 1; }
+
+  100% {
+    opacity: 0;
+    left: -320px; } }
+
+@-o-keyframes hide-animation {
+  0% {
+    left: 0; }
+
+  99% {
+    opacity: 1; }
+
+  100% {
+    opacity: 0;
+    left: -320px; } }
+
+@-moz-keyframes hide-animation {
+  0% {
+    left: 0; }
+
+  99% {
+    opacity: 1; }
+
+  100% {
+    opacity: 0;
+    left: -320px; } }
+
+@-webkit-keyframes hide-animation {
+  0% {
+    left: 0; }
+
+  99% {
+    opacity: 1; }
+
+  100% {
+    opacity: 0;
+    left: -320px; } }
+
+.nav-drawer-button {
+  background-color: #ffffff;
+  display: block;
+  position: relative;
+  height: 48px;
+  overflow: hidden;
+  cursor: pointer; }
+  .nav-drawer-button * {
+    cursor: pointer; }
+  .nav-drawer-button .nav-drawer-button-inner {
+    background-color: #ffffff;
+    position: relative;
+    display: block;
+    padding: 0 8px;
+    margin: 6px 4px;
+    height: 36px;
+    line-height: 36px;
+    border: 0 none;
+    outline: 0; }
+    .nav-drawer-button .nav-drawer-button-inner .icon {
+      margin-top: 6px;
+      margin-bottom: 6px;
+      display: inline-block;
+      float: left; }
+    .nav-drawer-button .nav-drawer-button-inner label {
+      line-height: 36px;
+      height: 36px;
+      display: inline-block;
+      color: #000000;
+      float: left;
+      margin-left: 32px; }
+      .nav-drawer-button .nav-drawer-button-inner label.font-active-route {
+        color: #40c4ff; }
+
+.nav-drawer-divider {
+  position: relative;
+  display: block;
+  background-color: #e0e0e0;
+  border: 0 none;
+  height: 1px;
+  margin-top: 8px;
+  margin-bottom: 8px; }
+
+.app-contents {
+  position: relative;
+  background-color: #e0e0e0;
+  height: 100vh; }
+  @media only screen and (orientation: portrait) {
+    .app-contents {
+      margin-top: 56px; } }
+  @media only screen and (orientation: landscape) {
+    .app-contents {
+      margin-top: 48px; } }
+  @media only screen and (min-width: 992px), only screen and (min-width: 768px) {
+    .app-contents {
+      margin-top: 64px; } }
+
+.paper {
+  background-color: #ffffff;
+  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+  padding: 16px; }
+  .paper.container {
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    transition: 0.1s;
+    -o-transition: 0.1s;
+    -moz-transition: 0.1s;
+    -webkit-transition: 0.1s; }
+    @media only screen and (orientation: portrait) {
+      .paper.container {
+        width: 100vw; } }
+    @media only screen and (min-width: 992px), only screen and (min-width: 768px), only screen and (orientation: landscape) {
+      .paper.container {
+        width: 70vw; } }
+
+/* Pages */
+.app {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; }
