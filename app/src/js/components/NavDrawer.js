@@ -6,7 +6,10 @@ let $ = require('jquery'),
 
 let NavDrawer = React.createClass({
     getInitialState() {
-        return { hidden: NavigationDrawerStore.state.hidden, preload: true };
+        return {
+            hidden: NavigationDrawerStore.state.hidden,
+            preload: true
+        };
     },
 
     componentDidMount() {
@@ -22,7 +25,7 @@ let NavDrawer = React.createClass({
     render() {
         let className = cx({
             "nav-drawer": true,
-            "visible": !this.state.hidden,
+            "hidden": this.state.hidden,
             "preload": this.state.preload
         });
 
@@ -34,7 +37,10 @@ let NavDrawer = React.createClass({
     },
 
     _toggle() {
-        this.setState({hidden: NavigationDrawerStore.state.hidden, preload: false});
+        this.setState({
+                hidden: NavigationDrawerStore.state.hidden,
+                preload: false
+        });
     },
 
     _clickOutside(e) {

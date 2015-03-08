@@ -39,6 +39,10 @@
       color: $black;
       float: left;
       margin-left: 32px;
+
+      &.font-active-route {
+        color: $accent-1-color;
+      }
     }
   }
 }

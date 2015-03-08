@@ -12,6 +12,10 @@
   z-index: $topMost;
   @include shadow(1);
 
+  label {
+    color: $white;
+  }
+
   @media #{$device-mobile-portrait} {
     height: 56px;
     line-height: 56px;
@@ -54,10 +58,10 @@
   }
 
   .button.left {
-    left: -24px;
+    left: -16px;
   }
 
   .button.right {
-    right: -24px;
+    right: -16px;
   }
 }

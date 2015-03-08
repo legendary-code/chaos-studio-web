@@ -5,7 +5,8 @@ let Actions = {
     CHANGE_SEARCH_CONFIGURATION: 1,
     SHOW_NAV_DRAWER: 2,
     HIDE_NAV_DRAWER: 3,
-    TOGGLE_NAV_DRAWER: 4
+    TOGGLE_NAV_DRAWER: 4,
+    CHANGE_NAV_LOCATION: 5
 };
 
 /* Modify actions indirectly for better IDE auto completion behavior */

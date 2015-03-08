@@ -1,15 +1,24 @@
 let React = require('react'),
     Router = require('react-router'),
     Route = Router.Route,
-    DefaultRoute = Router.DefaultRoute,
+    Redirect = Router.Redirect,
     App = require('./pages/App'),
-    Home = require('./pages/Home');
+    Home = require('./pages/Home'),
+    Explore = require('./pages/Explore'),
+    Settings = require('./pages/Settings'),
+    Developers = require('./pages/Developers'),
+    Links = require('./pages/Links');
 
 let Routes = (
-    <Route name="app" path="/" handler={App} title="Home">
-        <DefaultRoute handler={Home} title="Home" />
-        <Route name="home" title="Home" handler={Home} />
+    <Route handler={App}>
+        <Route name="home" handler={Home} />
+        <Route name="explore" handler={Explore} />
+        <Route name="settings" handler={Settings} />
+        <Route name="developers" handler={Developers} />
+        <Route name="links" handler={Links} />
+        <Redirect from="/" to="/home" />
     </Route>
+
 );
 
 module.exports = Routes;

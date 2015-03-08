@@ -1,9 +1,11 @@
 let Store = require('./Store'),
-    Actions = require('../actions/Actions');
+    Actions = require('../actions/Actions'),
+    Router = require('react-router'),
+    Navigation = Router.Navigation;
 
 class NavigationDrawerStore extends Store {
     getInitialState() {
-        return { hidden: true };
+        return { hidden: true, location: "home" };
     }
 
     invoke(action) {
@@ -18,6 +20,10 @@ class NavigationDrawerStore extends Store {
 
             case Actions.TOGGLE_NAV_DRAWER.id:
                 this.setState({hidden: !this.state.hidden});
+                break;
+
+            case Actions.CHANGE_NAV_LOCATION.id:
+                this.setState({location: action.data});
                 break;
         }
     }

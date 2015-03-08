@@ -1,11 +1,12 @@
-let React = require('react');
+let React = require('react'),
+    Paper = require('../components/Paper');
 
 let Home = React.createClass({
     render: function() {
         return (
-            <div>
-                Home!
-            </div>
+            <Paper container>
+                <h2>Coming soon!</h2>
+            </Paper>
         );
     }
 });

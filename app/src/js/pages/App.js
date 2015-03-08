@@ -25,12 +25,13 @@ let App = React.createClass({
             <div className="app">
                 <AppBar label={label} />
                 <NavDrawer>
-                    <NavDrawerButton icon="icon-home" label="Home"/>
-                    <NavDrawerButton icon="icon-search" label="Explore"/>
+                    <NavDrawerButton icon="icon-home" label="Home" route="home"/>
+                    <NavDrawerButton icon="icon-search" label="Explore" route="explore"/>
                     <NavDrawerDivider />
-                    <NavDrawerButton icon="icon-settings" label="Settings"/>
+                    <NavDrawerButton icon="icon-settings" label="Settings" route="settings"/>
+                    <NavDrawerButton icon="icon-github" label="Developers" route="developers"/>
                     <NavDrawerDivider />
-                    <NavDrawerButton icon="icon-info-outline" label="Links"/>
+                    <NavDrawerButton icon="icon-info-outline" label="Links" route="links"/>
                 </NavDrawer>
                 <AppContents>
                     <RouteHandler />
