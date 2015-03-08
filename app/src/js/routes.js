@@ -1,19 +1,14 @@
-/** @jsx React.DOM */
-
-var Router = require('react-router'),
+let React = require('react'),
+    Router = require('react-router'),
     Route = Router.Route,
     DefaultRoute = Router.DefaultRoute,
+    App = require('./pages/App'),
+    Home = require('./pages/Home');
 
-    /* Components */
-    Master = require('./components/Master'),
-    Home = require('./pages/Home'),
-    Explore = require('./pages/Explore');
-
-var Routes = (
-    <Route name="root" path="/" handler={Master}>
-        <Route name="home" handler={Home} />
-        <Route name="explore" handler={Explore} />
-        <DefaultRoute handler={Home} />
+let Routes = (
+    <Route name="app" path="/" handler={App} title="Home">
+        <DefaultRoute handler={Home} title="Home" />
+        <Route name="home" title="Home" handler={Home} />
     </Route>
 );
 

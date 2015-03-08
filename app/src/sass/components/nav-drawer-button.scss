@@ -1,0 +1,44 @@
+@import "../variables/colors";
+@import "../variables/shadows";
+@import "../variables/mixins";
+
+.nav-drawer-button {
+  background-color: $white;
+  display: block;
+  position: relative;
+  height: 48px;
+  overflow: hidden;
+
+  * {
+    cursor: pointer;
+  }
+  cursor: pointer;
+
+  .nav-drawer-button-inner {
+    background-color: $white;
+    position: relative;
+    display: block;
+    padding: 0 8px;
+    margin: 6px 4px;
+    height: 36px;
+    line-height: 36px;
+    border: 0 none;
+    outline: 0;
+
+    .icon {
+      margin-top: 6px;
+      margin-bottom: 6px;
+      display: inline-block;
+      float: left;
+    }
+
+    label {
+      line-height: 36px;
+      height: 36px;
+      display: inline-block;
+      color: $black;
+      float: left;
+      margin-left: 32px;
+    }
+  }
+}

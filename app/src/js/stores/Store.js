@@ -1,18 +1,16 @@
-var EventEmitter = require('events').EventEmitter,
+let _ = require('underscore'),
+    EventEmitter = require('events').EventEmitter,
     ChaosDispatcher = require('../dispatcher/ChaosDispatcher');
 
 class Store extends EventEmitter {
     constructor() {
-        ChaosDispatcher.register(this._invokeWithEmit.bind(this));
+        ChaosDispatcher.register(this.invoke.bind(this));
+        this._state = this.getInitialState();
     }
 
-    _invokeWithEmit(action) {
-        if (this._invoke(action)) {
-            this._emit();
-        }
+    getInitialState() {
+        return {};
     }
-
-    _invoke(action) { }
 
     addListener(callback) {
         this.on('change', callback);
@@ -20,6 +18,15 @@ class Store extends EventEmitter {
 
     removeListener(callback) {
         super.removeListener('change', callback);
+    }
+
+    setState(newState) {
+        this._state = _.extend(this._state, newState);
+        this._emit();
+    }
+
+    get state() {
+        return this._state;
     }
 
     _emit() {

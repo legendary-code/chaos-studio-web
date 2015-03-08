@@ -1,0 +1,36 @@
+@import "../variables/media-queries";
+@import "../variables/colors";
+
+.app-bar {
+  @media @device-mobile-portrait {
+    height: 56px;
+    padding: 4px;
+
+    label {
+      line-height: 56px;
+    }
+  }
+
+  @media @device-mobile-landscape {
+    height: 48px;
+    padding-right: 4px;
+    padding-left: 4px;
+
+    label {
+      line-height: 48px;
+    }
+  }
+
+  @media @device-desktop, @device-tablet {
+    height: 64px;
+    padding: 8px 12px;
+
+    label {
+      line-height: 64px;
+    }
+  }
+
+  background-color: @primary-1-color;
+  display: block;
+  white-space: nowrap;
+}

@@ -1,0 +1,20 @@
+@import "../variables/media-queries";
+@import "../variables/colors";
+
+.app-contents {
+  position: relative;
+  background-color: $background-color;
+  height: 100vh;
+
+  @media #{$device-mobile-portrait} {
+    margin-top: 56px;
+  }
+
+  @media #{$device-mobile-landscape} {
+    margin-top: 48px;
+  }
+
+  @media #{$device-desktop}, #{$device-tablet} {
+    margin-top: 64px;
+  }
+}

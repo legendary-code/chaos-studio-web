@@ -1,0 +1,63 @@
+@import "../variables/media-queries";
+@import "../variables/colors";
+@import "../variables/shadows";
+@import "../variables/layers";
+
+.app-bar {
+  background-color: $primary-1-color;
+  display: block;
+  position: fixed;
+  width: 100vw;
+  overflow: hidden;
+  z-index: $topMost;
+  @include shadow(1);
+
+  @media #{$device-mobile-portrait} {
+    height: 56px;
+    line-height: 56px;
+
+    label {
+      line-height: 56px;
+    }
+  }
+
+  @media #{$device-mobile-landscape} {
+    height: 48px;
+    line-height: 48px;
+
+    label {
+      line-height: 48px;
+    }
+  }
+
+  @media #{$device-desktop}, #{$device-tablet} {
+    height: 64px;
+    line-height: 64px;
+
+    label {
+      line-height: 64px;
+    }
+  }
+
+  .button {
+    @media #{$device-mobile-portrait} {
+      top: 4px
+    }
+
+    @media #{$device-mobile-landscape} {
+      top: 0;
+    }
+
+    @media #{$device-desktop}, #{$device-tablet} {
+      top: 8px;
+    }
+  }
+
+  .button.left {
+    left: -24px;
+  }
+
+  .button.right {
+    right: -24px;
+  }
+}

@@ -1,0 +1,24 @@
+@import "../variables/colors";
+@import "../variables/mixins";
+
+.ripple {
+  display: block;
+  position: absolute;
+  background-color: $primary-3-color;
+  border-radius: 50%;
+  opacity: 0.5;
+
+  @include transform(scale(0));
+  @include animation(ripple 0.5s linear);
+}
+
+@include keyframes(ripple) {
+  100% {
+    opacity: 0;
+    transform: scale(2.5);
+    -o-transform: scale(2.5);
+    -ms-transform: scale(2.5);
+    -moz-transform: scale(2.5);
+    -webkit-transform: scale(2.5);
+  }
+}

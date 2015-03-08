@@ -1,0 +1,136 @@
+@import "./media-queries";
+@import "./colors";
+
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+
+$font-family: "Roboto", Arial, sans-serif;
+
+.font-display-4 {
+  font-family: $font-family;
+  font-size: 112px;
+  line-height: 128px;
+  font-weight: $font-weight-light;
+  letter-spacing: -7px;
+  color: $text-light;
+}
+
+.font-display-3 {
+  font-family: $font-family;
+  font-size: 56px;
+  line-height: 64px;
+  font-weight: $font-weight-regular;
+  letter-spacing: -2px;
+  color: $text-light;
+}
+
+.font-display-2 {
+  font-family: $font-family;
+  font-size: 45px;
+  line-height: 48px;
+  font-weight: $font-weight-regular;
+  letter-spacing: -1px;
+  color: $text-light;
+}
+
+.font-display-1 {
+  font-family: $font-family;
+  font-size: 34px;
+  line-height: 40px;
+  font-weight: $font-weight-regular;
+  letter-spacing: -1px;
+  color: $text-light;
+}
+
+.font-headline {
+  font-family: $font-family;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: $font-weight-regular;
+  letter-spacing: 0;
+  color: $text-dark;
+}
+
+.font-title {
+  font-family: $font-family;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0;
+  color: $text-dark;
+}
+
+.font-subhead {
+  font-family: $font-family;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: $font-weight-regular;
+  letter-spacing: 0;
+  color: $text-dark;
+
+  @media #{$device-desktop} {
+    font-size: 15px;
+  }
+}
+
+.font-body-2 {
+  font-family: $font-family;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0;
+  color: $text-dark;
+
+  @media #{$device-desktop} {
+    font-size: 13px;
+  }
+}
+
+.font-body-1 {
+  font-family: $font-family;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: $font-weight-regular;
+  letter-spacing: 0;
+  color: $text-dark;
+
+  @media #{$device-desktop} {
+    font-size: 13px;
+  }
+}
+
+.font-caption {
+  font-family: $font-family;
+  font-size: 12px;
+  font-weight: $font-weight-regular;
+  letter-spacing: 0;
+  color: $text-light;
+}
+
+.font-nav-button {
+  font-family: $font-family;
+  font-size: 14px;
+  font-weight: $font-weight-medium;
+  color: $text-dark;
+  letter-spacing: 0;
+}
+
+.font-button {
+  font-family: $font-family;
+  font-size: 14px;
+  font-weight: $font-weight-medium;
+  color: $text-dark;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+/* Make elements not selectable by default to avoid annoying highlighting issues */
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

@@ -1,0 +1,27 @@
+@import "variables/media-queries";
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.container {
+  @media #{$device-mobile-landscape}, #{$device-mobile-portrait} {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  @media #{$device-desktop}, #{$device-tablet} {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}

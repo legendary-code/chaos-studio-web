@@ -1,0 +1,12 @@
+@import "../variables/shadows";
+@import "../variables/colors";
+
+.nav-drawer-divider {
+  position: relative;
+  display: block;
+  background-color: $grey-300;
+  border: 0 none;
+  height: 1px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
