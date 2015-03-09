@@ -13,12 +13,12 @@ let NavDrawer = React.createClass({
     },
 
     componentDidMount() {
-        document.addEventListener("click", this._clickOutside, true);
+        document.addEventListener("mousedown", this._clickOutside);
         NavigationDrawerStore.addListener(this._toggle);
     },
 
     componentWillUnmount() {
-        document.removeEventListener("click", this._clickOutside, true);
+        document.removeEventListener("mousedown", this._clickOutside);
         NavigationDrawerStore.removeListener(this._toggle);
     },
 
@@ -61,7 +61,6 @@ let NavDrawer = React.createClass({
         }
 
         Actions.HIDE_NAV_DRAWER.invoke();
-        console.log("closed");
     }
 });
 

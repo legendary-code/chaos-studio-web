@@ -9,13 +9,11 @@ let Ripple = {
     },
 
     componentDidMount() {
-        this._ripple = $(this.getDOMNode())
-        this.getDOMNode().addEventListener("click", this._onClick);
+        $(this.getDOMNode()).on("mousedown", this._doRipple);
     },
 
     componentWillUnmount() {
-        delete this._ripple;
-        this.getDOMNode().removeEventListener("click", this._onClick);
+        $(this.getDOMNode()).off("mousedown", this._doRipple);
     },
 
     _getRippleTarget() {
@@ -23,24 +21,31 @@ let Ripple = {
         return  this.props.rippleTarget ? target.find(this.props.rippleTarget) : target;
     },
 
-    _onClick(e) {
+    _doRipple(e) {
         let parent = this._getRippleTarget();
         let ripple = $("<span class='ripple'></span>");
-        parent.append(ripple);
-
         let diam = Math.max(parent.outerWidth(), parent.outerHeight());
-        ripple.css({height: diam, width: diam});
+        let offset = parent.offset();
+        let x = e.pageX - offset.left;
+        let y = e.pageY - offset.top;
 
-        let x = e.pageX - parent.offset().left - ripple.width() / 2;
-        let y = e.pageY - parent.offset().top - ripple.height() / 2;
+        parent.append(ripple);
+        ripple.css({
+            top: y+"px",
+            left: x+"px"
+        });
 
-        ripple.css({top: y+"px", left: x+"px"});
+        /* Use jQuery animation to get around hidden overflow issues with rounded borders and animations*/
 
-        setTimeout(
-            function() {
+        ripple.animate({
+                top: y - (diam * 1.25),
+                left: x - (diam * 1.25),
+                height: diam * 2.5,
+                width: diam * 2.5,
+                opacity: 0
+            }, 500, function() {
                 ripple.remove();
-            },
-            500
+            }
         );
     }
 };

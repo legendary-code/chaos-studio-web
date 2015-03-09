@@ -21,3 +21,27 @@
     box-shadow: bottom-shadow($z), top-shadow($z);
   }
 }
+
+.z0 {
+  @include shadow(0);
+}
+
+.z1 {
+  @include shadow(1);
+}
+
+.z2 {
+  @include shadow(2);
+}
+
+.z3 {
+  @include shadow(3);
+}
+
+.z4 {
+  @include shadow(4);
+}
+
+.z5 {
+  @include shadow(5);
+}
