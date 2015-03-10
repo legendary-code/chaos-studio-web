@@ -172,9 +172,9 @@ var AttractorFinder = (function () {
 
                         case 40:
                             context$2$0.prev = 40;
-                            context$2$0.t24 = context$2$0["catch"](36);
+                            context$2$0.t0 = context$2$0["catch"](36);
                             _didIteratorError = true;
-                            _iteratorError = context$2$0.t24;
+                            _iteratorError = context$2$0.t0;
 
                         case 44:
                             context$2$0.prev = 44;
@@ -257,9 +257,9 @@ var AttractorFinder = (function () {
 
                         case 77:
                             context$2$0.prev = 77;
-                            context$2$0.t25 = context$2$0["catch"](63);
+                            context$2$0.t1 = context$2$0["catch"](63);
                             _didIteratorError2 = true;
-                            _iteratorError2 = context$2$0.t25;
+                            _iteratorError2 = context$2$0.t1;
 
                         case 81:
                             context$2$0.prev = 81;
@@ -1489,7 +1489,9 @@ var Viewport = React.createClass({
             cloud.rotation.y += 0.005;
         }
 
-        renderer.render(scene, camera);
+        if (renderer) {
+            renderer.render(scene, camera);
+        }
     },
     normalize: function normalize(value) {
         return value * 2 - 1;
