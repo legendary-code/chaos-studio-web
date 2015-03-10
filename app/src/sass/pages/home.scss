@@ -1,0 +1,18 @@
+@import "../variables/media-queries";
+@import "../variables/mixins";
+
+.contents-paper {
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include transition(0.1s);
+
+  @media #{$device-mobile-portrait} {
+    width: 100vw;
+  }
+
+  @media #{$device-desktop}, #{$device-tablet}, #{$device-mobile-landscape} {
+    width: 70vw;
+  }
+}

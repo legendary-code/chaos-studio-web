@@ -1,13 +1,11 @@
 let React = require('react'),
-    Paper = require('../components/Paper'),
-    FloatingActionButton = require('../components/FloatingActionButton');
+    Paper = require('../components/Paper');
 
 let Home = React.createClass({
     render: function() {
         return (
-            <Paper container>
+            <Paper className="contents-paper">
                 <h2>Coming soon!</h2>
-                <FloatingActionButton icon="icon-search light" />
             </Paper>
         );
     }

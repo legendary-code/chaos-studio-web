@@ -1,0 +1,37 @@
+@import "../variables/colors";
+
+.viewport {
+  height: 100vh;
+  background-color: $background-color;
+
+  canvas {
+    background-color: $background-color;
+  }
+
+  .search-progress-container {
+    width: 128px;
+    height: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -100px 0 0 -64px;
+
+    &.hidden {
+      display: none;
+    }
+
+    label {
+      text-align: center;
+      display: block;
+      color: $dark-white;
+      padding: 0;
+    }
+
+    img {
+      width: 128px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

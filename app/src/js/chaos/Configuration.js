@@ -16,7 +16,10 @@ class Configuration {
 
     get settlingIterations() { return this._settlingIterations; }
     get searchIterations() { return this._searchIterations; }
+
     get totalIterations() { return this._totalIterations; }
+    set totalIterations(value) { this._totalIterations = value; }
+
     get map() { return this._map; }
     get rng() { return this._rng; }
     get criteria() { return this._criteria; }

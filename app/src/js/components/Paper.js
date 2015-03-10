@@ -1,16 +1,13 @@
 let React = require('react'),
-    cx = require('react-addons').classSet;
+    join = require('../utils/ReactUtils').join;
 
 let Paper = React.createClass({
     propTypes: {
-        container: React.PropTypes.bool
+        className: React.PropTypes.string
     },
 
     render() {
-        let className = cx({
-            "paper": true,
-            "container": this.props.container
-        });
+        let className = join("paper", this.props.className);
 
         return (
             <div className={className}>

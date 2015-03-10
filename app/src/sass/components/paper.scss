@@ -7,25 +7,4 @@
   background-color: $white;
   @include shadow(1);
   padding: 16px;
-
-  &.container {
-    height: 100vh;
-    margin-left: auto;
-    margin-right: auto;
-
-    @include transition(0.1s);
-
-    @media #{$device-mobile-portrait} {
-      width: 100vw;
-    }
-
-    @media #{$device-desktop}, #{$device-tablet}, #{$device-mobile-landscape} {
-      width: 70vw;
-    }
-  }
-
-  p {
-
-  }
-
 }
