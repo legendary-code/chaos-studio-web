@@ -70,7 +70,9 @@ let Viewport = React.createClass({
             cloud.rotation.y += 0.005;
         }
 
-        renderer.render(scene, camera);
+        if (renderer) {
+            renderer.render(scene, camera);
+        }
     },
     normalize: function(value) {
         return (value * 2.0) - 1.0;

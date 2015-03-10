@@ -6,8 +6,20 @@
         <title>Chaos Studio - The Art and Beauty of Chaos</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="css/main.css">
+        <script type="text/javascript">
+            window.onerror = function(msg, url, line, col, error) {
+                if (window.location.search.indexOf("debug") == -1) {
+                    return;
+                }
+
+                var log = document.getElementById('errors');
+                var entry = msg + " " + url + "[" + col + ":" + line + "] " + error + "<br/>";
+                log.innerHTML += entry;
+            }
+        </script>
     </head>
     <body>
+        <div id="errors"></div>
         <div id="app"></div>
         <!-- This script adds the Roboto font to our project. For more detail go to this site:  http://www.google.com/fonts#UsePlace:use/Collection:Roboto:400,300,500 -->
         <script>
