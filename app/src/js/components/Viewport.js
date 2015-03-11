@@ -1,10 +1,11 @@
 let React = require('react'),
     THREE = require('three'),
+    ConfigurationStore = require('../stores/SearchConfigurationStore'),
     cx = require('react-addons').classSet;
 
 let Viewport = React.createClass({
     getInitialState: function() {
-        return { searching: false };
+        return { searching: false, rotation: 0 };
     },
 
     render: function() {
@@ -28,92 +29,50 @@ let Viewport = React.createClass({
         var height = viewport.clientHeight;
         var renderer = this.state.renderer;
 
-        renderer.setSize(width, height);
-
-        this.setState({renderer: renderer});
+        if (renderer) {
+            renderer.resize(width, height);
+            this.renderScene();
+        }
     },
 
     componentDidMount: function() {
         var viewport = this.refs.viewport.getDOMNode();
         var width = viewport.clientWidth;
         var height = viewport.clientHeight;
+        var renderer = ConfigurationStore.state.configuration.renderer;
+        var surface = renderer.create(width, height);
 
-        var camera = new THREE.OrthographicCamera(-1.5, 1.5, -1.5, 1.5, 0.0001, 1000);
-        var scene = new THREE.Scene();
-        var renderer = new THREE.WebGLRenderer({alpha: true});
+        viewport.appendChild(surface);
 
-        camera.position.z = 2;
-        renderer.setSize(width, height);
-        renderer.setClearColor(0xe0e0e0, 1);
-        viewport.appendChild(renderer.domElement);
-
-        this.setState({ camera: camera, renderer: renderer, scene: scene });
+        this.setState({ renderer: renderer });
         window.addEventListener('resize', this.handleResize);
-
         this.animate();
     },
+
     componentWillUnmount: function() {
         window.removeEventListener('resize', this.handleResize);
         cancelAnimationFrame(this.animate);
+        this.state.renderer.destroy();
     },
+
     animate: function() {
         requestAnimationFrame(this.animate);
         this.renderScene();
     },
+
     renderScene: function() {
-        var camera = this.state.camera;
-        var scene = this.state.scene;
         var renderer = this.state.renderer;
-        var cloud = this.state.cloud;
+        this.state.rotation += 0.005;
 
-        if (cloud) {
-            cloud.rotation.y += 0.005;
-        }
-
+        // TODO: Figure out why this is called before renderer is created
         if (renderer) {
-            renderer.render(scene, camera);
+            renderer.render(0, this.state.rotation);
         }
     },
-    normalize: function(value) {
-        return (value * 2.0) - 1.0;
-    },
 
-    setRenderData: function(points) {
-        var prevGeom = this.state.geometry;
-        var prevCloud = this.state.cloud;
-        var scene = this.state.scene;
-
-        if (prevGeom) {
-            scene.remove(prevCloud);
-            prevGeom.dispose();
-        }
-
-        var geometry = new THREE.Geometry();
-        geometry.vertices = points.map(function(point) {
-            return new THREE.Vector3(
-                this.normalize(point[0]),
-                this.normalize(point[1]),
-                this.normalize(point[2])
-            );
-        }.bind(this));
-
-        var material = new THREE.PointCloudMaterial({
-            color: 0x444444,
-            size: 0.005,
-            opacity: 0.1,
-            //blending: THREE.SubtractiveBlending,
-            blendEquation: THREE.SubtractEquation,
-            transparent: true
-        });
-
-        var cloud = new THREE.PointCloud(geometry, material);
-        cloud.position.x = 0;
-        cloud.position.y = 0;
-        cloud.position.z = 0;
-
-        scene.add(cloud);
-
-        this.setState({geometry: geometry, cloud: cloud, scene: scene});
+    setRenderData(points) {
+        this.state.renderer.setRenderData(points);
+        this.renderScene();
     },
 
     getViewportSize() {

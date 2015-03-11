@@ -17,9 +17,9 @@ class Bounds {
 
     normalize(point) {
         return [
-            (point[0] - this._min[0]) / (this._max[0] - this._min[0]),
-            (point[1] - this._min[1]) / (this._max[1] - this._min[1]),
-            (point[2] - this._min[2]) / (this._max[2] - this._min[2])
+            (2 * (point[0] - this._min[0]) / (this._max[0] - this._min[0])) - 1,
+            (2 * (point[1] - this._min[1]) / (this._max[1] - this._min[1])) - 1,
+            (2 * (point[2] - this._min[2]) / (this._max[2] - this._min[2])) - 1
         ];
     }
 
