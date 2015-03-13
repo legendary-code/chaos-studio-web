@@ -9,6 +9,8 @@ var React = require("react"),
     Router = require("react-router"),
     Routes = require("./routes");
 
+React.initializeTouchEvents(true);
+
 Router.run(Routes, function (Handler) {
     React.render(React.createElement(Handler, null), document.getElementById("app"));
 });
@@ -1857,6 +1859,7 @@ var Viewport = React.createClass({
                 onMouseMove: this._drag,
                 onTouchStart: this._dragStart,
                 onTouchEnd: this._dragStop,
+                onTouchCancel: this._dragStop,
                 onTouchLeave: this._dragStop,
                 onTouchMove: this._drag },
             React.createElement(
