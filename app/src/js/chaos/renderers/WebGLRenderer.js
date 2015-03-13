@@ -64,8 +64,8 @@ class WebGLRenderer extends Renderer {
 
     render(rotationX, rotationY) {
         if (this._cloud) {
-            this._cloud.rotation.x = rotationX;
-            this._cloud.rotation.y = rotationY;
+            this._cloud.rotation.x = rotationY;
+            this._cloud.rotation.y = -rotationX;
             this._renderer.render(this._scene, this._camera);
         }
     }

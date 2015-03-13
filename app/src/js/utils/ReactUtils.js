@@ -1,7 +1,11 @@
 let ReactUtils = {
     join(classes) {
         let result = "";
-        for (let clazz of arguments) {
+
+        // Allow polyfill to inject iterator behaviors
+        let args = Array.apply(Array, arguments);
+
+        for (let clazz of args) {
             if (typeof clazz === "string") {
                 if (result) {
                     result += " ";

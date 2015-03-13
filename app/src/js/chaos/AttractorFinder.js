@@ -1,6 +1,7 @@
 var Context = require('./Context'),
     Bounds = require('./Bounds'),
     Point = require('./Point'),
+    Time = require('./Time'),
     Threading = require('../threading/Threading');
 
 class AttractorFinder {
@@ -22,14 +23,14 @@ class AttractorFinder {
         let criteria = this._configuration.criteria;
 
         while (true) {
-            yield undefined;
+            yield;
 
             let coefficients = [];
             let initialValue = [];
             let value = [];
             let values = [];
 
-            rng.reset(Date.now ? Date.now() : new Date().getTime());
+            rng.reset(Time.now());
 
             this._onStatus("Picking new coefficients...");
 
@@ -51,6 +52,10 @@ class AttractorFinder {
             this._onStatus("Settling potential attractor...");
 
             for (let i = 0; i < this._configuration.settlingIterations; i++) {
+                if (i % 10000 == 0) {
+                    yield;
+                }
+
                 value = map.apply(value, coefficients);
                 if (!Point.isValid(value)) {
                     abort = true;
@@ -70,6 +75,10 @@ class AttractorFinder {
             }
 
             for (let i = 0; i < this._configuration.searchIterations; i++) {
+                if (i % 10000 == 0) {
+                    yield;
+                }
+
                 value = map.apply(value, coefficients);
                 bounds.update(value);
                 values.push(value);
@@ -100,6 +109,10 @@ class AttractorFinder {
 
             let remainingIterations = this._configuration.totalIterations - this._configuration.searchIterations;
             for (let i = 0; i < remainingIterations; i++) {
+                if (i % 10000 == 0) {
+                    yield;
+                }
+
                 value = map.apply(value, coefficients);
                 bounds.update(value);
                 values.push(value);
@@ -108,6 +121,9 @@ class AttractorFinder {
             this._onStatus("Normalizing points");
 
             for (let i = 0; i < values.length; i++) {
+                if (i % 10000 == 0) {
+                    yield;
+                }
                 values[i] = bounds.normalize(values[i]);
             }
 

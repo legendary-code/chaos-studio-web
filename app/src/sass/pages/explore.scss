@@ -82,3 +82,17 @@
     background-color: $red-A400;
   }
 }
+
+.viewport {
+  @media #{$device-mobile-portrait} {
+    margin-top: 56px;
+  }
+
+  @media #{$device-mobile-landscape} {
+    margin-top: 48px;
+  }
+
+  @media #{$device-desktop}, #{$device-tablet} {
+    margin-top: 64px;
+  }
+}

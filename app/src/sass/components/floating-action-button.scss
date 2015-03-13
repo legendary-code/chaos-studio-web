@@ -28,5 +28,9 @@
     padding: 8px;
   }
 
+  &:hover,&:focus {
+    background-color: $accent-2-color;
+  }
+
   cursor: pointer;
 }

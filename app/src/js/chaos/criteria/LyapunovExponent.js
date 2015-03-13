@@ -90,12 +90,7 @@ class LyapunovExponent extends SearchCriterion {
 
         this._lyapunov = LyapunovExponent.LOG2 * (this._innerSum / this._samples);
 
-        if (this._samples >= this._minIterations && (this._lyapunov < this._min || this._lyapunov > this._max)) {
-            console.log("Lyapunov: " + this._lyapunov);
-            return false;
-        }
-
-        return true;
+        return !(this._samples >= this._minIterations && (this._lyapunov < this._min || this._lyapunov > this._max));
     }
 }
 

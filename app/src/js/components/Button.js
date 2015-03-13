@@ -55,9 +55,9 @@ let Button = React.createClass({
 
         return (
             <div className={outerClass}>
-                <button className={innerClass} type="button" onClick={onClick}>
+                <div className={innerClass} type="button" onClick={onClick}>
                     {children}
-                </button>
+                </div>
             </div>
         )
     }

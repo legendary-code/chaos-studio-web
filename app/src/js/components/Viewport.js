@@ -1,11 +1,16 @@
 let React = require('react'),
     THREE = require('three'),
     ConfigurationStore = require('../stores/SearchConfigurationStore'),
+    Rotation = require('../chaos/Rotation'),
     cx = require('react-addons').classSet;
+
+/* Given a renderer, this component renders strange attractors, handles user input
+* for rotating attractors, and animates rotating attractors, redrawing only
+* when necessary */
 
 let Viewport = React.createClass({
     getInitialState: function() {
-        return { searching: false, rotation: 0 };
+        return { searching: false, rotation: new Rotation() };
     },
 
     render: function() {
@@ -15,12 +20,35 @@ let Viewport = React.createClass({
         });
 
         return (
-            <div className="viewport" ref="viewport">
+            <div
+                className="viewport"
+                ref="viewport"
+                onMouseDown={this._dragStart}
+                onMouseUp={this._dragStop}
+                onMouseOut={this._dragStop}
+                onMouseMove={this._drag}>
                 <div className={progressClassName}>
                     <img src="./svg/lorentz.svg" />
                 </div>
             </div>
         )
+    },
+
+    _dragStart(e) {
+        this.state.rotation.startDrag(e.screenX, e.screenY);
+        this._stopAnimation();
+    },
+
+    _dragStop(e) {
+        if (this.state.rotation.stopDrag(e.screenX, e.screenY)) {
+            this._startAnimation();
+        }
+    },
+
+    _drag(e) {
+        if (this.state.rotation.drag(e.screenX, e.screenY)) {
+            this.renderScene();
+        }
     },
 
     handleResize: function() {
@@ -46,33 +74,47 @@ let Viewport = React.createClass({
 
         this.setState({ renderer: renderer });
         window.addEventListener('resize', this.handleResize);
-        this.animate();
+        this._startAnimation();
     },
 
     componentWillUnmount: function() {
         window.removeEventListener('resize', this.handleResize);
-        cancelAnimationFrame(this.animate);
         this.state.renderer.destroy();
     },
 
-    animate: function() {
-        requestAnimationFrame(this.animate);
-        this.renderScene();
+    _startAnimation() {
+        this._animate();
+    },
+
+    _stopAnimation() {
+        cancelAnimationFrame(this._animate);
+    },
+
+    _animate: function() {
+        if (this.renderScene()) {
+            // only continue rendering if the scene is changing (i.e. rotation)
+            requestAnimationFrame(this._animate);
+        }
     },
 
     renderScene: function() {
-        var renderer = this.state.renderer;
-        this.state.rotation += 0.005;
+        let renderer = this.state.renderer;
+        let rotation = this.state.rotation;
+
+        let changed = rotation.update();
 
         // TODO: Figure out why this is called before renderer is created
         if (renderer) {
-            renderer.render(0, this.state.rotation);
+            renderer.render(rotation.x, rotation.y);
         }
+
+        return changed;
     },
 
     setRenderData(points) {
         this.state.renderer.setRenderData(points);
-        this.renderScene();
+        this.state.rotation.reset();
+        this._startAnimation();
     },
 
     getViewportSize() {

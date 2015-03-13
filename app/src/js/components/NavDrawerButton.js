@@ -35,10 +35,10 @@ let NavDrawerButton = React.createClass({
 
         return (
             <div className="nav-drawer-button" onClick={this._onNavClick}>
-                <button className="nav-drawer-button-inner" type="button">
+                <div className="nav-drawer-button-inner" type="button">
                     <Icon icon={icon} />
                     <label className={labelFont}>{label}</label>
-                </button>
+                </div>
             </div>
         )
     },

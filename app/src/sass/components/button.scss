@@ -35,6 +35,12 @@
       }
     }
 
+    &:not(.raised) {
+      &:hover,&:focus {
+        background-color: $primary-2-color;
+      }
+    }
+
     .icon {
       margin-top: 6px;
       margin-bottom: 6px;
