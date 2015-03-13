@@ -316,6 +316,8 @@ p, .font-body-1 {
       -webkit-transition: box-shadow 0.1s linear; }
       .button .button-inner.raised:active {
         box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16); }
+    .button .button-inner:not(.raised):hover, .button .button-inner:not(.raised):focus {
+      background-color: #303f9f; }
     .button .button-inner .icon {
       margin-top: 6px;
       margin-bottom: 6px; }
@@ -632,6 +634,8 @@ p, .font-body-1 {
     width: 40px;
     height: 40px;
     padding: 8px; }
+  .floating-action-button:hover, .floating-action-button:focus {
+    background-color: #00b0ff; }
 
 .viewport {
   height: 100vh;
@@ -747,3 +751,13 @@ p, .font-body-1 {
         bottom: 36px; } }
   .search-button .cancel {
     background-color: #ff1744; }
+
+@media only screen and (orientation: portrait) {
+  .viewport {
+    margin-top: 56px; } }
+@media only screen and (orientation: landscape) {
+  .viewport {
+    margin-top: 48px; } }
+@media only screen and (min-width: 992px), only screen and (min-width: 768px) {
+  .viewport {
+    margin-top: 64px; } }
