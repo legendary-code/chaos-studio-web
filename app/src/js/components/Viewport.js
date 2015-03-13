@@ -29,6 +29,7 @@ let Viewport = React.createClass({
                 onMouseMove={this._drag}
                 onTouchStart={this._dragStart}
                 onTouchEnd={this._dragStop}
+                onTouchCancel={this._dragStop}
                 onTouchLeave={this._dragStop}
                 onTouchMove={this._drag}>
                 <div className={progressClassName}>
