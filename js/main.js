@@ -183,9 +183,9 @@ var AttractorFinder = (function () {
 
                         case 43:
                             context$2$0.prev = 43;
-                            context$2$0.t4 = context$2$0["catch"](39);
+                            context$2$0.t0 = context$2$0["catch"](39);
                             _didIteratorError = true;
-                            _iteratorError = context$2$0.t4;
+                            _iteratorError = context$2$0.t0;
 
                         case 47:
                             context$2$0.prev = 47;
@@ -278,9 +278,9 @@ var AttractorFinder = (function () {
 
                         case 83:
                             context$2$0.prev = 83;
-                            context$2$0.t5 = context$2$0["catch"](69);
+                            context$2$0.t1 = context$2$0["catch"](69);
                             _didIteratorError2 = true;
-                            _iteratorError2 = context$2$0.t5;
+                            _iteratorError2 = context$2$0.t1;
 
                         case 87:
                             context$2$0.prev = 87;
@@ -1854,7 +1854,11 @@ var Viewport = React.createClass({
                 onMouseDown: this._dragStart,
                 onMouseUp: this._dragStop,
                 onMouseOut: this._dragStop,
-                onMouseMove: this._drag },
+                onMouseMove: this._drag,
+                onTouchStart: this._dragStart,
+                onTouchEnd: this._dragStop,
+                onTouchLeave: this._dragStop,
+                onTouchMove: this._drag },
             React.createElement(
                 "div",
                 { className: progressClassName },
