@@ -26,7 +26,11 @@ let Viewport = React.createClass({
                 onMouseDown={this._dragStart}
                 onMouseUp={this._dragStop}
                 onMouseOut={this._dragStop}
-                onMouseMove={this._drag}>
+                onMouseMove={this._drag}
+                onTouchStart={this._dragStart}
+                onTouchEnd={this._dragStop}
+                onTouchLeave={this._dragStop}
+                onTouchMove={this._drag}>
                 <div className={progressClassName}>
                     <img src="./svg/lorentz.svg" />
                 </div>
