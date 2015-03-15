@@ -29,7 +29,7 @@ let Viewport = React.createClass({
                 onMouseMove={this._drag}
                 onTouchStart={this._dragStart}
                 onTouchEnd={this._dragStop}
-                onTouchCancel={this._dragStop}
+                onTouchCancel={this._dragStop}k
                 onTouchLeave={this._dragStop}
                 onTouchMove={this._drag}>
                 <div className={progressClassName}>
@@ -40,20 +40,38 @@ let Viewport = React.createClass({
     },
 
     _dragStart(e) {
-        this.state.rotation.startDrag(e.screenX, e.screenY);
+        let [screenX, screenY] = this._coords(e);
+
+        this.state.rotation.startDrag(screenX, screenY);
         this._stopAnimation();
     },
 
     _dragStop(e) {
-        if (this.state.rotation.stopDrag(e.screenX, e.screenY)) {
+        let [screenX, screenY] = this._coords(e);
+
+        if (this.state.rotation.stopDrag(screenX, screenY)) {
             this._startAnimation();
         }
     },
 
     _drag(e) {
-        if (this.state.rotation.drag(e.screenX, e.screenY)) {
+        let [screenX, screenY] = this._coords(e);
+
+        if (this.state.rotation.drag(screenX, screenY)) {
             this.renderScene();
         }
+    },
+
+    _coords(e) {
+        if (e.screenX && e.screenY) {
+            return [e.screenX, e.screenY];
+        }
+
+        if (e.touches) {
+            return [e.touches[0].screenX, e.touches[0].screenY];
+        }
+
+        return [0,0];
     },
 
     handleResize: function() {
@@ -69,11 +87,11 @@ let Viewport = React.createClass({
     },
 
     componentDidMount: function() {
-        var viewport = this.refs.viewport.getDOMNode();
-        var width = viewport.clientWidth;
-        var height = viewport.clientHeight;
-        var renderer = ConfigurationStore.state.configuration.renderer;
-        var surface = renderer.create(width, height);
+        let viewport = this.refs.viewport.getDOMNode();
+        let width = viewport.clientWidth;
+        let height = viewport.clientHeight;
+        let renderer = ConfigurationStore.state.configuration.renderer;
+        let surface = renderer.create(width, height);
 
         viewport.appendChild(surface);
 
