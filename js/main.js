@@ -185,9 +185,9 @@ var AttractorFinder = (function () {
 
                         case 43:
                             context$2$0.prev = 43;
-                            context$2$0.t0 = context$2$0["catch"](39);
+                            context$2$0.t8 = context$2$0["catch"](39);
                             _didIteratorError = true;
-                            _iteratorError = context$2$0.t0;
+                            _iteratorError = context$2$0.t8;
 
                         case 47:
                             context$2$0.prev = 47;
@@ -280,9 +280,9 @@ var AttractorFinder = (function () {
 
                         case 83:
                             context$2$0.prev = 83;
-                            context$2$0.t1 = context$2$0["catch"](69);
+                            context$2$0.t9 = context$2$0["catch"](69);
                             _didIteratorError2 = true;
-                            _iteratorError2 = context$2$0.t1;
+                            _iteratorError2 = context$2$0.t9;
 
                         case 87:
                             context$2$0.prev = 87;
@@ -1825,6 +1825,8 @@ module.exports = Paper;
 },{"../utils/ReactUtils":45,"react":329}],29:[function(require,module,exports){
 "use strict";
 
+var _slicedToArray = function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { var _arr = []; for (var _iterator = arr[Symbol.iterator](), _step; !(_step = _iterator.next()).done;) { _arr.push(_step.value); if (i && _arr.length === i) break; } return _arr; } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } };
+
 var React = require("react"),
     THREE = require("three"),
     ConfigurationStore = require("../stores/SearchConfigurationStore"),
@@ -1859,7 +1861,7 @@ var Viewport = React.createClass({
                 onMouseMove: this._drag,
                 onTouchStart: this._dragStart,
                 onTouchEnd: this._dragStop,
-                onTouchCancel: this._dragStop,
+                onTouchCancel: this._dragStop, k: true,
                 onTouchLeave: this._dragStop,
                 onTouchMove: this._drag },
             React.createElement(
@@ -1871,20 +1873,53 @@ var Viewport = React.createClass({
     },
 
     _dragStart: function _dragStart(e) {
-        this.state.rotation.startDrag(e.screenX, e.screenY);
+        var _coords = this._coords(e);
+
+        var _coords2 = _slicedToArray(_coords, 2);
+
+        var screenX = _coords2[0];
+        var screenY = _coords2[1];
+
+        this.state.rotation.startDrag(screenX, screenY);
         this._stopAnimation();
     },
 
     _dragStop: function _dragStop(e) {
-        if (this.state.rotation.stopDrag(e.screenX, e.screenY)) {
+        var _coords = this._coords(e);
+
+        var _coords2 = _slicedToArray(_coords, 2);
+
+        var screenX = _coords2[0];
+        var screenY = _coords2[1];
+
+        if (this.state.rotation.stopDrag(screenX, screenY)) {
             this._startAnimation();
         }
     },
 
     _drag: function _drag(e) {
-        if (this.state.rotation.drag(e.screenX, e.screenY)) {
+        var _coords = this._coords(e);
+
+        var _coords2 = _slicedToArray(_coords, 2);
+
+        var screenX = _coords2[0];
+        var screenY = _coords2[1];
+
+        if (this.state.rotation.drag(screenX, screenY)) {
             this.renderScene();
         }
+    },
+
+    _coords: function _coords(e) {
+        if (e.screenX && e.screenY) {
+            return [e.screenX, e.screenY];
+        }
+
+        if (e.touches) {
+            return [e.touches[0].screenX, e.touches[0].screenY];
+        }
+
+        return [0, 0];
     },
 
     handleResize: function handleResize() {
