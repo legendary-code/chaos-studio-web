@@ -33,7 +33,7 @@ let Viewport = React.createClass({
                 onTouchLeave={this._dragStop}
                 onTouchMove={this._drag}>
                 <div className={progressClassName}>
-                    <img src="./svg/lorentz.svg" />
+                    <img src="./svg/lorenz.svg" />
                 </div>
             </div>
         )

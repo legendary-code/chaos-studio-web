@@ -68,10 +68,18 @@ gulp.task('font', function() {
 });
 
 gulp.task('svg', function() {
-    return gulp.src('./app/src/svg/**/*.*')
+    return gulp.src('./app/src/svg/lorenz.svg')
         .pipe(gulp.dest('./app/dist/svg'));
 });
 
+gulp.task('favicon', function() {
+    return es.merge(
+        gulp.src('./app/src/favicon/**/*.*')
+            .pipe(gulp.dest('./app/dist/favicon')),
+        gulp.src('./app/src/favicon/favicon.ico')
+            .pipe(gulp.dest('./app/dist'))
+    );
+});
 
 /* LINK TASKS */
 
@@ -98,7 +106,7 @@ gulp.task('link-sass', ['stage'], function() {
 
 gulp.task('libs', ['three', 'jquery']);
 
-gulp.task('stage', ['libs', 'html', 'sass', 'js', 'svg', 'font']);
+gulp.task('stage', ['libs', 'html', 'sass', 'js', 'svg', 'font', 'favicon']);
 
 gulp.task('link', ['stage', 'link-js', 'link-sass']);
 

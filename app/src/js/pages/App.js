@@ -15,7 +15,7 @@ let App = React.createClass({
     _getRouteTitle() {
         let routes = this.getRoutes();
         let route = routes[routes.length - 1];
-        return `Chaos Studio > ${route.handler.pageName}`;
+        return route.handler.pageName;
     },
 
     render: function() {
