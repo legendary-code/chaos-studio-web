@@ -185,9 +185,9 @@ var AttractorFinder = (function () {
 
                         case 43:
                             context$2$0.prev = 43;
-                            context$2$0.t8 = context$2$0["catch"](39);
+                            context$2$0.t0 = context$2$0["catch"](39);
                             _didIteratorError = true;
-                            _iteratorError = context$2$0.t8;
+                            _iteratorError = context$2$0.t0;
 
                         case 47:
                             context$2$0.prev = 47;
@@ -280,9 +280,9 @@ var AttractorFinder = (function () {
 
                         case 83:
                             context$2$0.prev = 83;
-                            context$2$0.t9 = context$2$0["catch"](69);
+                            context$2$0.t1 = context$2$0["catch"](69);
                             _didIteratorError2 = true;
-                            _iteratorError2 = context$2$0.t9;
+                            _iteratorError2 = context$2$0.t1;
 
                         case 87:
                             context$2$0.prev = 87;
@@ -1867,7 +1867,7 @@ var Viewport = React.createClass({
             React.createElement(
                 "div",
                 { className: progressClassName },
-                React.createElement("img", { src: "./svg/lorentz.svg" })
+                React.createElement("img", { src: "./svg/lorenz.svg" })
             )
         );
     },
@@ -2451,7 +2451,7 @@ var App = React.createClass({
     _getRouteTitle: function _getRouteTitle() {
         var routes = this.getRoutes();
         var route = routes[routes.length - 1];
-        return "Chaos Studio > " + route.handler.pageName;
+        return route.handler.pageName;
     },
 
     render: function render() {
