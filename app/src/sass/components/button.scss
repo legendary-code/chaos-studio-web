@@ -5,25 +5,17 @@
 .button {
   display: inline-block;
   position: relative;
-  height: 48px;
 
-  .button-inner {
-    background-color: $primary-1-color;
-    position: relative;
+  .hit-area {
     display: inline-block;
-    padding: 0 8px;
-    margin: 6px 4px;
-    height: 36px;
+    position: relative;
     border: 0 none;
-    overflow: hidden;
     outline: 0;
+    overflow: hidden;
+    cursor: pointer;
 
     * {
       cursor: pointer;
-    }
-
-    &.label {
-      min-width: 64px;
     }
 
     &.raised {
@@ -33,25 +25,6 @@
       &:active {
         @include shadow(2);
       }
-    }
-
-    &:not(.raised) {
-      &:hover,&:focus {
-        background-color: $primary-2-color;
-      }
-    }
-
-    .icon {
-      margin-top: 6px;
-      margin-bottom: 6px;
-    }
-
-    label {
-      line-height: 36px;
-      height: 36px;
-      display: inline-block;
-      float: left;
-      margin-left: 8px;
     }
   }
 }

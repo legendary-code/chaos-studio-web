@@ -10,10 +10,12 @@ let Ripple = {
 
     componentDidMount() {
         $(this.getDOMNode()).on("mousedown", this._doRipple);
+        $(this.getDOMNode()).on("touchstart", this._doRipple);
     },
 
     componentWillUnmount() {
         $(this.getDOMNode()).off("mousedown", this._doRipple);
+        $(this.getDOMNode()).off("touchstart", this._doRipple);
     },
 
     _getRippleTarget() {
