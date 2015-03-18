@@ -2,15 +2,13 @@
 @import "../variables/shadows";
 @import "../variables/mixins";
 
-.button {
+.button-spacing {
   display: inline-block;
   position: relative;
 
-  .hit-area {
+  .button {
     display: inline-block;
     position: relative;
-    border: 0 none;
-    outline: 0;
     overflow: hidden;
     cursor: pointer;
 
@@ -24,6 +22,34 @@
 
       &:active {
         @include shadow(2);
+      }
+    }
+
+    .overlay {
+      @include transition(background-color 0.1s linear);
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color:rgba(0, 0, 0, 0.0);
+      z-index:9999;
+
+      &.flat {
+        &:focus, &:hover {
+          background-color:rgba(0, 0, 0, 0.15);
+        }
+
+        &:active {
+          background-color:rgba(0, 0, 0, 0.3);
+        }
+      }
+
+      &.raised {
+        &:active {
+          background-color:rgba(0, 0, 0, 0.15);
+        }
       }
     }
   }

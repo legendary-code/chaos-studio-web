@@ -5,11 +5,11 @@
 .icon-button {
   height: 48px;
 
-  &.label .hit-area {
+  &.label .button {
     min-width: 64px;
   }
 
-  .hit-area {
+  .button {
     background-color: $primary-1-color;
     padding: 0 8px;
     margin: 6px 4px;
@@ -21,28 +21,12 @@
     }
 
     label {
-      line-height: 36px;
       height: 36px;
       display: inline-block;
       float: left;
       margin-left: 8px;
       margin-right: 8px;
-    }
-
-    &.flat {
-      &:focus, &:hover {
-        background-color: $primary-2-color;
-      }
-
-      &:active {
-        background-color: $primary-4-color;
-      }
-    }
-
-    &.raised {
-      &:active {
-        background-color: $primary-2-color;
-      }
+      margin-top: 12px;
     }
   }
 }

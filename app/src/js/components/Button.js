@@ -19,13 +19,19 @@ let Button = React.createClass({
 
     render() {
         let outerClasses = {
-            "button": true,
+            "button-spacing": true,
             "raised": this.props.raised,
             "flat": !this.props.raised
         };
 
         let innerClassName = cx({
-            "hit-area": true,
+            "button": true,
+            "raised": this.props.raised,
+            "flat": !this.props.raised
+        });
+
+        let overlayClassName = cx({
+            "overlay": true,
             "raised": this.props.raised,
             "flat": !this.props.raised
         });
@@ -39,6 +45,7 @@ let Button = React.createClass({
                 <div
                     className={innerClassName}
                     onClick={this.props.onClick}>
+                    <div className={overlayClassName} />
                     {this.props.children}
                 </div>
             </div>

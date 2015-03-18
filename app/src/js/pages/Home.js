@@ -7,7 +7,7 @@ let Home = React.createClass({
         return (
             <Paper className="contents-paper">
                 <h2>Coming soon!</h2>
-                <IconButton icon="icon-github" label="GitHub" left/>
+                <IconButton icon="icon-github" label="GitHub" />
             </Paper>
         );
     }
