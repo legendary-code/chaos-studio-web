@@ -1,5 +1,5 @@
 let React = require('react'),
-    Button = require('./Button'),
+    IconButton = require('./IconButton'),
     Actions = require('../actions/Actions');
 
 let AppBar = React.createClass({
@@ -10,7 +10,7 @@ let AppBar = React.createClass({
     render() {
         return (
             <div className="app-bar container">
-                <Button icon="icon-menu" onClick={this._toggleNavBar}/>
+                <IconButton className="app-bar-button" icon="icon-menu" onClick={this._toggleNavBar} />
                 <label className="font-title">{this.props.label}</label>
             </div>
         );

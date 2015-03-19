@@ -11,7 +11,7 @@ let Button = React.createClass({
 
     getDefaultProps() {
         return {
-            rippleTarget: ".hit-area"
+            rippleTarget: ".button"
         }
     },
 

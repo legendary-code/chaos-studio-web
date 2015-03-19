@@ -3,6 +3,7 @@ let $ = require('jquery'),
     cx = require('react-addons').classSet,
     Paper = require('../components/Paper'),
     FloatingActionButton = require('../components/FloatingActionButton'),
+    IconButton = require('../components/IconButton'),
     Viewport = require('../components/Viewport'),
     AttractorFinder = require('../chaos/AttractorFinder'),
     SearchConfigurationStore = require('../stores/SearchConfigurationStore');
@@ -37,6 +38,11 @@ let Explore = React.createClass({
                 <Viewport ref="viewport" />
 
                 <Paper className="bottom-paper" ref="bottomPaper">
+                    <FloatingActionButton className="mini-button" icon="icon-colorizer" mini/>
+                    <FloatingActionButton className="mini-button" icon="icon-renderer" mini/>
+                    <FloatingActionButton className="mini-button" icon="icon-rng" mini/>
+                    <FloatingActionButton className="mini-button" icon="icon-search-criteria" mini/>
+                    <FloatingActionButton className="mini-button" icon="icon-map" mini/>
                 </Paper>
 
                 <FloatingActionButton

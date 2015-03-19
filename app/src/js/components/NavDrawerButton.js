@@ -1,9 +1,9 @@
 let React = require('react'),
     cx = require('react-addons').classSet,
-    Ripple = require('../mixins/Ripple'),
     Icon = require('./Icon'),
     Router = require('react-router'),
     Actions = require('../actions/Actions'),
+    Button = require('./Button'),
     NavigationDrawerStore = require('../stores/NavigationDrawerStore');
 
 let NavDrawerButton = React.createClass({
@@ -14,7 +14,7 @@ let NavDrawerButton = React.createClass({
         onClick: React.PropTypes.func.isRequired
     },
 
-    mixins: [ Ripple, Router.State, Router.Navigation ],
+    mixins: [ Router.State, Router.Navigation ],
 
     componentDidMount() {
         NavigationDrawerStore.addListener(this._navChanged);
@@ -34,12 +34,10 @@ let NavDrawerButton = React.createClass({
         });
 
         return (
-            <div className="nav-drawer-button" onClick={this._onNavClick}>
-                <div className="nav-drawer-button-inner" type="button">
-                    <Icon icon={icon} />
-                    <label className={labelFont}>{label}</label>
-                </div>
-            </div>
+            <Button className="nav-drawer-button" onClick={this._onNavClick}>
+                <Icon icon={icon} />
+                <label className={labelFont}>{label}</label>
+            </Button>
         )
     },
 

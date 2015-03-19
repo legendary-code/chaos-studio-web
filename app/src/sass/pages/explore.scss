@@ -6,22 +6,11 @@
   position: fixed;
   width: 100vw;
   bottom: 0;
-  margin-bottom: -64px;
+  margin-bottom: -104px;
+  padding-right: 64px;
 
-  @media #{$device-mobile-portrait} {
-    height: 56px;
-    line-height: 56px;
-  }
-
-  @media #{$device-mobile-landscape} {
-    height: 48px;
-    line-height: 48px;
-  }
-
-  @media #{$device-desktop}, #{$device-tablet} {
-    height: 64px;
-    line-height: 64px;
-  }
+  height: 32px;
+  line-height: 32px;
 
   @include transition(margin-bottom 0.25s);
   &.translate {
@@ -49,6 +38,12 @@
   }
 }
 
+.mini-button {
+  float: right;
+  margin-right: 8px;
+  top: -40px;
+}
+
 .search-button {
   position: fixed;
   right: 50%;
@@ -61,21 +56,10 @@
   }
 
   &.translate {
-    right: 16px;
+    right: 8px;
     margin-bottom: 0;
     margin-right: 0;
-
-    @media #{$device-mobile-portrait} {
-      bottom: 28px;
-    }
-
-    @media #{$device-mobile-landscape} {
-      bottom: 20px;
-    }
-
-    @media #{$device-desktop}, #{$device-tablet} {
-      bottom: 36px;
-    }
+    bottom: 4px;
   }
 
   .cancel {

@@ -1,6 +1,6 @@
 let React = require('react'),
-    Ripple = require('../mixins/Ripple'),
     Icon = require('../components/Icon'),
+    Button = require('../components/Button'),
     cx = require('react-addons').classSet,
     join = require('../utils/ReactUtils').join;
 
@@ -12,8 +12,6 @@ let FloatingActionButton = React.createClass({
         onClick: React.PropTypes.func
     },
 
-    mixins: [ Ripple ],
-
     render() {
         let className = cx({
             "floating-action-button": true,
@@ -23,9 +21,9 @@ let FloatingActionButton = React.createClass({
         className = join(className, this.props.className);
 
         return (
-            <div className={className} onClick={this.props.onClick}>
+            <Button className={className} onClick={this.props.onClick} raised>
                 <Icon icon={this.props.icon} />
-            </div>
+            </Button>
         );
     }
 });
