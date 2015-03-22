@@ -1,6 +1,6 @@
 let React = require('react');
 
-let AppContents = React.createClass({
+class AppContents extends React.Component {
     render() {
         return (
             <div className="app-contents">
@@ -8,6 +8,6 @@ let AppContents = React.createClass({
             </div>
         )
     }
-});
+}
 
 module.exports = AppContents;

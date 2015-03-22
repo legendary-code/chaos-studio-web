@@ -15,6 +15,22 @@ let ReactUtils = {
             }
         }
         return result;
+    },
+
+    cx(classes) {
+        let result = "";
+
+        for (let clazz in classes) {
+            if (classes.hasOwnProperty(clazz) && classes[clazz]) {
+                if (result) {
+                    result += " ";
+                }
+
+                result += clazz;
+            }
+        }
+
+        return result;
     }
 };
 

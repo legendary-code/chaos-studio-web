@@ -1,15 +1,15 @@
-var React = require('react'),
+let React = require('react'),
     d3 = require('d3');
 
-var LorentzAttractor = React.createClass({
-    render: function() {
+class LorenzAttractor extends React.Component {
+    render() {
         return (
             <svg width="200" height="200" id="lorentz">
             </svg>
         );
-    },
+    }
 
-    componentDidMount: function() {
+    componentDidMount() {
         var sigma = 10.0,
             rho = 28.0,
             beta = 8.0/3.0,
@@ -52,6 +52,6 @@ var LorentzAttractor = React.createClass({
             .attr("stroke-width", "2")
             .attr("fill", "none");
     }
-});
+}
 
-module.exports = LorentzAttractor;
+module.exports = LorenzAttractor;

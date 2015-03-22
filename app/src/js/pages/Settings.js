@@ -1,10 +1,10 @@
 let React = require('react');
 
-let Settings = React.createClass({
+class Settings extends React.Component {
     render() {
         return <div/>
     }
-});
+}
 
 Settings.pageName = "Settings";
 

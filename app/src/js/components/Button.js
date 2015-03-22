@@ -1,21 +1,15 @@
 let React = require('react'),
     Ripple = require('../mixins/Ripple'),
-    cx = require('react-addons').classSet;
+    cx = require('../utils/ReactUtils').cx;
 
-let Button = React.createClass({
-    propTypes: {
-        className: React.PropTypes.string,
-        raised: React.PropTypes.bool,
-        onClick: React.PropTypes.func
-    },
+class Button extends React.Component {
+    componentDidMount() {
+        this._ripple = new Ripple(this.refs.rippleTarget);
+    }
 
-    getDefaultProps() {
-        return {
-            rippleTarget: ".button"
-        }
-    },
-
-    mixins: [ Ripple ],
+    componentWillUnmount() {
+        this._ripple.destroy();
+    }
 
     render() {
         let outerClasses = {
@@ -43,6 +37,7 @@ let Button = React.createClass({
         return (
             <div className={cx(outerClasses)}>
                 <div
+                    ref="rippleTarget"
                     className={innerClassName}
                     onClick={this.props.onClick}>
                     <div className={overlayClassName} />
@@ -51,6 +46,12 @@ let Button = React.createClass({
             </div>
         );
     }
-});
+}
+
+Button.propTypes = {
+    className: React.PropTypes.string,
+    raised: React.PropTypes.bool,
+    onClick: React.PropTypes.func
+};
 
 module.exports = Button;

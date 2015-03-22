@@ -3,28 +3,21 @@
 let React = require('react'),
     $ = require('jquery');
 
-let Ripple = {
-    propTypes: {
-        rippleTarget: React.PropTypes.string
-    },
+class Ripple {
 
-    componentDidMount() {
-        $(this.getDOMNode()).on("mousedown", this._doRipple);
-        $(this.getDOMNode()).on("touchstart", this._doRipple);
-    },
+    constructor(target) {
+        this._target = $(React.findDOMNode(target));
+        this._target.on("mousedown", this._doRipple.bind(this));
+        this._target.on("touchstart", this._doRipple.bind(this));
+    }
 
-    componentWillUnmount() {
-        $(this.getDOMNode()).off("mousedown", this._doRipple);
-        $(this.getDOMNode()).off("touchstart", this._doRipple);
-    },
-
-    _getRippleTarget() {
-        let target = $(this.getDOMNode());
-        return  this.props.rippleTarget ? target.find(this.props.rippleTarget) : target;
-    },
+    destroy() {
+        this._target.off("mousedown", this._doRipple.bind(this));
+        this._target.off("touchstart", this._doRipple.bind(this));
+    }
 
     _doRipple(e) {
-        let parent = this._getRippleTarget();
+        let parent = this._target;
         let ripple = $("<span class='ripple'></span>");
         let diam = Math.max(parent.outerWidth(), parent.outerHeight());
         let offset = parent.offset();
@@ -50,6 +43,6 @@ let Ripple = {
             }
         );
     }
-};
+}
 
 module.exports = Ripple;

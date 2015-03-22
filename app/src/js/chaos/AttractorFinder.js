@@ -18,12 +18,12 @@ class AttractorFinder {
     *_find() {
         let map = this._configuration.map;
         let rng = this._configuration.rng;
-        let dimensions = this._configuration.map.type.dimensions;
-        let numCoefficients = this._configuration.map.type.coefficients;
+        let dimensions = this._configuration.map.dimensions;
+        let numCoefficients = this._configuration.map.coefficients;
         let criteria = this._configuration.criteria;
 
         while (true) {
-            yield;
+            yield null;
 
             let coefficients = [];
             let initialValue = [];
@@ -53,7 +53,7 @@ class AttractorFinder {
 
             for (let i = 0; i < this._configuration.settlingIterations; i++) {
                 if (i % 10000 == 0) {
-                    yield;
+                    yield null;
                 }
 
                 value = map.apply(value, coefficients);
@@ -76,7 +76,7 @@ class AttractorFinder {
 
             for (let i = 0; i < this._configuration.searchIterations; i++) {
                 if (i % 10000 == 0) {
-                    yield;
+                    yield null;
                 }
 
                 value = map.apply(value, coefficients);
@@ -110,7 +110,7 @@ class AttractorFinder {
             let remainingIterations = this._configuration.totalIterations - this._configuration.searchIterations;
             for (let i = 0; i < remainingIterations; i++) {
                 if (i % 10000 == 0) {
-                    yield;
+                    yield null;
                 }
 
                 value = map.apply(value, coefficients);
@@ -122,7 +122,7 @@ class AttractorFinder {
 
             for (let i = 0; i < values.length; i++) {
                 if (i % 10000 == 0) {
-                    yield;
+                    yield null;
                 }
                 values[i] = bounds.normalize(values[i]);
             }

@@ -1,26 +1,28 @@
 let $ = require('jquery'),
     React = require('react'),
-    cx = require('react-addons').classSet,
+    cx = require('../utils/ReactUtils').cx,
     NavigationDrawerStore = require('../stores/NavigationDrawerStore'),
     Actions = require('../actions/Actions');
 
-let NavDrawer = React.createClass({
-    getInitialState() {
-        return {
+class NavDrawer extends React.Component {
+    constructor(props) {
+        super.constructor(props);
+
+        this.state = {
             hidden: NavigationDrawerStore.state.hidden,
             preload: true
         };
-    },
+    }
 
     componentDidMount() {
-        document.addEventListener("mousedown", this._clickOutside);
-        NavigationDrawerStore.addListener(this._toggle);
-    },
+        document.addEventListener("mousedown", this._clickOutside.bind(this));
+        NavigationDrawerStore.addListener(this._toggle.bind(this));
+    }
 
     componentWillUnmount() {
-        document.removeEventListener("mousedown", this._clickOutside);
-        NavigationDrawerStore.removeListener(this._toggle);
-    },
+        document.removeEventListener("mousedown", this._clickOutside.bind(this));
+        NavigationDrawerStore.removeListener(this._toggle.bind(this));
+    }
 
     render() {
         let className = cx({
@@ -34,21 +36,21 @@ let NavDrawer = React.createClass({
                 {this.props.children}
             </div>
         );
-    },
+    }
 
     _toggle() {
         this.setState({
                 hidden: NavigationDrawerStore.state.hidden,
                 preload: false
         });
-    },
+    }
 
     _clickOutside(e) {
         if (this.state.hidden) {
             return;
         }
 
-        let drawer = $(this.getDOMNode());
+        let drawer = $(React.findDOMNode(this));
         let target = $(e.target);
 
 
@@ -62,6 +64,6 @@ let NavDrawer = React.createClass({
 
         Actions.HIDE_NAV_DRAWER.invoke();
     }
-});
+}
 
 module.exports = NavDrawer;

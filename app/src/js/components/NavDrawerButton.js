@@ -1,28 +1,19 @@
 let React = require('react'),
-    cx = require('react-addons').classSet,
+    cx = require('../utils/ReactUtils').cx,
     Icon = require('./Icon'),
-    Router = require('react-router'),
     Actions = require('../actions/Actions'),
     Button = require('./Button'),
+    RouterStore = require('../stores/RouterStore'),
     NavigationDrawerStore = require('../stores/NavigationDrawerStore');
 
-let NavDrawerButton = React.createClass({
-    propTypes: {
-        icon: React.PropTypes.string.isRequired,
-        label: React.PropTypes.string.isRequired,
-        route: React.PropTypes.string.isRequired,
-        onClick: React.PropTypes.func.isRequired
-    },
-
-    mixins: [ Router.State, Router.Navigation ],
-
+class NavDrawerButton extends React.Component {
     componentDidMount() {
-        NavigationDrawerStore.addListener(this._navChanged);
-    },
+        NavigationDrawerStore.addListener(this._navChanged.bind(this));
+    }
 
     componentWillUnmount() {
-        NavigationDrawerStore.removeListener(this._navChanged);
-    },
+        NavigationDrawerStore.removeListener(this._navChanged.bind(this));
+    }
 
     render() {
         let icon = this.props.icon;
@@ -30,26 +21,33 @@ let NavDrawerButton = React.createClass({
 
         let labelFont = cx({
             "font-nav-button": true,
-            "font-active-route": this.isActive(this.props.route)
+            "font-active-route": RouterStore.isActive(this.props.route)
         });
 
         return (
-            <Button className="nav-drawer-button" onClick={this._onNavClick}>
+            <Button className="nav-drawer-button" onClick={this._onNavClick.bind(this)}>
                 <Icon icon={icon} />
                 <label className={labelFont}>{label}</label>
             </Button>
         )
-    },
+    }
 
     _onNavClick() {
-        this.transitionTo(this.props.route);
+        Actions.TRANSITION_TO.invoke(this.props.route);
         Actions.CHANGE_NAV_LOCATION.invoke(this.props.route);
         Actions.HIDE_NAV_DRAWER.invoke();
-    },
+    }
 
     _navChanged() {
         this.forceUpdate();
     }
-});
+}
+
+NavDrawerButton.propTypes = {
+    icon: React.PropTypes.string.isRequired,
+    label: React.PropTypes.string.isRequired,
+    route: React.PropTypes.string.isRequired,
+    onClick: React.PropTypes.func.isRequired
+};
 
 module.exports = NavDrawerButton;

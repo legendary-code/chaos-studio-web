@@ -1,19 +1,23 @@
 let React = require('react'),
-    THREE = require('three'),
     ConfigurationStore = require('../stores/SearchConfigurationStore'),
     Rotation = require('../chaos/Rotation'),
-    cx = require('react-addons').classSet;
+    cx = require('../utils/ReactUtils').cx;
 
 /* Given a renderer, this component renders strange attractors, handles user input
 * for rotating attractors, and animates rotating attractors, redrawing only
 * when necessary */
 
-let Viewport = React.createClass({
-    getInitialState: function() {
-        return { searching: false, rotation: new Rotation() };
-    },
+class Viewport extends React.Component {
+    constructor(props) {
+        super.constructor(props);
 
-    render: function() {
+        this.state = {
+            searching: false,
+            rotation: new Rotation()
+        };
+    }
+
+    render() {
         let progressClassName = cx({
             "search-progress-container": true,
             "hidden": !this.state.searching
@@ -23,28 +27,28 @@ let Viewport = React.createClass({
             <div
                 className="viewport"
                 ref="viewport"
-                onMouseDown={this._dragStart}
-                onMouseUp={this._dragStop}
-                onMouseOut={this._dragStop}
-                onMouseMove={this._drag}
-                onTouchStart={this._dragStart}
-                onTouchEnd={this._dragStop}
-                onTouchCancel={this._dragStop}
-                onTouchLeave={this._dragStop}
-                onTouchMove={this._drag}>
+                onMouseDown={this._dragStart.bind(this)}
+                onMouseUp={this._dragStop.bind(this)}
+                onMouseOut={this._dragStop.bind(this)}
+                onMouseMove={this._drag.bind(this)}
+                onTouchStart={this._dragStart.bind(this)}
+                onTouchEnd={this._dragStop.bind(this)}
+                onTouchCancel={this._dragStop.bind(this)}
+                onTouchLeave={this._dragStop.bind(this)}
+                onTouchMove={this._drag.bind(this)}>
                 <div className={progressClassName}>
                     <img src="./svg/lorenz.svg" />
                 </div>
             </div>
         )
-    },
+    }
 
     _dragStart(e) {
         let [screenX, screenY] = this._coords(e);
 
         this.state.rotation.startDrag(screenX, screenY);
         this._stopAnimation();
-    },
+    }
 
     _dragStop(e) {
         let [screenX, screenY] = this._coords(e);
@@ -52,7 +56,7 @@ let Viewport = React.createClass({
         if (this.state.rotation.stopDrag(screenX, screenY)) {
             this._startAnimation();
         }
-    },
+    }
 
     _drag(e) {
         let [screenX, screenY] = this._coords(e);
@@ -60,7 +64,7 @@ let Viewport = React.createClass({
         if (this.state.rotation.drag(screenX, screenY)) {
             this.renderScene();
         }
-    },
+    }
 
     _coords(e) {
         if (e.screenX && e.screenY) {
@@ -72,10 +76,10 @@ let Viewport = React.createClass({
         }
 
         return [0,0];
-    },
+    }
 
-    handleResize: function() {
-        var viewport = this.refs.viewport.getDOMNode();
+    _handleResize() {
+        var viewport = React.findDOMNode(this.refs.viewport);
         var width = viewport.clientWidth;
         var height = viewport.clientHeight;
         var renderer = this.state.renderer;
@@ -84,10 +88,10 @@ let Viewport = React.createClass({
             renderer.resize(width, height);
             this.renderScene();
         }
-    },
+    }
 
-    componentDidMount: function() {
-        let viewport = this.refs.viewport.getDOMNode();
+    componentDidMount() {
+        var viewport = React.findDOMNode(this.refs.viewport);
         let width = viewport.clientWidth;
         let height = viewport.clientHeight;
         let renderer = ConfigurationStore.state.configuration.renderer;
@@ -96,31 +100,31 @@ let Viewport = React.createClass({
         viewport.appendChild(surface);
 
         this.setState({ renderer: renderer });
-        window.addEventListener('resize', this.handleResize);
+        window.addEventListener('resize', this._handleResize.bind(this));
         this._startAnimation();
-    },
+    }
 
-    componentWillUnmount: function() {
-        window.removeEventListener('resize', this.handleResize);
+    componentWillUnmount() {
+        window.removeEventListener('resize', this._handleResize.bind(this));
         this.state.renderer.destroy();
-    },
+    }
 
     _startAnimation() {
         this._animate();
-    },
+    }
 
     _stopAnimation() {
-        cancelAnimationFrame(this._animate);
-    },
+        cancelAnimationFrame(this._animate.bind(this));
+    }
 
-    _animate: function() {
+    _animate() {
         if (this.renderScene()) {
             // only continue rendering if the scene is changing (i.e. rotation)
-            requestAnimationFrame(this._animate);
+            requestAnimationFrame(this._animate.bind(this));
         }
-    },
+    }
 
-    renderScene: function() {
+    renderScene() {
         let renderer = this.state.renderer;
         let rotation = this.state.rotation;
 
@@ -132,26 +136,26 @@ let Viewport = React.createClass({
         }
 
         return changed;
-    },
+    }
 
     setRenderData(points) {
         this.state.renderer.setRenderData(points);
         this.state.rotation.reset();
         this._startAnimation();
-    },
+    }
 
     getViewportSize() {
-        var viewport = this.refs.viewport.getDOMNode();
+        var viewport = React.findDOMNode(this.refs.viewport);
         return { width: viewport.clientWidth, height: viewport.clientHeight };
-    },
+    }
 
     showSearching() {
         this.setState({searching: true});
-    },
+    }
 
     hideSearching() {
         this.setState({searching: false});
     }
-});
+}
 
 module.exports = Viewport;

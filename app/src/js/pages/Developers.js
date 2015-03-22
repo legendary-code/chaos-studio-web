@@ -1,10 +1,10 @@
 let React = require('react');
 
-let Developers = React.createClass({
+class Developers extends React.Component {
     render() {
         return <div/>
     }
-});
+}
 
 Developers.pageName = "Developers";
 

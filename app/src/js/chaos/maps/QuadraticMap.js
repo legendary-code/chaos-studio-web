@@ -6,7 +6,7 @@ class QuadraticMap extends Map {
         return "Quadratic";
     }
 
-    static get coefficients() {
+    get coefficients() {
         return 30;
     }
 

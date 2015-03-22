@@ -20,9 +20,9 @@
     "gulp-webserver": "^0.9.0",
     "hammerjs": "^2.0.4",
     "jquery": "^2.1.3",
-    "react-addons": "^0.9.1-deprecated",
-    "react-router": "^0.12.0",
-    "reactify": "^0.14.1",
+    "react": "^0.13.1",
+    "react-router": "^0.13.1",
+    "reactify": "^1.1.0",
     "three": "^0.69.0",
     "underscore": "^1.8.2",
     "vinyl-source-stream": "^1.0.0"

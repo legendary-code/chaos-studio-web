@@ -1,24 +1,21 @@
 let React = require('react'),
-    IconButton = require('./IconButton'),
-    Actions = require('../actions/Actions');
+    IconButton = require('./IconButton');
 
-let AppBar = React.createClass({
-    propTypes: {
-        label: React.PropTypes.string.isRequired
-    },
-
+class AppBar extends React.Component {
     render() {
         return (
             <div className="app-bar container">
-                <IconButton className="app-bar-button" icon="icon-menu" onClick={this._toggleNavBar} />
+                <IconButton className="app-bar-button" icon={this.props.icon} onClick={this.props.onClick} />
                 <label className="font-title">{this.props.label}</label>
             </div>
         );
-    },
-
-    _toggleNavBar() {
-        Actions.TOGGLE_NAV_DRAWER.invoke();
     }
-});
+}
+
+AppBar.propTypes = {
+    label: React.PropTypes.string.isRequired,
+    icon: React.PropTypes.string.isRequired,
+    onClick: React.PropTypes.func
+};
 
 module.exports = AppBar;

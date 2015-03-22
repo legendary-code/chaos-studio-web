@@ -1,11 +1,7 @@
 let React = require('react'),
     join = require('../utils/ReactUtils').join;
 
-let Paper = React.createClass({
-    propTypes: {
-        className: React.PropTypes.string
-    },
-
+class Paper extends React.Component {
     render() {
         let className = join("paper", this.props.className);
 
@@ -15,6 +11,10 @@ let Paper = React.createClass({
             </div>
         )
     }
-});
+}
+
+Paper.propTypes = {
+    className: React.PropTypes.string
+};
 
 module.exports = Paper;

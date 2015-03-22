@@ -86,7 +86,7 @@ gulp.task('favicon', function() {
 gulp.task('link-js', ['stage'], function() {
     return browserify()
                 .add('./app/link/js/main.js')
-                .transform(reactify, {es6: true, target: 'es5'})
+                .transform(reactify, {es6: true})
                 .transform(babelify)
                 .bundle()
                 .on('error', function(err) {

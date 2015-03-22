@@ -10,7 +10,7 @@
   position: fixed;
   height: 100vh;
   width: 90vw;
-  z-index: #{$topMost+1};
+  z-index: $navDrawer;
   overflow-y: auto;
 
   @include shadow(1);

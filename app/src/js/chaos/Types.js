@@ -2,23 +2,14 @@
 
 class Types {
     /* A numeric value */
-    static number(label, min, max, decimals) {
+    static number(label, min, max, steps, icon = 'icon-settings') {
         return {
             type: 'number',
             label: label,
             min: min,
             max: max,
-            decimals: decimals
-        };
-    }
-
-    static range(label, min, max, decimals) {
-        return {
-            type: 'range',
-            label: label,
-            min: min,
-            max: max,
-            decimals: decimals
+            steps: steps,
+            icon: icon
         };
     }
 

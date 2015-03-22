@@ -1,0 +1,39 @@
+@import "../../variables/media-queries";
+@import "../../variables/shadows";
+@import "../../variables/layers";
+@import "../../variables/colors";
+
+.choice-picker {
+  background-color: $paper-color;
+  position: fixed;
+  @include shadow(5);
+  overflow-y: auto;
+
+  width: 300px;
+  height: 360px;
+  left: 50%;
+  top: 50%;
+  margin-left: -150px;
+  margin-top: -180px;
+
+  .choice-button {
+    display: block;
+
+    .button {
+      display: block;
+      padding: 16px;
+    }
+
+    label {
+      display: block;
+    }
+  }
+
+  .selected {
+    background-color: $selected-paper-color;
+
+    label {
+      font-weight: bold;
+    }
+  }
+}

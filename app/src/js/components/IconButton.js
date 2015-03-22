@@ -1,25 +1,9 @@
 let React = require('react'),
-    cx = require('react-addons').classSet,
+    cx = require('../utils/ReactUtils').cx,
     Button = require('./button'),
     Icon = require('./Icon');
 
-let IconButton = React.createClass({
-    propTypes: {
-        icon: React.PropTypes.string,
-        label: React.PropTypes.string.isRequired,
-        left: React.PropTypes.bool,
-        right: React.PropTypes.bool,
-        raised: React.PropTypes.bool,
-        onClick: React.PropTypes.func
-    },
-
-    getDefaultProps() {
-        return {
-            left: false,
-            right: false
-        }
-    },
-
+class IconButton extends React.Component {
     render() {
         let icon = this.props.icon;
         let label = this.props.label;
@@ -50,6 +34,20 @@ let IconButton = React.createClass({
             </Button>
         )
     }
-});
+}
+
+IconButton.propTypes = {
+    icon: React.PropTypes.string,
+    label: React.PropTypes.string.isRequired,
+    left: React.PropTypes.bool,
+    right: React.PropTypes.bool,
+    raised: React.PropTypes.bool,
+    onClick: React.PropTypes.func
+};
+
+IconButton.defaultProps = {
+    left: false,
+    right: false
+};
 
 module.exports = IconButton;

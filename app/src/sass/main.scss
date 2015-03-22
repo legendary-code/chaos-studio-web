@@ -22,6 +22,11 @@
 @import "components/paper";
 @import "components/floating-action-button";
 @import "components/viewport";
+@import "components/modal";
+@import "components/settings-dialog";
+@import "components/settings/header";
+@import "components/settings/choice";
+@import "components/settings/choice-picker";
 
 /* Pages */
 @import "pages/app";

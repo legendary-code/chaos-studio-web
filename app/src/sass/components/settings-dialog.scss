@@ -1,0 +1,39 @@
+@import "../variables/media-queries";
+@import "../variables/shadows";
+@import "../variables/layers";
+@import "../variables/colors";
+
+.settings-dialog {
+  background-color: $paper-color;
+  position: fixed;
+  @include shadow(5);
+
+  .settings-contents {
+    overflow-y: auto;
+  }
+
+  @media #{$device-mobile-portrait}, #{$device-mobile-landscape} {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    .app-bar {
+      display: block;
+      position: relative;
+    }
+  }
+
+  @media #{$device-desktop}, #{$device-tablet} {
+    width: 320px;
+    height: 400px;
+    left: 50%;
+    top: 50%;
+    margin-left: -160px;
+    margin-top: -200px;
+
+    .app-bar {
+      display: none;
+    }
+  }
+}

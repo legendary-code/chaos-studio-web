@@ -9,25 +9,15 @@ class LyapunovExponent extends SearchCriterion {
 
     static get params() {
         return {
-            min: Types.number("min", -10.0, 10.0, 2),
-            max: Types.number("max", -10.0, 10.0, 2),
+            min: Types.number("min", -10.0, 10.0, 0, 'icon-rng'),
             minIterations: Types.number("minimum iterations", 1, 1000, 0)
         };
     }
 
     constructor() {
-        this._max = 10.0;
         this._min = 0.015;
         this._precision = 1e11;
         this._minIterations = 100;
-    }
-
-    get max() {
-        return this._max;
-    }
-
-    set max(value) {
-        this._max = value;
     }
 
     get min() {
@@ -59,7 +49,7 @@ class LyapunovExponent extends SearchCriterion {
         this._delta = 1 / this._precision;
         this._samples = 0;
 
-        let dimensions = context.configuration.map.type.dimensions;
+        let dimensions = context.configuration.map.dimensions;
         let dv = Math.sqrt(this._delta * this._delta / dimensions);
         this._nearValue = [];
         for (var i = 0; i < 3; i++) {
@@ -90,7 +80,7 @@ class LyapunovExponent extends SearchCriterion {
 
         this._lyapunov = LyapunovExponent.LOG2 * (this._innerSum / this._samples);
 
-        return !(this._samples >= this._minIterations && (this._lyapunov < this._min || this._lyapunov > this._max));
+        return this._samples < this._minIterations || this._lyapunov >= this._min;
     }
 }
 

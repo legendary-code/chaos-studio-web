@@ -1,6 +1,6 @@
 let $ = require('jquery'),
     React = require('react'),
-    cx = require('react-addons').classSet,
+    cx = require('../utils/ReactUtils').cx,
     Paper = require('../components/Paper'),
     FloatingActionButton = require('../components/FloatingActionButton'),
     IconButton = require('../components/IconButton'),
@@ -8,13 +8,16 @@ let $ = require('jquery'),
     AttractorFinder = require('../chaos/AttractorFinder'),
     SearchConfigurationStore = require('../stores/SearchConfigurationStore');
 
-let Explore = React.createClass({
+class Explore extends React.Component {
 
-    getInitialState() {
-        return {
-            showIntro: true
-        }
-    },
+    constructor(props) {
+        super.constructor(props);
+
+        this.state = {
+            showIntro: true,
+            showTray: false
+        };
+    }
 
     render() {
         let introClassName = cx({
@@ -28,6 +31,12 @@ let Explore = React.createClass({
             "translate": !this.state.showIntro
         });
 
+        let trayClassName = cx({
+            "settings-buttons-tray": true,
+            "open": this.state.showTray,
+            "closed": !this.state.showTray
+        });
+
         return (
             <div>
                 <Paper className={introClassName} ref="introPaper">
@@ -37,23 +46,38 @@ let Explore = React.createClass({
 
                 <Viewport ref="viewport" />
 
-                <Paper className="bottom-paper" ref="bottomPaper">
+                <div className={trayClassName} >
                     <FloatingActionButton className="mini-button" icon="icon-colorizer" mini/>
                     <FloatingActionButton className="mini-button" icon="icon-renderer" mini/>
                     <FloatingActionButton className="mini-button" icon="icon-rng" mini/>
                     <FloatingActionButton className="mini-button" icon="icon-search-criteria" mini/>
                     <FloatingActionButton className="mini-button" icon="icon-map" mini/>
+                </div>
+
+                <Paper className="bottom-paper" ref="bottomPaper">
+                    <FloatingActionButton
+                        className="mini-button"
+                        icon="icon-settings-light"
+                        mini
+                        onClick={this._toggleTray.bind(this)}
+                    />
+                    <FloatingActionButton className="mini-button" icon="icon-screenshot" mini/>
+                    <FloatingActionButton className="mini-button" icon="icon-link" mini/>
                 </Paper>
 
                 <FloatingActionButton
                     className={searchButtonClassName}
                     icon="icon-search light"
                     ref="searchButton"
-                    onClick={this._search}
+                    onClick={this._search.bind(this)}
                 />
             </div>
         );
-    },
+    }
+
+    _toggleTray() {
+        this.setState({showTray: !this.state.showTray});
+    }
 
     _search() {
         if (this.state.showIntro) {
@@ -77,21 +101,21 @@ let Explore = React.createClass({
         );
 
         finder.find();
-    },
+    }
 
     _hideIntro() {
         let self = this;
 
-        $(this.refs.introPaper.getDOMNode()).addClass("fade-out");
-        $(this.refs.searchButton.getDOMNode()).addClass("translate");
-        $(this.refs.bottomPaper.getDOMNode()).addClass("translate");
+        $(React.findDOMNode(this.refs.introPaper)).addClass("fade-out");
+        $(React.findDOMNode(this.refs.searchButton)).addClass("translate");
+        $(React.findDOMNode(this.refs.bottomPaper)).addClass("translate");
 
         setTimeout(() => {
             self.setState({showIntro: false});
             self._search();
         }, 500);
     }
-});
+}
 
 Explore.pageName = "Explore";
 

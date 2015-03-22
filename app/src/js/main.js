@@ -3,11 +3,15 @@ window.__DEV__ = true;
 require('babel/polyfill');
 
 let React = require('react'),
-    Router = require('react-router'),
+    RouterStore = require('./stores/RouterStore'),
+    Actions = require('./actions/Actions'),
     Routes = require('./routes');
 
 React.initializeTouchEvents(true);
 
-Router.run(Routes, (Handler) => {
-    React.render(<Handler />, document.getElementById('app'));
+Actions.RUN_ROUTES.invoke({
+    routes: Routes,
+    callback: (Handler) => {
+        React.render(<Handler />, document.getElementById('app'));
+    }
 });

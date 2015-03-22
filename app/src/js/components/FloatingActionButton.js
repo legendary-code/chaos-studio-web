@@ -1,17 +1,10 @@
 let React = require('react'),
     Icon = require('../components/Icon'),
     Button = require('../components/Button'),
-    cx = require('react-addons').classSet,
+    cx = require('../utils/ReactUtils').cx,
     join = require('../utils/ReactUtils').join;
 
-let FloatingActionButton = React.createClass({
-    propTypes: {
-        mini: React.PropTypes.bool,
-        icon: React.PropTypes.string.isRequired,
-        className: React.PropTypes.string,
-        onClick: React.PropTypes.func
-    },
-
+class FloatingActionButton extends React.Component {
     render() {
         let className = cx({
             "floating-action-button": true,
@@ -26,6 +19,13 @@ let FloatingActionButton = React.createClass({
             </Button>
         );
     }
-});
+}
+
+FloatingActionButton.propTypes = {
+    mini: React.PropTypes.bool,
+    icon: React.PropTypes.string.isRequired,
+    className: React.PropTypes.string,
+    onClick: React.PropTypes.func
+};
 
 module.exports = FloatingActionButton;

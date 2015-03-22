@@ -4,26 +4,25 @@ let React = require('react'),
     AppContents = require('../components/AppContents'),
     NavDrawerButton = require('../components/NavDrawerButton'),
     NavDrawerDivider = require('../components/NavDrawerDivider'),
+    RouterStore = require('../stores/RouterStore'),
     Router = require('react-router'),
-    Button = require('../components/Button'),
+    Actions = require('../actions/Actions'),
+    Modals = require('../components/Modals'),
     RouteHandler = Router.RouteHandler;
 
-let App = React.createClass({
-
-    mixins: [ Router.State ],
-
+class App extends React.Component {
     _getRouteTitle() {
-        let routes = this.getRoutes();
+        let routes = RouterStore.getCurrentRoutes();
         let route = routes[routes.length - 1];
         return route.handler.pageName;
-    },
+    }
 
-    render: function() {
+    render() {
         let label = this._getRouteTitle();
 
         return (
             <div className="app">
-                <AppBar label={label} />
+                <AppBar icon="icon-menu" onClick={this._toggleNavBar} label={label} />
                 <NavDrawer>
                     <NavDrawerButton icon="icon-home" label="Home" route="home"/>
                     <NavDrawerButton icon="icon-search" label="Explore" route="explore"/>
@@ -36,9 +35,14 @@ let App = React.createClass({
                 <AppContents>
                     <RouteHandler />
                 </AppContents>
+                <Modals />
             </div>
         );
     }
-});
+
+    _toggleNavBar() {
+        Actions.TOGGLE_NAV_DRAWER.invoke();
+    }
+}
 
 module.exports = App;

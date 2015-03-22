@@ -8,6 +8,9 @@ class Store extends EventEmitter {
         this._state = this.getInitialState();
     }
 
+    invoke(action) {
+    }
+
     getInitialState() {
         return {};
     }

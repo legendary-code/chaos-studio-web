@@ -1,9 +1,9 @@
 let React = require('react');
 
-let NavDrawerDivider = React.createClass({
+class NavDrawerDivider extends React.Component {
     render() {
         return <div className="nav-drawer-divider"></div>
     }
-});
+}
 
 module.exports = NavDrawerDivider;
