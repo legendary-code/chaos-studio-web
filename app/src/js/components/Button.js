@@ -1,5 +1,5 @@
 let React = require('react'),
-    Ripple = require('../mixins/Ripple'),
+    Ripple = require('./effects/Ripple'),
     cx = require('../utils/ReactUtils').cx;
 
 class Button extends React.Component {

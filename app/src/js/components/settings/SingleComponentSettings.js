@@ -1,6 +1,7 @@
 let React = require('react'),
     Header = require('./Header'),
-    Choice = require('./Choice');
+    Choice = require('./Choice'),
+    Slider = require('../Slider');
 
 /* Settings dialog view for configuring a single component
  * Consists of two sections:
@@ -16,6 +17,7 @@ class SingleComponentSettings extends React.Component {
                 <Header label="Basics" />
                 <Choice label={this.props.label} value={this.props.value} types={this.props.types} />
                 <Header label="Advanced" />
+                <Slider min={0.0} max={10.0} value={2.0}/>
             </div>
         );
     }

@@ -7,8 +7,8 @@
 @import "variables/media-queries";
 @import "variables/typography";
 
-/* Mixins */
-@import "mixins/ripple";
+/* Effects */
+@import "components/effects/ripple";
 
 /* Components */
 @import "components/app-bar";
@@ -27,6 +27,7 @@
 @import "components/settings/header";
 @import "components/settings/choice";
 @import "components/settings/choice-picker";
+@import "components/slider";
 
 /* Pages */
 @import "pages/app";
