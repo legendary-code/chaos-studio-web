@@ -1,0 +1,42 @@
+.component-toggle {
+
+  .header {
+    position: relative;
+    display: block;
+    height: 36px;
+
+    .button-spacing {
+      display: block;
+      z-index: 1;
+
+      .button {
+        display: block;
+        padding-left: 16px;
+        padding-right: 16px;
+        height: 36px;
+
+        .icon {
+          position: relative;
+          display: inline-block;
+          margin-top: 6px;
+          float: left;
+        }
+
+        label {
+          position: relative;
+          display: inline-block;
+          line-height: 36px;
+          float: left;
+        }
+      }
+    }
+
+    .toggle {
+      display: inline-block;
+      position: absolute;
+      right: 16px;
+      top: 0;
+      z-index: 2;
+    }
+  }
+}

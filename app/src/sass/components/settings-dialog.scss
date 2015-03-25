@@ -9,7 +9,9 @@
   @include shadow(5);
 
   .settings-contents {
+    overflow-x: hidden;
     overflow-y: auto;
+    padding-bottom: 72px;
   }
 
   @media #{$device-mobile-portrait}, #{$device-mobile-landscape} {

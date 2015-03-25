@@ -4,11 +4,15 @@ let React = require('react'),
 
 class Button extends React.Component {
     componentDidMount() {
-        this._ripple = new Ripple(this.refs.rippleTarget);
+        if (!this.props.disabled) {
+            this._ripple = new Ripple(this.refs.rippleTarget);
+        }
     }
 
     componentWillUnmount() {
-        this._ripple.destroy();
+        if (!this.props.disabled) {
+            this._ripple.destroy();
+        }
     }
 
     render() {
@@ -30,6 +34,8 @@ class Button extends React.Component {
             "flat": !this.props.raised
         });
 
+        let overlay = this.props.noOverlay ? "" : <div className={overlayClassName} />;
+
         if (this.props.className) {
             outerClasses[this.props.className] = true;
         }
@@ -39,18 +45,28 @@ class Button extends React.Component {
                 <div
                     ref="rippleTarget"
                     className={innerClassName}
-                    onClick={this.props.onClick}>
-                    <div className={overlayClassName} />
+                    onClick={this._onClick.bind(this)}>
+                    {overlay}
                     {this.props.children}
                 </div>
             </div>
         );
+    }
+
+    _onClick() {
+        if (!!this.props.disabled) {
+            return;
+        }
+
+        this.props.onClick();
     }
 }
 
 Button.propTypes = {
     className: React.PropTypes.string,
     raised: React.PropTypes.bool,
+    noOverlay: React.PropTypes.bool,
+    disabled: React.PropTypes.bool,
     onClick: React.PropTypes.func
 };
 

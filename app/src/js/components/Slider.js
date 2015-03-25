@@ -1,5 +1,6 @@
 let $ = require('jquery'),
-    React = require('react');
+    React = require('react'),
+    cx = require('../utils/ReactUtils').cx;
 
 class Slider extends React.Component {
     constructor(props) {
@@ -26,7 +27,6 @@ class Slider extends React.Component {
     }
 
     render() {
-
         let trackStyle = {
             width: this._percent() + "%"
         };
@@ -35,8 +35,14 @@ class Slider extends React.Component {
             left: this._percent() + "%"
         };
 
+        let sliderClass = cx({
+            "slider": true,
+            "enabled": !this.props.disabled,
+            "disabled": !!this.props.disabled
+        });
+
         return (
-            <div className="slider" onMouseDown={this._dragBegin.bind(this)}>
+            <div className={sliderClass} onMouseDown={this._dragBegin.bind(this)}>
                 <div className="slider-track" ref="sliderTrack">
                     <div className="slider-track-filled" ref="sliderTrackFilled" style={trackStyle}>
                     </div>
@@ -52,17 +58,25 @@ class Slider extends React.Component {
     }
 
     _dragBegin(e) {
+        if (this.state.disabled) {
+            return;
+        }
+
         // copy event, because for some reason it gets nulled out later
         let event = { pageX: e.pageX };
         this.setState({ dragging: true }, () => this._drag(event));
     }
 
     _dragEnd() {
+        if (this.state.disabled) {
+            return;
+        }
+
         this.setState({dragging: false});
     }
 
     _drag(e) {
-        if (!this.state.dragging) {
+        if (this.state.disabled || !this.state.dragging) {
             return;
         }
 
@@ -98,6 +112,7 @@ Slider.propTypes = {
     min: React.PropTypes.number.isRequired,
     max: React.PropTypes.number.isRequired,
     value: React.PropTypes.number.isRequired,
+    disabled: React.PropTypes.boolean,
     onValueChanged: React.PropTypes.func
 };
 

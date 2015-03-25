@@ -2,13 +2,12 @@
 
 class Types {
     /* A numeric value */
-    static number(label, min, max, steps, icon = 'icon-settings') {
+    static number(label, min, max, icon = 'icon-settings') {
         return {
             type: 'number',
             label: label,
             min: min,
             max: max,
-            steps: steps,
             icon: icon
         };
     }
