@@ -156,6 +156,13 @@ p, .font-body-1 {
   letter-spacing: 0;
   color: rgba(0, 0, 0, 0.54); }
 
+.font-setting-value-label {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: rgba(0, 0, 0, 0.54); }
+
 .font-caption-medium {
   font-family: "Roboto", Arial, sans-serif;
   font-size: 12px;
@@ -227,7 +234,7 @@ p, .font-body-1 {
   position: fixed;
   width: 100vw;
   overflow: hidden;
-  z-index: 1000000;
+  z-index: 10000;
   box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12); }
   .app-bar label {
     color: #ffffff; }
@@ -432,7 +439,7 @@ p, .font-body-1 {
   position: fixed;
   height: 100vh;
   width: 90vw;
-  z-index: 1000001;
+  z-index: 10001;
   overflow-y: auto;
   box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
   /* Prevent animation on initial load */ }
@@ -721,7 +728,8 @@ p, .font-body-1 {
       margin-right: auto; }
 
 .modal {
-  z-index: 1000002; }
+  position: fixed;
+  z-index: 10002; }
   .modal .modal-background {
     position: fixed;
     display: inline-block;
@@ -860,6 +868,20 @@ p, .font-body-1 {
     right: 16px;
     top: 0;
     z-index: 2; }
+
+.number-value-editor {
+  margin-top: 16px; }
+  .number-value-editor label {
+    margin-left: 16px; }
+  .number-value-editor .icon-slider {
+    position: relative;
+    display: block; }
+    .number-value-editor .icon-slider .icon {
+      position: absolute;
+      top: 6px;
+      left: 16px; }
+    .number-value-editor .icon-slider .slider {
+      margin-left: 40px; }
 
 .slider {
   position: relative;
