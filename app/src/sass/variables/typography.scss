@@ -121,6 +121,14 @@ p, .font-body-1 {
   color: $text-light;
 }
 
+.font-setting-value-label {
+  font-family: $font-family;
+  font-size: 14px;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0;
+  color: $text-light;
+}
+
 .font-caption-medium {
   font-family: $font-family;
   font-size: 12px;

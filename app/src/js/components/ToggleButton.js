@@ -4,15 +4,20 @@ let React = require('react'),
 
 // Represents a button that can be toggled on, off, disabled with icons for each of the possible states
 class ToggleButton extends React.Component {
-    constructor(props) {
+    constructor(props, ...icons) {
         super.constructor(props);
         this.state = { toggled: !!this.props.toggled };
+        this._toggledIcon = icons[0];
+        this._notToggledIcon = icons[1];
+        this._toggledDisabledIcon = icons[2];
+        this._notToggledDisabledIcon = icons[3];
+
     }
 
     render() {
         let icon = !!this.props.disabled ?
-            !!this.state.toggled ? this.props.toggledDisabledIcon : this.props.notToggledDisabledIcon :
-            !!this.state.toggled ? this.props.toggledIcon : this.props.notToggledIcon ;
+            !!this.state.toggled ? this._toggledDisabledIcon : this._notToggledDisabledIcon :
+            !!this.state.toggled ? this._toggledIcon : this._notToggledIcon ;
 
         return (
             <Button className="toggle-button" onClick={this._toggle.bind(this)} disabled={this.props.disabled} noOverlay>

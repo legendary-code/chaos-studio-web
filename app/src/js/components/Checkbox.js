@@ -3,18 +3,14 @@ let React = require('react'),
 
 class Checkbox extends ToggleButton {
     constructor(props) {
-        props.toggled = !!props.checked;
-        props.toggledIcon = "icon-checked";
-        props.notToggledIcon = "icon-unchecked";
-        props.toggledDisabledIcon = "icon-checked-disabled";
-        props.notToggledDisabledIcon = "icon-unchecked-disabled";
-
-        super.constructor(props);
+        super.constructor(
+            props,
+            "icon-checked",
+            "icon-unchecked",
+            "icon-checked-disabled",
+            "icon-unchecked-disabled"
+        );
     }
 }
-
-Checkbox.propTypes = {
-    "checked": React.PropTypes.boolean
-};
 
 module.exports = Checkbox;

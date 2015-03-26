@@ -33,8 +33,12 @@ gulp.task('three', function() {
 });
 
 gulp.task('jquery', function() {
-    return gulp.src('./node_modules/jquery/dist/jquery.js')
-        .pipe(gulp.dest('./app/link/js'));
+    return es.merge(
+        gulp.src('./app/src/libs/jquery-mobile-1.4.5-vmouse-only/jquery.mobile.custom.js')
+            .pipe(gulp.dest('./app/link/js')),
+        gulp.src('./node_modules/jquery/dist/jquery.js')
+            .pipe(gulp.dest('./app/link/js'))
+    );
 });
 
 gulp.task('react-router', function() {
@@ -50,7 +54,7 @@ gulp.task('html', function() {
 
 gulp.task('js', function() {
     return es.merge(
-        gulp.src('./app/src/js/**/*.jsx')
+        gulp.src('./app/libs/**/*.js')
             .pipe(gulp.dest('./app/link/js')),
         gulp.src('./app/src/js/**/*.js')
             .pipe(gulp.dest('./app/link/js'))

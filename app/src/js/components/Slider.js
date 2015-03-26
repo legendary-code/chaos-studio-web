@@ -12,13 +12,15 @@ class Slider extends React.Component {
     }
 
     componentDidMount() {
-        document.addEventListener("mousemove", this._drag.bind(this));
-        document.addEventListener("mouseup", this._dragEnd.bind(this));
+        $(React.findDOMNode(this.refs.slider)).on("vmousedown", this._dragBegin.bind(this));
+        $(document).on("vmousemove", this._drag.bind(this));
+        $(document).on("vmouseup", this._dragEnd.bind(this));
     }
 
     componentWillUnmount() {
-        document.removeEventListener("mousemove", this._drag.bind(this));
-        document.addEventListener("mouseup", this._dragEnd.bind(this));
+        $(React.findDOMNode(this.refs.slider)).off("vmousedown", this._dragBegin.bind(this));
+        $(document).off("vmousemove", this._drag.bind(this));
+        $(document).off("vmouseup", this._dragEnd.bind(this));
     }
 
     _percent() {
@@ -42,7 +44,7 @@ class Slider extends React.Component {
         });
 
         return (
-            <div className={sliderClass} onMouseDown={this._dragBegin.bind(this)}>
+            <div className={sliderClass} ref="slider" >
                 <div className="slider-track" ref="sliderTrack">
                     <div className="slider-track-filled" ref="sliderTrackFilled" style={trackStyle}>
                     </div>

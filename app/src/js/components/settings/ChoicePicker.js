@@ -19,7 +19,7 @@ class ChoicePicker extends React.Component {
 
             let callback = () => {
                 Actions.CLOSE_TOPMOST_MODAL.invoke();
-                self._onValueChanged.apply(self, type);
+                self._onValueChanged(type);
             };
 
             return (

@@ -4,7 +4,9 @@ let React = require('react'),
     Slider = require('../Slider'),
     Checkbox = require('../Checkbox'),
     Toggle = require('../Toggle'),
-    ComponentToggle = require('./ComponentToggle');
+    ComponentToggle = require('./ComponentToggle'),
+    LyapunovExponent = require('../../chaos/criteria/LyapunovExponent'),
+    ValueEditorsFactory = require('./values/ValueEditorsFactory');
 
 /* Settings dialog view for configuring a single component
  * Consists of two sections:
@@ -15,17 +17,32 @@ let React = require('react'),
  */
 class SingleComponentSettings extends React.Component {
     render() {
+        let editors = ValueEditorsFactory.create(this.props.binding.value);
+
+        let advancedSettings = [];
+
+        if (editors.length > 0) {
+            advancedSettings.push(<Header label="Advanced" />);
+            advancedSettings = advancedSettings.concat(editors);
+        }
+
         return (
             <div>
                 <Header label="Basics" />
-                <Choice label={this.props.label} value={this.props.value} types={this.props.types} />
-                <Header label="Advanced" />
-                <Slider min={0.0} max={10.0} value={2.0} />
-                <Checkbox checked/>
-                <Toggle toggled/>
-                <ComponentToggle label="Lyapunov Exponent" />
+                <Choice
+                    label={this.props.label}
+                    value={this.props.binding.value}
+                    types={this.props.types}
+                    onValueChanged={this._valueChanged.bind(this)}
+                />
+                {advancedSettings}
             </div>
         );
+    }
+
+    _valueChanged(TComponent) {
+        this.props.binding.value = new TComponent();
+        this.forceUpdate();
     }
 }
 

@@ -20,12 +20,15 @@ class Choice extends React.Component {
             <ChoicePicker
                 selected={this.props.value.type}
                 types={this.props.types}
-                onValueChanged={this._typeChanged}
+                onValueChanged={this._typeChanged.bind(this)}
             />
         )
     }
 
-    _typeChanged() {
+    _typeChanged(TComponent) {
+        if (this.props.onValueChanged) {
+            this.props.onValueChanged(TComponent)
+        }
     }
 }
 

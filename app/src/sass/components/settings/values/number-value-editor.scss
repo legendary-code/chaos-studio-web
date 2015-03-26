@@ -1,0 +1,21 @@
+.number-value-editor {
+  margin-top: 16px;
+
+  label {
+    margin-left: 16px;
+  }
+
+  .icon-slider {
+    position: relative;
+    display: block;
+
+    .icon {
+      position: absolute;
+      top: 6px;
+      left: 16px;
+    }
+    .slider {
+      margin-left: 40px;
+    }
+  }
+}

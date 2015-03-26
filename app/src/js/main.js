@@ -1,6 +1,8 @@
 window.__DEV__ = true;
 
 require('babel/polyfill');
+window.jQuery = require('jquery');
+require('./jquery.mobile.custom');
 
 let React = require('react'),
     RouterStore = require('./stores/RouterStore'),

@@ -3,7 +3,9 @@ let React = require('react'),
     Actions = require('../actions/Actions'),
     QuadraticMap = require('../chaos/maps/QuadraticMap'),
     SingleComponentSettings = require('../components/settings/SingleComponentSettings'),
-    FloatingActionButton = require('../components/FloatingActionButton');
+    FloatingActionButton = require('../components/FloatingActionButton'),
+    LyapunovExponent = require('../chaos/criteria/LyapunovExponent'),
+    ValueBinding = require('../components/settings/values/ValueBinding');
 
 class Links extends React.Component {
     render() {
@@ -15,9 +17,11 @@ class Links extends React.Component {
     }
 
     _click() {
+        let binding = new ValueBinding({component: new LyapunovExponent()}, "component");
+
         Actions.SHOW_MODAL.invoke(
             <SettingsDialog>
-                <SingleComponentSettings label="Map" value={new QuadraticMap()} types={[QuadraticMap]}/>
+                <SingleComponentSettings label="Map" binding={binding} types={[QuadraticMap, LyapunovExponent]}/>
             </SettingsDialog>
         );
     }

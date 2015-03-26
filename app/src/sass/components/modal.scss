@@ -1,6 +1,7 @@
 @import "../variables/layers";
 
 .modal {
+  position: fixed;
   z-index: $modal;
   .modal-background {
     position: fixed;
