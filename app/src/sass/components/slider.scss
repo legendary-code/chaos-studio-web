@@ -59,7 +59,7 @@
   }
 
   &.enabled {
-    &:hover {
+    &:focus {
       .slider-track {
         background-color: $grey-500;
       }
