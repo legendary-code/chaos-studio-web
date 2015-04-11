@@ -883,6 +883,18 @@ p, .font-body-1 {
     .number-value-editor .icon-slider .slider {
       margin-left: 40px; }
 
+.boolean-value-editor {
+  display: block;
+  height: 32px; }
+  .boolean-value-editor label {
+    display: inline-block;
+    margin-left: 16px;
+    line-height: 32px; }
+  .boolean-value-editor .button {
+    display: inline-block;
+    margin-left: 16px;
+    margin-top: 16px; }
+
 .slider {
   position: relative;
   display: block;
