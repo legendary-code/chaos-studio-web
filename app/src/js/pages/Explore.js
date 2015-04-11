@@ -115,13 +115,18 @@ class Explore extends React.Component {
         $(React.findDOMNode(this.refs.introPaper)).addClass("fade-out");
         $(React.findDOMNode(this.refs.searchButton)).addClass("translate");
         $(React.findDOMNode(this.refs.bottomPaper)).addClass("translate");
+
+        let self = this;
+
+        setTimeout(() => {
+            self.setState({showIntro: false});
+        }, 500);
     }
 
     _startSearch() {
         let self = this;
 
         setTimeout(() => {
-            self.setState({showIntro: false});
             self._search();
         }, 500);
     }
