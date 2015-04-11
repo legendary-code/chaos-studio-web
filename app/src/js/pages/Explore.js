@@ -157,7 +157,11 @@ class Explore extends React.Component {
                 return;
             }
 
-            this._hideIntro();
+            if (this.state.showIntro) {
+                console.log("!");
+                this._hideIntro();
+            }
+
             this.refs.viewport.showSearching();
 
             let config = SearchConfigurationStore.state.configuration;
