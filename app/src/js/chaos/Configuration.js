@@ -1,9 +1,4 @@
 /* Configuration required for finding attractors */
-var QuadraticMap = require('./maps/QuadraticMap'),
-    LyapunovExponent = require('./criteria/LyapunovExponent'),
-    DefaultRng = require('./rngs/DefaultRng');
-
-
 class Configuration {
     constructor(map, criteria, rng, renderer) {
         this._settlingIterations = 1000;

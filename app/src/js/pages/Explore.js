@@ -5,8 +5,12 @@ let $ = require('jquery'),
     FloatingActionButton = require('../components/FloatingActionButton'),
     IconButton = require('../components/IconButton'),
     Viewport = require('../components/Viewport'),
+    Actions = require('../actions/Actions'),
     AttractorFinder = require('../chaos/AttractorFinder'),
-    SearchConfigurationStore = require('../stores/SearchConfigurationStore');
+    AttractorGenerator = require('../chaos/AttractorGenerator'),
+    AttractorSnapshot = require('../chaos/AttractorSnapshot'),
+    SearchConfigurationStore = require('../stores/SearchConfigurationStore'),
+    RouterStore = require('../stores/RouterStore');
 
 class Explore extends React.Component {
 
@@ -80,8 +84,11 @@ class Explore extends React.Component {
     }
 
     _search() {
+        Actions.TRANSITION_TO.invoke("explore");
+
         if (this.state.showIntro) {
             this._hideIntro();
+            this._startSearch();
             return;
         }
 
@@ -95,8 +102,9 @@ class Explore extends React.Component {
             config,
             () => {},
             (data) => {
+                console.log("http://legendary.fail/#/explore/" + data.snapshot.encode());
                 self.refs.viewport.hideSearching();
-                self.refs.viewport.setRenderData(data);
+                self.refs.viewport.setRenderData(data.values);
             }
         );
 
@@ -104,16 +112,65 @@ class Explore extends React.Component {
     }
 
     _hideIntro() {
-        let self = this;
-
         $(React.findDOMNode(this.refs.introPaper)).addClass("fade-out");
         $(React.findDOMNode(this.refs.searchButton)).addClass("translate");
         $(React.findDOMNode(this.refs.bottomPaper)).addClass("translate");
+    }
+
+    _startSearch() {
+        let self = this;
 
         setTimeout(() => {
             self.setState({showIntro: false});
             self._search();
         }, 500);
+    }
+
+    componentDidUpdate() {
+        requestAnimationFrame(this._checkRouteParams.bind(this));
+    }
+
+    componentDidMount() {
+        requestAnimationFrame(this._checkRouteParams.bind(this));
+
+    }
+
+    _checkRouteParams() {
+        let self = this;
+        let routeParams = RouterStore.getCurrentParams();
+
+        if (routeParams.hasOwnProperty("snapshotId")) {
+            let snapshot = AttractorSnapshot.decode(routeParams.snapshotId);
+
+            if (!snapshot.map) {
+                console.log("Could not find map");
+                return;
+            }
+
+            if (!snapshot.rng) {
+                console.log("Could not find rng");
+                return;
+            }
+
+            this._hideIntro();
+            this.refs.viewport.showSearching();
+
+            let config = SearchConfigurationStore.state.configuration;
+            let viewportSize = this.refs.viewport.getViewportSize();
+            config.totalIterations = viewportSize.width * viewportSize.height;
+
+            let generator = new AttractorGenerator(
+                snapshot,
+                config,
+                () => {},
+                (data) => {
+                    self.refs.viewport.hideSearching();
+                    self.refs.viewport.setRenderData(data.values);
+                }
+            );
+
+            generator.generate();
+        }
     }
 }
 

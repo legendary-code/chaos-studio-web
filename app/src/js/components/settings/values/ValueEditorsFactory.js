@@ -37,7 +37,12 @@ class ValueEditorsFactory {
                     break;
 
                 case 'boolean':
-                    editors.push(new BooleanValueEditor(binding, param));
+                    editors.push(
+                        <BooleanValueEditor
+                            binding={binding}
+                            label={param.label}
+                        />
+                    );
                     break;
             }
         }

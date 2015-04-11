@@ -5,11 +5,11 @@ class ValueBinding {
         this._prop = prop;
     }
 
-    get value() {
+    get val() {
         return this._target[this._prop];
     }
 
-    set value(v) {
+    set val(v) {
         this._target[this._prop] = v;
     }
 }

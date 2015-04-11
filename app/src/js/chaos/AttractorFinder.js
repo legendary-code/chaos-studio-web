@@ -2,7 +2,9 @@ var Context = require('./Context'),
     Bounds = require('./Bounds'),
     Point = require('./Point'),
     Time = require('./Time'),
-    Threading = require('../threading/Threading');
+    Threading = require('../threading/Threading'),
+    AttractorSnapshot = require('./AttractorSnapshot'),
+    Configuration = require('./Configuration');
 
 class AttractorFinder {
     constructor(configuration, onStatus, onComplete) {
@@ -127,7 +129,12 @@ class AttractorFinder {
                 values[i] = bounds.normalize(values[i]);
             }
 
-            this._onComplete(values);
+            let snapshot = AttractorSnapshot.create(this._configuration);
+
+            this._onComplete({
+                snapshot: snapshot,
+                values: values
+            });
             break;
         }
     }

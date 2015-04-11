@@ -21,6 +21,10 @@ class RouterStore extends Store {
         return this._router.getCurrentRoutes();
     }
 
+    getCurrentParams() {
+        return this._router.getCurrentParams();
+    }
+
     invoke(action) {
         switch (action.type) {
             case Actions.TRANSITION_TO.id:

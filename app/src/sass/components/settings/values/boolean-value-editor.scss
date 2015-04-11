@@ -1,0 +1,16 @@
+.boolean-value-editor {
+  display: block;
+  height: 32px;
+
+  label {
+    display: inline-block;
+    margin-left: 16px;
+    line-height: 32px;
+  }
+
+  .button {
+    display: inline-block;
+    margin-left: 16px;
+    margin-top: 16px
+  }
+}

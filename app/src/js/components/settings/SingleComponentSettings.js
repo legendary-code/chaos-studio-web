@@ -17,7 +17,7 @@ let React = require('react'),
  */
 class SingleComponentSettings extends React.Component {
     render() {
-        let editors = ValueEditorsFactory.create(this.props.binding.value);
+        let editors = ValueEditorsFactory.create(this.props.binding.val);
 
         let advancedSettings = [];
 
@@ -31,7 +31,7 @@ class SingleComponentSettings extends React.Component {
                 <Header label="Basics" />
                 <Choice
                     label={this.props.label}
-                    value={this.props.binding.value}
+                    value={this.props.binding.val}
                     types={this.props.types}
                     onValueChanged={this._valueChanged.bind(this)}
                 />
@@ -41,7 +41,7 @@ class SingleComponentSettings extends React.Component {
     }
 
     _valueChanged(TComponent) {
-        this.props.binding.value = new TComponent();
+        this.props.binding.val = new TComponent();
         this.forceUpdate();
     }
 }

@@ -5,7 +5,8 @@ module.exports = {
         require('./maps/QuadraticMap')
     ],
     rngs: [
-        require('./rngs/DefaultRng')
+        require('./rngs/DefaultRng'),
+        require('./rngs/LinearCongruentialGenerator')
     ],
     criteria: [
         require('./criteria/LyapunovExponent')

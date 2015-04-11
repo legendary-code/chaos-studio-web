@@ -12,7 +12,7 @@ class NumberValueEditor extends React.Component {
                     <Slider
                         min={this.props.min}
                         max={this.props.max}
-                        value={this.props.binding.value}
+                        value={this.props.binding.val}
                         onValueChanged={this._valueChanged.bind(this)}
                         disabled={this.props.disabled}
                     />
@@ -22,7 +22,7 @@ class NumberValueEditor extends React.Component {
     }
 
     _valueChanged(value) {
-        this.props.binding.value = value;
+        this.props.binding.val = value;
     }
 }
 

@@ -12,6 +12,7 @@ let React = require('react'),
 let Routes = (
     <Route handler={App}>
         <Route name="home" handler={Home} />
+        <Route path="/explore/:snapshotId" handler={Explore} />
         <Route name="explore" handler={Explore} />
         <Route name="settings" handler={Settings} />
         <Route name="developers" handler={Developers} />

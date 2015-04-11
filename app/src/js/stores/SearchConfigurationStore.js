@@ -3,7 +3,7 @@ var Store = require('./Store'),
     Configuration = require('../chaos/Configuration'),
     QuadraticMap = require('../chaos/maps/QuadraticMap'),
     LyapunovExponent = require('../chaos/criteria/LyapunovExponent'),
-    DefaultRng = require( '../chaos/rngs/DefaultRng'),
+    LinearCongruentialGenerator = require( '../chaos/rngs/LinearCongruentialGenerator'),
     WebGLRenderer = require('../chaos/renderers/WebGLRenderer');
 
 class SearchConfigurationStore extends Store {
@@ -13,7 +13,7 @@ class SearchConfigurationStore extends Store {
                 new Configuration(
                     new QuadraticMap(),
                     [ new LyapunovExponent() ],
-                    new DefaultRng(),
+                    new LinearCongruentialGenerator(),
                     new WebGLRenderer()
                 )
         };
