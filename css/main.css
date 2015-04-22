@@ -376,6 +376,8 @@ p, .font-body-1 {
       -webkit-transition: box-shadow 0.1s linear; }
       .button-spacing .button.raised:active {
         box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16); }
+      .button-spacing .button.raised.zeroclipboard-is-active {
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16); }
     .button-spacing .button .overlay {
       transition: background-color 0.1s linear;
       -o-transition: background-color 0.1s linear;
@@ -390,10 +392,19 @@ p, .font-body-1 {
       z-index: 9999; }
       .button-spacing .button .overlay.flat:focus, .button-spacing .button .overlay.flat:hover {
         background-color: rgba(0, 0, 0, 0.15); }
+      .button-spacing .button .overlay.flat.zeroclipboard-is-hover {
+        background-color: rgba(0, 0, 0, 0.15); }
       .button-spacing .button .overlay.flat:active {
+        background-color: rgba(0, 0, 0, 0.3); }
+      .button-spacing .button .overlay.flat.zeroclipboard-is-active {
         background-color: rgba(0, 0, 0, 0.3); }
       .button-spacing .button .overlay.raised:active {
         background-color: rgba(0, 0, 0, 0.15); }
+      .button-spacing .button .overlay.raised.zeroclipboard-is-active {
+        background-color: rgba(0, 0, 0, 0.15); }
+
+.zeroclipboard-is-hover {
+  cursor: pointer; }
 
 .icon-button {
   height: 48px; }
@@ -1170,3 +1181,6 @@ p, .font-body-1 {
 @media only screen and (min-width: 992px), only screen and (min-width: 768px) {
   .viewport {
     margin-top: 64px; } }
+
+.copied .button {
+  background-color: #3f51b5; }
