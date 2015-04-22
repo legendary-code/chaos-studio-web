@@ -7,16 +7,16 @@ class Ripple {
 
     constructor(target) {
         this._target = $(React.findDOMNode(target));
-        this._target.on("mousedown", this._doRipple.bind(this));
-        this._target.on("touchstart", this._doRipple.bind(this));
+        this._target.on("mousedown", this.doRipple.bind(this));
+        this._target.on("touchstart", this.doRipple.bind(this));
     }
 
     destroy() {
-        this._target.off("mousedown", this._doRipple.bind(this));
-        this._target.off("touchstart", this._doRipple.bind(this));
+        this._target.off("mousedown", this.doRipple.bind(this));
+        this._target.off("touchstart", this.doRipple.bind(this));
     }
 
-    _doRipple(e) {
+    doRipple(e) {
         let parent = this._target;
         let ripple = $("<span class='ripple'></span>");
         let diam = Math.max(parent.outerWidth(), parent.outerHeight());

@@ -10,7 +10,8 @@ let $ = require('jquery'),
     AttractorGenerator = require('../chaos/AttractorGenerator'),
     AttractorSnapshot = require('../chaos/AttractorSnapshot'),
     SearchConfigurationStore = require('../stores/SearchConfigurationStore'),
-    RouterStore = require('../stores/RouterStore');
+    RouterStore = require('../stores/RouterStore'),
+    ZeroClipboard = require('zeroclipboard');
 
 class Explore extends React.Component {
 
@@ -19,7 +20,10 @@ class Explore extends React.Component {
 
         this.state = {
             showIntro: true,
-            showTray: false
+            showTray: false,
+            clipboardSupported: false,
+            linkCopied: false,
+            lastSearchLink: ""
         };
     }
 
@@ -39,6 +43,12 @@ class Explore extends React.Component {
             "settings-buttons-tray": true,
             "open": this.state.showTray,
             "closed": !this.state.showTray
+        });
+
+        let clipboardButtonClass = cx({
+            "mini-button": true,
+            "hidden": !this.state.clipboardSupported,
+            "copied": this.state.linkCopied
         });
 
         return (
@@ -66,7 +76,12 @@ class Explore extends React.Component {
                         onClick={this._toggleTray.bind(this)}
                     />
                     <FloatingActionButton className="mini-button" icon="icon-screenshot" mini/>
-                    <FloatingActionButton className="mini-button" icon="icon-link" mini/>
+                    <FloatingActionButton
+                        ref="clipboardButton"
+                        className={clipboardButtonClass}
+                        test="foo"
+                        icon="icon-link" mini
+                    />
                 </Paper>
 
                 <FloatingActionButton
@@ -102,7 +117,9 @@ class Explore extends React.Component {
             config,
             () => {},
             (data) => {
-                console.log("http://legendary.fail/#/explore/" + data.snapshot.encode());
+                let link = "http://legendary.fail/#/explore/" + data.snapshot.encode();
+                console.log(link);
+                this.setState({lastSearchLink: link, linkCopied: false});
                 self.refs.viewport.hideSearching();
                 self.refs.viewport.setRenderData(data.values);
             }
@@ -132,12 +149,29 @@ class Explore extends React.Component {
     }
 
     componentDidUpdate() {
+        // workaround until React supports data-* attributes
+        React.findDOMNode(this.refs.clipboardButton).setAttribute("data-clipboard-text", this.state.lastSearchLink);
+
         requestAnimationFrame(this._checkRouteParams.bind(this));
     }
 
     componentDidMount() {
-        requestAnimationFrame(this._checkRouteParams.bind(this));
+        this._zc = new ZeroClipboard(React.findDOMNode(this.refs.clipboardButton));
+        this._zc.on("ready", this._zeroClipboardReady.bind(this));
 
+        requestAnimationFrame(this._checkRouteParams.bind(this));
+    }
+
+    _zeroClipboardReady() {
+        this._zc.on("aftercopy", this._clipboardButtonClicked.bind(this));
+        this.setState({clipboardSupported: true});
+    }
+
+    _clipboardButtonClicked(event) {
+        //this.refs.clipboardButton.doRipple(event);
+        if (this.state.lastSearchLink != null) {
+            this.setState({linkCopied: true});
+        }
     }
 
     _checkRouteParams() {

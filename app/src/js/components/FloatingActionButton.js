@@ -14,10 +14,14 @@ class FloatingActionButton extends React.Component {
         className = join(className, this.props.className);
 
         return (
-            <Button className={className} onClick={this.props.onClick} raised>
+            <Button ref="button" className={className} onClick={this.props.onClick} raised>
                 <Icon icon={this.props.icon} />
             </Button>
         );
+    }
+
+    doRipple(clickEvent) {
+        this.refs.button.doRipple(clickEvent);
     }
 }
 

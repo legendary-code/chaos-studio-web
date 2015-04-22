@@ -41,6 +41,11 @@ gulp.task('jquery', function() {
     );
 });
 
+gulp.task('zeroclipboard', function() {
+    return gulp.src('./node_modules/zeroclipboard/dist/ZeroClipboard.swf')
+               .pipe(gulp.dest('./app/dist/js'));
+});
+
 gulp.task('react-router', function() {
     return bundleLibrary('./node_modules/react-router/modules/index.js', 'react-router.js', './app/link/js');
 });
@@ -108,7 +113,7 @@ gulp.task('link-sass', ['stage'], function() {
 
 /* BUILD PHASES */
 
-gulp.task('libs', ['three', 'jquery']);
+gulp.task('libs', ['three', 'jquery', 'zeroclipboard']);
 
 gulp.task('stage', ['libs', 'html', 'sass', 'js', 'svg', 'font', 'favicon']);
 
