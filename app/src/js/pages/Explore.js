@@ -10,8 +10,7 @@ let $ = require('jquery'),
     AttractorGenerator = require('../chaos/AttractorGenerator'),
     AttractorSnapshot = require('../chaos/AttractorSnapshot'),
     SearchConfigurationStore = require('../stores/SearchConfigurationStore'),
-    RouterStore = require('../stores/RouterStore'),
-    ZeroClipboard = require('zeroclipboard');
+    RouterStore = require('../stores/RouterStore');
 
 class Explore extends React.Component {
 
@@ -21,9 +20,7 @@ class Explore extends React.Component {
         this.state = {
             showIntro: true,
             showTray: false,
-            clipboardSupported: false,
-            linkCopied: false,
-            lastSearchLink: ""
+            currentSnapshotId: null
         };
     }
 
@@ -43,12 +40,6 @@ class Explore extends React.Component {
             "settings-buttons-tray": true,
             "open": this.state.showTray,
             "closed": !this.state.showTray
-        });
-
-        let clipboardButtonClass = cx({
-            "mini-button": true,
-            "hidden": !this.state.clipboardSupported,
-            "copied": this.state.linkCopied
         });
 
         return (
@@ -76,12 +67,6 @@ class Explore extends React.Component {
                         onClick={this._toggleTray.bind(this)}
                     />
                     <FloatingActionButton className="mini-button" icon="icon-screenshot" mini/>
-                    <FloatingActionButton
-                        ref="clipboardButton"
-                        className={clipboardButtonClass}
-                        test="foo"
-                        icon="icon-link" mini
-                    />
                 </Paper>
 
                 <FloatingActionButton
@@ -108,7 +93,6 @@ class Explore extends React.Component {
         }
 
         this.refs.viewport.showSearching();
-        let self = this;
         let config = SearchConfigurationStore.state.configuration;
         let viewportSize = this.refs.viewport.getViewportSize();
         config.totalIterations = viewportSize.width * viewportSize.height;
@@ -116,16 +100,19 @@ class Explore extends React.Component {
         let finder = new AttractorFinder(
             config,
             () => {},
-            (data) => {
-                let link = "http://legendary.fail/#/explore/" + data.snapshot.encode();
-                console.log(link);
-                this.setState({lastSearchLink: link, linkCopied: false});
-                self.refs.viewport.hideSearching();
-                self.refs.viewport.setRenderData(data.values);
-            }
+            this._attractorGenerated.bind(this)
         );
 
         finder.find();
+    }
+
+    _attractorGenerated(data) {
+        let snapshotId = data.snapshot.encode();
+        let link = "#/explore/" + snapshotId;
+        this.refs.viewport.hideSearching();
+        this.refs.viewport.setRenderData(data.values);
+        window.history.pushState(null, null, link);
+        this.setState({currentSnapshotId: snapshotId});
     }
 
     _hideIntro() {
@@ -149,37 +136,25 @@ class Explore extends React.Component {
     }
 
     componentDidUpdate() {
-        // workaround until React supports data-* attributes
-        React.findDOMNode(this.refs.clipboardButton).setAttribute("data-clipboard-text", this.state.lastSearchLink);
-
         requestAnimationFrame(this._checkRouteParams.bind(this));
     }
 
     componentDidMount() {
-        this._zc = new ZeroClipboard(React.findDOMNode(this.refs.clipboardButton));
-        this._zc.on("ready", this._zeroClipboardReady.bind(this));
-
         requestAnimationFrame(this._checkRouteParams.bind(this));
     }
 
-    _zeroClipboardReady() {
-        this._zc.on("aftercopy", this._clipboardButtonClicked.bind(this));
-        this.setState({clipboardSupported: true});
-    }
-
-    _clipboardButtonClicked(event) {
-        //this.refs.clipboardButton.doRipple(event);
-        if (this.state.lastSearchLink != null) {
-            this.setState({linkCopied: true});
-        }
-    }
-
     _checkRouteParams() {
-        let self = this;
         let routeParams = RouterStore.getCurrentParams();
 
         if (routeParams.hasOwnProperty("snapshotId")) {
-            let snapshot = AttractorSnapshot.decode(routeParams.snapshotId);
+            let snapshotId = routeParams.snapshotId;
+
+            // are we still looking at the same attractor?
+            if (snapshotId == this.state.currentSnapshotId) {
+                return;
+            }
+
+            let snapshot = AttractorSnapshot.decode(snapshotId);
 
             if (!snapshot.map) {
                 console.log("Could not find map");
@@ -206,10 +181,7 @@ class Explore extends React.Component {
                 snapshot,
                 config,
                 () => {},
-                (data) => {
-                    self.refs.viewport.hideSearching();
-                    self.refs.viewport.setRenderData(data.values);
-                }
+                this._attractorGenerated.bind(this)
             );
 
             generator.generate();
