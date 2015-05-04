@@ -66,7 +66,19 @@ class Explore extends React.Component {
                         mini
                         onClick={this._toggleTray.bind(this)}
                     />
-                    <FloatingActionButton className="mini-button" icon="icon-screenshot" mini/>
+                    <FloatingActionButton
+                        className="mini-button"
+                        icon="icon-screenshot"
+                        onClick={this._saveImage.bind(this)}
+                        mini />
+
+                    <a
+                        id="imageDataLink"
+                        target="_blank"
+                        href=""
+                        download="attractor.png"
+                        style={{display: "none"}}>
+                    </a>
                 </Paper>
 
                 <FloatingActionButton
@@ -133,6 +145,17 @@ class Explore extends React.Component {
         setTimeout(() => {
             self._search();
         }, 500);
+    }
+
+    _saveImage() {
+        let canvas = this.refs.viewport.getCanvas();
+
+        if (!canvas) {
+            return;
+        }
+
+        let imageData = canvas.toDataURL("image/png").replace("image/png", "application/octet-stream");
+        $("#imageDataLink").prop("href", imageData)[0].click();
     }
 
     componentDidUpdate() {

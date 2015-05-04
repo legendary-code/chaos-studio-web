@@ -99,7 +99,7 @@ class Viewport extends React.Component {
 
         viewport.appendChild(surface);
 
-        this.setState({ renderer: renderer });
+        this.setState({ renderer: renderer, surface: surface });
         window.addEventListener('resize', this._handleResize.bind(this));
         this._startAnimation();
     }
@@ -155,6 +155,10 @@ class Viewport extends React.Component {
 
     hideSearching() {
         this.setState({searching: false});
+    }
+
+    getCanvas() {
+        return this.state.surface;
     }
 }
 

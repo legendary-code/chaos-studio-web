@@ -6,7 +6,7 @@ class Renderer extends Component {
         return true;
     }
 
-    /* Returns a DOM element that acts as the rendering surface */
+    /* Returns a DOM element (canvas) that acts as the rendering surface */
     create(width, height) { }
 
     /* Destroys rendering surface and any additional state */

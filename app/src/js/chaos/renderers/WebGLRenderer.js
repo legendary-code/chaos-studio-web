@@ -16,7 +16,7 @@ class WebGLRenderer extends Renderer {
     create(width, height) {
         this._camera = new Three.OrthographicCamera(-1.5, 1.5, -1.5, 1.5, 0.0001, 1000);
         this._scene = new Three.Scene();
-        this._renderer = new Three.WebGLRenderer({alpha: true});
+        this._renderer = new Three.WebGLRenderer({alpha: true, preserveDrawingBuffer: true });
 
         this._camera.position.z = 2;
         this._renderer.setSize(width, height);
