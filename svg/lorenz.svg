@@ -28,7 +28,7 @@
 
 			@keyframes dash {
 				to {
-					stroke-dashoffset: 230;
+					stroke-dashoffset: 4600;
 				}
 			}		
 		]]>
