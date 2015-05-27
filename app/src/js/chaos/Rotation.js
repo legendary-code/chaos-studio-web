@@ -1,5 +1,6 @@
 let _ = require('underscore'),
     Time = require('./Time');
+
 /* Implements 2-axis inertial rotation */
 class Rotation {
     constructor() {

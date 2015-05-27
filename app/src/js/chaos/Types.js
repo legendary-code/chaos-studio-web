@@ -1,5 +1,6 @@
 /* Parameter types for Components */
 
+/* Used to define component attributes that can be rendered in a settings dialog */
 class Types {
     /* A numeric value */
     static number(label, min, max, icon) {

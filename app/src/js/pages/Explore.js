@@ -52,11 +52,41 @@ class Explore extends React.Component {
                 <Viewport ref="viewport" />
 
                 <div className={trayClassName} >
-                    <FloatingActionButton className="mini-button" icon="icon-colorizer" mini/>
-                    <FloatingActionButton className="mini-button" icon="icon-renderer" mini/>
-                    <FloatingActionButton className="mini-button" icon="icon-rng" mini/>
-                    <FloatingActionButton className="mini-button" icon="icon-search-criteria" mini/>
-                    <FloatingActionButton className="mini-button" icon="icon-map" mini/>
+                    <FloatingActionButton
+                        className="mini-button"
+                        icon="icon-renderer"
+                        mini
+                    />
+
+                    <FloatingActionButton
+                        className="mini-button"
+                        icon="icon-colorizer"
+                        mini
+                    />
+
+                    <FloatingActionButton
+                        className="mini-button"
+                        icon="icon-colorizer"
+                        mini
+                    />
+
+                    <FloatingActionButton
+                        className="mini-button"
+                        icon="icon-rng"
+                        mini
+                    />
+
+                    <FloatingActionButton
+                        className="mini-button"
+                        icon="icon-search-criteria"
+                        mini
+                    />
+
+                    <FloatingActionButton
+                        className="mini-button"
+                        icon="icon-map"
+                        mini
+                    />
                 </div>
 
                 <Paper className="bottom-paper" ref="bottomPaper">

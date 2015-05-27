@@ -20,9 +20,14 @@ class AttractorFinder {
     *_find() {
         let map = this._configuration.map;
         let rng = this._configuration.rng;
+        let projection = this._configuration.projection;
+        let colorizer = this._configuration.colorizer;
         let dimensions = this._configuration.map.dimensions;
         let numCoefficients = this._configuration.map.coefficients;
         let criteria = this._configuration.criteria;
+
+        projection.reset();
+        colorizer.reset();
 
         while (true) {
             yield null;
@@ -120,13 +125,16 @@ class AttractorFinder {
                 values.push(value);
             }
 
-            this._onStatus("Normalizing points");
+            this._onStatus("Normalizing, colorizing and projecting points");
 
             for (let i = 0; i < values.length; i++) {
                 if (i % 10000 == 0) {
                     yield null;
                 }
-                values[i] = bounds.normalize(values[i]);
+
+                let normalized = bounds.normalize(values[i]);
+                let colorized = colorizer.apply(bounds, normalized);
+                values[i] = projection.apply(bounds, colorized);
             }
 
             let snapshot = AttractorSnapshot.create(this._configuration);

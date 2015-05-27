@@ -1,5 +1,6 @@
 let Component = require('./Component');
 
+/* Implemented to define a renderer that is capable of rendering colored vertices to a canvas */
 class Renderer extends Component {
     /* Tests whether this renderer is supported by the browser */
     static checkSupported() {

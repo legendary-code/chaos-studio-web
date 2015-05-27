@@ -1,32 +1,37 @@
-var Store = require('./Store'),
+let Store = require('./Store'),
     Actions = require('../actions/Actions'),
     Configuration = require('../chaos/Configuration'),
     QuadraticMap = require('../chaos/maps/QuadraticMap'),
     LyapunovExponent = require('../chaos/criteria/LyapunovExponent'),
     LinearCongruentialGenerator = require( '../chaos/rngs/LinearCongruentialGenerator'),
-    WebGLRenderer = require('../chaos/renderers/WebGLRenderer');
+    WebGLRenderer = require('../chaos/renderers/WebGLRenderer'),
+    Perspective = require('../chaos/projections/Perspective'),
+    PencilSketch = require('../chaos/colorizers/PencilSketch');
 
 class SearchConfigurationStore extends Store {
+    // TODO: read from cookies
     getInitialState() {
         return {
-            configuration:
-                new Configuration(
-                    new QuadraticMap(),
-                    [ new LyapunovExponent() ],
-                    new LinearCongruentialGenerator(),
-                    new WebGLRenderer()
-                )
+            configuration: this._createDefaultConfiguration()
         };
     }
 
+    _createDefaultConfiguration() {
+        return new Configuration(
+            new QuadraticMap(),
+            [ new LyapunovExponent() ],
+            new LinearCongruentialGenerator(),
+            new WebGLRenderer(),
+            new Perspective(),
+            new PencilSketch()
+        );
+    }
+
     invoke(action) {
-        switch (action.type) {
-            case Actions.CHANGE_SEARCH_CONFIGURATION:
-                setState({
-                    configuration: action.data
-                });
-                break;
-        }
+    }
+
+    get configuration() {
+        return this.state.configuration;
     }
 }
 
