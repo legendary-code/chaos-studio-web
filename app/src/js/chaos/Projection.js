@@ -1,8 +1,9 @@
 let Component = require('./Component');
 
-/* Implemented to define a transform from colored vertices to colored vertices */
+/* Implemented to define a transform from a normalized vertex to another normalized vertex or set of vertices */
 class Projection extends Component {
-    apply(bounds, vertex) { return vertex; }
+    static get displayName() { return "Default"; }
+    apply(context, vertex) { return vertex; }
     reset() { }
 }
 

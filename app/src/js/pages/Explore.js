@@ -7,7 +7,6 @@ let $ = require('jquery'),
     Viewport = require('../components/Viewport'),
     Actions = require('../actions/Actions'),
     AttractorFinder = require('../chaos/AttractorFinder'),
-    AttractorGenerator = require('../chaos/AttractorGenerator'),
     AttractorSnapshot = require('../chaos/AttractorSnapshot'),
     SearchConfigurationStore = require('../stores/SearchConfigurationStore'),
     RouterStore = require('../stores/RouterStore');
@@ -141,7 +140,7 @@ class Explore extends React.Component {
 
         let finder = new AttractorFinder(
             config,
-            () => {},
+            (e) => { console.log(e); },
             this._attractorGenerated.bind(this)
         );
 
@@ -230,14 +229,14 @@ class Explore extends React.Component {
             let viewportSize = this.refs.viewport.getViewportSize();
             config.totalIterations = viewportSize.width * viewportSize.height;
 
-            let generator = new AttractorGenerator(
+            let generator = new AttractorFinder(
                 snapshot,
                 config,
                 () => {},
                 this._attractorGenerated.bind(this)
             );
 
-            generator.generate();
+            generator.find();
         }
     }
 }

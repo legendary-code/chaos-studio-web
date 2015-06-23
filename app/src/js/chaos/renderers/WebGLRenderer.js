@@ -1,5 +1,7 @@
 let Renderer = require('../Renderer'),
-    Three = require('three');
+    Three = require('three'),
+    Default = require('./webgl/RenderFilter'),
+    PencilSketch = require('./webgl/PencilSketchFilter');
 
 class WebGLRenderer extends Renderer {
     static get displayName() { return "WebGL Renderer"; }
@@ -13,10 +15,15 @@ class WebGLRenderer extends Renderer {
         }
     }
 
-    create(width, height) {
+    static getSupportedColorizers() {
+        return [ Default, PencilSketch ];
+    }
+
+    create(width, height, colorizer) {
         this._camera = new Three.OrthographicCamera(-1.5, 1.5, -1.5, 1.5, 0.0001, 1000);
         this._scene = new Three.Scene();
         this._renderer = new Three.WebGLRenderer({alpha: true, preserveDrawingBuffer: true });
+        this._colorizer = new PencilSketch();
 
         this._camera.position.z = 2;
         this._renderer.setSize(width, height);
@@ -30,19 +37,8 @@ class WebGLRenderer extends Renderer {
             this._geometry.dispose();
         }
 
-        this._geometry = new Three.Geometry();
-        this._geometry.vertices = points.map(function(point) {
-            return new Three.Vector3(point[0], point[1], point[2]);
-        });
-
-        var material = new Three.PointCloudMaterial({
-            color: 0x444444,
-            size: 0.005,
-            opacity: 0.1,
-            blendEquation: Three.SubtractEquation,
-            transparent: true
-        });
-
+        this._geometry = this._colorizer.createGeometry(points);
+        let material = this._colorizer.createMaterial();
         this._cloud = new Three.PointCloud(this._geometry, material);
         this._cloud.position.x = 0;
         this._cloud.position.y = 0;

@@ -3,14 +3,14 @@ var Context = require('./Context'),
     Point = require('./Point'),
     Time = require('./Time'),
     Threading = require('../threading/Threading'),
-    AttractorSnapshot = require('./AttractorSnapshot'),
-    Configuration = require('./Configuration');
+    AttractorSnapshot = require('./AttractorSnapshot');
 
 class AttractorFinder {
-    constructor(configuration, onStatus, onComplete) {
+    constructor(configuration, onStatus, onComplete, snapshot) {
         this._configuration = configuration;
         this._onStatus = onStatus;
         this._onComplete = onComplete;
+        this._snapshot = snapshot;
     }
 
     find() {
@@ -18,16 +18,14 @@ class AttractorFinder {
     }
 
     *_find() {
-        let map = this._configuration.map;
-        let rng = this._configuration.rng;
+        let isSnapshot = !!this._snapshot;
+        let map = isSnapshot ? this._snapshot.map() : this._configuration.map;
+        let rng = isSnapshot ? this._snapshot.rng() : this._configuration.rng;
         let projection = this._configuration.projection;
         let colorizer = this._configuration.colorizer;
         let dimensions = this._configuration.map.dimensions;
         let numCoefficients = this._configuration.map.coefficients;
         let criteria = this._configuration.criteria;
-
-        projection.reset();
-        colorizer.reset();
 
         while (true) {
             yield null;
@@ -37,9 +35,11 @@ class AttractorFinder {
             let value = [];
             let values = [];
 
-            rng.reset(Time.now());
+            rng.reset(isSnapshot ? this._snapshot.seed() : Time.now());
 
-            this._onStatus("Picking new coefficients...");
+            if (!isSnapshot) {
+                this._onStatus("Picking new coefficients...");
+            }
 
             for (let i = 0; i < numCoefficients; i++) {
                 coefficients.push(rng.next() * 2 - 1);
@@ -51,12 +51,11 @@ class AttractorFinder {
 
             value = Array.slice(initialValue);
 
-            let context = new Context(this._configuration, map, rng, criteria, initialValue, coefficients);
             let bounds = new Bounds();
             let abort = false;
 
             /* settle */
-            this._onStatus("Settling potential attractor...");
+            this._onStatus(isSnapshot ? "Skipping initial points" : "Settling potential attractor...");
 
             for (let i = 0; i < this._configuration.settlingIterations; i++) {
                 if (i % 10000 == 0) {
@@ -71,70 +70,98 @@ class AttractorFinder {
             }
 
             if (abort) {
+                if (isSnapshot) {
+                    return;
+                }
                 continue;
             }
 
-            /* search */
-            this._onStatus("Applying search criteria...");
+            /* reset our 'initial value' to the settled one */
+            initialValue = Array.slice(value);
 
-            for (let criterion of criteria) {
-                criterion.reset(context, value);
-            }
+            /* compute bounds */
+            this._onStatus("Computing bounds...");
 
-            for (let i = 0; i < this._configuration.searchIterations; i++) {
+            for (let i = 0; i < this._configuration.totalIterations; i++) {
                 if (i % 10000 == 0) {
                     yield null;
                 }
 
                 value = map.apply(value, coefficients);
+                if (!Point.isValid(value)) {
+                    abort = true;
+                    break;
+                }
                 bounds.update(value);
-                values.push(value);
+            }
 
+            /* reset value to initial value */
+            value = Array.slice(initialValue);
+
+            /* set up our context with our computed bounds and other state */
+            let context = new Context(this._configuration, map, rng, criteria, initialValue, coefficients, bounds);
+
+            /* reset search criteria state, if any */
+            for (let criterion of criteria) {
+                criterion.reset(context, initialValue);
+            }
+
+            /* reset projection and colorizer */
+            projection.reset();
+            colorizer.reset();
+
+            /* search + generate points */
+            this._onStatus(isSnapshot ? "Generating remaining points" : "Applying search criteria...");
+
+            let iterations = isSnapshot ?
+                             this._configuration.totalIterations :
+                             Math.max(this._configuration.searchIterations, this._configuration.totalIterations);
+
+            for (let i = 0; i < iterations; i++) {
+
+                if (i == this._configuration.searchIterations) {
+                    this._onStatus("Generating remaining points");
+                }
+
+                if (i % 10000 == 0) {
+                    yield null;
+                }
+
+                value = map.apply(value, coefficients);
                 if (!Point.isValid(value)) {
                     abort = true;
                     break;
                 }
 
-                for (let criterion of criteria) {
-                    let result = criterion.test(context, value);
-                    if (!result) {
-                        abort = true;
-                        break;
+                let normalized = bounds.normalize(value);
+
+                if (!isSnapshot && i < this._configuration.searchIterations) {
+                    for (let criterion of criteria) {
+                        let result = criterion.test(context, value, normalized);
+                        if (!result) {
+                            abort = true;
+                            break;
+                        }
                     }
                 }
 
                 if (abort) {
-                    break;
-                }
-            }
-
-            if (abort) {
-                continue;
-            }
-
-            this._onStatus("Generating remaining points");
-
-            let remainingIterations = this._configuration.totalIterations - this._configuration.searchIterations;
-            for (let i = 0; i < remainingIterations; i++) {
-                if (i % 10000 == 0) {
-                    yield null;
+                    if (isSnapshot) {
+                        return;
+                    }
+                    continue;
                 }
 
-                value = map.apply(value, coefficients);
-                bounds.update(value);
-                values.push(value);
-            }
+                let projected = projection.apply(context, normalized);
 
-            this._onStatus("Normalizing, colorizing and projecting points");
-
-            for (let i = 0; i < values.length; i++) {
-                if (i % 10000 == 0) {
-                    yield null;
+                if (projected.length > 0 && projected[0].constructor !== Array) {
+                    projected = [ projected ];
                 }
 
-                let normalized = bounds.normalize(values[i]);
-                let colorized = colorizer.apply(bounds, normalized);
-                values[i] = projection.apply(bounds, colorized);
+                for (let vertex of projected) {
+                    let colorized = colorizer.apply(context, vertex);
+                    values.push(colorized);
+                }
             }
 
             let snapshot = AttractorSnapshot.create(this._configuration);

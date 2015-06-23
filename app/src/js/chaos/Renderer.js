@@ -20,7 +20,7 @@ class Renderer extends Component {
     render(rotationX, rotationY) { }
 
     /* Resizes rendering surface.  The actual surface doesn't need to be resized,
-       but the scene needs to know what what size the surface is in order to render correctly. */
+       but the scene needs to know what size the surface is in order to render correctly. */
     resize(width, height) { }
 }
 

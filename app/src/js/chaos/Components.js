@@ -14,9 +14,9 @@ module.exports = {
         require('./renderers/WebGLRenderer')
     ],
     colorizers: [
-        require('./colorizers/PencilSketch')
+        require('./Colorizer')
     ],
     projections: [
-        require('./projections/Perspective')
+        require('./Projection')
     ]
 };

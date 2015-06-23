@@ -1,8 +1,12 @@
 let Component = require('./Component');
 
-/* Implemented to define a transform from uncolored vertices to colored vertices */
+/* Implemented to define colorizer, which affects color and alpha of vertices.
+ * This does not affect things like alpha-blending, shading, etc.
+ * since those are renderer specific features.  A renderer may choose
+ * to ignore the color generated altogether */
 class Colorizer extends Component {
-    apply(bounds, vertex) { return vertex; }
+    static get displayName() { return "Default"; }
+    apply(context, vertex) { return vertex; }
     reset() { }
 }
 
