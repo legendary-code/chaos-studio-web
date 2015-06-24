@@ -1,7 +1,6 @@
 /* Configuration and current search params */
 class Context {
-    constructor(configuration, map, rng, criteria, initialValue, coefficients, bounds) {
-        this._configuration = configuration;
+    constructor(map, rng, criteria, initialValue, coefficients, bounds) {
         this._map = map;
         this._rng = rng;
         this._criteria = criteria;
@@ -10,7 +9,6 @@ class Context {
         this._bounds = bounds;
     }
 
-    get configuration() { return this._configuration; }
     get map() { return this._map; }
     get rng() { return this._rng; }
     get criteria() { return this._criteria; }

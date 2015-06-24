@@ -1,4 +1,5 @@
-var Context = require('./Context'),
+var _ = require('underscore'),
+    Context = require('./Context'),
     Bounds = require('./Bounds'),
     Point = require('./Point'),
     Time = require('./Time'),
@@ -19,13 +20,15 @@ class AttractorFinder {
 
     *_find() {
         let isSnapshot = !!this._snapshot;
-        let map = isSnapshot ? this._snapshot.map() : this._configuration.map;
-        let rng = isSnapshot ? this._snapshot.rng() : this._configuration.rng;
+        let map = isSnapshot ? new this._snapshot.map() : this._configuration.map;
+        let rng = isSnapshot ? new this._snapshot.rng() : this._configuration.rng;
         let projection = this._configuration.projection;
         let colorizer = this._configuration.colorizer;
-        let dimensions = this._configuration.map.dimensions;
-        let numCoefficients = this._configuration.map.coefficients;
+        let dimensions = map.dimensions;
+        let numCoefficients = map.coefficients;
         let criteria = this._configuration.criteria;
+        let criteriaWithBounds = _.filter(criteria, c => c.requiresBounds);
+        criteria = _.filter(criteria, c => !c.requiresBounds);
 
         while (true) {
             yield null;
@@ -35,7 +38,8 @@ class AttractorFinder {
             let value = [];
             let values = [];
 
-            rng.reset(isSnapshot ? this._snapshot.seed() : Time.now());
+            rng.reset(isSnapshot ? this._snapshot.seed : Time.now());
+            this._onStatus("Seed: " + rng.seed);
 
             if (!isSnapshot) {
                 this._onStatus("Picking new coefficients...");
@@ -56,8 +60,9 @@ class AttractorFinder {
 
             /* settle */
             this._onStatus(isSnapshot ? "Skipping initial points" : "Settling potential attractor...");
+            let settlingIterations = isSnapshot ? this._snapshot.startingIteration : this._configuration.settlingIterations;
 
-            for (let i = 0; i < this._configuration.settlingIterations; i++) {
+            for (let i = 0; i < settlingIterations; i++) {
                 if (i % 10000 == 0) {
                     yield null;
                 }
@@ -79,10 +84,28 @@ class AttractorFinder {
             /* reset our 'initial value' to the settled one */
             initialValue = Array.slice(value);
 
-            /* compute bounds */
-            this._onStatus("Computing bounds...");
+            /* set up our context with our computed bounds and other state */
+            let context = new Context(map, rng, criteria, initialValue, coefficients, bounds);
 
-            for (let i = 0; i < this._configuration.totalIterations; i++) {
+            /* reset search criteria state, if any */
+            if (!isSnapshot) {
+                for (let criterion of criteria) {
+                    criterion.reset(context, initialValue);
+                }
+            }
+
+            /* compute bounds */
+            this._onStatus(isSnapshot || criteria.length == 0 ? "Computing bounds..." : "Computing bounds and applying search criteria...");
+
+            let iterations = isSnapshot ?
+                             this._configuration.totalIterations :
+                             Math.max(this._configuration.searchIterations, this._configuration.totalIterations);
+
+            for (let i = 0; i < iterations; i++) {
+                if (i == this._configuration.searchIterations) {
+                    this._onStatus("Computing bounds...");
+                }
+
                 if (i % 10000 == 0) {
                     yield null;
                 }
@@ -93,17 +116,44 @@ class AttractorFinder {
                     break;
                 }
                 bounds.update(value);
+
+                if (!isSnapshot && i < this._configuration.searchIterations) {
+                    for (let criterion of criteria) {
+                        let result = criterion.test(context, value);
+                        if (!result) {
+                            abort = true;
+                            break;
+                        }
+                    }
+
+                    if (abort) {
+                        break;
+                    }
+                }
+            }
+
+            /* check bounds extents */
+            /*
+            if (!bounds.isValid()) {
+                abort = true;
+                break;
+            }*/
+
+            if (abort) {
+                if (isSnapshot) {
+                    return;
+                }
+                continue;
             }
 
             /* reset value to initial value */
             value = Array.slice(initialValue);
 
-            /* set up our context with our computed bounds and other state */
-            let context = new Context(this._configuration, map, rng, criteria, initialValue, coefficients, bounds);
-
             /* reset search criteria state, if any */
-            for (let criterion of criteria) {
-                criterion.reset(context, initialValue);
+            if (!isSnapshot) {
+                for (let criterion of criteriaWithBounds) {
+                    criterion.reset(context, initialValue);
+                }
             }
 
             /* reset projection and colorizer */
@@ -111,14 +161,9 @@ class AttractorFinder {
             colorizer.reset();
 
             /* search + generate points */
-            this._onStatus(isSnapshot ? "Generating remaining points" : "Applying search criteria...");
-
-            let iterations = isSnapshot ?
-                             this._configuration.totalIterations :
-                             Math.max(this._configuration.searchIterations, this._configuration.totalIterations);
+            this._onStatus(isSnapshot || criteriaWithBounds.length == 0 ? "Generating remaining points" : "Applying search criteria...");
 
             for (let i = 0; i < iterations; i++) {
-
                 if (i == this._configuration.searchIterations) {
                     this._onStatus("Generating remaining points");
                 }
@@ -136,7 +181,7 @@ class AttractorFinder {
                 let normalized = bounds.normalize(value);
 
                 if (!isSnapshot && i < this._configuration.searchIterations) {
-                    for (let criterion of criteria) {
+                    for (let criterion of criteriaWithBounds) {
                         let result = criterion.test(context, value, normalized);
                         if (!result) {
                             abort = true;
@@ -146,10 +191,7 @@ class AttractorFinder {
                 }
 
                 if (abort) {
-                    if (isSnapshot) {
-                        return;
-                    }
-                    continue;
+                    break;
                 }
 
                 let projected = projection.apply(context, normalized);
@@ -164,10 +206,17 @@ class AttractorFinder {
                 }
             }
 
+            if (abort) {
+                if (isSnapshot) {
+                    return;
+                }
+                continue;
+            }
+
             let snapshot = AttractorSnapshot.create(this._configuration);
 
             this._onComplete({
-                snapshot: snapshot,
+                snapshot: isSnapshot ? this._snapshot : snapshot,
                 values: values
             });
             break;

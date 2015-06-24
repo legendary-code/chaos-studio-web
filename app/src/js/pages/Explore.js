@@ -230,10 +230,10 @@ class Explore extends React.Component {
             config.totalIterations = viewportSize.width * viewportSize.height;
 
             let generator = new AttractorFinder(
-                snapshot,
                 config,
-                () => {},
-                this._attractorGenerated.bind(this)
+                (e) => { console.log(e); },
+                this._attractorGenerated.bind(this),
+                snapshot
             );
 
             generator.find();
