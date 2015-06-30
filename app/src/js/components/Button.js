@@ -45,7 +45,9 @@ class Button extends React.Component {
                 <div
                     ref="rippleTarget"
                     className={innerClassName}
-                    onClick={this._onClick.bind(this)}>
+                    onClick={this._onClick.bind(this)}
+                    onMouseEnter={this._onEnter.bind(this)}
+                    onMouseLeave={this._onLeave.bind(this)}>
                     {overlay}
                     {this.props.children}
                 </div>
@@ -64,6 +66,18 @@ class Button extends React.Component {
 
         this.props.onClick();
     }
+
+    _onEnter() {
+        if (this.props.onContextShow) {
+            this.props.onContextShow(this.props.contextText);
+        }
+    }
+
+    _onLeave() {
+        if (this.props.onContextHide) {
+            this.props.onContextHide();
+        }
+    }
 }
 
 Button.propTypes = {
@@ -71,7 +85,10 @@ Button.propTypes = {
     raised: React.PropTypes.bool,
     noOverlay: React.PropTypes.bool,
     disabled: React.PropTypes.bool,
-    onClick: React.PropTypes.func
+    onClick: React.PropTypes.func,
+    contextText: React.PropTypes.string,
+    onContextShow: React.PropTypes.func,
+    onContextHide: React.PropTypes.func
 };
 
 module.exports = Button;

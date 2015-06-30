@@ -35,6 +35,12 @@ class Explore extends React.Component {
             "translate": !this.state.showIntro
         });
 
+        let contextLabelClassName = cx({
+            "context-label": true,
+            "font-caption": true,
+            "translate": !this.state.showIntro
+        });
+
         let trayClassName = cx({
             "settings-buttons-tray": true,
             "open": this.state.showTray,
@@ -53,37 +59,55 @@ class Explore extends React.Component {
                 <div className={trayClassName} >
                     <FloatingActionButton
                         className="mini-button"
-                        icon="icon-renderer"
-                        mini
-                    />
-
-                    <FloatingActionButton
-                        className="mini-button"
-                        icon="icon-colorizer"
-                        mini
-                    />
-
-                    <FloatingActionButton
-                        className="mini-button"
-                        icon="icon-colorizer"
-                        mini
-                    />
-
-                    <FloatingActionButton
-                        className="mini-button"
-                        icon="icon-rng"
+                        icon="icon-map"
+                        onContextShow={this._showContextText.bind(this)}
+                        onContextHide={this._hideContextText.bind(this)}
+                        contextText="Configure Map"
                         mini
                     />
 
                     <FloatingActionButton
                         className="mini-button"
                         icon="icon-search-criteria"
+                        onContextShow={this._showContextText.bind(this)}
+                        onContextHide={this._hideContextText.bind(this)}
+                        contextText="Configure Search Criteria"
                         mini
                     />
 
                     <FloatingActionButton
                         className="mini-button"
-                        icon="icon-map"
+                        icon="icon-renderer"
+                        onContextShow={this._showContextText.bind(this)}
+                        onContextHide={this._hideContextText.bind(this)}
+                        contextText="Configure Renderer"
+                        mini
+                    />
+
+                    <FloatingActionButton
+                        className="mini-button"
+                        icon="icon-colorizer"
+                        onContextShow={this._showContextText.bind(this)}
+                        onContextHide={this._hideContextText.bind(this)}
+                        contextText="Configure Colorizer"
+                        mini
+                    />
+
+                    <FloatingActionButton
+                        className="mini-button"
+                        icon="icon-projection"
+                        onContextShow={this._showContextText.bind(this)}
+                        onContextHide={this._hideContextText.bind(this)}
+                        contextText="Configure Projection"
+                        mini
+                    />
+
+                    <FloatingActionButton
+                        className="mini-button"
+                        icon="icon-rng"
+                        onContextShow={this._showContextText.bind(this)}
+                        onContextHide={this._hideContextText.bind(this)}
+                        contextText="Configure Rng"
                         mini
                     />
                 </div>
@@ -94,12 +118,20 @@ class Explore extends React.Component {
                         icon="icon-settings-light"
                         mini
                         onClick={this._toggleTray.bind(this)}
+                        onContextShow={this._showContextText.bind(this)}
+                        onContextHide={this._hideContextText.bind(this)}
+                        contextText="Settings"
                     />
+
                     <FloatingActionButton
                         className="mini-button"
                         icon="icon-screenshot"
                         onClick={this._saveImage.bind(this)}
-                        mini />
+                        onContextShow={this._showContextText.bind(this)}
+                        onContextHide={this._hideContextText.bind(this)}
+                        contextText="Save as Image"
+                        mini
+                    />
 
                     <a
                         id="imageDataLink"
@@ -115,7 +147,12 @@ class Explore extends React.Component {
                     icon="icon-search light"
                     ref="searchButton"
                     onClick={this._search.bind(this)}
+                    onContextShow={this._showContextText.bind(this)}
+                    onContextHide={this._hideContextText.bind(this)}
+                    contextText="Search"
                 />
+
+                <label ref="contextLabel" className={contextLabelClassName} />
             </div>
         );
     }
@@ -166,6 +203,14 @@ class Explore extends React.Component {
         setTimeout(() => {
             self.setState({showIntro: false});
         }, 500);
+    }
+
+    _showContextText(text) {
+        $(React.findDOMNode(this.refs.contextLabel)).text(text);
+    }
+
+    _hideContextText() {
+        $(React.findDOMNode(this.refs.contextLabel)).empty();
     }
 
     _startSearch() {

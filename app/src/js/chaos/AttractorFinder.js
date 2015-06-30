@@ -132,13 +132,6 @@ class AttractorFinder {
                 }
             }
 
-            /* check bounds extents */
-            /*
-            if (!bounds.isValid()) {
-                abort = true;
-                break;
-            }*/
-
             if (abort) {
                 if (isSnapshot) {
                     return;

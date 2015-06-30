@@ -24,6 +24,22 @@
   }
 }
 
+.context-label {
+  position: fixed;
+  width: 156px;
+  bottom: -16px;
+  right: 164px;
+
+  height: 16px;
+  line-height: 16px;
+  text-align: right;
+
+  @include transition(margin-bottom 0.25s);
+  &.translate {
+    bottom: 8px;
+  }
+}
+
 .intro-paper {
   display: inline-block;
   position: absolute;
@@ -78,7 +94,7 @@
   @include transition(height 0.5s);
 
   &.open {
-    height: 264px;
+    height: 306px;
     .floating-action-button {
       margin-bottom: 0;
       opacity: 1;

@@ -14,7 +14,14 @@ class FloatingActionButton extends React.Component {
         className = join(className, this.props.className);
 
         return (
-            <Button ref="button" className={className} onClick={this.props.onClick} raised>
+            <Button
+                ref="button"
+                className={className}
+                onClick={this.props.onClick}
+                onContextShow={this.props.onContextShow}
+                onContextHide={this.props.onContextHide}
+                contextText={this.props.contextText}
+                raised>
                 <Icon icon={this.props.icon} />
             </Button>
         );
@@ -29,7 +36,10 @@ FloatingActionButton.propTypes = {
     mini: React.PropTypes.bool,
     icon: React.PropTypes.string.isRequired,
     className: React.PropTypes.string,
-    onClick: React.PropTypes.func
+    onClick: React.PropTypes.func,
+    contextText: React.PropTypes.string,
+    onContextShow: React.PropTypes.func,
+    onContextHide: React.PropTypes.func
 };
 
 module.exports = FloatingActionButton;
