@@ -20,8 +20,8 @@ class AttractorFinder {
 
     *_find() {
         let isSnapshot = !!this._snapshot;
-        let map = isSnapshot ? new this._snapshot.map() : this._configuration.map;
-        let rng = isSnapshot ? new this._snapshot.rng() : this._configuration.rng;
+        let map = isSnapshot ? this._snapshot.map : this._configuration.map;
+        let rng = isSnapshot ? this._snapshot.rng : this._configuration.rng;
         let projection = this._configuration.projection;
         let colorizer = this._configuration.colorizer;
         let dimensions = map.dimensions;

@@ -10,7 +10,8 @@ var gulp = require('gulp'),
     es = require('event-stream'),
     sass = require('gulp-sass'),
 
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    insert = require('gulp-insert');
 
 /**
  * Build happens in two phases:
@@ -62,6 +63,7 @@ gulp.task('js', function() {
         gulp.src('./app/libs/**/*.js')
             .pipe(gulp.dest('./app/link/js')),
         gulp.src('./app/src/js/**/*.js')
+            .pipe(insert.prepend("/** @preventMunge */"))
             .pipe(gulp.dest('./app/link/js'))
     );
 });
@@ -95,7 +97,7 @@ gulp.task('favicon', function() {
 gulp.task('link-js', ['stage'], function() {
     return browserify()
                 .add('./app/link/js/main.js')
-                .transform(reactify, {es6: true})
+                .transform(reactify, {es6: true, stripTypes: true})
                 .transform(babelify)
                 .bundle()
                 .on('error', function(err) {
