@@ -5,10 +5,9 @@ let Base64Serializer = require('../utils/Base64Serializer'),
 
 /* Represents the minimum amount of information needed to re-generate an attractor */
 class AttractorSnapshot {
-    constructor(map, rng, seed, startingIteration) {
+    constructor(map, rng, startingIteration) {
         this._map = map;
         this._rng = rng;
-        this._seed = seed;
         this._startingIteration = startingIteration;
     }
 
@@ -20,10 +19,6 @@ class AttractorSnapshot {
         return this._rng;
     }
 
-    get seed() {
-        return this._seed;
-    }
-
     get startingIteration() {
         return this._startingIteration;
     }
@@ -32,7 +27,6 @@ class AttractorSnapshot {
         return new AttractorSnapshot(
             configuration.map,
             configuration.rng,
-            configuration.rng.seed,
             configuration.settlingIterations + configuration.searchIterations
         );
     }

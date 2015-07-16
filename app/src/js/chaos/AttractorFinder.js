@@ -38,7 +38,7 @@ class AttractorFinder {
             let value = [];
             let values = [];
 
-            rng.reset(isSnapshot ? this._snapshot.seed : Time.now());
+            rng.reset(isSnapshot ? rng.seed : Time.now());
             this._onStatus("Seed: " + rng.seed);
 
             if (!isSnapshot) {
