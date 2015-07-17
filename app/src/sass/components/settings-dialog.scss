@@ -11,7 +11,6 @@
   .settings-contents {
     overflow-x: hidden;
     overflow-y: auto;
-    padding-bottom: 72px;
   }
 
   @media #{$device-mobile-portrait}, #{$device-mobile-landscape} {
@@ -23,6 +22,21 @@
     .app-bar {
       display: block;
       position: relative;
+    }
+
+    .desktop-title-bar {
+      display: none;
+    }
+
+    .action-bar {
+      display: none;
+    }
+
+    .settings-contents {
+      display: block;
+      position: relative;
+      height: 100vh;
+      padding-bottom: 64px;
     }
   }
 
@@ -36,6 +50,40 @@
 
     .app-bar {
       display: none;
+    }
+
+    .settings-contents {
+      display: block;
+      position: absolute;
+      width: 320px;
+      height: 280px;
+      top: 64px;
+    }
+
+    .desktop-title-bar {
+      display: block;
+      position: absolute;
+      top: 0;
+      width: 320px;
+      height: 64px;
+      border-bottom: 1px solid $grey-300;
+      @include shadow(0);
+    }
+
+    .action-bar {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      width: 320px;
+      height: 56px;
+      text-align: right;
+      border-top: 1px solid $grey-300;
+      @include shadow(0);
+
+      .button {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
     }
   }
 }

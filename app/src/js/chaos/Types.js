@@ -19,6 +19,22 @@ class Types {
             label: label
         };
     }
+
+    static component(label, componentType) {
+        return {
+            type: 'component',
+            label: label,
+            componentType: componentType
+        }
+    }
+
+    static componentSet(label, componentType) {
+        return {
+            type: 'componentSet',
+            label: label,
+            componentType: componentType
+        }
+    }
 }
 
 module.exports = Types;
