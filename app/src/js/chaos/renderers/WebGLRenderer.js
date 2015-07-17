@@ -1,7 +1,8 @@
 let Renderer = require('../Renderer'),
     Three = require('three'),
     Default = require('./webgl/RenderFilter'),
-    PencilSketch = require('./webgl/PencilSketchFilter');
+    PencilSketch = require('./webgl/PencilSketchFilter'),
+    Components = require('../Components');
 
 class WebGLRenderer extends Renderer {
     static get displayName() { return "WebGL Renderer"; }
@@ -67,4 +68,5 @@ class WebGLRenderer extends Renderer {
     }
 }
 
+Components.register(Renderer, WebGLRenderer, true);
 module.exports = WebGLRenderer;

@@ -1,22 +1,41 @@
-/* Exposes and imports various supported components */
-module.exports = {
-    maps: [
-        require('./maps/QuadraticMap')
-    ],
-    rngs: [
-        require('./rngs/DefaultRng'),
-        require('./rngs/LinearCongruentialGenerator')
-    ],
-    criteria: [
-        require('./criteria/LyapunovExponent')
-    ],
-    renderers: [
-        require('./renderers/WebGLRenderer')
-    ],
-    colorizers: [
-        require('./Colorizer')
-    ],
-    projections: [
-        require('./Projection')
-    ]
-};
+/**
+ * Implements a means of registering implementations of various base component types for use in configuration
+ */
+class Components {
+    static register(baseType, type, isDefault) {
+        let types = Components.TYPES[baseType];
+
+        if (!types) {
+            types = Components.TYPES[baseType] = [];
+        }
+
+        if (isDefault) {
+            types.unshift(type);
+        } else {
+            types.push(type);
+        }
+    }
+
+    static findTypes(baseType) {
+        let types = Components.TYPES[baseType];
+        return types || [];
+    }
+
+    static allTypes() {
+        let allTypes = [];
+
+        for (let baseType in Components.TYPES) {
+            if (!Components.TYPES.hasOwnProperty(baseType)) {
+                continue;
+            }
+
+            let types = Components.TYPES[baseType];
+            allTypes.push(...types);
+        }
+
+        return allTypes;
+    }
+}
+
+Components.TYPES = {};
+module.exports = Components;

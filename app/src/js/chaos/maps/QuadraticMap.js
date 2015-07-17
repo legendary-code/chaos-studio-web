@@ -1,5 +1,6 @@
 var Map = require('../Map'),
-    Types = require('../Types');
+    Types = require('../Types'),
+    Components = require('../Components');
 
 class QuadraticMap extends Map {
     static get displayName() {
@@ -27,4 +28,5 @@ class QuadraticMap extends Map {
     }
 }
 
+Components.register(Map, QuadraticMap, true);
 module.exports = QuadraticMap;

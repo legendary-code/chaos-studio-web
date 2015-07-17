@@ -1,6 +1,7 @@
 var SearchCriterion = require('../SearchCriterion'),
     Point = require('../Point'),
-    Types = require('../Types');
+    Types = require('../Types'),
+    Components = require('../Components');
 
 class LyapunovExponent extends SearchCriterion {
     static get displayName() {
@@ -96,5 +97,6 @@ class LyapunovExponent extends SearchCriterion {
 // Constants
 LyapunovExponent.LOG2 = 0.69314718055994530941723212145819;
 
+Components.register(SearchCriterion, LyapunovExponent, true);
 module.exports = LyapunovExponent;
 

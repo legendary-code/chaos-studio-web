@@ -42,16 +42,6 @@ class AttractorSnapshot {
     }
 }
 
-let encoder = new JSEncoder();
-let types = [];
-types.push(AttractorSnapshot);
-types.push(...Components.colorizers);
-types.push(...Components.criteria);
-types.push(...Components.maps);
-types.push(...Components.projections);
-types.push(...Components.renderers);
-types.push(...Components.rngs);
-encoder.registerTypes(...types);
-AttractorSnapshot.ENCODER = encoder;
-
+AttractorSnapshot.ENCODER = new JSEncoder({types : Components.allTypes()});
+AttractorSnapshot.ENCODER.registerTypes(AttractorSnapshot);
 module.exports = AttractorSnapshot;
