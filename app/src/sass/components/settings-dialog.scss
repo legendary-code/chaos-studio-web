@@ -2,15 +2,33 @@
 @import "../variables/shadows";
 @import "../variables/layers";
 @import "../variables/colors";
+@import "../variables/mixins";
 
 .settings-dialog {
   background-color: $paper-color;
   position: fixed;
   @include shadow(5);
 
-  .settings-contents {
+  .contents {
     overflow-x: hidden;
     overflow-y: auto;
+  }
+
+  .contents-container {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  .content-1 {
+    background-color: palegreen;
+  }
+
+  .content-2 {
+    background-color: palevioletred;
+  }
+
+  .content-3 {
+    background-color: paleturquoise;
   }
 
   @media #{$device-mobile-portrait}, #{$device-mobile-landscape} {
@@ -32,11 +50,37 @@
       display: none;
     }
 
-    .settings-contents {
-      display: block;
+    .contents-container {
+      display: inline;
       position: relative;
       height: 100vh;
+      width: 100vw;
+    }
+
+    .contents {
+      display: inline;
+      position: absolute;
+      height: 100vh;
+      width: 100vw;
       padding-bottom: 64px;
+
+      &.after {
+        left: 100vw;
+      }
+
+      &.before {
+        left: -100vw;
+      }
+
+      &.slide-left {
+        @include transition(margin-left 0.2s linear);
+        margin-left: -100vw;
+      }
+
+      &.slide-right {
+        @include transition(margin-left 0.2s linear);
+        margin-left: 100vw;
+      }
     }
   }
 
@@ -52,12 +96,37 @@
       display: none;
     }
 
-    .settings-contents {
-      display: block;
+    .contents-container {
+      display: inline;
       position: absolute;
       width: 320px;
       height: 280px;
       top: 64px;
+    }
+
+    .contents {
+      display: inline;
+      position: absolute;
+      width: 320px;
+      height: 280px;
+
+      &.after {
+        left: 320px;
+      }
+
+      &.before {
+        left: -320px;
+      }
+
+      &.slide-left {
+        @include transition(margin-left 0.2s linear);
+        margin-left: -320px;
+      }
+
+      &.slide-right {
+        @include transition(margin-left 0.2s linear);
+        margin-left: 320px;
+      }
     }
 
     .desktop-title-bar {
