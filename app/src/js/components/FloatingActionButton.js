@@ -21,7 +21,7 @@ class FloatingActionButton extends React.Component {
                 onContextShow={this.props.onContextShow}
                 onContextHide={this.props.onContextHide}
                 contextText={this.props.contextText}
-                raised>
+                raised={!this.props.flat}>
                 <Icon icon={this.props.icon} />
             </Button>
         );
@@ -34,6 +34,7 @@ class FloatingActionButton extends React.Component {
 
 FloatingActionButton.propTypes = {
     mini: React.PropTypes.bool,
+    flat: React.PropTypes.bool,
     icon: React.PropTypes.string.isRequired,
     className: React.PropTypes.string,
     onClick: React.PropTypes.func,

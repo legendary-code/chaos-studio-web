@@ -1,0 +1,43 @@
+.component-panel {
+  display: block;
+  height: 56px;
+
+  .button-spacing {
+    display: block;
+    height: 56px;
+
+    .button {
+      display: block;
+      height: 56px;
+
+      .main-panel {
+        display: inline-block;
+        height: 56px;
+        padding: 10px;
+        width: 264px;
+        vertical-align: top;
+
+        label {
+          display: block;
+        }
+      }
+
+      .icon-panel {
+        display: inline-block;
+        height: 56px;
+
+        .button-spacing {
+          display: inline-block;
+          margin: 8px;
+          height: 40px;
+
+          .button {
+            display: inline-block;
+            background: none;
+            height: 40px;
+          }
+        }
+      }
+    }
+  }
+}

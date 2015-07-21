@@ -7,6 +7,10 @@ class QuadraticMap extends Map {
         return "Quadratic";
     }
 
+    static get description() {
+        return "A polynomial map with a degree of 2";
+    }
+
     get coefficients() {
         return 30;
     }

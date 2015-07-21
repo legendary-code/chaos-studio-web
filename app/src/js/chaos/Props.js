@@ -1,11 +1,12 @@
 /* Parameter types for Components */
 
 /* Used to define component attributes that can be rendered in a settings dialog */
-class Types {
+class Props {
     /* A numeric value */
-    static number(label, min, max, icon) {
+    static number(property, label, min, max, icon) {
         return {
             type: 'number',
+            property: property,
             label: label,
             min: min,
             max: max,
@@ -13,28 +14,39 @@ class Types {
         };
     }
 
-    static boolean(label) {
+    static boolean(property, label) {
         return {
             type: 'boolean',
+            property: property,
             label: label
         };
     }
 
-    static component(label, componentType) {
+    static component(property, label, componentType) {
         return {
             type: 'component',
+            property: property,
             label: label,
             componentType: componentType
         }
     }
 
-    static componentSet(label, componentType) {
+    static componentSet(property, label, componentType) {
         return {
             type: 'componentSet',
+            property: property,
             label: label,
             componentType: componentType
+        }
+    }
+
+    static group(label, ...properties) {
+        return {
+            type: 'group',
+            label: 'label',
+            properties: properties
         }
     }
 }
 
-module.exports = Types;
+module.exports = Props;

@@ -1,6 +1,6 @@
 var SearchCriterion = require('../SearchCriterion'),
     Point = require('../Point'),
-    Types = require('../Types'),
+    Props = require('../Props'),
     Components = require('../Components');
 
 class LyapunovExponent extends SearchCriterion {
@@ -9,11 +9,10 @@ class LyapunovExponent extends SearchCriterion {
     }
 
     static get params() {
-        return {
-            min: Types.number("min", -10.0, 10.0, 'icon-rng'),
-            minIterations: Types.number("minimum iterations", 1, 1000),
-            test: Types.boolean("test")
-        };
+        return [
+            Props.number("min", "min", -10.0, 10.0),
+            Props.number("minIterations", "minimum iterations", 1, 1000)
+        ];
     }
 
     constructor() {

@@ -1,5 +1,5 @@
 class Component {
-    static get params() { return {}; }
+    static get params() { return []; }
 
     static get displayName() { }
 

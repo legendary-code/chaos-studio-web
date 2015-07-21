@@ -8,9 +8,9 @@ class FractalDimension extends SearchCriterion {
 
     static get params() {
         return {
-            min: Types.number("min", 0.0, 3.0, 2),
-            max: Types.number("max", 0.0, 3.0, 2),
-            minIterations: Types.number("minimum iterations", 1, 1000, 0)
+            min: Props.number("min", 0.0, 3.0, 2),
+            max: Props.number("max", 0.0, 3.0, 2),
+            minIterations: Props.number("minimum iterations", 1, 1000, 0)
         };
     }
 

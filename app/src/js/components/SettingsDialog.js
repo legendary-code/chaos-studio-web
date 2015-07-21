@@ -4,7 +4,11 @@ let $ = require('jquery'),
     AppBar = require('./AppBar'),
     Actions = require('../actions/Actions'),
     Button = require('./Button'),
-    Paper = require('./Paper');
+    Paper = require('./Paper'),
+    ValueBinding = require('./settings/values/ValueBinding'),
+    NumberValueEditor = require('./settings/values/NumberValueEditor'),
+    BooleanValueEditor = require('./settings/values/BooleanValueEditor'),
+    ComponentPanel = require('./settings/ComponentPanel');
 
 let Transition = {
     NONE: 0,
@@ -13,9 +17,9 @@ let Transition = {
 };
 
 class SettingsDialog extends React.Component {
-    constructor() {
+    constructor(props) {
         this.state = {
-            pages: [<span>Start</span>],
+            pages: [ this._createPage(props.component)],
             transition: Transition.NONE,
             state: 0
         };
@@ -30,7 +34,6 @@ class SettingsDialog extends React.Component {
     }
 
     render() {
-
         let content;
 
         let page1 = this.state.transition == Transition.PREV ? this._page(-1) : null;
@@ -128,6 +131,62 @@ class SettingsDialog extends React.Component {
             state = (state + 1) % 3;
             this.setState({transition: Transition.NONE, state: state});
         }.bind(this), 200);
+    }
+
+    _createPage(component) {
+        if (!component.type.params) {
+            return;
+        }
+
+        let controls = [];
+        for (let param of component.type.params) {
+            controls.push(...this._createControls(component, param));
+            break;
+        }
+
+        return controls;
+    }
+
+    _createControls(component, param) {
+        let binding = new ValueBinding(component, param.property);
+
+        if (true) {
+            return [ <ComponentPanel binding={binding} /> ];
+        }
+
+        switch (param.type) {
+            case 'number':
+                return [
+                    <NumberValueEditor
+                        binding={binding}
+                        icon={param.icon}
+                        min={param.min}
+                        max={param.max}
+                        label={param.label}
+                        />
+                ];
+
+            case 'boolean':
+                return [
+                    <BooleanValueEditor
+                        binding={binding}
+                        label={param.label}
+                        />
+                ];
+
+            case 'group':
+                let items = [];
+                items.push(<Header label={param.label}/>);
+                for (let item of param.properties) {
+                    items.push(...this._createControls(component, item));
+                }
+                return items;
+
+            case 'component':
+                break;
+        }
+
+        return [];
     }
 }
 

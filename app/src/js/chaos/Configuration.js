@@ -1,5 +1,36 @@
+let Component = require('./Component'),
+    Props = require('./Props'),
+    Map = require('./Map'),
+    SearchCriterion = require('./SearchCriterion'),
+    Rng = require('./Rng'),
+    Renderer = require('./Renderer'),
+    Projection = require('./Projection'),
+    Colorizer = require('./Colorizer');
+
 /* Configuration required for finding attractors */
-class Configuration {
+
+class Configuration extends Component {
+    static get displayName() {
+        return "Settings";
+    }
+
+    static get params() {
+        return [
+            Props.component("map", "Map", Map),
+            Props.componentSet("criteria", "Search Criteria", SearchCriterion),
+            Props.component("rng", "Random Number Generator", Rng),
+            Props.component("renderer", "Renderer", Renderer),
+            Props.component("projection", "Projection", Projection),
+            Props.component("colorizer", "Colorizer", Colorizer),
+            Props.group(
+                "Search Options",
+                Props.number("settlingIterations", "Settling Iterations", 0, 10000),
+                Props.number("searchIterations", "Search Iterations", 0, 100000),
+                Props.number("totalIterations", "Total Iterations", 0, 1000000)
+            )
+        ];
+    }
+
     constructor(map, criteria, rng, renderer, projection, colorizer) {
         this._settlingIterations = 1000;
         this._searchIterations = 1000;

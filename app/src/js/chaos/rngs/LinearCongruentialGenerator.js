@@ -6,6 +6,10 @@ const a = 25214903917;
 const c = 11;
 
 class LinearCongruentialGenerator extends Rng {
+    static get displayName() {
+        return "Linear Congruential Generator";
+    }
+
     reset(seed) {
         super.reset(seed);
         this._x = seed;
