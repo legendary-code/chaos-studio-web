@@ -168,7 +168,8 @@ p, .font-body-1 {
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0;
-  color: rgba(0, 0, 0, 0.54); }
+  color: rgba(0, 0, 0, 0.54);
+  line-height: 12px; }
 
 .font-nav-button {
   font-family: "Roboto", Arial, sans-serif;
@@ -280,7 +281,7 @@ p, .font-body-1 {
 .icon-search {
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27c.98-1.14 1.57-2.62 1.57-4.23 0-3.59-2.91-6.5-6.5-6.5s-6.5 2.91-6.5 6.5 2.91 6.5 6.5 6.5c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99 1.49-1.49-4.99-5zm-6 0c-2.49 0-4.5-2.01-4.5-4.5s2.01-4.5 4.5-4.5 4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5z" fill="#616161"/><path d="M0 0h24v24h-24z" fill="none"/></svg>') no-repeat 0 0/24px 24px; }
 
-.icon-search.light {
+.icon-search-light {
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27c.98-1.14 1.57-2.62 1.57-4.23 0-3.59-2.91-6.5-6.5-6.5s-6.5 2.91-6.5 6.5 2.91 6.5 6.5 6.5c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99 1.49-1.49-4.99-5zm-6 0c-2.49 0-4.5-2.01-4.5-4.5s2.01-4.5 4.5-4.5 4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5z" fill="#ffffff"/><path d="M0 0h24v24h-24z" fill="none"/></svg>') no-repeat 0 0/24px 24px; }
 
 .icon-settings {
@@ -319,6 +320,9 @@ p, .font-body-1 {
 .icon-back {
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24h-24z" fill="none"/><path fill="#ffffff" d="M20 11h-12.17l5.59-5.59-1.42-1.41-8 8 8 8 1.41-1.41-5.58-5.59h12.17v-2z"/></svg>') no-repeat 0 0/24px 24px; }
 
+.icon-close {
+  background: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24"><path fill="#ffffff" d="M19 6.415l-1.415-1.415-5.585 5.585-5.585-5.585-1.415 1.415 5.585 5.585-5.585 5.585 1.415 1.415 5.585-5.585 5.585 5.585 1.415-1.415-5.585-5.585z"></path></svg>') no-repeat 0 0/24px 24px; }
+
 .icon-checked {
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#40c4ff"/></svg>') no-repeat 0 0/24px 24px; }
 
@@ -332,10 +336,19 @@ p, .font-body-1 {
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" fill="#9e9e9e"/><path d="M0 0h24v24H0z" fill="none"/></svg>') no-repeat 0 0/24px 24px; }
 
 .icon-expand-more {
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.59 8.59l-4.59 4.58-4.59-4.58-1.41 1.41 6 6 6-6z" fill="#9e9e9e"/><path d="M0 0h24v24h-24z" fill="none"/></svg>') no-repeat 0 0/24px 24px; }
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.59 8.59l-4.59 4.58-4.59-4.58-1.41 1.41 6 6 6-6z" fill="#616161"/><path d="M0 0h24v24h-24z" fill="none"/></svg>') no-repeat 0 0/24px 24px; }
 
 .icon-expand-less {
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 8l-6 6 1.41 1.41 4.59-4.58 4.59 4.58 1.41-1.41z" fill="#9e9e9e"/><path d="M0 0h24v24h-24z" fill="none"/></svg>') no-repeat 0 0/24px 24px; }
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 8l-6 6 1.41 1.41 4.59-4.58 4.59 4.58 1.41-1.41z" fill="#616161"/><path d="M0 0h24v24h-24z" fill="none"/></svg>') no-repeat 0 0/24px 24px; }
+
+.icon-right-arrow {
+  background: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24"><path fill="#616161" d="M8.585 16.46l4.585-4.585-4.585-4.585 1.415-1.415 6 6-6 6z"></path></svg>') no-repeat 0 0/24px 24px; }
+
+.icon-delete {
+  background: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24"><path fill="#616161" d="M6 19c0 1.105 0.895 2 2 2h8c1.105 0 2-0.895 2-2v-12h-12v12zM19 4h-3.5l-1-1h-5l-1 1h-3.5v2h14v-2z"></path></svg>') no-repeat 0 0/24px 24px; }
+
+.icon-more-horiz {
+  background: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24"><path fill="#616161" d="M6 10c-1.105 0-2 0.895-2 2s0.895 2 2 2 2-0.895 2-2-0.895-2-2-2zM18 10c-1.105 0-2 0.895-2 2s0.895 2 2 2 2-0.895 2-2-0.895-2-2-2zM12 10c-1.105 0-2 0.895-2 2s0.895 2 2 2 2-0.895 2-2-0.895-2-2-2z"></path></svg>') no-repeat 0 0/24px 24px; }
 
 .icon {
   width: 24px;
@@ -776,11 +789,25 @@ p, .font-body-1 {
 .settings-dialog {
   background-color: #ffffff;
   position: fixed;
-  box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3); }
-  .settings-dialog .settings-contents {
+  box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+  /*
+  .content-1 {
+    background-color: palegreen;
+  }
+
+  .content-2 {
+    background-color: palevioletred;
+  }
+
+  .content-3 {
+    background-color: paleturquoise;
+  }*/ }
+  .settings-dialog .contents {
     overflow-x: hidden;
-    overflow-y: auto;
-    padding-bottom: 72px; }
+    overflow-y: auto; }
+  .settings-dialog .contents-container {
+    overflow-x: hidden;
+    overflow-y: hidden; }
   @media only screen and (orientation: portrait), only screen and (orientation: landscape) {
     .settings-dialog {
       top: 0;
@@ -789,7 +816,38 @@ p, .font-body-1 {
       height: 100vh; }
       .settings-dialog .app-bar {
         display: block;
-        position: relative; } }
+        position: relative; }
+      .settings-dialog .desktop-title-bar {
+        display: none; }
+      .settings-dialog .action-bar {
+        display: none; }
+      .settings-dialog .contents-container {
+        display: inline;
+        position: relative;
+        height: 100vh;
+        width: 100vw; }
+      .settings-dialog .contents {
+        display: inline;
+        position: absolute;
+        height: 100vh;
+        width: 100vw;
+        padding-bottom: 64px; }
+        .settings-dialog .contents.after {
+          left: 100vw; }
+        .settings-dialog .contents.before {
+          left: -100vw; }
+        .settings-dialog .contents.slide-left {
+          transition: margin-left 0.2s linear;
+          -o-transition: margin-left 0.2s linear;
+          -moz-transition: margin-left 0.2s linear;
+          -webkit-transition: margin-left 0.2s linear;
+          margin-left: -100vw; }
+        .settings-dialog .contents.slide-right {
+          transition: margin-left 0.2s linear;
+          -o-transition: margin-left 0.2s linear;
+          -moz-transition: margin-left 0.2s linear;
+          -webkit-transition: margin-left 0.2s linear;
+          margin-left: 100vw; } }
   @media only screen and (min-width: 992px), only screen and (min-width: 768px) {
     .settings-dialog {
       width: 320px;
@@ -799,11 +857,58 @@ p, .font-body-1 {
       margin-left: -160px;
       margin-top: -200px; }
       .settings-dialog .app-bar {
-        display: none; } }
+        display: none; }
+      .settings-dialog .contents-container {
+        display: inline;
+        position: absolute;
+        width: 320px;
+        height: 280px;
+        top: 64px; }
+      .settings-dialog .contents {
+        display: inline;
+        position: absolute;
+        width: 320px;
+        height: 280px; }
+        .settings-dialog .contents.after {
+          left: 320px; }
+        .settings-dialog .contents.before {
+          left: -320px; }
+        .settings-dialog .contents.slide-left {
+          transition: margin-left 0.2s linear;
+          -o-transition: margin-left 0.2s linear;
+          -moz-transition: margin-left 0.2s linear;
+          -webkit-transition: margin-left 0.2s linear;
+          margin-left: -320px; }
+        .settings-dialog .contents.slide-right {
+          transition: margin-left 0.2s linear;
+          -o-transition: margin-left 0.2s linear;
+          -moz-transition: margin-left 0.2s linear;
+          -webkit-transition: margin-left 0.2s linear;
+          margin-left: 320px; }
+      .settings-dialog .desktop-title-bar {
+        display: block;
+        position: absolute;
+        top: 0;
+        width: 320px;
+        height: 64px;
+        border-bottom: 1px solid #e0e0e0;
+        box-shadow: none; }
+      .settings-dialog .action-bar {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        width: 320px;
+        height: 56px;
+        text-align: right;
+        border-top: 1px solid #e0e0e0;
+        box-shadow: none; }
+        .settings-dialog .action-bar .button {
+          padding-left: 8px;
+          padding-right: 8px; } }
 
 .settings-header {
   display: block;
-  margin: 16px; }
+  margin: 4px; }
 
 .settings-choice {
   display: block; }
@@ -882,6 +987,44 @@ p, .font-body-1 {
     right: 16px;
     top: 0;
     z-index: 2; }
+
+.component-panel {
+  display: block;
+  height: 56px;
+  border-bottom: 1px solid #eeeeee; }
+  .component-panel .button-spacing {
+    display: block;
+    height: 56px; }
+    .component-panel .button-spacing .button {
+      display: block;
+      height: 56px; }
+      .component-panel .button-spacing .button .main-panel {
+        display: inline-block;
+        height: 56px;
+        padding: 10px;
+        vertical-align: top;
+        float: left; }
+        .component-panel .button-spacing .button .main-panel label {
+          display: block; }
+      .component-panel .button-spacing .button .icon-panel {
+        display: inline-block;
+        height: 56px;
+        float: left; }
+        .component-panel .button-spacing .button .icon-panel .button-spacing {
+          display: inline-block;
+          margin: 8px;
+          height: 40px; }
+          .component-panel .button-spacing .button .icon-panel .button-spacing .button {
+            display: inline-block;
+            background: none;
+            height: 40px; }
+      .component-panel .button-spacing .button .arrow-panel {
+        display: inline-block;
+        height: 56px;
+        float: right;
+        padding-top: 16px; }
+        .component-panel .button-spacing .button .arrow-panel.hide {
+          display: none; }
 
 .number-value-editor {
   margin-top: 16px; }
