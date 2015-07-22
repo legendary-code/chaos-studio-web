@@ -6,6 +6,11 @@ let Component = require('./Component');
  * to ignore the color generated altogether */
 class Colorizer extends Component {
     static get displayName() { return "Default"; }
+
+    static get description() {
+        return "Doesn't apply any coloration to vertices";
+    }
+
     apply(context, vertex) { return vertex; }
     reset() { }
 }

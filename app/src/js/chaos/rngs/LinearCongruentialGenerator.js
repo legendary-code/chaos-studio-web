@@ -10,6 +10,10 @@ class LinearCongruentialGenerator extends Rng {
         return "Linear Congruential Generator";
     }
 
+    static get description() {
+        return "Modulo arithmetic generated numbers";
+    }
+
     reset(seed) {
         super.reset(seed);
         this._x = seed;

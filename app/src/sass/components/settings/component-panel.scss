@@ -1,6 +1,9 @@
+@import "../../variables/colors";
+
 .component-panel {
   display: block;
   height: 56px;
+  border-bottom: 1px solid $grey-200;
 
   .button-spacing {
     display: block;
@@ -14,8 +17,8 @@
         display: inline-block;
         height: 56px;
         padding: 10px;
-        width: 264px;
         vertical-align: top;
+        float: left;
 
         label {
           display: block;
@@ -25,6 +28,7 @@
       .icon-panel {
         display: inline-block;
         height: 56px;
+        float: left;
 
         .button-spacing {
           display: inline-block;
@@ -36,6 +40,17 @@
             background: none;
             height: 40px;
           }
+        }
+      }
+
+      .arrow-panel {
+        display: inline-block;
+        height: 56px;
+        float: right;
+        padding-top: 16px;
+
+        &.hide {
+          display: none;
         }
       }
     }

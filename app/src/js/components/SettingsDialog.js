@@ -5,6 +5,7 @@ let $ = require('jquery'),
     Actions = require('../actions/Actions'),
     Button = require('./Button'),
     Paper = require('./Paper'),
+    Header = require('./settings/Header'),
     ValueBinding = require('./settings/values/ValueBinding'),
     NumberValueEditor = require('./settings/values/NumberValueEditor'),
     BooleanValueEditor = require('./settings/values/BooleanValueEditor'),
@@ -141,7 +142,6 @@ class SettingsDialog extends React.Component {
         let controls = [];
         for (let param of component.type.params) {
             controls.push(...this._createControls(component, param));
-            break;
         }
 
         return controls;
@@ -150,9 +150,8 @@ class SettingsDialog extends React.Component {
     _createControls(component, param) {
         let binding = new ValueBinding(component, param.property);
 
-        if (true) {
-            return [ <ComponentPanel binding={binding} /> ];
-        }
+        let items;
+        let hasSubProps;
 
         switch (param.type) {
             case 'number':
@@ -175,15 +174,32 @@ class SettingsDialog extends React.Component {
                 ];
 
             case 'group':
-                let items = [];
-                items.push(<Header label={param.label}/>);
-                for (let item of param.properties) {
-                    items.push(...this._createControls(component, item));
+                items = [];
+                items.push(<Header label={param.label} />);
+                for (let prop of param.properties) {
+                    items.push(...this._createControls(component, prop));
                 }
                 return items;
 
             case 'component':
-                break;
+                hasSubProps = !!binding.val.type.params;
+
+                return [
+                    <Header label={param.label} />,
+                    <ComponentPanel binding={binding} showArrow={hasSubProps} icon="icon-more-horiz" />
+                ];
+
+            case 'componentSet':
+                let controls = [ <Header label={param.label} /> ];
+                items = binding.val || [];
+
+                for (let index in items) {
+                    let componentBinding = new ValueBinding(items, index);
+                    hasSubProps = !!componentBinding.val.type.params;
+                    controls.push(<ComponentPanel binding={componentBinding} showArrow={hasSubProps} icon="icon-delete" />);
+                }
+
+                return controls;
         }
 
         return [];

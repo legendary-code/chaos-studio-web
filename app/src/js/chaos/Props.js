@@ -43,7 +43,7 @@ class Props {
     static group(label, ...properties) {
         return {
             type: 'group',
-            label: 'label',
+            label: label,
             properties: properties
         }
     }

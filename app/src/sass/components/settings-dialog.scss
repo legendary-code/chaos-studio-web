@@ -19,6 +19,7 @@
     overflow-y: hidden;
   }
 
+  /*
   .content-1 {
     background-color: palegreen;
   }
@@ -29,7 +30,7 @@
 
   .content-3 {
     background-color: paleturquoise;
-  }
+  }*/
 
   @media #{$device-mobile-portrait}, #{$device-mobile-landscape} {
     top: 0;

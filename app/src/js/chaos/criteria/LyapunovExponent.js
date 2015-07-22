@@ -8,6 +8,10 @@ class LyapunovExponent extends SearchCriterion {
         return "Lyapunov Exponent";
     }
 
+    static get description() {
+        return "An exponent that describes stability";
+    }
+
     static get params() {
         return [
             Props.number("min", "min", -10.0, 10.0),

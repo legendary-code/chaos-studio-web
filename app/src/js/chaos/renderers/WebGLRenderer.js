@@ -7,6 +7,10 @@ let Renderer = require('../Renderer'),
 class WebGLRenderer extends Renderer {
     static get displayName() { return "WebGL Renderer"; }
 
+    static get description() {
+        return "Uses WebGL to render graphics";
+    }
+
     static checkSupported() {
         try {
             var canvas = document.createElement( 'canvas' );
