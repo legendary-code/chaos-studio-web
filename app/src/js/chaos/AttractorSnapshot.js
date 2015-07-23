@@ -37,8 +37,8 @@ class AttractorSnapshot {
         return btoa(AttractorSnapshot.ENCODER.encode(this));
     }
 
-    static decode(value) {
-        return AttractorSnapshot.ENCODER.decode(atob(value));
+    static decode(val) {
+        return AttractorSnapshot.ENCODER.decode(atob(val));
     }
 }
 

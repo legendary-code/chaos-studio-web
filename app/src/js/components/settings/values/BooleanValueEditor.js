@@ -13,8 +13,8 @@ class BooleanValueEditor extends React.Component {
         );
     }
 
-    _valueChanged(value) {
-        this.props.binding.val = value;
+    _valueChanged(val) {
+        this.props.binding.val = val;
     }
 }
 

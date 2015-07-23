@@ -47,7 +47,7 @@ class Configuration extends Component {
     get searchIterations() { return this._searchIterations; }
 
     get totalIterations() { return this._totalIterations; }
-    set totalIterations(value) { this._totalIterations = value; }
+    set totalIterations(val) { this._totalIterations = val; }
 
     get map() { return this._map; }
     get rng() { return this._rng; }

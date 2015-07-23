@@ -29,32 +29,32 @@ class LyapunovExponent extends SearchCriterion {
         return this._min;
     }
 
-    set min(value) {
-        this._min = value;
+    set min(val) {
+        this._min = val;
     }
 
     get precision() {
         return this._precision;
     }
 
-    set precision(value) {
-        this._precision = value;
+    set precision(val) {
+        this._precision = val;
     }
 
     get minIterations() {
         return this._minIterations;
     }
 
-    set minIterations(value) {
-        this._minIterations = value;
+    set minIterations(val) {
+        this._minIterations = val;
     }
 
     get test() {
         return this._test;
     }
 
-    set test(value) {
-        this._test = value;
+    set test(val) {
+        this._test = val;
     }
 
     reset(context, initialValue) {
