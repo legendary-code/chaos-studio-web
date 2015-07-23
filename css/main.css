@@ -350,6 +350,9 @@ p, .font-body-1 {
 .icon-more-horiz {
   background: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24"><path fill="#616161" d="M6 10c-1.105 0-2 0.895-2 2s0.895 2 2 2 2-0.895 2-2-0.895-2-2-2zM18 10c-1.105 0-2 0.895-2 2s0.895 2 2 2 2-0.895 2-2-0.895-2-2-2zM12 10c-1.105 0-2 0.895-2 2s0.895 2 2 2 2-0.895 2-2-0.895-2-2-2z"></path></svg>') no-repeat 0 0/24px 24px; }
 
+.icon-add {
+  background: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24"><path fill="#616161" d="M12 2c-5.525 0-10 4.475-10 10s4.475 10 10 10 10-4.475 10-10-4.475-10-10-10zM17 13h-4v4h-2v-4h-4v-2h4v-4h2v4h4v2z"></path></svg>') no-repeat 0 0/24px 24px; }
+
 .icon {
   width: 24px;
   height: 24px;
@@ -1026,6 +1029,31 @@ p, .font-body-1 {
         .component-panel .button-spacing .button .arrow-panel.hide {
           display: none; }
 
+.add-component-panel {
+  display: block;
+  height: 56px;
+  border-bottom: 1px solid #eeeeee; }
+  .add-component-panel .main-panel {
+    display: inline-block;
+    height: 56px;
+    padding: 10px;
+    vertical-align: top;
+    float: left; }
+    .add-component-panel .main-panel label {
+      display: block; }
+  .add-component-panel .icon-panel {
+    display: inline-block;
+    height: 56px;
+    float: left; }
+    .add-component-panel .icon-panel .button-spacing {
+      display: inline-block;
+      margin: 8px;
+      height: 40px; }
+      .add-component-panel .icon-panel .button-spacing .button {
+        display: inline-block;
+        background: none;
+        height: 40px; }
+
 .number-value-editor {
   margin-top: 16px; }
   .number-value-editor label {
@@ -1304,34 +1332,6 @@ p, .font-body-1 {
     margin-right: 8px; }
   .search-button .cancel {
     background-color: #ff1744; }
-
-.settings-buttons-tray {
-  position: absolute;
-  width: 40px;
-  right: 72px;
-  margin-bottom: 0;
-  margin-right: 0;
-  bottom: 72px;
-  transition: height 0.5s;
-  -o-transition: height 0.5s;
-  -moz-transition: height 0.5s;
-  -webkit-transition: height 0.5s; }
-  .settings-buttons-tray.open {
-    height: 306px; }
-    .settings-buttons-tray.open .floating-action-button {
-      margin-bottom: 0;
-      opacity: 1; }
-  .settings-buttons-tray.closed {
-    height: 40px; }
-    .settings-buttons-tray.closed .floating-action-button {
-      margin-bottom: -44px;
-      opacity: 0; }
-  .settings-buttons-tray .floating-action-button {
-    display: block;
-    transition: margin-bottom 0.5s, opacity 0.5s;
-    -o-transition: margin-bottom 0.5s, opacity 0.5s;
-    -moz-transition: margin-bottom 0.5s, opacity 0.5s;
-    -webkit-transition: margin-bottom 0.5s, opacity 0.5s; }
 
 @media only screen and (orientation: portrait) {
   .viewport {
