@@ -1,15 +1,12 @@
 let $ = require('jquery'),
+    _ = require('underscore'),
     React = require('react'),
     Modals = require('./Modals'),
     AppBar = require('./AppBar'),
     Actions = require('../actions/Actions'),
     Button = require('./Button'),
     Paper = require('./Paper'),
-    Header = require('./settings/Header'),
-    ValueBinding = require('./settings/values/ValueBinding'),
-    NumberValueEditor = require('./settings/values/NumberValueEditor'),
-    BooleanValueEditor = require('./settings/values/BooleanValueEditor'),
-    ComponentPanel = require('./settings/ComponentPanel');
+    SettingsPage = require('./settings/SettingsPage');
 
 let Transition = {
     NONE: 0,
@@ -20,7 +17,7 @@ let Transition = {
 class SettingsDialog extends React.Component {
     constructor(props) {
         this.state = {
-            pages: [ this._createPage(props.component)],
+            pages: [ props.component ],
             transition: Transition.NONE,
             state: 0
         };
@@ -74,15 +71,24 @@ class SettingsDialog extends React.Component {
                     <label className="font-title">Settings</label>
                 </Paper>
                 <div className="contents-container">
-                    <div className={beforeClass} key={beforeKey}>
-                        {page1}
-                    </div>
-                    <div className={contentClass} key={contentKey}>
-                        {page2}
-                    </div>
-                    <div className={afterClass} key={afterKey}>
-                        {page3}
-                    </div>
+                    <SettingsPage
+                        className={beforeClass}
+                        key={beforeKey}
+                        component={page1}
+                        onEditComponent={this._next.bind(this)}
+                        />
+                    <SettingsPage
+                        className={contentClass}
+                        key={contentKey}
+                        component={page2}
+                        onEditComponent={this._next.bind(this)}
+                        />
+                    <SettingsPage
+                        className={afterClass}
+                        key={afterKey}
+                        component={page3}
+                        onEditComponent={this._next.bind(this)}
+                        />
                 </div>
                 <Paper className="action-bar">
                     <Button onClick={this._prev.bind(this)}>CANCEL</Button>
@@ -113,14 +119,14 @@ class SettingsDialog extends React.Component {
         }.bind(this), 200);
     }
 
-    _next() {
+    _next(component) {
         if(this.state.transition != Transition.NONE) {
             return;
         }
 
         let pages = this.state.pages;
 
-        pages.push(<span>Page #{pages.length}</span>);
+        pages.push(component);
 
         this.setState({
             transition: Transition.NEXT,
@@ -132,77 +138,6 @@ class SettingsDialog extends React.Component {
             state = (state + 1) % 3;
             this.setState({transition: Transition.NONE, state: state});
         }.bind(this), 200);
-    }
-
-    _createPage(component) {
-        if (!component.type.params) {
-            return;
-        }
-
-        let controls = [];
-        for (let param of component.type.params) {
-            controls.push(...this._createControls(component, param));
-        }
-
-        return controls;
-    }
-
-    _createControls(component, param) {
-        let binding = new ValueBinding(component, param.property);
-
-        let items;
-        let hasSubProps;
-
-        switch (param.type) {
-            case 'number':
-                return [
-                    <NumberValueEditor
-                        binding={binding}
-                        icon={param.icon}
-                        min={param.min}
-                        max={param.max}
-                        label={param.label}
-                        />
-                ];
-
-            case 'boolean':
-                return [
-                    <BooleanValueEditor
-                        binding={binding}
-                        label={param.label}
-                        />
-                ];
-
-            case 'group':
-                items = [];
-                items.push(<Header label={param.label} />);
-                for (let prop of param.properties) {
-                    items.push(...this._createControls(component, prop));
-                }
-                return items;
-
-            case 'component':
-                hasSubProps = !!binding.val.type.params;
-
-                return [
-                    <Header label={param.label} />,
-                    <ComponentPanel binding={binding} showArrow={hasSubProps} icon="icon-more-horiz" />
-                ];
-
-            case 'componentSet':
-                let controls = [ <Header label={param.label} /> ];
-                items = binding.val || [];
-
-                for (let index in items) {
-                    let componentBinding = new ValueBinding(items, index);
-                    hasSubProps = !!componentBinding.val.type.params;
-                    controls.push(<ComponentPanel binding={componentBinding} showArrow={hasSubProps} icon="icon-delete" />);
-                }
-
-                return controls;
-        }
-
-        return [];
     }
 }
 

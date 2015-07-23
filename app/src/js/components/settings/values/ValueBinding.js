@@ -12,6 +12,14 @@ class ValueBinding {
     set val(v) {
         this._target[this._prop] = v;
     }
+
+    get target() {
+        return this._target;
+    }
+
+    get prop() {
+        return this._prop;
+    }
 }
 
 module.exports = ValueBinding;

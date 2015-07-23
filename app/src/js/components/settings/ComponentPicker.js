@@ -3,7 +3,7 @@ let React = require('react'),
     Actions = require('../../actions/Actions'),
     Button = require('../Button');
 
-class ChoicePicker extends React.Component {
+class ComponentPicker extends React.Component {
     render() {
         let self = this;
         let hasSelection = false;
@@ -39,12 +39,14 @@ class ChoicePicker extends React.Component {
     _onValueChanged(type) {
         this.props.onValueChanged(type);
     }
+
+    static get propTypes() {
+        return {
+            onValueChanged: React.PropTypes.func.isRequired,
+            selected: React.PropTypes.object,
+            types: React.PropTypes.array.isRequired
+        };
+    }
 }
 
-ChoicePicker.propTypes = {
-    onValueChanged: React.PropTypes.func.isRequired,
-    selected: React.PropTypes.object.isRequired,
-    types: React.PropTypes.array.isRequired
-};
-
-module.exports = ChoicePicker;
+module.exports = ComponentPicker;

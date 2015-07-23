@@ -1,0 +1,37 @@
+@import "../../variables/colors";
+
+.add-component-panel {
+  display: block;
+  height: 56px;
+  border-bottom: 1px solid $grey-200;
+
+  .main-panel {
+    display: inline-block;
+    height: 56px;
+    padding: 10px;
+    vertical-align: top;
+    float: left;
+
+    label {
+      display: block;
+    }
+  }
+
+  .icon-panel {
+    display: inline-block;
+    height: 56px;
+    float: left;
+
+    .button-spacing {
+      display: inline-block;
+      margin: 8px;
+      height: 40px;
+
+      .button {
+        display: inline-block;
+        background: none;
+        height: 40px;
+      }
+    }
+  }
+}

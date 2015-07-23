@@ -31,25 +31,29 @@ class ComponentPanel extends React.Component {
         );
     }
 
-    _panelClick() {
-        if (this.props.onPanelClick) {
-            this.props.onPanelClick();
+    _panelClick(e) {
+        if (this.props.onPanelClick && this.props.showArrow) {
+            this.props.onPanelClick(this.props.binding, this.props.componentType);
         }
     }
 
-    _iconClick() {
+    _iconClick(e) {
+        // don't propagate event to panel behind icon
+        e.stopPropagation();
+
         if (this.props.onIconClick) {
-            this.props.onIconClick();
+            this.props.onIconClick(this.props.binding, this.props.componentType);
         }
     }
 
     static get propTypes() {
         return {
-            onIconClick: React.PropTypes.func,
-            onPanelClick: React.PropTypes.func,
+            onIconClick: React.PropTypes.func.isRequired,
+            onPanelClick: React.PropTypes.func.isRequired,
             icon: React.PropTypes.string,
             showArrow: React.PropTypes.bool,
-            binding: React.PropTypes.object.isRequired
+            binding: React.PropTypes.object.isRequired,
+            componentType: React.PropTypes.object.isRequired
         };
     }
 }

@@ -59,12 +59,12 @@ class Button extends React.Component {
         this._ripple.doRipple(clickEvent);
     }
 
-    _onClick() {
+    _onClick(e) {
         if (!!this.props.disabled) {
             return;
         }
 
-        this.props.onClick();
+        this.props.onClick(e);
     }
 
     _onEnter() {

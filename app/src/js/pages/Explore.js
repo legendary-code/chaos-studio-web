@@ -9,7 +9,8 @@ let $ = require('jquery'),
     AttractorFinder = require('../chaos/AttractorFinder'),
     AttractorSnapshot = require('../chaos/AttractorSnapshot'),
     SearchConfigurationStore = require('../stores/SearchConfigurationStore'),
-    RouterStore = require('../stores/RouterStore');
+    RouterStore = require('../stores/RouterStore'),
+    SettingsDialog = require('../components/SettingsDialog');
 
 class Explore extends React.Component {
 
@@ -18,7 +19,6 @@ class Explore extends React.Component {
 
         this.state = {
             showIntro: true,
-            showTray: false,
             currentSnapshotId: null
         };
     }
@@ -41,12 +41,6 @@ class Explore extends React.Component {
             "translate": !this.state.showIntro
         });
 
-        let trayClassName = cx({
-            "settings-buttons-tray": true,
-            "open": this.state.showTray,
-            "closed": !this.state.showTray
-        });
-
         return (
             <div>
                 <Paper className={introClassName} ref="introPaper">
@@ -56,68 +50,12 @@ class Explore extends React.Component {
 
                 <Viewport ref="viewport" />
 
-                <div className={trayClassName} >
-                    <FloatingActionButton
-                        className="mini-button"
-                        icon="icon-map"
-                        onContextShow={this._showContextText.bind(this)}
-                        onContextHide={this._hideContextText.bind(this)}
-                        contextText="Configure Map"
-                        mini
-                    />
-
-                    <FloatingActionButton
-                        className="mini-button"
-                        icon="icon-search-criteria"
-                        onContextShow={this._showContextText.bind(this)}
-                        onContextHide={this._hideContextText.bind(this)}
-                        contextText="Configure Search Criteria"
-                        mini
-                    />
-
-                    <FloatingActionButton
-                        className="mini-button"
-                        icon="icon-renderer"
-                        onContextShow={this._showContextText.bind(this)}
-                        onContextHide={this._hideContextText.bind(this)}
-                        contextText="Configure Renderer"
-                        mini
-                    />
-
-                    <FloatingActionButton
-                        className="mini-button"
-                        icon="icon-colorizer"
-                        onContextShow={this._showContextText.bind(this)}
-                        onContextHide={this._hideContextText.bind(this)}
-                        contextText="Configure Colorizer"
-                        mini
-                    />
-
-                    <FloatingActionButton
-                        className="mini-button"
-                        icon="icon-projection"
-                        onContextShow={this._showContextText.bind(this)}
-                        onContextHide={this._hideContextText.bind(this)}
-                        contextText="Configure Projection"
-                        mini
-                    />
-
-                    <FloatingActionButton
-                        className="mini-button"
-                        icon="icon-rng"
-                        onContextShow={this._showContextText.bind(this)}
-                        onContextHide={this._hideContextText.bind(this)}
-                        contextText="Configure Rng"
-                        mini
-                    />
-                </div>
-
                 <Paper className="bottom-paper" ref="bottomPaper">
                     <FloatingActionButton
                         className="mini-button"
                         icon="icon-settings-light"
                         mini
-                        onClick={this._toggleTray.bind(this)}
+                        onClick={this._showSettings.bind(this)}
                         onContextShow={this._showContextText.bind(this)}
                         onContextHide={this._hideContextText.bind(this)}
                         contextText="Settings"
@@ -144,7 +82,7 @@ class Explore extends React.Component {
 
                 <FloatingActionButton
                     className={searchButtonClassName}
-                    icon="icon-search light"
+                    icon="icon-search-light"
                     ref="searchButton"
                     onClick={this._search.bind(this)}
                     onContextShow={this._showContextText.bind(this)}
@@ -157,8 +95,8 @@ class Explore extends React.Component {
         );
     }
 
-    _toggleTray() {
-        this.setState({showTray: !this.state.showTray});
+    _showSettings() {
+        Actions.SHOW_MODAL.invoke(<SettingsDialog component={SearchConfigurationStore.configuration} />);
     }
 
     _search() {

@@ -83,38 +83,6 @@
   }
 }
 
-.settings-buttons-tray {
-  position: absolute;
-  width: 40px;
-  right: 72px;
-  margin-bottom: 0;
-  margin-right: 0;
-  bottom: 72px;
-
-  @include transition(height 0.5s);
-
-  &.open {
-    height: 306px;
-    .floating-action-button {
-      margin-bottom: 0;
-      opacity: 1;
-    }
-  }
-
-  &.closed {
-    height: 40px;
-    .floating-action-button {
-      margin-bottom: -44px;
-      opacity: 0;
-    }
-  }
-
-  .floating-action-button {
-    display: block;
-    @include transition(margin-bottom 0.5s, opacity 0.5s);
-  }
-}
-
 .viewport {
   @media #{$device-mobile-portrait} {
     margin-top: 56px;

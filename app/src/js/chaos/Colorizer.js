@@ -1,4 +1,5 @@
-let Component = require('./Component');
+let Component = require('./Component'),
+    Components = require('./Components');
 
 /* Implemented to define colorizer, which affects color and alpha of vertices.
  * This does not affect things like alpha-blending, shading, etc.
@@ -14,5 +15,7 @@ class Colorizer extends Component {
     apply(context, vertex) { return vertex; }
     reset() { }
 }
+
+Components.register(Colorizer, Colorizer, true);
 
 module.exports = Colorizer;

@@ -1,4 +1,5 @@
-let Component = require('./Component');
+let Component = require('./Component'),
+    Components = require('./Components');
 
 /* Implemented to define a transform from a normalized vertex to another normalized vertex or set of vertices */
 class Projection extends Component {
@@ -11,5 +12,7 @@ class Projection extends Component {
     apply(context, vertex) { return vertex; }
     reset() { }
 }
+
+Components.register(Projection, Projection, true);
 
 module.exports = Projection;
