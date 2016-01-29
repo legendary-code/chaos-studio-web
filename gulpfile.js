@@ -2,7 +2,6 @@ var gulp = require('gulp'),
     webserver = require('gulp-webserver'),
 
     browserify = require('browserify'),
-    reactify = require('reactify'),
     babelify = require('babelify'),
 
     source = require('vinyl-source-stream'),
@@ -13,12 +12,6 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     insert = require('gulp-insert');
 
-/**
- * Build happens in two phases:
- * 1) Stage - copies/compiles all various less, js, css, etc. files from libs and src folder to 'link' folder for final packaging
- * 2) Link - finalizes files, by compiling less files, browserifying, minifying, etc. into the final 'dist' folder
- */
-
 var bundleLibrary = function(entryFile, targetFile, destination) {
     return browserify()
                 .add(entryFile)
@@ -27,50 +20,9 @@ var bundleLibrary = function(entryFile, targetFile, destination) {
                 .pipe(gulp.dest(destination));
 };
 
-/* LIBRARIES */
-gulp.task('three', function() {
-    return gulp.src('./node_modules/three/three.js')
-               .pipe(gulp.dest('./app/link/js'));
-});
-
-gulp.task('jquery', function() {
-    return es.merge(
-        gulp.src('./app/src/libs/jquery-mobile-1.4.5-vmouse-only/jquery.mobile.custom.js')
-            .pipe(gulp.dest('./app/link/js')),
-        gulp.src('./node_modules/jquery/dist/jquery.js')
-            .pipe(gulp.dest('./app/link/js'))
-    );
-});
-
-gulp.task('zeroclipboard', function() {
-    return gulp.src('./node_modules/zeroclipboard/dist/ZeroClipboard.swf')
-               .pipe(gulp.dest('./app/dist/js'));
-});
-
-gulp.task('react-router', function() {
-    return bundleLibrary('./node_modules/react-router/modules/index.js', 'react-router.js', './app/link/js');
-});
-
-/* STAGING TASKS */
-
 gulp.task('html', function() {
     return gulp.src('./app/src/html/index.html')
                .pipe(gulp.dest('./app/dist'));
-});
-
-gulp.task('js', function() {
-    return es.merge(
-        gulp.src('./app/libs/**/*.js')
-            .pipe(gulp.dest('./app/link/js')),
-        gulp.src('./app/src/js/**/*.js')
-            .pipe(insert.prepend("/** @preventMunge */"))
-            .pipe(gulp.dest('./app/link/js'))
-    );
-});
-
-gulp.task('sass', function() {
-    return gulp.src('./app/src/sass/**/*.*')
-        .pipe(gulp.dest('./app/link/sass'));
 });
 
 gulp.task('font', function() {
@@ -92,38 +44,37 @@ gulp.task('favicon', function() {
     );
 });
 
-/* LINK TASKS */
-
-gulp.task('link-js', ['stage'], function() {
-    return browserify()
-                .add('./app/link/js/main.js')
-                .transform(reactify, {es6: true, stripTypes: true})
-                .transform(babelify)
-                .bundle()
-                .on('error', function(err) {
-                    console.error(err);
-                })
-                .pipe(source('main.js'))
-                .pipe(gulp.dest('./app/dist/js'));
+gulp.task('js', function() {
+    return browserify('./app/src/js/main.js', {debug: true})
+        .transform(babelify, {
+            plugins: [
+                'syntax-class-properties',
+                'transform-class-properties',
+                'syntax-decorators',
+                'transform-decorators',
+                'syntax-async-functions',
+                'transform-regenerator'
+            ],
+            presets: [ 'es2015', 'react' ]
+        })
+        .bundle()
+        .pipe(source('main.js'))
+        //.pipe(insert.prepend("/** @preventMunge */"))
+        .pipe(gulp.dest('./app/dist/js'));
 });
 
-gulp.task('link-sass', ['stage'], function() {
-    return gulp.src('./app/link/sass/main.scss')
+gulp.task('sass', function() {
+    return gulp.src('./app/src/sass/main.scss')
         .pipe(sass())
         .pipe(gulp.dest('./app/dist/css'));
 });
 
-/* BUILD PHASES */
 
-gulp.task('libs', ['three', 'jquery', 'zeroclipboard']);
-
-gulp.task('stage', ['libs', 'html', 'sass', 'js', 'svg', 'font', 'favicon']);
-
-gulp.task('link', ['stage', 'link-js', 'link-sass']);
+gulp.task('build', ['js', 'sass', 'html', 'svg', 'font', 'favicon']);
 
 /* SERVER & BROWSER TASKS */
 
-gulp.task('server', ['link'], function() {
+gulp.task('server', ['build'], function() {
     return gulp.src('./app/dist')
                .pipe(webserver({
                     livereload: false,
@@ -132,10 +83,10 @@ gulp.task('server', ['link'], function() {
                 }));
 });
 
-gulp.task('watch', ['link'], function() {
-    return gulp.watch('./app/src/**/*.*', ['link']);
+gulp.task('watch', ['build'], function() {
+    return gulp.watch('./app/src/**/*.*', ['build']);
 });
 
-gulp.task('default', ['link']);
+gulp.task('default', ['build']);
 
 gulp.task('serve', ['server', 'watch']);

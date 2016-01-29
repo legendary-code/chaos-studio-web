@@ -1,15 +1,16 @@
-let React = require('react'),
-    ConfigurationStore = require('../stores/SearchConfigurationStore'),
-    Rotation = require('../chaos/Rotation'),
-    cx = require('../utils/ReactUtils').cx;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ConfigurationStore from '../stores/SearchConfigurationStore';
+import Rotation from '../chaos/Rotation';
+import { cx } from '../utils/ReactUtils';
 
 /* Given a renderer, this component renders strange attractors, handles user input
 * for rotating attractors, and animates rotating attractors, redrawing only
 * when necessary */
 
-class Viewport extends React.Component {
+export default class Viewport extends React.Component {
     constructor(props) {
-        super.constructor(props);
+        super(props);
 
         this.state = {
             searching: false,
@@ -79,7 +80,7 @@ class Viewport extends React.Component {
     }
 
     _handleResize() {
-        var viewport = React.findDOMNode(this.refs.viewport);
+        var viewport = ReactDOM.findDOMNode(this.refs.viewport);
         var width = viewport.clientWidth;
         var height = viewport.clientHeight;
         var renderer = this.state.renderer;
@@ -91,7 +92,7 @@ class Viewport extends React.Component {
     }
 
     componentDidMount() {
-        var viewport = React.findDOMNode(this.refs.viewport);
+        var viewport = ReactDOM.findDOMNode(this.refs.viewport);
         let width = viewport.clientWidth;
         let height = viewport.clientHeight;
         let renderer = ConfigurationStore.state.configuration.renderer;
@@ -145,7 +146,7 @@ class Viewport extends React.Component {
     }
 
     getViewportSize() {
-        var viewport = React.findDOMNode(this.refs.viewport);
+        var viewport = ReactDOM.findDOMNode(this.refs.viewport);
         return { width: viewport.clientWidth, height: viewport.clientHeight };
     }
 
@@ -161,5 +162,3 @@ class Viewport extends React.Component {
         return this.state.surface;
     }
 }
-
-module.exports = Viewport;

@@ -1,10 +1,10 @@
-let React = require('react'),
-    ValueBinding = require('./ValueBinding'),
-    BooleanValueEditor = require('./BooleanValueEditor'),
-    NumberValueEditor = require('./NumberValueEditor');
+import React from 'react';
+import ValueBinding from './ValueBinding';
+import BooleanValueEditor from './BooleanValueEditor';
+import NumberValueEditor from './NumberValueEditor';
 
 /* Given a set of component parameters, generates UI controls for editing these parameters */
-class ValueEditorsFactory {
+export default class ValueEditorsFactory {
     static create(component, props) {
         let editors = [];
         let params = component.type.params;
@@ -50,5 +50,3 @@ class ValueEditorsFactory {
         return editors;
     }
 }
-
-module.exports = ValueEditorsFactory;

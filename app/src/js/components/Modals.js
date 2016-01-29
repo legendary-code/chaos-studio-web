@@ -1,33 +1,15 @@
-let _ = require('underscore'),
-    $ = require('jquery'),
-    React = require('react'),
-    ModalStore = require('../stores/ModalStore')
+import React from 'react';
 
-class Modals extends React.Component {
+export default class Modals extends React.Component {
     constructor(props) {
-        super.constructor(props);
-        this.state = { modals: [] };
-    }
-
-    componentDidMount() {
-        ModalStore.addListener(this._updateModals.bind(this));
-    }
-
-    componentWillUnmount() {
-        ModalStore.removeListener(this._updateModals.bind(this));
-    }
-
-    _updateModals() {
-        this.setState({modals: ModalStore.state.modals});
+        super(props);
     }
 
     render() {
         return (
             <div>
-                {this.state.modals}
+                {this.props.modals}
             </div>
         );
     }
 }
-
-module.exports = Modals;

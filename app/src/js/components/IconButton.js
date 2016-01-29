@@ -1,9 +1,9 @@
-let React = require('react'),
-    cx = require('../utils/ReactUtils').cx,
-    Button = require('./button'),
-    Icon = require('./Icon');
+import React from 'react';
+import { cx } from '../utils/ReactUtils';
+import Button from './button';
+import Icon from './Icon';
 
-class IconButton extends React.Component {
+export default class IconButton extends React.Component {
     render() {
         let icon = this.props.icon;
         let label = this.props.label;
@@ -21,11 +21,11 @@ class IconButton extends React.Component {
 
         if (icon) {
             icon += " left";
-            children.push(<Icon icon={icon} />);
+            children.push(<Icon icon={icon} key="icon"/>);
         }
 
         if (label) {
-            children.push(<label className="font-button">{label}</label>);
+            children.push(<label className="font-button" key="label">{label}</label>);
         }
 
         return (
@@ -34,20 +34,22 @@ class IconButton extends React.Component {
             </Button>
         )
     }
+
+    static get propTypes() {
+        return {
+            icon: React.PropTypes.string,
+            label: React.PropTypes.string,
+            left: React.PropTypes.bool,
+            right: React.PropTypes.bool,
+            raised: React.PropTypes.bool,
+            onClick: React.PropTypes.func
+        }
+    }
+
+    static get defaultProps() {
+        return {
+            left: false,
+            right: false
+        }
+    };
 }
-
-IconButton.propTypes = {
-    icon: React.PropTypes.string,
-    label: React.PropTypes.string.isRequired,
-    left: React.PropTypes.bool,
-    right: React.PropTypes.bool,
-    raised: React.PropTypes.bool,
-    onClick: React.PropTypes.func
-};
-
-IconButton.defaultProps = {
-    left: false,
-    right: false
-};
-
-module.exports = IconButton;

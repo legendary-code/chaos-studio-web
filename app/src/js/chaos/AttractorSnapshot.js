@@ -1,7 +1,5 @@
-let Base64Serializer = require('../utils/Base64Serializer'),
-    Base64Deserializer = require('../utils/Base64Deserializer'),
-    Components = require('./Components'),
-    JSEncoder = require('jsencode');
+import Components from './Components';
+import JSEncoder from 'jsencode';
 
 /* Represents the minimum amount of information needed to re-generate an attractor */
 class AttractorSnapshot {
@@ -44,4 +42,4 @@ class AttractorSnapshot {
 
 AttractorSnapshot.ENCODER = new JSEncoder({types : Components.allTypes()});
 AttractorSnapshot.ENCODER.registerTypes(AttractorSnapshot);
-module.exports = AttractorSnapshot;
+export default AttractorSnapshot;

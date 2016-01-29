@@ -1,9 +1,9 @@
-let React = require('react'),
-    Button = require('../Button'),
-    FloatingActionButton = require('../FloatingActionButton'),
-    Icon = require('../Icon');
+import React from 'react';
+import Button from '../Button';
+import FloatingActionButton from '../FloatingActionButton';
+import Icon from '../Icon';
 
-class ComponentPanel extends React.Component {
+export default class ComponentPanel extends React.Component {
     render() {
         let type = this.props.binding.val.type;
         let arrowClassName = "arrow-panel" + (this.props.showArrow ? "" : " hide");
@@ -57,5 +57,3 @@ class ComponentPanel extends React.Component {
         };
     }
 }
-
-module.exports = ComponentPanel;

@@ -1,8 +1,8 @@
-let React = require('react'),
-    Ripple = require('./effects/Ripple'),
-    cx = require('../utils/ReactUtils').cx;
+import React from 'react';
+import Ripple from './effects/Ripple';
+import { cx } from '../utils/ReactUtils';
 
-class Button extends React.Component {
+export default class Button extends React.Component {
     componentDidMount() {
         if (!this.props.disabled) {
             this._ripple = new Ripple(this.refs.rippleTarget);
@@ -90,5 +90,3 @@ Button.propTypes = {
     onContextShow: React.PropTypes.func,
     onContextHide: React.PropTypes.func
 };
-
-module.exports = Button;

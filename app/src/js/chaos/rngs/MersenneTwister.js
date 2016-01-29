@@ -1,7 +1,4 @@
-var Rng = require('../Rng');
+import Rng from '../Rng';
 
-class MersenneTwister extends Rng {
-
+export default class MersenneTwister extends Rng {
 }
-
-module.exports = MersenneTwister;

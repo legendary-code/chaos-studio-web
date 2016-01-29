@@ -1,18 +1,18 @@
-let $ = require('jquery'),
-    _ = require('underscore'),
-    React = require('react'),
-    Modals = require('../Modals'),
-    Actions = require('../../actions/Actions'),
-    Header = require('./Header'),
-    ValueBinding = require('./values/ValueBinding'),
-    NumberValueEditor = require('./values/NumberValueEditor'),
-    BooleanValueEditor = require('./values/BooleanValueEditor'),
-    ComponentPanel = require('./ComponentPanel'),
-    AddComponentPanel = require('./AddComponentPanel'),
-    Components = require('../../chaos/Components'),
-    ComponentPicker = require('./ComponentPicker');
+import $ from 'jquery';
+import _ from 'underscore';
+import React from 'react';
+import Modals from '../Modals';
+import Actions from '../../actions/Actions';
+import Header from './Header';
+import ValueBinding from './values/ValueBinding';
+import NumberValueEditor from './values/NumberValueEditor';
+import BooleanValueEditor from './values/BooleanValueEditor';
+import ComponentPanel from './ComponentPanel';
+import AddComponentPanel from './AddComponentPanel';
+import Components from '../../chaos/Components';
+import ComponentPicker from './ComponentPicker';
 
-class SettingsPage extends React.Component {
+export default class SettingsPage extends React.Component {
     render() {
         let component = this.props.component;
         let controls = [];
@@ -170,5 +170,3 @@ class SettingsPage extends React.Component {
         }
     }
 }
-
-module.exports = SettingsPage;

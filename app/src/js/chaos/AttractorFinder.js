@@ -1,12 +1,12 @@
-var _ = require('underscore'),
-    Context = require('./Context'),
-    Bounds = require('./Bounds'),
-    Point = require('./Point'),
-    Time = require('./Time'),
-    Threading = require('../threading/Threading'),
-    AttractorSnapshot = require('./AttractorSnapshot');
+import _ from 'underscore';
+import Context from './Context';
+import Bounds from './Bounds';
+import Point from './Point';
+import Time from './Time';
+import Threading from '../threading/Threading';
+import AttractorSnapshot from './AttractorSnapshot';
 
-class AttractorFinder {
+export default class AttractorFinder {
     constructor(configuration, onStatus, onComplete, snapshot) {
         this._configuration = configuration;
         this._onStatus = onStatus;
@@ -216,5 +216,3 @@ class AttractorFinder {
         }
     }
 }
-
-module.exports = AttractorFinder;

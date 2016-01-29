@@ -1,9 +1,9 @@
-let React = require('react'),
-    ToggleButton = require('./ToggleButton');
+import React from 'react';
+import ToggleButton from './ToggleButton';
 
-class Checkbox extends ToggleButton {
+export default class Checkbox extends ToggleButton {
     constructor(props) {
-        super.constructor(
+        super(
             props,
             "icon-checked",
             "icon-unchecked",
@@ -12,5 +12,3 @@ class Checkbox extends ToggleButton {
         );
     }
 }
-
-module.exports = Checkbox;

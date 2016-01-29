@@ -1,8 +1,8 @@
-let React = require('react'),
-    Icon = require('../../Icon'),
-    Slider = require('../../Slider');
+import React from 'react';
+import Icon from '../../Icon';
+import Slider from '../../Slider';
 
-class NumberValueEditor extends React.Component {
+export default class NumberValueEditor extends React.Component {
     render() {
         return (
             <div className="number-value-editor">
@@ -25,5 +25,3 @@ class NumberValueEditor extends React.Component {
         this.props.binding.val = val;
     }
 }
-
-module.exports = NumberValueEditor;

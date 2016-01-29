@@ -1,4 +1,4 @@
-let React = require('react');
+import React from 'react';
 
 class Developers extends React.Component {
     render() {
@@ -7,5 +7,4 @@ class Developers extends React.Component {
 }
 
 Developers.pageName = "Developers";
-
-module.exports = Developers;
+export default Developers;

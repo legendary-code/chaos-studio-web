@@ -1,7 +1,7 @@
-let Component = require('./Component');
+import Component from './Component';
 
 /* Implemented to define a renderer that is capable of rendering colored vertices to a canvas */
-class Renderer extends Component {
+export default class Renderer extends Component {
     /* Tests whether this renderer is supported by the browser */
     static checkSupported() {
         return true;
@@ -23,5 +23,3 @@ class Renderer extends Component {
        but the scene needs to know what size the surface is in order to render correctly. */
     resize(width, height) { }
 }
-
-module.exports = Renderer;

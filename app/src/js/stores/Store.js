@@ -1,9 +1,10 @@
-let _ = require('underscore'),
-    EventEmitter = require('events').EventEmitter,
-    ChaosDispatcher = require('../dispatcher/ChaosDispatcher');
+import _ from 'underscore';
+import { EventEmitter } from 'events';
+import ChaosDispatcher from '../dispatcher/ChaosDispatcher';
 
-class Store extends EventEmitter {
+export default class Store extends EventEmitter {
     constructor() {
+        super();
         ChaosDispatcher.register(this.invoke.bind(this));
         this._state = this.getInitialState();
     }
@@ -36,5 +37,3 @@ class Store extends EventEmitter {
         super.emit('change');
     }
 }
-
-module.exports = Store;

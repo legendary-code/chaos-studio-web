@@ -1,11 +1,11 @@
-let React = require('react'),
-    cx = require('../utils/ReactUtils').cx,
-    Button = require('./Button'),
-    Paper = require('./Paper');
+import React from 'react';
+import { cx } from '../utils/ReactUtils';
+import Button from './Button';
+import Paper from './Paper';
 
-class Toggle extends React.Component {
+export default class Toggle extends React.Component {
     constructor(props) {
-        super.constructor(props);
+        super(props);
         this.state = { toggled: !!this.props.toggled };
     }
 
@@ -50,5 +50,3 @@ Toggle.propTypes = {
     "disabled": React.PropTypes.boolean,
     "onValueChanged": React.PropTypes.func
 };
-
-module.exports = Toggle;

@@ -1,10 +1,11 @@
-let $ = require('jquery'),
-    React = require('react'),
-    cx = require('../utils/ReactUtils').cx;
+import $ from 'jquery';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { cx } from '../utils/ReactUtils';
 
-class Slider extends React.Component {
+export default class Slider extends React.Component {
     constructor(props) {
-        super.constructor(props);
+        super(props);
         this.state = {
             value: props.value,
             dragging: false
@@ -12,13 +13,13 @@ class Slider extends React.Component {
     }
 
     componentDidMount() {
-        $(React.findDOMNode(this.refs.slider)).on("vmousedown", this._dragBegin.bind(this));
+        $(ReactDOM.findDOMNode(this.refs.slider)).on("vmousedown", this._dragBegin.bind(this));
         $(document).on("vmousemove", this._drag.bind(this));
         $(document).on("vmouseup", this._dragEnd.bind(this));
     }
 
     componentWillUnmount() {
-        $(React.findDOMNode(this.refs.slider)).off("vmousedown", this._dragBegin.bind(this));
+        $(ReactDOM.findDOMNode(this.refs.slider)).off("vmousedown", this._dragBegin.bind(this));
         $(document).off("vmousemove", this._drag.bind(this));
         $(document).off("vmouseup", this._dragEnd.bind(this));
     }
@@ -82,7 +83,7 @@ class Slider extends React.Component {
             return;
         }
 
-        let track = $(React.findDOMNode(this.refs.sliderTrack));
+        let track = $(ReactDOM.findDOMNode(this.refs.sliderTrack));
         let xMin = track.offset().left;
         let xMax = xMin + track.width();
 
@@ -117,5 +118,3 @@ Slider.propTypes = {
     disabled: React.PropTypes.boolean,
     onValueChanged: React.PropTypes.func
 };
-
-module.exports = Slider;

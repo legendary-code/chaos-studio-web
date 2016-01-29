@@ -1,12 +1,12 @@
-let $ = require('jquery'),
-    _ = require('underscore'),
-    React = require('react'),
-    Modals = require('./Modals'),
-    AppBar = require('./AppBar'),
-    Actions = require('../actions/Actions'),
-    Button = require('./Button'),
-    Paper = require('./Paper'),
-    SettingsPage = require('./settings/SettingsPage');
+import $ from 'jquery';
+import _ from 'underscore';
+import React from 'react';
+import Modals from './Modals';
+import AppBar from './AppBar';
+import Actions from '../actions/Actions';
+import Button from './Button';
+import Paper from './Paper';
+import SettingsPage from './settings/SettingsPage';
 
 let Transition = {
     NONE: 0,
@@ -14,8 +14,9 @@ let Transition = {
     PREV: 2
 };
 
-class SettingsDialog extends React.Component {
+export default class SettingsDialog extends React.Component {
     constructor(props) {
+        super();
         this.state = {
             pages: [ props.component ],
             transition: Transition.NONE,
@@ -140,5 +141,3 @@ class SettingsDialog extends React.Component {
         }.bind(this), 200);
     }
 }
-
-module.exports = SettingsDialog;

@@ -1,12 +1,12 @@
-let React = require('react'),
-    Header = require('./Header'),
-    Choice = require('./Choice'),
-    Slider = require('../Slider'),
-    Checkbox = require('../Checkbox'),
-    Toggle = require('../Toggle'),
-    ComponentToggle = require('./ComponentToggle'),
-    LyapunovExponent = require('../../chaos/criteria/LyapunovExponent'),
-    ValueEditorsFactory = require('./values/ValueEditorsFactory');
+import React from 'react';
+import Header from './Header';
+import Choice from './Choice';
+import Slider from '../Slider';
+import Checkbox from '../Checkbox';
+import Toggle from '../Toggle';
+import ComponentToggle from './ComponentToggle';
+import LyapunovExponent from '../../chaos/criteria/LyapunovExponent';
+import ValueEditorsFactory from './values/ValueEditorsFactory';
 
 /* Settings dialog view for configuring a single component
  * Consists of two sections:
@@ -15,7 +15,7 @@ let React = require('react'),
  * - Advanced
  *   - Contains configurable properties for component
  */
-class SingleComponentSettings extends React.Component {
+export default class SingleComponentSettings extends React.Component {
     render() {
         let editors = ValueEditorsFactory.create(this.props.binding.val);
 
@@ -45,5 +45,3 @@ class SingleComponentSettings extends React.Component {
         this.forceUpdate();
     }
 }
-
-module.exports = SingleComponentSettings;

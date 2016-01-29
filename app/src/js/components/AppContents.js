@@ -1,6 +1,6 @@
-let React = require('react');
+import React from 'react';
 
-class AppContents extends React.Component {
+export default class AppContents extends React.Component {
     render() {
         return (
             <div className="app-contents">
@@ -9,5 +9,3 @@ class AppContents extends React.Component {
         )
     }
 }
-
-module.exports = AppContents;

@@ -1,5 +1,5 @@
-let Rng = require('../Rng'),
-    Components = require('../Components');
+import Rng from '../Rng';
+import Components from '../Components';
 
 const m = Math.pow(2, 48);
 const a = 25214903917;
@@ -26,4 +26,4 @@ class LinearCongruentialGenerator extends Rng {
 }
 
 Components.register(Rng, LinearCongruentialGenerator, true);
-module.exports = LinearCongruentialGenerator;
+export default LinearCongruentialGenerator;

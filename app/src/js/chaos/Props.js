@@ -1,7 +1,7 @@
 /* Parameter types for Components */
 
 /* Used to define component attributes that can be rendered in a settings dialog */
-class Props {
+export default class Props {
     /* A numeric value */
     static number(property, label, min, max, icon) {
         return {
@@ -48,5 +48,3 @@ class Props {
         }
     }
 }
-
-module.exports = Props;

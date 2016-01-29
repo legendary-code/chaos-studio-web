@@ -1,5 +1,5 @@
 /* Utility class to help with retrieving and setting a parameter value */
-class ValueBinding {
+export default class ValueBinding {
     constructor(target, prop) {
         this._target = target;
         this._prop = prop;
@@ -21,5 +21,3 @@ class ValueBinding {
         return this._prop;
     }
 }
-
-module.exports = ValueBinding;

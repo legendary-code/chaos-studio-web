@@ -1,8 +1,8 @@
-let _ = require('underscore'),
-    Time = require('./Time');
+import _ from 'underscore';
+import Time from './Time';
 
 /* Implements 2-axis inertial rotation */
-class Rotation {
+export default class Rotation {
     constructor() {
         this.reset();
     }
@@ -84,5 +84,3 @@ class Rotation {
         return this._dx > 0 || this._dy > 0;
     }
 }
-
-module.exports = Rotation;

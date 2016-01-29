@@ -1,10 +1,10 @@
-let Component = require('../../Component'),
-    Three = require('three');
+import Component from '../../Component';
+import Three from 'three';
 
 /**
  * Implements a rendering filter for WebGLRenderer for special effects like pencil sketch
  */
-class RenderFilter extends Component {
+export default class RenderFilter extends Component {
     static get displayName() { return "Default"; }
 
     createGeometry(points) {
@@ -27,5 +27,3 @@ class RenderFilter extends Component {
         });
     }
 }
-
-module.exports = RenderFilter;

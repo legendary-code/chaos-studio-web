@@ -1,4 +1,4 @@
-class Threading {
+export default class Threading {
     static runAsync(generatorFunc) {
         let iter = generatorFunc();
 
@@ -12,5 +12,3 @@ class Threading {
         setTimeout(repeat, 0);
     }
 }
-
-module.exports = Threading;

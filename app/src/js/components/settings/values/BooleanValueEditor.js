@@ -1,7 +1,7 @@
-let React = require('react'),
-    Checkbox = require('../../Checkbox');
+import React from 'react';
+import Checkbox from '../../Checkbox';
 
-class BooleanValueEditor extends React.Component {
+export default class BooleanValueEditor extends React.Component {
     render() {
         return (
             <div className="boolean-value-editor">
@@ -17,5 +17,3 @@ class BooleanValueEditor extends React.Component {
         this.props.binding.val = val;
     }
 }
-
-module.exports = BooleanValueEditor;

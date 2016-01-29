@@ -1,37 +1,39 @@
-let ReactUtils = {
-    join(classes) {
-        let result = "";
+import { Component } from 'react';
 
-        // Allow polyfill to inject iterator behaviors
-        let args = Array.apply(Array, arguments);
+export function join(classes) {
+    let result = "";
 
-        for (let clazz of args) {
-            if (typeof clazz === "string") {
-                if (result) {
-                    result += " ";
-                }
+    // Allow polyfill to inject iterator behaviors
+    let args = Array.apply(Array, arguments);
 
-                result += clazz;
+    for (let clazz of args) {
+        if (typeof clazz === "string") {
+            if (result) {
+                result += " ";
             }
+
+            result += clazz;
         }
-        return result;
-    },
-
-    cx(classes) {
-        let result = "";
-
-        for (let clazz in classes) {
-            if (classes.hasOwnProperty(clazz) && classes[clazz]) {
-                if (result) {
-                    result += " ";
-                }
-
-                result += clazz;
-            }
-        }
-
-        return result;
     }
-};
+    return result;
+}
 
-module.exports = ReactUtils;
+export function cx(classes) {
+    let result = "";
+
+    for (let clazz in classes) {
+        if (classes.hasOwnProperty(clazz) && classes[clazz]) {
+            if (result) {
+                result += " ";
+            }
+
+            result += clazz;
+        }
+    }
+
+    return result;
+}
+
+export class Container extends Component {
+
+}

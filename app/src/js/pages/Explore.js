@@ -1,21 +1,21 @@
-let $ = require('jquery'),
-    React = require('react'),
-    cx = require('../utils/ReactUtils').cx,
-    Paper = require('../components/Paper'),
-    FloatingActionButton = require('../components/FloatingActionButton'),
-    IconButton = require('../components/IconButton'),
-    Viewport = require('../components/Viewport'),
-    Actions = require('../actions/Actions'),
-    AttractorFinder = require('../chaos/AttractorFinder'),
-    AttractorSnapshot = require('../chaos/AttractorSnapshot'),
-    SearchConfigurationStore = require('../stores/SearchConfigurationStore'),
-    RouterStore = require('../stores/RouterStore'),
-    SettingsDialog = require('../components/SettingsDialog');
+import $ from 'jquery';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { cx } from '../utils/ReactUtils';
+import Paper from '../components/Paper';
+import FloatingActionButton from '../components/FloatingActionButton';
+import IconButton from '../components/IconButton';
+import Viewport from '../components/Viewport';
+import Actions from '../actions/Actions';
+import AttractorFinder from '../chaos/AttractorFinder';
+import AttractorSnapshot from '../chaos/AttractorSnapshot';
+import SearchConfigurationStore from '../stores/SearchConfigurationStore';
+import SettingsDialog from '../components/SettingsDialog';
 
 class Explore extends React.Component {
 
     constructor(props) {
-        super.constructor(props);
+        super(props);
 
         this.state = {
             showIntro: true,
@@ -132,9 +132,9 @@ class Explore extends React.Component {
     }
 
     _hideIntro() {
-        $(React.findDOMNode(this.refs.introPaper)).addClass("fade-out");
-        $(React.findDOMNode(this.refs.searchButton)).addClass("translate");
-        $(React.findDOMNode(this.refs.bottomPaper)).addClass("translate");
+        $(ReactDOM.findDOMNode(this.refs.introPaper)).addClass("fade-out");
+        $(ReactDOM.findDOMNode(this.refs.searchButton)).addClass("translate");
+        $(ReactDOM.findDOMNode(this.refs.bottomPaper)).addClass("translate");
 
         let self = this;
 
@@ -144,11 +144,11 @@ class Explore extends React.Component {
     }
 
     _showContextText(text) {
-        $(React.findDOMNode(this.refs.contextLabel)).text(text);
+        $(ReactDOM.findDOMNode(this.refs.contextLabel)).text(text);
     }
 
     _hideContextText() {
-        $(React.findDOMNode(this.refs.contextLabel)).empty();
+        $(ReactDOM.findDOMNode(this.refs.contextLabel)).empty();
     }
 
     _startSearch() {
@@ -179,7 +179,7 @@ class Explore extends React.Component {
     }
 
     _checkRouteParams() {
-        let routeParams = RouterStore.getCurrentParams();
+        let routeParams = {};//RouterStore.getCurrentParams();
 
         if (routeParams.hasOwnProperty("snapshotId")) {
             let snapshotId = routeParams.snapshotId;
@@ -225,5 +225,4 @@ class Explore extends React.Component {
 }
 
 Explore.pageName = "Explore";
-
-module.exports = Explore;
+export default Explore;

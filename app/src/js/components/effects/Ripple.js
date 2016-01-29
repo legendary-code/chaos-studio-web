@@ -1,12 +1,11 @@
 /* Implements a mixin for applying Ripple animation upon clicking a component */
 
-let React = require('react'),
-    $ = require('jquery');
+import ReactDOM from 'react-dom';
+import $ from 'jquery';
 
-class Ripple {
-
+export default class Ripple {
     constructor(target) {
-        this._target = $(React.findDOMNode(target));
+        this._target = $(ReactDOM.findDOMNode(target));
         this._target.on("mousedown", this.doRipple.bind(this));
         this._target.on("touchstart", this.doRipple.bind(this));
     }
@@ -44,5 +43,3 @@ class Ripple {
         );
     }
 }
-
-module.exports = Ripple;

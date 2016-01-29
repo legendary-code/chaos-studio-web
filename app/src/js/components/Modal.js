@@ -1,7 +1,7 @@
-let React = require('react'),
-    Actions = require('../actions/Actions');
+import React from 'react';
+import Actions from '../actions/Actions';
 
-class Modal extends React.Component {
+export default class Modal extends React.Component {
     render() {
         return (
             <div className="modal">
@@ -16,5 +16,3 @@ class Modal extends React.Component {
         Actions.CLOSE_TOPMOST_MODAL.invoke();
     }
 }
-
-module.exports = Modal;

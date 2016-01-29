@@ -1,5 +1,5 @@
-let _ = require('underscore'),
-    ChaosDispatcher = require('../dispatcher/ChaosDispatcher');
+import _ from 'underscore';
+import ChaosDispatcher from '../dispatcher/ChaosDispatcher';
 
 let Actions = {
     /* Search Configuration */
@@ -31,4 +31,4 @@ _.keys(Actions).forEach((action) => {
     }
 });
 
-module.exports = Actions;
+export default Actions;

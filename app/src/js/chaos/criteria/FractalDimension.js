@@ -1,5 +1,5 @@
-var SearchCriterion = require('../SearchCriterion');
 /*
+ import SearchCriterion from '../SearchCriterion';
 class FractalDimension extends SearchCriterion {
 
     static get displayName() {

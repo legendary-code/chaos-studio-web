@@ -1,48 +1,30 @@
-let React = require('react'),
-    AppBar = require('../components/AppBar'),
-    NavDrawer = require('../components/NavDrawer'),
-    AppContents = require('../components/AppContents'),
-    NavDrawerButton = require('../components/NavDrawerButton'),
-    NavDrawerDivider = require('../components/NavDrawerDivider'),
-    RouterStore = require('../stores/RouterStore'),
-    Router = require('react-router'),
-    Actions = require('../actions/Actions'),
-    Modals = require('../components/Modals'),
-    RouteHandler = Router.RouteHandler;
+import React, { Component, PropTypes } from 'react';
+import AppBar from '../components/AppBar';
+import AppContents from '../components/AppContents';
+import NavDrawerContainer from '../containers/NavDrawerContainer';
+import Modals from '../components/Modals';
 
-class App extends React.Component {
-    _getRouteTitle() {
-        let routes = RouterStore.getCurrentRoutes();
-        let route = routes[routes.length - 1];
-        return route.handler.pageName;
-    }
-
+class App extends Component {
     render() {
-        let label = this._getRouteTitle();
+        const { modals } = this.props;
 
         return (
             <div className="app">
-                <AppBar icon="icon-menu" onClick={this._toggleNavBar} label={label} />
-                <NavDrawer>
-                    <NavDrawerButton icon="icon-home" label="Home" route="home"/>
-                    <NavDrawerButton icon="icon-search" label="Explore" route="explore"/>
-                    <NavDrawerDivider />
-                    <NavDrawerButton icon="icon-settings" label="Settings" route="settings"/>
-                    <NavDrawerButton icon="icon-github" label="Developers" route="developers"/>
-                    <NavDrawerDivider />
-                    <NavDrawerButton icon="icon-info-outline" label="Links" route="links"/>
-                </NavDrawer>
+                <AppBar icon="icon-menu" onClick={this.props.clickMenu} title={this.props.title} />
+                <NavDrawerContainer />
                 <AppContents>
-                    <RouteHandler />
+                    {this.props.children}
                 </AppContents>
-                <Modals />
+                <Modals modals={modals} />
             </div>
         );
     }
 
-    _toggleNavBar() {
-        Actions.TOGGLE_NAV_DRAWER.invoke();
-    }
+    static propTypes = {
+        clickMenu: PropTypes.func,
+        children: PropTypes.arrayOf(PropTypes.element),
+        title: PropTypes.string
+    };
 }
 
-module.exports = App;
+export default App;

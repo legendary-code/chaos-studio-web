@@ -1,7 +1,7 @@
-let RenderFilter = require('./RenderFilter'),
-    Three = require('three');
+import RenderFilter from './RenderFilter';
+import Three from 'three';
 
-class PencilSketchFilter extends RenderFilter {
+export default class PencilSketchFilter extends RenderFilter {
     static get displayName() { return "Pencil Sketch"; }
 
     createMaterial() {
@@ -15,4 +15,3 @@ class PencilSketchFilter extends RenderFilter {
     }
 }
 
-module.exports = PencilSketchFilter;

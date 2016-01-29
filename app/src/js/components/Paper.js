@@ -1,7 +1,7 @@
-let React = require('react'),
-    join = require('../utils/ReactUtils').join;
+import React from 'react';
+import { join } from '../utils/ReactUtils';
 
-class Paper extends React.Component {
+export default class Paper extends React.Component {
     render() {
         let className = join("paper", this.props.className);
 
@@ -16,5 +16,3 @@ class Paper extends React.Component {
 Paper.propTypes = {
     className: React.PropTypes.string
 };
-
-module.exports = Paper;

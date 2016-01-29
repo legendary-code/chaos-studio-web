@@ -1,5 +1,5 @@
-let React = require('react'),
-    Paper = require('../components/Paper');
+import React from 'react';
+import Paper from '../components/Paper';
 
 class Home extends React.Component {
     render() {
@@ -12,5 +12,4 @@ class Home extends React.Component {
 }
 
 Home.pageName = "Home";
-
-module.exports = Home;
+export default Home;

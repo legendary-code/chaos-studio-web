@@ -1,12 +1,12 @@
- let Store = require('./Store'),
-     Actions = require('../actions/Actions'),
-     Configuration = require('../chaos/Configuration'),
-     QuadraticMap = require('../chaos/maps/QuadraticMap'),
-     LyapunovExponent = require('../chaos/criteria/LyapunovExponent'),
-     LinearCongruentialGenerator = require( '../chaos/rngs/LinearCongruentialGenerator'),
-     WebGLRenderer = require('../chaos/renderers/WebGLRenderer'),
-     DefaultColorizer = require('../chaos/Colorizer'),
-     DefaultProjection = require('../chaos/Projection');
+import Store from './Store';
+import Actions from '../actions/Actions';
+import Configuration from '../chaos/Configuration';
+import QuadraticMap from '../chaos/maps/QuadraticMap';
+import LyapunovExponent from '../chaos/criteria/LyapunovExponent';
+import LinearCongruentialGenerator from  '../chaos/rngs/LinearCongruentialGenerator';
+import WebGLRenderer from '../chaos/renderers/WebGLRenderer';
+import DefaultColorizer from '../chaos/Colorizer';
+import DefaultProjection from '../chaos/Projection';
 
 class SearchConfigurationStore extends Store {
     // TODO: read from cookies
@@ -35,4 +35,4 @@ class SearchConfigurationStore extends Store {
     }
 }
 
-module.exports = new SearchConfigurationStore();
+export default new SearchConfigurationStore();

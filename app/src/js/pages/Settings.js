@@ -1,4 +1,4 @@
-let React = require('react');
+import React from 'react';
 
 class Settings extends React.Component {
     render() {
@@ -7,5 +7,4 @@ class Settings extends React.Component {
 }
 
 Settings.pageName = "Settings";
-
-module.exports = Settings;
+export default Settings;

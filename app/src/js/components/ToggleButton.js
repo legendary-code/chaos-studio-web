@@ -1,11 +1,11 @@
-let React = require('react'),
-    Button = require('./Button'),
-    Icon = require('./Icon');
+import React from 'react';
+import Button from './Button';
+import Icon from './Icon';
 
 // Represents a button that can be toggled on, off, disabled with icons for each of the possible states
-class ToggleButton extends React.Component {
+export default class ToggleButton extends React.Component {
     constructor(props, ...icons) {
-        super.constructor(props);
+        super(props);
         this.state = { toggled: !!this.props.toggled };
         this._toggledIcon = icons[0];
         this._notToggledIcon = icons[1];
@@ -50,5 +50,3 @@ ToggleButton.propTypes = {
     "disabled": React.PropTypes.boolean,
     "onValueChanged": React.PropTypes.func
 };
-
-module.exports = ToggleButton;

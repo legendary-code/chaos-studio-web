@@ -1,7 +1,7 @@
 /**
  * Implements a means of registering implementations of various base component types for use in configuration
  */
-class Components {
+export default class Components {
     static register(baseType, type, isDefault) {
         let types = Components.TYPES[baseType];
 
@@ -22,7 +22,7 @@ class Components {
     }
 
     static allTypes() {
-        let allTypes = [];
+        let values = [];
 
         for (let baseType in Components.TYPES) {
             if (!Components.TYPES.hasOwnProperty(baseType)) {
@@ -30,12 +30,11 @@ class Components {
             }
 
             let types = Components.TYPES[baseType];
-            allTypes.push(...types);
+            values.push(...types);
         }
 
-        return allTypes;
+        return values;
     }
 }
 
 Components.TYPES = {};
-module.exports = Components;

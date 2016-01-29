@@ -1,7 +1,7 @@
-let React = require('react'),
-    FloatingActionButton = require('../FloatingActionButton');
+import React from 'react';
+import FloatingActionButton from '../FloatingActionButton';
 
-class AddComponentPanel extends React.Component {
+export default class AddComponentPanel extends React.Component {
     render() {
         return (
             <div className="add-component-panel">
@@ -35,5 +35,3 @@ class AddComponentPanel extends React.Component {
         };
     }
 }
-
-module.exports = AddComponentPanel;

@@ -1,10 +1,10 @@
-let React = require('react'),
-    Button = require('../Button'),
-    Icon = require('../Icon'),
-    Toggle = require('../Toggle');
+import React from 'react';
+import Button from '../Button';
+import Icon from '../Icon';
+import Toggle from '../Toggle';
 
 // Represents a component and its settings that can be toggled on or off
-class ComponentToggle extends React.Component {
+export default class ComponentToggle extends React.Component {
     constructor(props) {
         super.constructor(props);
         this.state = { expanded: false };
@@ -34,5 +34,3 @@ class ComponentToggle extends React.Component {
 ComponentToggle.propTypes = {
   "label": React.PropTypes.string.isRequired
 };
-
-module.exports = ComponentToggle;

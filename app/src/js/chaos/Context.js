@@ -1,5 +1,5 @@
 /* Configuration and current search params */
-class Context {
+export default class Context {
     constructor(map, rng, criteria, initialValue, coefficients, bounds) {
         this._map = map;
         this._rng = rng;
@@ -16,5 +16,3 @@ class Context {
     get coefficients() { return this._coefficients; }
     get bounds() { return this._bounds; }
 }
-
-module.exports = Context;

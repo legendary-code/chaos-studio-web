@@ -1,15 +1,15 @@
-let Component = require('./Component'),
-    Props = require('./Props'),
-    Map = require('./Map'),
-    SearchCriterion = require('./SearchCriterion'),
-    Rng = require('./Rng'),
-    Renderer = require('./Renderer'),
-    Projection = require('./Projection'),
-    Colorizer = require('./Colorizer');
+import Component from './Component';
+import Props from './Props';
+import Map from './Map';
+import SearchCriterion from './SearchCriterion';
+import Rng from './Rng';
+import Renderer from './Renderer';
+import Projection from './Projection';
+import Colorizer from './Colorizer';
 
 /* Configuration required for finding attractors */
 
-class Configuration extends Component {
+export default class Configuration extends Component {
     static get displayName() {
         return "Settings";
     }
@@ -32,6 +32,7 @@ class Configuration extends Component {
     }
 
     constructor(map, criteria, rng, renderer, projection, colorizer) {
+        super();
         this._settlingIterations = 1000;
         this._searchIterations = 1000;
         this._totalIterations = 1000000;
@@ -56,5 +57,3 @@ class Configuration extends Component {
     get projection() { return this._projection; }
     get colorizer() { return this._colorizer; }
 }
-
-module.exports = Configuration;

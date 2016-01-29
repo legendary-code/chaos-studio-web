@@ -1,6 +1,6 @@
-let React = require('react');
+import React from 'react';
 
-class Header extends React.Component {
+export default class Header extends React.Component {
     render() {
         return (
             <label className="font-setting-subhead settings-header">{this.props.label}</label>
@@ -11,5 +11,3 @@ class Header extends React.Component {
 Header.propTypes = {
     label: React.PropTypes.string.isRequired
 };
-
-module.exports = Header;

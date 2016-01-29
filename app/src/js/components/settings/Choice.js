@@ -1,9 +1,9 @@
-let React = require('react'),
-    Actions = require('../../actions/Actions'),
-    Button = require('../Button'),
-    ChoicePicker = require('./ChoicePicker');
+import React from 'react';
+import Actions from '../../actions/Actions';
+import Button from '../Button';
+import ChoicePicker from './ChoicePicker';
 
-class Choice extends React.Component {
+export default class Choice extends React.Component {
     render() {
         let name = this.props.value.type.displayName || "(none)";
 
@@ -36,5 +36,3 @@ Choice.propTyes = {
     label: React.PropTypes.string.isRequired,
     value: React.PropTypes.object.isRequired
 };
-
-module.exports = Choice;

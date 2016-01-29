@@ -1,10 +1,9 @@
-let React = require('react'),
-    Icon = require('../components/Icon'),
-    Button = require('../components/Button'),
-    cx = require('../utils/ReactUtils').cx,
-    join = require('../utils/ReactUtils').join;
+import React from 'react';
+import Icon from '../components/Icon';
+import Button from '../components/Button';
+import { cx, join } from '../utils/ReactUtils';
 
-class FloatingActionButton extends React.Component {
+export default class FloatingActionButton extends React.Component {
     render() {
         let className = cx({
             "floating-action-button": true,
@@ -42,5 +41,3 @@ FloatingActionButton.propTypes = {
     onContextShow: React.PropTypes.func,
     onContextHide: React.PropTypes.func
 };
-
-module.exports = FloatingActionButton;

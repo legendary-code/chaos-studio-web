@@ -1,7 +1,4 @@
-let React = require('react');
+import React from 'react';
 
-class ComponentListSettings extends React.Component {
-
+export default class ComponentListSettings extends React.Component {
 }
-
-module.exports = ComponentListSettings;

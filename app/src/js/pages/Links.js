@@ -1,8 +1,8 @@
-let React = require('react'),
-    SettingsDialog = require('../components/SettingsDialog'),
-    FloatingActionButton = require('../components/FloatingActionButton'),
-    Actions = require('../actions/Actions'),
-    SearchConfigurationStore = require('../stores/SearchConfigurationStore');
+import React from 'react';
+import SettingsDialog from '../components/SettingsDialog';
+import FloatingActionButton from '../components/FloatingActionButton';
+import Actions from '../actions/Actions';
+import SearchConfigurationStore from '../stores/SearchConfigurationStore';
 
 class Links extends React.Component {
     render() {
@@ -19,5 +19,4 @@ class Links extends React.Component {
 }
 
 Links.pageName = "Links";
-
-module.exports = Links;
+export default Links;

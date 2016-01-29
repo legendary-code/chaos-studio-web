@@ -1,8 +1,8 @@
-let Component = require('./Component'),
-    Components = require('./Components');
+import Component from './Component';
+import Components from './Components';
 
 /* Implemented to define a transform from a normalized vertex to another normalized vertex or set of vertices */
-class Projection extends Component {
+export default class Projection extends Component {
     static get displayName() { return "Default"; }
 
     static get description() {
@@ -14,5 +14,3 @@ class Projection extends Component {
 }
 
 Components.register(Projection, Projection, true);
-
-module.exports = Projection;

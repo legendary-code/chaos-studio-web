@@ -1,9 +1,9 @@
-let React = require('react'),
-    cx = require('../../utils/ReactUtils').cx,
-    Actions = require('../../actions/Actions'),
-    Button = require('../Button');
+import React from 'react';
+import { cx } from '../../utils/ReactUtils';
+import Actions from '../../actions/Actions';
+import Button from '../Button';
 
-class ComponentPicker extends React.Component {
+export default class ComponentPicker extends React.Component {
     render() {
         let self = this;
         let hasSelection = false;
@@ -48,5 +48,3 @@ class ComponentPicker extends React.Component {
         };
     }
 }
-
-module.exports = ComponentPicker;

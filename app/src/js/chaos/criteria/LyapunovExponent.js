@@ -1,7 +1,7 @@
-var SearchCriterion = require('../SearchCriterion'),
-    Point = require('../Point'),
-    Props = require('../Props'),
-    Components = require('../Components');
+import SearchCriterion from '../SearchCriterion';
+import Point from '../Point';
+import Props from '../Props';
+import Components from '../Components';
 
 class LyapunovExponent extends SearchCriterion {
     static get displayName() {
@@ -20,6 +20,7 @@ class LyapunovExponent extends SearchCriterion {
     }
 
     constructor() {
+        super();
         this._min = 0.015;
         this._precision = 1e11;
         this._minIterations = 100;
@@ -101,5 +102,5 @@ class LyapunovExponent extends SearchCriterion {
 LyapunovExponent.LOG2 = 0.69314718055994530941723212145819;
 
 Components.register(SearchCriterion, LyapunovExponent, true);
-module.exports = LyapunovExponent;
+export default LyapunovExponent;
 

@@ -1,9 +1,7 @@
-var Rng = require('../Rng');
+import Rng from '../Rng';
 
-class DefaultRng extends Rng {
+export default class DefaultRng extends Rng {
     next() {
         return Math.random();
     }
 }
-
-module.exports = DefaultRng;

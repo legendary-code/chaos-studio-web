@@ -1,7 +1,7 @@
-let React = require('react'),
-    d3 = require('d3');
+import React from 'react';
+import d3 from 'd3';
 
-class LorenzAttractor extends React.Component {
+export default class LorenzAttractor extends React.Component {
     render() {
         return (
             <svg width="200" height="200" id="lorentz">
@@ -53,5 +53,3 @@ class LorenzAttractor extends React.Component {
             .attr("fill", "none");
     }
 }
-
-module.exports = LorenzAttractor;

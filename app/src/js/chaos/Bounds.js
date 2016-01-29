@@ -1,6 +1,6 @@
-var Point = require('./Point');
+import Point from './Point';
 
-class Bounds {
+export default class Bounds {
     constructor() {
         this._min = [Infinity, Infinity, Infinity];
         this._max = [-Infinity, -Infinity, -Infinity];
@@ -39,5 +39,3 @@ class Bounds {
 }
 
 Bounds.MIN_EXTENT = 0.00000001;
-
-module.exports = Bounds;

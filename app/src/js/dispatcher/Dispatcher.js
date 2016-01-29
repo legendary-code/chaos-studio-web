@@ -13,7 +13,7 @@
 
 "use strict";
 
-var invariant = require('./invariant');
+import invariant from './invariant';
 
 var _lastID = 1;
 var _prefix = 'ID_';
@@ -105,7 +105,7 @@ var _prefix = 'ID_';
  * registered callbacks in order: `CountryStore`, `CityStore`, then
  * `FlightPriceStore`.
  */
-class Dispatcher {
+export default class Dispatcher {
     constructor() {
         this._callbacks = {};
         this._isPending = {};
@@ -243,5 +243,3 @@ class Dispatcher {
         this._isDispatching = false;
     }
 }
-
-module.exports = Dispatcher;
