@@ -19,6 +19,7 @@ export function chaosStudioApp(state = initialState, action = null) {
 
         case SET_TITLE:
             return state.set('title', action.title);
+
         default:
             return state;
     }

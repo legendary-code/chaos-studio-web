@@ -10,6 +10,9 @@ store: {
         hidden: true
     },
 
+    /* App Bar title */
+    title: 'Chaos Studio',
+
     /* The minimum configuration needed for searching for attractors */
     configuration: { ... },
 
@@ -34,13 +37,14 @@ actions:
     /* Synchronous actions */
     SHOW_NAV,               // hidden = false
     HIDE_NAV,               // hidden = true
+    SET_TITLE,              // title = ...
     SET_CONFIGURATION,      // configuration = ...
     EDIT_CONFIGURATION,     // newConfiguration = configuration
     APPLY_CONFIGURATION,    // configuration = newConfiguration, newConfiguration = null
     REJECT_CONFIGURATION,   // newConfiguration = null
-    SET_SNAPSHOT,           // snapshot = ...
 
     /* Asynchronous actions */
     START_SEARCH,
     CANCEL_SEARCH
+    SET_SNAPSHOT,           // snapshot = ..., push('/explore/:snapshot')
 ```

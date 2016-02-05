@@ -8,7 +8,7 @@ import 'babel-polyfill';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { chaosStudioApp } from './state/reducers';
-import { Router, Route, IndexRoute } from 'react-router';
+import { Router, Route, IndexRoute, useRouterHistory } from 'react-router';
 import { createHashHistory } from 'history';
 import { syncHistory, routeReducer } from 'react-router-redux';
 import { App, Home, Explore, Settings, Developers, Links } from './pages';
@@ -26,7 +26,7 @@ const reducer = combineReducers({
 });
 
 // middleware
-const hashHistory = createHashHistory({ queryKey: false });
+const hashHistory = useRouterHistory(createHashHistory)({ queryKey: false });
 const reduxRouterMiddleware = syncHistory(hashHistory);
 const createStoreWithMiddleware = applyMiddleware(
     reduxRouterMiddleware,
@@ -36,8 +36,10 @@ const createStoreWithMiddleware = applyMiddleware(
 const store = createStoreWithMiddleware(reducer);
 
 function showTitle(title) {
-    console.log(title);
-    return () => store.dispatch(setTitle(title));
+    return (nextState, transition, callback) => {
+        store.dispatch(setTitle(title));
+        callback();
+    }
 }
 
 ReactDOM.render(

@@ -7,7 +7,7 @@ import { toggleNav } from '../state/actions';
 class AppContainer extends Component {
     render() {
         return (
-            <App title={this.props.title} clickMenu={this.props.actions.toggleNav} />
+            <App title={this.props.title} clickMenu={this.props.actions.toggleNav} children={this.props.children} />
         );
     }
 }
