@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 export default class Modals extends React.Component {
     constructor(props) {
@@ -8,8 +8,12 @@ export default class Modals extends React.Component {
     render() {
         return (
             <div>
-                {this.props.modals}
+                {this.props.children}
             </div>
         );
     }
+
+    static propTypes = {
+        children: PropTypes.element
+    };
 }

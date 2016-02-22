@@ -1,9 +1,9 @@
 export default class Threading {
     static runAsync(generatorFunc) {
-        let iter = generatorFunc();
+        const iter = generatorFunc();
 
-        let repeat = function() {
-            let next = iter.next();
+        const repeat = function() {
+            const next = iter.next();
             if (!next.done) {
                 setTimeout(repeat, 0);
             }

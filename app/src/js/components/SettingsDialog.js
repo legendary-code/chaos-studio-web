@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import _ from 'underscore';
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Modals from './Modals';
 import AppBar from './AppBar';
 import Actions from '../actions/Actions';
@@ -100,7 +100,9 @@ export default class SettingsDialog extends React.Component {
     }
 
     _closeModal() {
-        Actions.CLOSE_TOPMOST_MODAL.invoke();
+        if (this.props.cancelClick) {
+            this.props.cancelClick();
+        }
     }
 
     _prev() {
@@ -140,4 +142,9 @@ export default class SettingsDialog extends React.Component {
             this.setState({transition: Transition.NONE, state: state});
         }.bind(this), 200);
     }
+
+    static propTypes = {
+        acceptClick: PropTypes.func,
+        cancelClick: PropTypes.func
+    };
 }

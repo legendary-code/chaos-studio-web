@@ -50,14 +50,6 @@ class LyapunovExponent extends SearchCriterion {
         this._minIterations = val;
     }
 
-    get test() {
-        return this._test;
-    }
-
-    set test(val) {
-        this._test = val;
-    }
-
     reset(context, initialValue) {
         this._innerSum = 0;
         this._delta = 1 / this._precision;

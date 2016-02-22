@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
 import { cx } from '../utils/ReactUtils';
 import Paper from '../components/Paper';
 import FloatingActionButton from '../components/FloatingActionButton';
@@ -11,6 +12,7 @@ import AttractorFinder from '../chaos/AttractorFinder';
 import AttractorSnapshot from '../chaos/AttractorSnapshot';
 import SearchConfigurationStore from '../stores/SearchConfigurationStore';
 import SettingsDialog from '../components/SettingsDialog';
+import { editConfiguration, applyConfiguration, rejectConfiguration } from '../state/Actions';
 
 class Explore extends React.Component {
 
@@ -96,7 +98,7 @@ class Explore extends React.Component {
     }
 
     _showSettings() {
-        Actions.SHOW_MODAL.invoke(<SettingsDialog component={SearchConfigurationStore.configuration} />);
+        this.props.dispatch(editConfiguration());
     }
 
     _search() {
@@ -115,7 +117,7 @@ class Explore extends React.Component {
 
         let finder = new AttractorFinder(
             config,
-            (e) => { console.log(e); },
+            (e) => {},
             this._attractorGenerated.bind(this)
         );
 
@@ -192,17 +194,14 @@ class Explore extends React.Component {
             let snapshot = AttractorSnapshot.decode(snapshotId);
 
             if (!snapshot.map) {
-                console.log("Could not find map");
                 return;
             }
 
             if (!snapshot.rng) {
-                console.log("Could not find rng");
                 return;
             }
 
             if (this.state.showIntro) {
-                console.log("!");
                 this._hideIntro();
             }
 
@@ -214,7 +213,7 @@ class Explore extends React.Component {
 
             let generator = new AttractorFinder(
                 config,
-                (e) => { console.log(e); },
+                (e) => {},
                 this._attractorGenerated.bind(this),
                 snapshot
             );
@@ -224,5 +223,5 @@ class Explore extends React.Component {
     }
 }
 
-Explore.pageName = "Explore";
-export default Explore;
+//export default Explore;
+export default connect()(Explore);

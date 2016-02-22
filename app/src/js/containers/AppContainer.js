@@ -2,25 +2,30 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { App } from '../pages';
-import { toggleNav } from '../state/actions';
+import { toggleNav, applyConfiguration, rejectConfiguration } from '../state/actions';
 
 class AppContainer extends Component {
     render() {
         return (
-            <App title={this.props.title} clickMenu={this.props.actions.toggleNav} children={this.props.children} />
+            <App title={this.props.title}
+                 clickMenu={this.props.actions.toggleNav}
+                 newConfiguration={this.props.newConfiguration}
+                 children={this.props.children}
+                 settingsCancelClick={this.props.actions.rejectConfiguration} />
         );
     }
 }
 
 function mapStateToProps(state) {
     return {
-        title: state.app.get('title')
+        title: state.app.get('title'),
+        newConfiguration: state.app.getIn(['configuration', 'new'])
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators({ toggleNav }, dispatch)
+        actions: bindActionCreators({ toggleNav, applyConfiguration, rejectConfiguration }, dispatch)
     };
 }
 

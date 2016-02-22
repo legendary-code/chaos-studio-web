@@ -13,11 +13,13 @@ store: {
     /* App Bar title */
     title: 'Chaos Studio',
 
-    /* The minimum configuration needed for searching for attractors */
-    configuration: { ... },
+    configuration: {
+        /* The minimum configuration needed for searching for attractors */
+        current: { ... },
 
-    /* Configuration in the process of being edited */
-    newConfiguration: { ... },
+        /* Configuration in the process of being edited - shows settings modal */
+        new: { ... },
+    }
 
     /* The minimum amount of information needed to re-generate an attractor.
        When this value changes, it should trigger a reinitialization of renderer */
@@ -42,6 +44,9 @@ actions:
     EDIT_CONFIGURATION,     // newConfiguration = configuration
     APPLY_CONFIGURATION,    // configuration = newConfiguration, newConfiguration = null
     REJECT_CONFIGURATION,   // newConfiguration = null
+
+    /* Composite actions */
+    GOTO_PAGE,              // invokes actions PUSH and HIDE_NEV
 
     /* Asynchronous actions */
     START_SEARCH,

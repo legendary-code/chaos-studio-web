@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { NavDrawer, NavDrawerButton, NavDrawerDivider } from '../components/nav';
-import { hideNav } from '../state/actions';
-import { routeActions } from 'react-router-redux';
+import { hideNav, gotoPage } from '../state/actions';
 
 class NavDrawerContainer extends Component {
     render() {
@@ -21,7 +20,7 @@ class NavDrawerContainer extends Component {
     }
 
     _gotoPage(route) {
-        return () => this.props.actions.push({pathname: route});
+        return () => this.props.actions.gotoPage({pathname: route});
     }
 }
 
@@ -32,7 +31,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return { actions: bindActionCreators({ hideNav, push: routeActions.push }, dispatch) };
+    return { actions: bindActionCreators({ hideNav, gotoPage }, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavDrawerContainer);
