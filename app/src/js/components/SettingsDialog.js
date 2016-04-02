@@ -60,12 +60,12 @@ export default class SettingsDialog extends React.Component {
         let afterClass = "contents after " + animClass + " " + afterKey;
 
         let appBarIcon = this.state.pages.length == 1 ? "icon-close" : "icon-back";
-        let appBarIconClick = this.state.pages.length == 1 ? this._closeModal.bind(this) : this._prev.bind(this);
+        let appBarIconClick = this.state.pages.length == 1 ? this._cancel.bind(this) : this._prev.bind(this);
 
         return (
             <div className="settings-dialog">
                 <AppBar
-                    label="Settings"
+                    title="Settings"
                     icon={appBarIcon}
                     onClick={appBarIconClick} />
                 <Paper className="desktop-title-bar">
@@ -99,14 +99,21 @@ export default class SettingsDialog extends React.Component {
         )
     }
 
-    _closeModal() {
+    _cancel() {
         if (this.props.cancelClick) {
             this.props.cancelClick();
         }
     }
 
+    _apply() {
+        if (this.props.acceptClick) {
+            this.props.acceptClick();
+        }
+    }
+
     _prev() {
         if (this.state.pages.length <= 1 || this.state.transition != Transition.NONE) {
+            this._cancel();
             return;
         }
 
