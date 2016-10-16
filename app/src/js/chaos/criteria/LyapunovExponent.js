@@ -14,15 +14,24 @@ class LyapunovExponent extends SearchCriterion {
 
     static get params() {
         return [
-            Props.number("min", "min", -10.0, 10.0),
-            Props.number("minIterations", "minimum iterations", 1, 1000)
+            Props.numberRange("Threshold", "min", "max", -1.0, 1.0, { decimalPlaces: 2 }),
+            Props.number("minIterations", "minimum iterations", 1, 1000, { integral: true, step: 10 })
         ];
     }
 
     constructor() {
-        this._min = 0.015;
+        this._max = 0.00;
+        this._min = 0.02;
         this._precision = 1e11;
         this._minIterations = 100;
+    }
+
+    get max() {
+        return this._max;
+    }
+
+    set max(val) {
+        this._max = val;
     }
 
     get min() {

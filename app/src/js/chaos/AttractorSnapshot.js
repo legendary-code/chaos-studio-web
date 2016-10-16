@@ -1,6 +1,4 @@
-let Base64Serializer = require('../utils/Base64Serializer'),
-    Base64Deserializer = require('../utils/Base64Deserializer'),
-    Components = require('./Components'),
+let Components = require('./Components'),
     JSEncoder = require('jsencode');
 
 /* Represents the minimum amount of information needed to re-generate an attractor */

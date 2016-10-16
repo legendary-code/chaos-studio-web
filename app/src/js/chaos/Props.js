@@ -1,17 +1,38 @@
+let _ = require('underscore');
 /* Parameter types for Components */
 
 /* Used to define component attributes that can be rendered in a settings dialog */
 class Props {
     /* A numeric value */
-    static number(property, label, min, max, icon) {
-        return {
-            type: 'number',
-            property: property,
-            label: label,
-            min: min,
-            max: max,
-            icon: icon || 'icon-settings'
-        };
+    static number(property, label, min, max, options) {
+        return _.extend(
+            {},
+            {
+                type: 'number',
+                property: property,
+                label: label,
+                min: min,
+                max: max,
+                range: false
+            },
+            _.pick(options, 'icon', 'integral', 'step', 'decimalPlaces')
+        );
+    }
+
+    static numberRange(label, propertyMin, propertyMax, min, max, options) {
+        return _.extend(
+            {},
+            {
+                type: 'number',
+                propertyMin: propertyMin,
+                propertyMax: propertyMax,
+                label: label,
+                min: min,
+                max: max,
+                range: true
+            },
+            _.pick(options, 'icon', 'integral', 'step', 'decimalPlaces')
+        );
     }
 
     static boolean(property, label) {

@@ -30,36 +30,33 @@ class SettingsPage extends React.Component {
         );
     }
 
-    _createControls(component, param) {
-        let binding = new ValueBinding(component, param.property);
+    _createControls(component, params) {
+        let binding = new ValueBinding(component, params.property);
 
         let items;
         let hasSubProps;
 
-        switch (param.type) {
+        switch (params.type) {
             case 'number':
                 return [
                     <NumberValueEditor
-                        binding={binding}
-                        icon={param.icon}
-                        min={param.min}
-                        max={param.max}
-                        label={param.label}
-                        />
+                        target={component}
+                        {...params}
+                    />
                 ];
 
             case 'boolean':
                 return [
                     <BooleanValueEditor
                         binding={binding}
-                        label={param.label}
+                        label={params.label}
                         />
                 ];
 
             case 'group':
                 items = [];
-                items.push(<Header label={param.label} />);
-                for (let prop of param.properties) {
+                items.push(<Header label={params.label} />);
+                for (let prop of params.properties) {
                     items.push(...this._createControls(component, prop));
                 }
                 return items;
@@ -68,10 +65,10 @@ class SettingsPage extends React.Component {
                 hasSubProps = !!binding.val.type.params;
 
                 return [
-                    <Header label={param.label} />,
+                    <Header label={params.label} />,
                     <ComponentPanel
                         binding={binding}
-                        componentType={param.componentType}
+                        componentType={params.componentType}
                         showArrow={hasSubProps}
                         icon="icon-more-horiz"
                         onIconClick={this._changeComponent.bind(this)}
@@ -80,7 +77,7 @@ class SettingsPage extends React.Component {
                 ];
 
             case 'componentSet':
-                let controls = [ <Header label={param.label} /> ];
+                let controls = [ <Header label={params.label} /> ];
                 items = binding.val || [];
 
                 for (let index in items) {
@@ -91,19 +88,19 @@ class SettingsPage extends React.Component {
                             onIconClick={this._removeComponent.bind(this)}
                             onPanelClick={this._editComponent.bind(this)}
                             binding={componentBinding}
-                            componentType={param.componentType}
+                            componentType={params.componentType}
                             showArrow={hasSubProps}
                             icon="icon-delete"
                             />
                     );
                 }
 
-                let supportedTypes = Components.findTypes(param.componentType);
+                let supportedTypes = Components.findTypes(params.componentType);
                 if (items.length < supportedTypes.length) {
                     controls.push(
                         <AddComponentPanel
                             binding={binding}
-                            componentType={param.componentType}
+                            componentType={params.componentType}
                             onClick={this._addComponent.bind(this)}
                             />
                     );

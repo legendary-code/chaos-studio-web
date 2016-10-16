@@ -1,5 +1,4 @@
 var Map = require('../Map'),
-    Types = require('../Types'),
     Components = require('../Components');
 
 class QuadraticMap extends Map {
