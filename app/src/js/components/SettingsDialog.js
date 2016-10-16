@@ -61,6 +61,13 @@ class SettingsDialog extends React.Component {
         let appBarIcon = this.state.pages.length == 1 ? "icon-close" : "icon-back";
         let appBarIconClick = this.state.pages.length == 1 ? this._closeModal.bind(this) : this._prev.bind(this);
 
+        let actionBarButton;
+        if (this.state.pages.length == 1) {
+            actionBarButton = <Button onClick={this._closeModal.bind(this)}>Close</Button>;
+        } else {
+            actionBarButton = <Button onClick={this._prev.bind(this)}>Back</Button>;
+        }
+
         return (
             <div className="settings-dialog">
                 <AppBar
@@ -91,8 +98,7 @@ class SettingsDialog extends React.Component {
                         />
                 </div>
                 <Paper className="action-bar">
-                    <Button onClick={this._prev.bind(this)}>CANCEL</Button>
-                    <Button onClick={this._next.bind(this)}>OK</Button>
+                    {actionBarButton}
                 </Paper>
             </div>
         )

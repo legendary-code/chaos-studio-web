@@ -128,7 +128,8 @@ gulp.task('server', ['link'], function() {
                .pipe(webserver({
                     livereload: false,
                     directoryListing: false,
-                    open: true
+                    open: true,
+                    host: '0.0.0.0'
                 }));
 });
 

@@ -9,7 +9,7 @@ class Colorizer extends Component {
     static get displayName() { return "Default"; }
 
     static get description() {
-        return "Doesn't apply any coloration to vertices";
+        return "Doesn't apply any coloration to points";
     }
 
     apply(context, vertex) { return vertex; }

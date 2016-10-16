@@ -6,7 +6,7 @@ class Projection extends Component {
     static get displayName() { return "Default"; }
 
     static get description() {
-        return "Doesn't apply any projection to vertices";
+        return "Doesn't apply any projection to points";
     }
 
     apply(context, vertex) { return vertex; }

@@ -19,6 +19,7 @@ class Explore extends React.Component {
 
         this.state = {
             showIntro: true,
+            searching: false,
             currentSnapshotId: null
         };
     }
@@ -32,7 +33,8 @@ class Explore extends React.Component {
         let searchButtonClassName = cx({
             "search-button": true,
             "animated": this.state.showIntro,
-            "translate": !this.state.showIntro
+            "translate": !this.state.showIntro,
+            "cancel": this.state.searching
         });
 
         let contextLabelClassName = cx({
@@ -84,7 +86,7 @@ class Explore extends React.Component {
                     className={searchButtonClassName}
                     icon="icon-search-light"
                     ref="searchButton"
-                    onClick={this._search.bind(this)}
+                    onClick={this.state.searching ? this._cancelSearch.bind(this) : this._search.bind(this)}
                     onContextShow={this._showContextText.bind(this)}
                     onContextHide={this._hideContextText.bind(this)}
                     contextText="Search"
@@ -97,6 +99,11 @@ class Explore extends React.Component {
 
     _showSettings() {
         Actions.SHOW_MODAL.invoke(<SettingsDialog component={SearchConfigurationStore.configuration} />);
+    }
+
+    _cancelSearch() {
+        this.refs.viewport.hideSearching();
+        this.state.task.cancel();
     }
 
     _search() {
@@ -116,10 +123,14 @@ class Explore extends React.Component {
         let finder = new AttractorFinder(
             config,
             (e) => { console.log(e); },
-            this._attractorGenerated.bind(this)
+            this._attractorGenerated.bind(this),
+            this._searchCancelled.bind(this)
         );
 
-        finder.find();
+        this.setState({
+            task: finder.find(),
+            searching: true
+        });
     }
 
     _attractorGenerated(data) {
@@ -128,7 +139,11 @@ class Explore extends React.Component {
         this.refs.viewport.hideSearching();
         this.refs.viewport.setRenderData(data.values);
         window.history.pushState(null, null, link);
-        this.setState({currentSnapshotId: snapshotId});
+        this.setState({currentSnapshotId: snapshotId, searching: false});
+    }
+
+    _searchCancelled() {
+        this.setState({searching: false});
     }
 
     _hideIntro() {
@@ -216,10 +231,14 @@ class Explore extends React.Component {
                 config,
                 (e) => { console.log(e); },
                 this._attractorGenerated.bind(this),
+                this._searchCancelled.bind(this),
                 snapshot
             );
 
-            generator.find();
+            this.setState({
+                task: generator.find(),
+                searching: true
+            });
         }
     }
 }

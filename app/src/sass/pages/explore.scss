@@ -78,8 +78,10 @@
     margin-right: 8px;
   }
 
-  .cancel {
-    background-color: $red-A400;
+  &.cancel {
+    .button {
+      background-color: $red-A400;
+    }
   }
 }
 

@@ -40,6 +40,6 @@ class AttractorSnapshot {
     }
 }
 
-AttractorSnapshot.ENCODER = new JSEncoder({types : Components.allTypes()});
+AttractorSnapshot.ENCODER = new JSEncoder({includePrivateFields: true, types : Components.allTypes()});
 AttractorSnapshot.ENCODER.registerTypes(AttractorSnapshot);
 module.exports = AttractorSnapshot;

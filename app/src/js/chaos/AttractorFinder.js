@@ -7,18 +7,28 @@ var _ = require('underscore'),
     AttractorSnapshot = require('./AttractorSnapshot');
 
 class AttractorFinder {
-    constructor(configuration, onStatus, onComplete, snapshot) {
+    constructor(configuration, onStatus, onComplete, onCancel, snapshot) {
         this._configuration = configuration;
         this._onStatus = onStatus;
         this._onComplete = onComplete;
+        this._onCancel = onCancel;
         this._snapshot = snapshot;
     }
 
     find() {
-        Threading.runAsync(this._find.bind(this));
+        let task = {
+            shouldCancel: false,
+            cancel: function () {
+                this.shouldCancel = true;
+            }
+        };
+
+        Threading.runAsync(this._find.bind(this, task));
+
+        return task;
     }
 
-    *_find() {
+    *_find(task) {
         let isSnapshot = !!this._snapshot;
         let map = isSnapshot ? this._snapshot.map : this._configuration.map;
         let rng = isSnapshot ? this._snapshot.rng : this._configuration.rng;
@@ -64,6 +74,11 @@ class AttractorFinder {
 
             for (let i = 0; i < settlingIterations; i++) {
                 if (i % 10000 == 0) {
+                    if (task.shouldCancel) {
+                        this._onCancel();
+                        return;
+                    }
+
                     yield null;
                 }
 
@@ -107,6 +122,10 @@ class AttractorFinder {
                 }
 
                 if (i % 10000 == 0) {
+                    if (task.shouldCancel) {
+                        this._onCancel();
+                        return;
+                    }
                     yield null;
                 }
 
@@ -162,6 +181,10 @@ class AttractorFinder {
                 }
 
                 if (i % 10000 == 0) {
+                    if (task.shouldCancel) {
+                        this._onCancel();
+                        return;
+                    }
                     yield null;
                 }
 
