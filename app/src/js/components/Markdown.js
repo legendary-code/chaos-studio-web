@@ -42,6 +42,14 @@ class Markdown extends React.Component {
         let converter = new Showdown.Converter();
         let markup = $($.parseHTML(converter.makeHtml(markdown)));
 
+        // make all non-relative links open in new tab
+        markup.find('a').each(function(i, link) {
+            if (link.host !== window.location.host) {
+                link.target = '_blank';
+            }
+        });
+
+        // syntax highlight
         markup.find('code.language-js').each(function(i, block) {
             hljs.highlightBlock(block);
         });

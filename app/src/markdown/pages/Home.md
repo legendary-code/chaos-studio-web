@@ -87,8 +87,8 @@ might consider an attractor aesthetically pleasing if it doesn't settle to a sin
 if the attractor doesn't diverge off into infinity and instead stays within a bounded space.
 
 There's an endless number of simple and complex equations that you can come up with, for which
-one could find strange attractors, which is one of the many reasons I wanted to open source this
-site, so that others can contribute their interesting equations.  This is only a small glimpse of
+one could find strange attractors.  One of the many reasons I wanted to open source this
+site is so that others can contribute their interesting equations.  This is only a small glimpse of
 what chaos theory is about and how these strange attractors are generated, but hopefully enough
 to get a general idea of how it all works.
 

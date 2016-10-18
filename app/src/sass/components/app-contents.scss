@@ -5,6 +5,7 @@
   position: relative;
   background-color: $background-color;
   height: 100vh;
+  overflow-y: auto;
 
   @media #{$device-mobile-portrait} {
     margin-top: 56px;
