@@ -42,11 +42,6 @@ gulp.task('jquery', function() {
     );
 });
 
-gulp.task('zeroclipboard', function() {
-    return gulp.src('./node_modules/zeroclipboard/dist/ZeroClipboard.swf')
-               .pipe(gulp.dest('./app/dist/js'));
-});
-
 gulp.task('react-router', function() {
     return bundleLibrary('./node_modules/react-router/modules/index.js', 'react-router.js', './app/link/js');
 });
@@ -76,6 +71,11 @@ gulp.task('sass', function() {
 gulp.task('font', function() {
     return gulp.src('./app/src/font/**/*.*')
         .pipe(gulp.dest('./app/dist/font'));
+});
+
+gulp.task('md', function() {
+    return gulp.src('./app/src/markdown/**/*.*')
+        .pipe(gulp.dest('./app/dist/markdown'));
 });
 
 gulp.task('svg', function() {
@@ -115,9 +115,9 @@ gulp.task('link-sass', ['stage'], function() {
 
 /* BUILD PHASES */
 
-gulp.task('libs', ['three', 'jquery', 'zeroclipboard']);
+gulp.task('libs', ['three', 'jquery']);
 
-gulp.task('stage', ['libs', 'html', 'sass', 'js', 'svg', 'font', 'favicon']);
+gulp.task('stage', ['libs', 'html', 'sass', 'md', 'js', 'svg', 'font', 'favicon']);
 
 gulp.task('link', ['stage', 'link-js', 'link-sass']);
 
