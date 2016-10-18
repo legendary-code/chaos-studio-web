@@ -1,5 +1,37 @@
+.markdown {
+  h1 {
+    line-height: 192px;
+  }
+
+  h2 {
+    line-height: 96px;
+  }
+
+  h3 {
+    line-height: 72px;
+  }
+
+  h4 {
+    line-height: 60px;
+  }
+
+  h5 {
+    line-height: 48px;
+  }
+
+  p {
+    text-indent: 26px;
+    margin-bottom: 13px;
+  }
+}
+
 .markdown pre * {
   font: 13px monospace;
+}
+
+.markdown pre {
+  font: 13px monospace;
+  margin-bottom: 13px;
 }
 
 /** Highlight JS Theme **/

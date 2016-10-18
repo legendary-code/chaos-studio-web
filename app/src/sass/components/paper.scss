@@ -7,4 +7,5 @@
   background-color: $white;
   @include shadow(1);
   padding: 16px;
+  overflow-y: auto;
 }
