@@ -45,6 +45,7 @@ table {
   .container {
     padding-left: 16px;
     padding-right: 16px; } }
+
 @media only screen and (min-width: 992px), only screen and (min-width: 768px) {
   .container {
     padding-left: 24px;
@@ -507,10 +508,8 @@ p, .font-body-1 {
   0% {
     opacity: 0;
     left: -320px; }
-
   1% {
     opacity: 1; }
-
   100% {
     left: 0; } }
 
@@ -518,10 +517,8 @@ p, .font-body-1 {
   0% {
     opacity: 0;
     left: -320px; }
-
   1% {
     opacity: 1; }
-
   100% {
     left: 0; } }
 
@@ -529,10 +526,8 @@ p, .font-body-1 {
   0% {
     opacity: 0;
     left: -320px; }
-
   1% {
     opacity: 1; }
-
   100% {
     left: 0; } }
 
@@ -540,20 +535,16 @@ p, .font-body-1 {
   0% {
     opacity: 0;
     left: -320px; }
-
   1% {
     opacity: 1; }
-
   100% {
     left: 0; } }
 
 @keyframes hide-animation {
   0% {
     left: 0; }
-
   99% {
     opacity: 1; }
-
   100% {
     opacity: 0;
     left: -320px; } }
@@ -561,10 +552,8 @@ p, .font-body-1 {
 @-o-keyframes hide-animation {
   0% {
     left: 0; }
-
   99% {
     opacity: 1; }
-
   100% {
     opacity: 0;
     left: -320px; } }
@@ -572,10 +561,8 @@ p, .font-body-1 {
 @-moz-keyframes hide-animation {
   0% {
     left: 0; }
-
   99% {
     opacity: 1; }
-
   100% {
     opacity: 0;
     left: -320px; } }
@@ -583,10 +570,8 @@ p, .font-body-1 {
 @-webkit-keyframes hide-animation {
   0% {
     left: 0; }
-
   99% {
     opacity: 1; }
-
   100% {
     opacity: 0;
     left: -320px; } }
@@ -684,6 +669,22 @@ p, .font-body-1 {
     .app-contents {
       margin-top: 64px; } }
 
+.scrollable-contents {
+  position: relative;
+  height: 100vh;
+  overflow-y: auto;
+  border: 1px solid green;
+  /* Negate margins from app-contents */ }
+  @media only screen and (orientation: portrait) {
+    .scrollable-contents {
+      padding-bottom: 56px; } }
+  @media only screen and (orientation: landscape) {
+    .scrollable-contents {
+      padding-bottom: 48px; } }
+  @media only screen and (min-width: 992px), only screen and (min-width: 768px) {
+    .scrollable-contents {
+      padding-bottom: 64px; } }
+
 .z0 {
   box-shadow: none; }
 
@@ -720,12 +721,14 @@ p, .font-body-1 {
   width: 56px;
   height: 56px;
   padding: 16px; }
+
 .floating-action-button .overlay {
   border-radius: 50%;
   -o-border-radius: 50%;
   -ms-border-radius: 50%;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%; }
+
 .floating-action-button.mini .button {
   width: 40px;
   height: 40px;
@@ -756,6 +759,92 @@ p, .font-body-1 {
       display: block;
       margin-left: auto;
       margin-right: auto; }
+
+.markdown h1 {
+  line-height: 192px; }
+
+.markdown h2 {
+  line-height: 96px; }
+
+.markdown h3 {
+  line-height: 72px; }
+
+.markdown h4 {
+  line-height: 60px; }
+
+.markdown h5 {
+  line-height: 48px; }
+
+.markdown p {
+  text-indent: 26px;
+  margin-bottom: 13px; }
+
+.markdown pre * {
+  font: 13px monospace; }
+
+.markdown code * {
+  font: 13px monospace; }
+
+/** Highlight JS Theme **/
+/**
+ * GitHub Gist Theme
+ * Author : Louis Barranqueiro - https://github.com/LouisBarranqueiro
+ */
+.markdown code {
+  background-color: #f5f5f5;
+  border: 1px solid #bdbdbd;
+  border-radius: 2px;
+  -o-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  color: #333333; }
+  .markdown code.hljs {
+    overflow-x: auto; }
+
+pre code {
+  display: block;
+  padding: 0.5em;
+  margin-bottom: 13px; }
+  pre code .hljs-comment,
+  pre code .hljs-meta {
+    color: #969896; }
+  pre code .hljs-string,
+  pre code .hljs-variable,
+  pre code .hljs-template-variable,
+  pre code .hljs-strong,
+  pre code .hljs-emphasis,
+  pre code .hljs-quote {
+    color: #df5000; }
+  pre code .hljs-keyword,
+  pre code .hljs-selector-tag,
+  pre code .hljs-type {
+    color: #a71d5d; }
+  pre code .hljs-literal,
+  pre code .hljs-symbol,
+  pre code .hljs-bullet,
+  pre code .hljs-attribute {
+    color: #0086b3; }
+  pre code .hljs-section,
+  pre code .hljs-name {
+    color: #63a35c; }
+  pre code .hljs-tag {
+    color: #333333; }
+  pre code .hljs-title,
+  pre code .hljs-attr,
+  pre code .hljs-selector-id,
+  pre code .hljs-selector-class,
+  pre code .hljs-selector-attr,
+  pre code .hljs-selector-pseudo {
+    color: #795da3; }
+  pre code .hljs-addition {
+    color: #55a532;
+    background-color: #eaffea; }
+  pre code .hljs-deletion {
+    color: #bd2c00;
+    background-color: #ffecec; }
+  pre code .hljs-link {
+    text-decoration: underline; }
 
 .modal {
   position: fixed;
@@ -1067,6 +1156,9 @@ p, .font-body-1 {
       left: 16px; }
     .number-value-editor .icon-slider .slider {
       margin-left: 40px; }
+  .number-value-editor .binding-value {
+    margin-right: 16px;
+    text-align: right; }
 
 .boolean-value-editor {
   display: block;
@@ -1248,7 +1340,7 @@ p, .font-body-1 {
   overflow: hidden; }
 
 .contents-paper {
-  height: 100vh;
+  min-height: 100vh;
   margin-left: auto;
   margin-right: auto;
   transition: 0.1s;
@@ -1330,15 +1422,17 @@ p, .font-body-1 {
     bottom: 0;
     margin-bottom: 72px;
     margin-right: 8px; }
-  .search-button .cancel {
+  .search-button.cancel .button {
     background-color: #ff1744; }
 
 @media only screen and (orientation: portrait) {
   .viewport {
     margin-top: 56px; } }
+
 @media only screen and (orientation: landscape) {
   .viewport {
     margin-top: 48px; } }
+
 @media only screen and (min-width: 992px), only screen and (min-width: 768px) {
   .viewport {
     margin-top: 64px; } }
