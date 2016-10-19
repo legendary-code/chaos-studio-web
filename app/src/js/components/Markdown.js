@@ -50,7 +50,7 @@ class Markdown extends React.Component {
         });
 
         // syntax highlight
-        markup.find('code.language-js').each(function(i, block) {
+        markup.find('code').each(function (i, block) {
             hljs.highlightBlock(block);
         });
 

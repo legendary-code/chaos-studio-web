@@ -39,7 +39,7 @@ studies.  Weather is hard to predict because of the huge number of variables inv
 predicting the entire system.  That's not to say that a system must have a lot of variables
 to exhibit chaos.  One of the simplest questions to exhibit chaos is the Logistic Equation:
 
-```
+```math
 X(n+1) = R * X(n) * (1 - X(n))
 ```
 
@@ -47,7 +47,7 @@ By picking some reasonable initial value `X(0)` and setting `R = 4`, you can dem
 the equation is chaotic.  If you were to pick `X(0) = 0.2` and `R = 4`, plug in the values,
 and plug in the result in subsequent iterations, here are some of the values you would see:
 
-```
+```math
 4 * 0.2 * 0.8 = 0.64
 4 * 0.64 * 0.36 = 0.9216
 4 * 0.64 * 0.0784 = 0.2890
@@ -58,7 +58,7 @@ and plug in the result in subsequent iterations, here are some of the values you
 Overall, the numbers just seem to bounce around different values without any real predictable
 pattern. If you were to pick `X(0) = 0.2` and `R = 2` the system now no longer exhibits chaos:
 
-```
+```math
 2 * 0.2 * 0.8 = 0.32
 2 * 0.32 * 0.68 = 0.4352
 2 * 0.4352 * 0.5648 = 0.4916

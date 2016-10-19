@@ -1,8 +1,18 @@
-let React = require('react');
+let React = require('react'),
+    Paper = require('../components/Paper'),
+    ScrollableContents = require('../components/ScrollableContents'),
+    Markdown = require('../components/Markdown');
 
 class Developers extends React.Component {
     render() {
-        return <div/>
+        return <ScrollableContents>
+            <div>
+                <Paper className="contents-paper">
+                    <Markdown src="/markdown/pages/Developers.md">
+                    </Markdown>
+                </Paper>
+            </div>
+        </ScrollableContents>;
     }
 }
 
