@@ -71,7 +71,7 @@ class Viewport extends React.Component {
             return [e.screenX, e.screenY];
         }
 
-        if (e.touches) {
+        if (e.touches && e.touches.hasOwnProperty(0) && e.touches[0].screenX && e.touches[0].screenY) {
             return [e.touches[0].screenX, e.touches[0].screenY];
         }
 
