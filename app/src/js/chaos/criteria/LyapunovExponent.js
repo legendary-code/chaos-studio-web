@@ -3,6 +3,8 @@ var SearchCriterion = require('../SearchCriterion'),
     Props = require('../Props'),
     Components = require('../Components');
 
+const LOG2 = 0.69314718055994530941723212145819;
+
 class LyapunovExponent extends SearchCriterion {
     static get displayName() {
         return "Lyapunov Exponent";
@@ -100,14 +102,11 @@ class LyapunovExponent extends SearchCriterion {
             this._samples++;
         }
 
-        this._lyapunov = LyapunovExponent.LOG2 * (this._innerSum / this._samples);
+        this._lyapunov = LOG2 * (this._innerSum / this._samples);
 
         return this._samples < this._minIterations || this._lyapunov >= this._min;
     }
 }
-
-// Constants
-LyapunovExponent.LOG2 = 0.69314718055994530941723212145819;
 
 Components.register(SearchCriterion, LyapunovExponent, true);
 module.exports = LyapunovExponent;

@@ -46,8 +46,7 @@ class Explore extends React.Component {
         return (
             <div>
                 <Paper className={introClassName} ref="introPaper">
-                    <h4>Look at all this empty space!</h4>
-                    <span className="font-caption">Let's generate your very own unique attractor!</span>
+                    <h4>Click the button to start!</h4>
                 </Paper>
 
                 <Viewport ref="viewport" />

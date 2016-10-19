@@ -20,7 +20,7 @@
   .mini-button {
     float: right;
     margin-right: 8px;
-    top: -40px;
+    top: -36px;
   }
 }
 
@@ -74,8 +74,19 @@
   &.translate {
     right: 0;
     bottom: 0;
-    margin-bottom: 72px;
     margin-right: 8px;
+
+    @media #{$device-mobile-portrait} {
+      margin-bottom: 56px;
+    }
+
+    @media #{$device-mobile-landscape} {
+      margin-bottom: 48px;
+    }
+
+    @media #{$device-desktop}, #{$device-tablet} {
+      margin-bottom: 64px;
+    }
   }
 
   &.cancel {

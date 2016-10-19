@@ -65,7 +65,7 @@ class AttractorFinder {
 
             value = Array.slice(initialValue);
 
-            let bounds = new Bounds();
+            let bounds = new Bounds(dimensions);
             let abort = false;
 
             /* settle */

@@ -1,9 +1,9 @@
 let Rng = require('../Rng'),
     Components = require('../Components');
 
-const m = Math.pow(2, 48);
-const a = 25214903917;
-const c = 11;
+const M = Math.pow(2, 48);
+const A = 25214903917;
+const C = 11;
 
 class LinearCongruentialGenerator extends Rng {
     static get displayName() {
@@ -14,14 +14,17 @@ class LinearCongruentialGenerator extends Rng {
         return "Modulo arithmetic generated numbers";
     }
 
+    get seed() {
+        return this._x;
+    }
+
     reset(seed) {
-        super.reset(seed);
         this._x = seed;
     }
 
     next() {
-        this._x = (a * this._x + c) % m;
-        return (this._x / m);
+        this._x = (A * this._x + C) % M;
+        return (this._x / M);
     }
 }
 

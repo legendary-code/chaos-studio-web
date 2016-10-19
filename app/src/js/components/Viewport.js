@@ -79,6 +79,10 @@ class Viewport extends React.Component {
     }
 
     _handleResize() {
+        if (!this.refs.viewport) {
+            return;
+        }
+
         var viewport = React.findDOMNode(this.refs.viewport);
         var width = viewport.clientWidth;
         var height = viewport.clientHeight;

@@ -4,7 +4,6 @@
   position: relative;
   height: 100vh;
   overflow-y: auto;
-  border: 1px solid green;
 
   /* Negate margins from app-contents */
   @media #{$device-mobile-portrait} {

@@ -6,4 +6,5 @@ class Map extends Component {
     get coefficients() { }
     apply(val, coefficients) { }
 }
+
 module.exports = Map;

@@ -25,9 +25,8 @@ class App extends React.Component {
                 <AppBar icon="icon-menu" onClick={this._toggleNavBar} label={label} />
                 <NavDrawer>
                     <NavDrawerButton icon="icon-home" label="Home" route="home"/>
-                    <NavDrawerButton icon="icon-search" label="Explore" route="explore"/>
                     <NavDrawerDivider />
-                    <NavDrawerButton icon="icon-settings" label="Settings" route="settings"/>
+                    <NavDrawerButton icon="icon-search" label="Explore" route="explore"/>
                     <NavDrawerButton icon="icon-github" label="Developers" route="developers"/>
                     <NavDrawerDivider />
                     <NavDrawerButton icon="icon-info-outline" label="Links" route="links"/>
