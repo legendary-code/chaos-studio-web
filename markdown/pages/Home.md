@@ -50,7 +50,7 @@ and plug in the result in subsequent iterations, here are some of the values you
 ```math
 4 * 0.2 * 0.8 = 0.64
 4 * 0.64 * 0.36 = 0.9216
-4 * 0.64 * 0.0784 = 0.2890
+4 * 0.9216 * 0.0784 = 0.2890
 4 * 0.2890 * 0.711 = 0.8219
 4 * 0.8219 * 0.1781 = 0.5855
 ```

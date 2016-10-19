@@ -673,7 +673,6 @@ p, .font-body-1 {
   position: relative;
   height: 100vh;
   overflow-y: auto;
-  border: 1px solid green;
   /* Negate margins from app-contents */ }
   @media only screen and (orientation: portrait) {
     .scrollable-contents {
@@ -778,6 +777,9 @@ p, .font-body-1 {
 .markdown p {
   text-indent: 26px;
   margin-bottom: 13px; }
+
+.markdown em {
+  font-style: italic; }
 
 .markdown pre * {
   font: 13px monospace; }
@@ -1371,7 +1373,7 @@ pre code {
   .bottom-paper .mini-button {
     float: right;
     margin-right: 8px;
-    top: -40px; }
+    top: -36px; }
 
 .context-label {
   position: fixed;
@@ -1420,8 +1422,16 @@ pre code {
   .search-button.translate {
     right: 0;
     bottom: 0;
-    margin-bottom: 72px;
     margin-right: 8px; }
+    @media only screen and (orientation: portrait) {
+      .search-button.translate {
+        margin-bottom: 56px; } }
+    @media only screen and (orientation: landscape) {
+      .search-button.translate {
+        margin-bottom: 48px; } }
+    @media only screen and (min-width: 992px), only screen and (min-width: 768px) {
+      .search-button.translate {
+        margin-bottom: 64px; } }
   .search-button.cancel .button {
     background-color: #ff1744; }
 
