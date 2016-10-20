@@ -117,6 +117,8 @@ class Explore extends React.Component {
         this.refs.viewport.showSearching();
         let config = SearchConfigurationStore.state.configuration;
         let viewportSize = this.refs.viewport.getViewportSize();
+
+        // TODO: use iterations based off configurable pixel density
         config.totalIterations = viewportSize.width * viewportSize.height;
 
         let finder = new AttractorFinder(
@@ -216,14 +218,14 @@ class Explore extends React.Component {
             }
 
             if (this.state.showIntro) {
-                console.log("!");
                 this._hideIntro();
             }
 
             this.refs.viewport.showSearching();
-
             let config = SearchConfigurationStore.state.configuration;
             let viewportSize = this.refs.viewport.getViewportSize();
+
+            // TODO: use iterations based off configurable pixel density
             config.totalIterations = viewportSize.width * viewportSize.height;
 
             let generator = new AttractorFinder(
@@ -235,6 +237,7 @@ class Explore extends React.Component {
             );
 
             this.setState({
+                currentSnapshotId: snapshotId,
                 task: generator.find(),
                 searching: true
             });
