@@ -49,16 +49,17 @@
   border: 1px solid #bdbdbd;
   @include border-radius(2px);
   color: #333333;
-
-  &.hljs {
-    overflow-x: auto;
-  }
 }
 
-pre code {
+.markdown pre code {
   display: block;
   padding: 0.5em;
   margin-bottom: 13px;
+  white-space: pre;
+
+  .scrollable {
+    overflow-x: auto;
+  }
 
   .hljs-comment,
   .hljs-meta {

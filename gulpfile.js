@@ -52,7 +52,16 @@ var renderMarkdown = function(markdown) {
         hljs.highlightBlock(block);
     });
 
-    return $('<div>').append(markup).html();
+    // wrap in div so next query succeeds and our
+    // html can be rendered
+    markup = $('<div>').append(markup);
+
+    // fix scrolling issues by wrapping code in div
+    // on mobile devices, setting overflow-x:scroll
+    // in <code> doesn't seem to reliably work
+    markup.find('pre code').wrapInner("<div class='scrollable'></div>");
+
+    return markup.html();
 };
 
 /* LIBRARIES */
