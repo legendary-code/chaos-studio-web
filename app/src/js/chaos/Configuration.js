@@ -53,6 +53,8 @@ class Configuration extends Component {
     set totalIterations(val) { this._totalIterations = val; }
 
     get map() { return this._map; }
+    set map(val) { this._map = val; }
+
     get rng() { return this._rng; }
     get criteria() { return this._criteria; }
     get renderer() { return this._renderer; }

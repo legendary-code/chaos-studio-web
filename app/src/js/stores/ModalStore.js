@@ -1,6 +1,7 @@
 let _ = require('underscore'),
     Store = require('./Store'),
     Actions = require('../actions/Actions'),
+    React = require('react'),
     Modal = require('../components/Modal');
 
 class ModalStore extends Store {

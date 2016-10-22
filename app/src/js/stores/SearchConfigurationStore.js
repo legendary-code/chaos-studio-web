@@ -2,6 +2,7 @@
      Actions = require('../actions/Actions'),
      Configuration = require('../chaos/Configuration'),
      QuadraticMap = require('../chaos/maps/QuadraticMap'),
+     //CliffordMap = require('../chaos/maps/CliffordMap'),
      LyapunovExponent = require('../chaos/criteria/LyapunovExponent'),
      LinearCongruentialGenerator = require( '../chaos/rngs/LinearCongruentialGenerator'),
      WebGLRenderer = require('../chaos/renderers/WebGLRenderer'),

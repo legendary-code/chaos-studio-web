@@ -38,4 +38,8 @@ class Components {
 }
 
 Components.TYPES = {};
+
 module.exports = Components;
+
+/* Include registered plug-ins automatically */
+require('./maps/**/*.js', {glob:true});

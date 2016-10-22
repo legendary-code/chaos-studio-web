@@ -96,4 +96,4 @@ to get a general idea of how it all works.
 Below are some of my favorite strange attractors that I have picked.  Clicking on the image will
 take you to the explore page, where the attractor will be generated for you!
 
-[![Strange Attractor](text)](/#/explore)
+[![Strange Attractor](/png/cubic1.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90NDpfbWFwPDg6Q3ViaWNNYXA+NDpfcm5nPDI3OkxpbmVhckNvbmdydWVudGlhbEdlbmVyYXRvcjU6X3NlZWQoMTQ3NzExNjEzOTcwMykyOl94KDE0ODQzMTkyMjI2NjExMik+MTg6X3N0YXJ0aW5nSXRlcmF0aW9uKDIwMDApPg==)

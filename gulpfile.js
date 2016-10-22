@@ -19,22 +19,14 @@ var gulp = require('gulp'),
     hljs = require('highlight.js'),
     jsdom = require("jsdom"),
     window = jsdom.jsdom().defaultView,
-    $ = require('jquery')(window);
-
+    $ = require('jquery')(window),
+    globify = require('require-globify');
 
 /**
  * Build happens in two phases:
  * 1) Stage - copies/compiles all various less, js, css, etc. files from libs and src folder to 'link' folder for final packaging
  * 2) Link - finalizes files, by compiling less files, browserifying, minifying, etc. into the final 'dist' folder
  */
-
-var bundleLibrary = function(entryFile, targetFile, destination) {
-    return browserify()
-                .add(entryFile)
-                .bundle()
-                .pipe(source(targetFile))
-                .pipe(gulp.dest(destination));
-};
 
 var renderMarkdown = function(markdown) {
     var converter = new Showdown.Converter();
@@ -79,10 +71,6 @@ gulp.task('jquery', function() {
     );
 });
 
-gulp.task('react-router', function() {
-    return bundleLibrary('./node_modules/react-router/modules/index.js', 'react-router.js', './app/link/js');
-});
-
 /* STAGING TASKS */
 
 gulp.task('html', function() {
@@ -122,6 +110,11 @@ gulp.task('svg', function() {
         .pipe(gulp.dest('./app/dist/svg'));
 });
 
+gulp.task('png', function() {
+    return gulp.src('./app/src/png/**/*.png')
+        .pipe(gulp.dest('./app/dist/png'));
+});
+
 gulp.task('favicon', function() {
     return es.merge(
         gulp.src('./app/src/favicon/**/*.*')
@@ -137,6 +130,7 @@ gulp.task('link-js', ['stage'], function() {
                 .add('./app/link/js/main.js')
                 .transform(reactify, {es6: true, stripTypes: true})
                 .transform(babelify)
+                .transform(globify)
                 .bundle()
                 .on('error', function(err) {
                     console.error(err);
@@ -155,7 +149,7 @@ gulp.task('link-sass', ['stage'], function() {
 
 gulp.task('libs', ['three', 'jquery']);
 
-gulp.task('stage', ['libs', 'html', 'sass', 'md', 'js', 'svg', 'font', 'favicon']);
+gulp.task('stage', ['libs', 'html', 'sass', 'md', 'js', 'svg', 'png', 'font', 'favicon']);
 
 gulp.task('link', ['stage', 'link-js', 'link-sass']);
 
