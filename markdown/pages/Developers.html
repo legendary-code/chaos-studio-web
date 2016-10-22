@@ -1,0 +1,445 @@
+<h4 id="introduction">Introduction</h4>
+
+<p>Looking to contribute some cool new map or perhaps a better random number
+generator algorithm, or a cool new render visualization?  This is the
+place for you!</p>
+
+<h4 id="contributing">Contributing</h4>
+
+<p>The source can be found here: <a href="https://github.com/legendary-code/chaos-studio-web" target="_blank">https://github.com/legendary-code/chaos-studio-web</a></p>
+
+<p>If you wish to contribute, clone the repository, create a branch and make
+your changes there.  Afterwards, push your branch up and create a pull
+request:</p>
+
+<pre><code class="bash language-bash hljs">git <span class="hljs-built_in">clone</span> git@github.com:legendary-code/chaos-studio-web.git
+<span class="hljs-built_in">cd</span> chaos-studio-web
+git checkout -B your_branch_name
+git commit -am <span class="hljs-string">"Your changes commit message"</span>
+git push -u origin your_branch_name
+</code></pre>
+
+<p>I've severely slacked in writing tests, so, please, make sure
+you test the new feature you implement by running it locally.</p>
+
+<pre><code class="bash language-bash hljs">npm install
+npm install -g gulp
+gulp serve
+</code></pre>
+
+<h4 id="architecture">Architecture</h4>
+
+<p>To get started, I'm going to give the high-level architecture of all the
+pieces that work together to run and render a strange attractor.  All
+these various pieces are configured and contained within a class called
+<code class="hljs ebnf"><span class="hljs-attribute">Configuration</span></code>.  The bulk of the work of searching for a strange attractor
+happens inside the <code class="hljs ebnf"><span class="hljs-attribute">AttractorFinder</span></code> class, given a configuration.  In a
+configuration, you can configure a <code class="hljs dart"><span class="hljs-built_in">Map</span></code>, a set of <code class="hljs ebnf"><span class="hljs-attribute">SearchCriterion</span></code>, a
+<code class="hljs ebnf"><span class="hljs-attribute">Rng</span></code> (random number generator), a <code class="hljs ebnf"><span class="hljs-attribute">Renderer</span></code>, a <code class="hljs ebnf"><span class="hljs-attribute">Projection</span></code>, and finally
+a <code class="hljs ebnf"><span class="hljs-attribute">Colorizer</span></code>.</p>
+
+<p>The first thing <code class="hljs ebnf"><span class="hljs-attribute">AttractorFinder</span></code> will do is use the provided <code class="hljs ebnf"><span class="hljs-attribute">Rng</span></code> to 
+generate a set of random coefficients for your <code class="hljs dart"><span class="hljs-built_in">Map</span></code>.  It will also select
+an initial value and start iterating over the map.  It will use the set
+of <code class="hljs ebnf"><span class="hljs-attribute">SearchCriterion</span></code> to test each point.  If any of the tests fail, it
+will reject the set of chosen coefficients and continue the search process
+again.  If all the tests pass, the finder will continue iterating over the
+map, generating the actual points that will be used to render the strange
+attractor.  Each point generated will go through the <code class="hljs ebnf"><span class="hljs-attribute">Projection</span></code> to apply
+any custom deformations or projections, the <code class="hljs ebnf"><span class="hljs-attribute">Colorizer</span></code> to give the points
+color, and then finally rendered using the <code class="hljs ebnf"><span class="hljs-attribute">Renderer</span></code>.</p>
+
+<h4 id="components">Components</h4>
+
+<p>All the various functionality that's been implemented for things like
+random number generators, maps, renderers, and so forth have been
+implemented in an organized components API.  All components are
+implemented in the latest version of JavaScript: ECMAScript 6.  The next
+few sections will go over all the various component classes that can be
+extended to implement new features.</p>
+
+<h5 id="component">Component</h5>
+
+<p>This is the base class for all components that can be implemented. When
+implementing a new component, you'll almost never extend this class
+directly, but instead, you'll be extending a subclass that is more
+specific to the kind of component you wish to implement.  If you wish
+to add a new map, you would extend the <code class="hljs dart"><span class="hljs-built_in">Map</span></code> component.  </p>
+
+<p>All components must implement at minimum, two static getters for the
+<code class="hljs ebnf"><span class="hljs-attribute">displayName</span></code> and <code class="hljs ebnf"><span class="hljs-attribute">description</span></code> of the component, which will appear in
+the settings dialog.  Components may also specify a static getter for
+configuration <code class="hljs crmsh"><span class="hljs-keyword">params</span></code> that can be configured in the settings dialog.</p>
+
+<p>In order for a component to be usable, it must also be registered with
+the <code class="hljs ebnf"><span class="hljs-attribute">Components</span></code> helper class:</p>
+
+<pre><code class="js language-js hljs javascript"><span class="hljs-keyword">let</span> <span class="hljs-built_in">Map</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Map'</span>),
+    Props = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Props'</span>),
+    Components = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Components'</span>);
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyAwesomeMap</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Map</span> </span>{
+    <span class="hljs-comment">// Required</span>
+    <span class="hljs-keyword">static</span> get displayName() {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"My Awesome Map"</span>;
+    }
+
+    <span class="hljs-comment">// Required</span>
+    <span class="hljs-keyword">static</span> get description() {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"A map made of pure awesomeness"</span>;
+    }
+
+    <span class="hljs-comment">// Optional</span>
+    <span class="hljs-keyword">static</span> get params() {
+        <span class="hljs-keyword">return</span> [
+            Props.number(<span class="hljs-string">"Theta"</span>, <span class="hljs-string">"theta"</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>, { <span class="hljs-attr">decimalPlaces</span>: <span class="hljs-number">2</span> })
+        ];
+    }
+
+    get theta() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._theta;
+    }
+
+    set theta(val) {
+        <span class="hljs-keyword">this</span>._theta = val;
+    }
+
+    <span class="hljs-comment">// Can be used for default param values </span>
+    <span class="hljs-keyword">constructor</span>() {
+        <span class="hljs-keyword">this</span>._theta = <span class="hljs-number">0.4</span>;
+    }
+}
+
+Components.register(<span class="hljs-built_in">Map</span>, MyAwesomeMap, <span class="hljs-literal">false</span>);
+<span class="hljs-built_in">module</span>.exports = MyAwesomeMap;
+</code></pre>
+
+<p>Each base component type may have additional things that may need to be
+implemented, which will be covered in their respective sections below.</p>
+
+<h5 id="map">Map</h5>
+
+<p>This is the heart and soul of all strange attractors.  A map defines the
+set of equations that are used to find these interesting shapes, given
+a randomly selected set of coefficients.</p>
+
+<p>A map has two getters that can be overridden, and a method for transforming
+a single point.  If we wanted to implement a map for the Logistic Equation,
+it might look something like this:</p>
+
+<pre><code class="hljs cs"><span class="hljs-keyword">let</span> Map = require(<span class="hljs-string">'../Map'</span>),
+    Components = require(<span class="hljs-string">'../Components'</span>);
+
+<span class="hljs-keyword">class</span> <span class="hljs-title">LogisticMap</span> <span class="hljs-title">extends</span> <span class="hljs-title">Map</span> {
+    <span class="hljs-comment">// Required</span>
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">get</span> <span class="hljs-title">displayName</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Logistic"</span>;
+    }
+
+    <span class="hljs-comment">// Required</span>
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">get</span> <span class="hljs-title">description</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"A map of the Logistic Equation"</span>;
+    }
+
+    <span class="hljs-comment">// Optional, default returns 3</span>
+    <span class="hljs-comment">// (Using a value other than 3 is untested as some old code may</span>
+    <span class="hljs-comment">// still assume everything is 3 dimensions.)</span>
+    <span class="hljs-function"><span class="hljs-keyword">get</span> <span class="hljs-title">dimensions</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    }
+
+    <span class="hljs-comment">// Required, the number of coefficients your map uses</span>
+    <span class="hljs-function"><span class="hljs-keyword">get</span> <span class="hljs-title">coefficients</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    }
+
+    <span class="hljs-comment">// Required, apply the function</span>
+    apply(v, c) {
+        <span class="hljs-keyword">return</span> [
+            c[<span class="hljs-number">0</span>] * v[<span class="hljs-number">0</span>] * (<span class="hljs-number">1</span> - v[<span class="hljs-number">0</span>]);
+        ];
+    }
+}
+
+Components.register(Map, LogisticMap, <span class="hljs-literal">false</span>);
+module.exports = LogisticMap;
+</code></pre>
+
+<p>Note that <code class="hljs ebnf"><span class="hljs-attribute">dimensions</span></code> and <code class="hljs ebnf"><span class="hljs-attribute">coefficients</span></code> here are not static.  This means
+that you could create a map that depending on how its configured, might
+have different dimensionality or a different number of required coefficients.</p>
+
+<h5 id="rng">Rng</h5>
+
+<p>This component is extended to implement a custom random number generator,
+used to generate the random coefficients of the map and perhaps other values.</p>
+
+<p>A common random number generator is the linear congruential generator, which
+uses modulo arithmetic to generate numbers.  It's implemented like this:</p>
+
+<pre><code class="hljs kotlin">let Rng = require(<span class="hljs-string">'../Rng'</span>),
+    Components = require(<span class="hljs-string">'../Components'</span>);
+
+const M = Math.pow(<span class="hljs-number">2</span>, <span class="hljs-number">48</span>);
+const A = <span class="hljs-number">25214903917</span>;
+const C = <span class="hljs-number">11</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LinearCongruentialGenerator</span> <span class="hljs-title">extends</span> <span class="hljs-title">Rng</span> </span>{
+    <span class="hljs-comment">// Required</span>
+    static <span class="hljs-keyword">get</span> displayName() {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Linear Congruential Generator"</span>;
+    }
+
+    <span class="hljs-comment">// Required</span>
+    static <span class="hljs-keyword">get</span> description() {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Modulo arithmetic generated numbers"</span>;
+    }
+
+    <span class="hljs-comment">// Required, get the seed value</span>
+    <span class="hljs-keyword">get</span> seed() {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._seed;
+    }
+
+    <span class="hljs-comment">// Required, set the seed and reset internal state</span>
+    reset(seed) {
+        <span class="hljs-keyword">this</span>._seed = <span class="hljs-keyword">this</span>._x = seed;
+    }
+
+    <span class="hljs-comment">// Required, generate the next number, [0...1]</span>
+    next() {
+        <span class="hljs-keyword">this</span>._x = (A * <span class="hljs-keyword">this</span>._x + C) % M;
+        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">this</span>._x / M);
+    }
+}
+
+Components.register(Rng, LinearCongruentialGenerator, <span class="hljs-literal">true</span>);
+module.exports = LinearCongruentialGenerator;
+</code></pre>
+
+<p>Currently, the seed is picked using the system time and will always be
+and integer.  Each time <code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">next</span><span class="hljs-params">()</span></span></code> is called, the next pseudo-random value
+should be returned. In order to be able to generate an attractor more
+than once, the <code class="hljs ebnf"><span class="hljs-attribute">Rng</span></code> <em>must</em> generate the same sequence of numbers when
+reset with the same seed value.  The value that <code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">next</span><span class="hljs-params">()</span></span></code> returns should
+be between <code class="hljs lsl"><span class="hljs-number">0</span></code> and <code class="hljs lsl"><span class="hljs-number">1</span></code>.</p>
+
+<h5 id="searchcriterion">SearchCriterion</h5>
+
+<p>This component is extended to implement a criterion that a set of initial
+points must pass in order for the set of randomly chosen coefficients to
+be deemed as having generated a strange attractor or some other interesting
+system.  The criteria that is most often used is the <code class="hljs ebnf"><span class="hljs-attribute">LyapunovExponent</span></code>
+criteria, which will determine whether your system is chaotic, essentially,
+a strange attractor.</p>
+
+<p>Other interesting criteria could be added to test
+things like whether the attractor is oblong, how high of a fractal dimension
+it occupies, and so forth.  Adding too many criteria will result in more
+computations to find attractors and may slow the search significiantly.</p>
+
+<p>If you wanted to create a criterion to test for only positive-valued points
+it could look something like this:</p>
+
+<pre><code class="hljs kotlin"><span class="hljs-keyword">var</span> SearchCriterion = require(<span class="hljs-string">'../SearchCriterion'</span>),
+    Props = require(<span class="hljs-string">'../Props'</span>),
+    Components = require(<span class="hljs-string">'../Components'</span>);
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PositiveOnly</span> <span class="hljs-title">extends</span> <span class="hljs-title">SearchCriterion</span> </span>{
+    <span class="hljs-comment">// Required</span>
+    static <span class="hljs-keyword">get</span> displayName() {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Positive Only"</span>;
+    }
+
+    <span class="hljs-comment">// Required</span>
+    static <span class="hljs-keyword">get</span> description() {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"An exponent that describes stability"</span>;
+    }
+
+    <span class="hljs-comment">// Optional</span>
+    static <span class="hljs-keyword">get</span> params() {
+        <span class="hljs-keyword">return</span> [
+            Props.number(<span class="hljs-string">"minIterations"</span>, <span class="hljs-string">"Minimum Iterations"</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1000</span>, { integral: <span class="hljs-literal">true</span>, step: <span class="hljs-number">10</span> })
+        ];
+    }
+
+    <span class="hljs-comment">// Can be used for default param values </span>
+    <span class="hljs-keyword">constructor</span>() {
+        <span class="hljs-keyword">this</span>._minIterations = <span class="hljs-number">1000</span>;
+    }
+
+    <span class="hljs-comment">// Optional</span>
+    static <span class="hljs-keyword">get</span> requiresBounds() { 
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; 
+    }
+
+    <span class="hljs-comment">// Required, called each time we begin a new search</span>
+    reset(context, initialValue) {
+        <span class="hljs-keyword">this</span>._samples = <span class="hljs-number">0</span>;
+    }
+
+    <span class="hljs-comment">// Required, called for each point when searching</span>
+    test(context, nextValue, nextValueNormalized) {
+        <span class="hljs-keyword">this</span>._samples++;
+
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._samples &lt; <span class="hljs-keyword">this</span>._minIterations) {
+            <span class="hljs-comment">// Wait until we've reached minimum number of iterations</span>
+            <span class="hljs-comment">// before we start testing</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        }
+
+        nextValue.forEach(function(value) {
+            <span class="hljs-keyword">if</span> (value &gt; <span class="hljs-number">0</span>) {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+            }
+        });
+    }
+}
+
+Components.register(SearchCriterion, PositiveOnly, <span class="hljs-literal">false</span>);
+module.exports = PositiveOnly;
+</code></pre>
+
+<p>In this code sample, we add a parameter <code class="hljs ebnf"><span class="hljs-attribute">minIterations</span></code>, which is used to
+control when we actually begin considering points for testing.  This is
+important because the very first few iterations may have points that
+jump around a lot, so if your test is sensitive to change over iterations,
+it's best to skip the first few iterations.  During the search phase and
+render phase, there's a phase called 'settling' the attractor, which
+basically discards a bunch of points because of this erratic behavior, as
+the values are attracting towards the basin of attraction.</p>
+
+<h5 id="projection">Projection</h5>
+
+<p>This component is extended to implement a projection that can be used to
+deform a set of points in some way before being passed off to the <code class="hljs ebnf"><span class="hljs-attribute">Colorizer</span></code>.
+This is analogous to a geometry shader in the shader pipeline of a GPU.
+If you wanted to implement a projection that distorts the points by taking
+the square root of the coordinate values, it would look something like this:</p>
+
+<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">'underscore'</span>),
+    Projection = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Projection'</span>),
+    Components = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Components'</span>);
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SquareRootDistortion</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Projection</span> </span>{
+    <span class="hljs-comment">// Required</span>
+    <span class="hljs-keyword">static</span> get displayName() {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Square Root Distortion"</span>;
+    }
+
+    <span class="hljs-comment">// Required</span>
+    <span class="hljs-keyword">static</span> get description() {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Takes the square root of coordinate values"</span>;
+    }
+
+    <span class="hljs-comment">// Required, apply the projection</span>
+    apply(context, vertex) {
+        <span class="hljs-keyword">return</span> _.map(
+            vertex,
+            <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">val</span>) </span>{
+                <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.sqrt(val); 
+            }
+        ); 
+    }
+
+    <span class="hljs-comment">// Optional, reset if projection is stateful</span>
+    reset() {
+    }
+}
+
+Components.register(Projection, SquareRootDistortion, <span class="hljs-literal">false</span>);
+<span class="hljs-built_in">module</span>.exports = SquareRootDistortion;
+</code></pre>
+
+<p>Note that the <code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">apply</span><span class="hljs-params">()</span></span></code> method can return an array of numbers that represents
+the projected point, or, an array of projected/generated points. This could
+be leveraged to do something like projecting a point into two points
+separated to simulate stereoscopy.  The point value coming in is also always
+normalized.</p>
+
+<h5 id="colorizer">Colorizer</h5>
+
+<p>This component is extended to implement a colorizer which will apply color
+to all given points.  I can be used to color points in interesting ways
+and is analogous to the raster or fragment shader in a shader pipeline of
+a GPU.  If you wanted to create a colorizer that makes all points red, it
+might look something like this:</p>
+
+<pre><code class="hljs scala">let <span class="hljs-type">Colorizer</span> = require('../<span class="hljs-type">Colorizer</span>'),
+    <span class="hljs-type">Components</span> = require('../<span class="hljs-type">Components</span>');
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RedShade</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Colorizer</span> </span>{
+    <span class="hljs-comment">// Required</span>
+    static get displayName() {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Red Shade"</span>;
+    }
+
+    <span class="hljs-comment">// Required</span>
+    static get description() {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Colorizes pixels red"</span>;
+    }
+
+    <span class="hljs-comment">// Required, apply the colorization</span>
+    apply(context, vertex) {
+        vertex.push(<span class="hljs-number">1</span>); <span class="hljs-comment">// r</span>
+        vertex.push(<span class="hljs-number">0</span>); <span class="hljs-comment">// g</span>
+        vertex.push(<span class="hljs-number">0</span>); <span class="hljs-comment">// b</span>
+        vertex.push(<span class="hljs-number">1</span>); <span class="hljs-comment">// a</span>
+        <span class="hljs-keyword">return</span> vertex;
+    }
+
+    <span class="hljs-comment">// Optional, reset if projection is stateful</span>
+    reset() {
+    }
+}
+
+<span class="hljs-type">Components</span>.register(<span class="hljs-type">Colorizer</span>, <span class="hljs-type">RedShade</span>, <span class="hljs-literal">false</span>);
+module.exports = <span class="hljs-type">Colorizer</span>;
+</code></pre>
+
+<p>Note that the format of the output vertices is highly dependent on the
+renderer used, although, the ideal convention would be an array that
+consists of the coordinates, followed by <code class="hljs coq"><span class="hljs-built_in">red</span></code>, <code class="hljs ebnf"><span class="hljs-attribute">green</span></code>, <code class="hljs ebnf"><span class="hljs-attribute">blue</span></code>, and <code class="hljs ebnf"><span class="hljs-attribute">alpha</span></code>
+color values.</p>
+
+<h5 id="renderer">Renderer</h5>
+
+<p>This component is extended to implement the rendering of a set of projected,
+colorized points to an HTML canvas.  Implementing one is fairly complex
+and the given WebGLRenderer will suit most of your needs.  Below is the
+base component definition:</p>
+
+<pre><code class="hljs scala">let <span class="hljs-type">Component</span> = require('./<span class="hljs-type">Component</span>');
+
+<span class="hljs-comment">/* Implemented to define a renderer that is capable of rendering colored vertices to a canvas */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Renderer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+    <span class="hljs-comment">/* Tests whether this renderer is supported by the browser */</span>
+    static checkSupported() {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    }
+
+    <span class="hljs-comment">/* Returns a DOM element (canvas) that acts as the rendering surface */</span>
+    create(width, height) { }
+
+    <span class="hljs-comment">/* Destroys rendering surface and any additional state */</span>
+    destroy() { }
+
+    <span class="hljs-comment">/* Sets rendering data to be rendered */</span>
+    setRenderData(points) { }
+
+    <span class="hljs-comment">/* Render to surface */</span>
+    render(rotationX, rotationY) { }
+
+    <span class="hljs-comment">/* Resizes rendering surface.  The actual surface doesn't need to be resized,
+       but the scene needs to know what size the surface is in order to render correctly. */</span>
+    resize(width, height) { }
+}
+
+module.exports = <span class="hljs-type">Renderer</span>;
+</code></pre>
+
+<h4 id="conclusion">Conclusion</h4>
+
+<p>That covers most of the things you can easily add on to, in order to add
+new interesting maps, visualizations and so forth.  Most code not directly
+related to front-end rendering resides in <code class="hljs awk">src<span class="hljs-regexp">/js/</span>chaos</code>, whereas all
+React-related code resides in <code class="hljs awk">src<span class="hljs-regexp">/js/</span>components</code> and <code class="hljs awk">src<span class="hljs-regexp">/js/</span>pages</code>.</p>
