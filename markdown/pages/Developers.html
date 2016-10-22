@@ -12,20 +12,20 @@ place for you!</p>
 your changes there.  Afterwards, push your branch up and create a pull
 request:</p>
 
-<pre><code class="bash language-bash hljs">git <span class="hljs-built_in">clone</span> git@github.com:legendary-code/chaos-studio-web.git
+<pre><code class="bash language-bash hljs"><div class="scrollable">git <span class="hljs-built_in">clone</span> git@github.com:legendary-code/chaos-studio-web.git
 <span class="hljs-built_in">cd</span> chaos-studio-web
 git checkout -B your_branch_name
 git commit -am <span class="hljs-string">"Your changes commit message"</span>
 git push -u origin your_branch_name
-</code></pre>
+</div></code></pre>
 
 <p>I've severely slacked in writing tests, so, please, make sure
 you test the new feature you implement by running it locally.</p>
 
-<pre><code class="bash language-bash hljs">npm install
+<pre><code class="bash language-bash hljs"><div class="scrollable">npm install
 npm install -g gulp
 gulp serve
-</code></pre>
+</div></code></pre>
 
 <h4 id="architecture">Architecture</h4>
 
@@ -74,7 +74,7 @@ configuration <code class="hljs crmsh"><span class="hljs-keyword">params</span><
 <p>In order for a component to be usable, it must also be registered with
 the <code class="hljs ebnf"><span class="hljs-attribute">Components</span></code> helper class:</p>
 
-<pre><code class="js language-js hljs javascript"><span class="hljs-keyword">let</span> <span class="hljs-built_in">Map</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Map'</span>),
+<pre><code class="js language-js hljs javascript"><div class="scrollable"><span class="hljs-keyword">let</span> <span class="hljs-built_in">Map</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Map'</span>),
     Props = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Props'</span>),
     Components = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Components'</span>);
 
@@ -112,7 +112,7 @@ the <code class="hljs ebnf"><span class="hljs-attribute">Components</span></code
 
 Components.register(<span class="hljs-built_in">Map</span>, MyAwesomeMap, <span class="hljs-literal">false</span>);
 <span class="hljs-built_in">module</span>.exports = MyAwesomeMap;
-</code></pre>
+</div></code></pre>
 
 <p>Each base component type may have additional things that may need to be
 implemented, which will be covered in their respective sections below.</p>
@@ -127,7 +127,7 @@ a randomly selected set of coefficients.</p>
 a single point.  If we wanted to implement a map for the Logistic Equation,
 it might look something like this:</p>
 
-<pre><code class="hljs cs"><span class="hljs-keyword">let</span> Map = require(<span class="hljs-string">'../Map'</span>),
+<pre><code class="hljs cs"><div class="scrollable"><span class="hljs-keyword">let</span> Map = require(<span class="hljs-string">'../Map'</span>),
     Components = require(<span class="hljs-string">'../Components'</span>);
 
 <span class="hljs-keyword">class</span> <span class="hljs-title">LogisticMap</span> <span class="hljs-title">extends</span> <span class="hljs-title">Map</span> {
@@ -163,7 +163,7 @@ it might look something like this:</p>
 
 Components.register(Map, LogisticMap, <span class="hljs-literal">false</span>);
 module.exports = LogisticMap;
-</code></pre>
+</div></code></pre>
 
 <p>Note that <code class="hljs ebnf"><span class="hljs-attribute">dimensions</span></code> and <code class="hljs ebnf"><span class="hljs-attribute">coefficients</span></code> here are not static.  This means
 that you could create a map that depending on how its configured, might
@@ -177,7 +177,7 @@ used to generate the random coefficients of the map and perhaps other values.</p
 <p>A common random number generator is the linear congruential generator, which
 uses modulo arithmetic to generate numbers.  It's implemented like this:</p>
 
-<pre><code class="hljs kotlin">let Rng = require(<span class="hljs-string">'../Rng'</span>),
+<pre><code class="hljs kotlin"><div class="scrollable">let Rng = require(<span class="hljs-string">'../Rng'</span>),
     Components = require(<span class="hljs-string">'../Components'</span>);
 
 const M = Math.pow(<span class="hljs-number">2</span>, <span class="hljs-number">48</span>);
@@ -214,7 +214,7 @@ const C = <span class="hljs-number">11</span>;
 
 Components.register(Rng, LinearCongruentialGenerator, <span class="hljs-literal">true</span>);
 module.exports = LinearCongruentialGenerator;
-</code></pre>
+</div></code></pre>
 
 <p>Currently, the seed is picked using the system time and will always be
 and integer.  Each time <code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">next</span><span class="hljs-params">()</span></span></code> is called, the next pseudo-random value
@@ -240,7 +240,7 @@ computations to find attractors and may slow the search significiantly.</p>
 <p>If you wanted to create a criterion to test for only positive-valued points
 it could look something like this:</p>
 
-<pre><code class="hljs kotlin"><span class="hljs-keyword">var</span> SearchCriterion = require(<span class="hljs-string">'../SearchCriterion'</span>),
+<pre><code class="hljs kotlin"><div class="scrollable"><span class="hljs-keyword">var</span> SearchCriterion = require(<span class="hljs-string">'../SearchCriterion'</span>),
     Props = require(<span class="hljs-string">'../Props'</span>),
     Components = require(<span class="hljs-string">'../Components'</span>);
 
@@ -297,7 +297,7 @@ it could look something like this:</p>
 
 Components.register(SearchCriterion, PositiveOnly, <span class="hljs-literal">false</span>);
 module.exports = PositiveOnly;
-</code></pre>
+</div></code></pre>
 
 <p>In this code sample, we add a parameter <code class="hljs ebnf"><span class="hljs-attribute">minIterations</span></code>, which is used to
 control when we actually begin considering points for testing.  This is
@@ -316,7 +316,7 @@ This is analogous to a geometry shader in the shader pipeline of a GPU.
 If you wanted to implement a projection that distorts the points by taking
 the square root of the coordinate values, it would look something like this:</p>
 
-<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">'underscore'</span>),
+<pre><code class="hljs javascript"><div class="scrollable"><span class="hljs-keyword">let</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">'underscore'</span>),
     Projection = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Projection'</span>),
     Components = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Components'</span>);
 
@@ -348,7 +348,7 @@ the square root of the coordinate values, it would look something like this:</p>
 
 Components.register(Projection, SquareRootDistortion, <span class="hljs-literal">false</span>);
 <span class="hljs-built_in">module</span>.exports = SquareRootDistortion;
-</code></pre>
+</div></code></pre>
 
 <p>Note that the <code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">apply</span><span class="hljs-params">()</span></span></code> method can return an array of numbers that represents
 the projected point, or, an array of projected/generated points. This could
@@ -364,7 +364,7 @@ and is analogous to the raster or fragment shader in a shader pipeline of
 a GPU.  If you wanted to create a colorizer that makes all points red, it
 might look something like this:</p>
 
-<pre><code class="hljs scala">let <span class="hljs-type">Colorizer</span> = require('../<span class="hljs-type">Colorizer</span>'),
+<pre><code class="hljs scala"><div class="scrollable">let <span class="hljs-type">Colorizer</span> = require('../<span class="hljs-type">Colorizer</span>'),
     <span class="hljs-type">Components</span> = require('../<span class="hljs-type">Components</span>');
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RedShade</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Colorizer</span> </span>{
@@ -394,7 +394,7 @@ might look something like this:</p>
 
 <span class="hljs-type">Components</span>.register(<span class="hljs-type">Colorizer</span>, <span class="hljs-type">RedShade</span>, <span class="hljs-literal">false</span>);
 module.exports = <span class="hljs-type">Colorizer</span>;
-</code></pre>
+</div></code></pre>
 
 <p>Note that the format of the output vertices is highly dependent on the
 renderer used, although, the ideal convention would be an array that
@@ -408,7 +408,7 @@ colorized points to an HTML canvas.  Implementing one is fairly complex
 and the given WebGLRenderer will suit most of your needs.  Below is the
 base component definition:</p>
 
-<pre><code class="hljs scala">let <span class="hljs-type">Component</span> = require('./<span class="hljs-type">Component</span>');
+<pre><code class="hljs scala"><div class="scrollable">let <span class="hljs-type">Component</span> = require('./<span class="hljs-type">Component</span>');
 
 <span class="hljs-comment">/* Implemented to define a renderer that is capable of rendering colored vertices to a canvas */</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Renderer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
@@ -435,7 +435,7 @@ base component definition:</p>
 }
 
 module.exports = <span class="hljs-type">Renderer</span>;
-</code></pre>
+</div></code></pre>
 
 <h4 id="conclusion">Conclusion</h4>
 

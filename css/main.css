@@ -188,14 +188,16 @@ p, .font-body-1 {
   text-transform: uppercase; }
 
 /* Make elements not selectable by default to avoid annoying highlighting issues */
+/*
 * {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none; }
-
+  user-select: none;
+}
+*/
 /* Effects */
 .ripple {
   display: block;
@@ -801,51 +803,52 @@ p, .font-body-1 {
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   color: #333333; }
-  .markdown code.hljs {
-    overflow-x: auto; }
 
-pre code {
+.markdown pre code {
   display: block;
   padding: 0.5em;
-  margin-bottom: 13px; }
-  pre code .hljs-comment,
-  pre code .hljs-meta {
+  margin-bottom: 13px;
+  white-space: pre; }
+  .markdown pre code .scrollable {
+    overflow-x: auto; }
+  .markdown pre code .hljs-comment,
+  .markdown pre code .hljs-meta {
     color: #969896; }
-  pre code .hljs-string,
-  pre code .hljs-variable,
-  pre code .hljs-template-variable,
-  pre code .hljs-strong,
-  pre code .hljs-emphasis,
-  pre code .hljs-quote {
+  .markdown pre code .hljs-string,
+  .markdown pre code .hljs-variable,
+  .markdown pre code .hljs-template-variable,
+  .markdown pre code .hljs-strong,
+  .markdown pre code .hljs-emphasis,
+  .markdown pre code .hljs-quote {
     color: #df5000; }
-  pre code .hljs-keyword,
-  pre code .hljs-selector-tag,
-  pre code .hljs-type {
+  .markdown pre code .hljs-keyword,
+  .markdown pre code .hljs-selector-tag,
+  .markdown pre code .hljs-type {
     color: #a71d5d; }
-  pre code .hljs-literal,
-  pre code .hljs-symbol,
-  pre code .hljs-bullet,
-  pre code .hljs-attribute {
+  .markdown pre code .hljs-literal,
+  .markdown pre code .hljs-symbol,
+  .markdown pre code .hljs-bullet,
+  .markdown pre code .hljs-attribute {
     color: #0086b3; }
-  pre code .hljs-section,
-  pre code .hljs-name {
+  .markdown pre code .hljs-section,
+  .markdown pre code .hljs-name {
     color: #63a35c; }
-  pre code .hljs-tag {
+  .markdown pre code .hljs-tag {
     color: #333333; }
-  pre code .hljs-title,
-  pre code .hljs-attr,
-  pre code .hljs-selector-id,
-  pre code .hljs-selector-class,
-  pre code .hljs-selector-attr,
-  pre code .hljs-selector-pseudo {
+  .markdown pre code .hljs-title,
+  .markdown pre code .hljs-attr,
+  .markdown pre code .hljs-selector-id,
+  .markdown pre code .hljs-selector-class,
+  .markdown pre code .hljs-selector-attr,
+  .markdown pre code .hljs-selector-pseudo {
     color: #795da3; }
-  pre code .hljs-addition {
+  .markdown pre code .hljs-addition {
     color: #55a532;
     background-color: #eaffea; }
-  pre code .hljs-deletion {
+  .markdown pre code .hljs-deletion {
     color: #bd2c00;
     background-color: #ffecec; }
-  pre code .hljs-link {
+  .markdown pre code .hljs-link {
     text-decoration: underline; }
 
 .modal {
