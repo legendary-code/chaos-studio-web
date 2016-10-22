@@ -99,7 +99,7 @@ gulp.task('font', function() {
 });
 
 gulp.task('md', function() {
-    return gulp.src('./app/src/markdown/**/*.*')
+    return gulp.src('./app/src/markdown/**/*.md')
         .pipe(transform(renderMarkdown, {encoding: 'utf8'}))
         .pipe(dest('./app/dist/markdown', {ext: 'html'}))
         .pipe(gulp.dest('./'));
@@ -111,7 +111,7 @@ gulp.task('svg', function() {
 });
 
 gulp.task('png', function() {
-    return gulp.src('./app/src/png/**/*.png')
+    return gulp.src('./app/src/markdown/png/**/*.png')
         .pipe(gulp.dest('./app/dist/png'));
 });
 
