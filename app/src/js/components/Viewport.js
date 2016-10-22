@@ -13,6 +13,7 @@ class Viewport extends React.Component {
 
         this.state = {
             searching: false,
+            statusMessage: '',
             rotation: new Rotation()
         };
     }
@@ -38,6 +39,7 @@ class Viewport extends React.Component {
                 onTouchMove={this._drag.bind(this)}>
                 <div className={progressClassName}>
                     <img src="./svg/lorenz.svg" />
+                    <label className="font-subhead">{this.state.statusMessage}</label>
                 </div>
             </div>
         )
@@ -126,6 +128,10 @@ class Viewport extends React.Component {
             // only continue rendering if the scene is changing (i.e. rotation)
             requestAnimationFrame(this._animate.bind(this));
         }
+    }
+
+    updateStatus(statusMessage) {
+        this.setState({statusMessage: statusMessage});
     }
 
     renderScene() {

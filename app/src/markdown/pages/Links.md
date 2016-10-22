@@ -15,6 +15,10 @@
 
 ##### Developers
 
+[https://github.com/legendary-code/chaos-studio-web](https://github.com/legendary-code/chaos-studio-web)
+
+*Source Code*
+
 [https://facebook.github.io/react/](https://facebook.github.io/react/)
 
 *The Facebook technology used for this site*

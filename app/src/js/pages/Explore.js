@@ -46,7 +46,7 @@ class Explore extends React.Component {
         return (
             <div>
                 <Paper className={introClassName} ref="introPaper">
-                    <h4>Click the button to start!</h4>
+                    <h4>Click to start!</h4>
                 </Paper>
 
                 <Viewport ref="viewport" />
@@ -123,7 +123,7 @@ class Explore extends React.Component {
 
         let finder = new AttractorFinder(
             config,
-            (e) => { console.log(e); },
+            (e) => { this.refs.viewport.updateStatus(e); },
             this._attractorGenerated.bind(this),
             this._searchCancelled.bind(this)
         );
@@ -230,7 +230,7 @@ class Explore extends React.Component {
 
             let generator = new AttractorFinder(
                 config,
-                (e) => { console.log(e); },
+                (e) => { this.refs.viewport.updateStatus(e); },
                 this._attractorGenerated.bind(this),
                 this._searchCancelled.bind(this),
                 snapshot

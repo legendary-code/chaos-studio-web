@@ -43,12 +43,13 @@
 .intro-paper {
   display: inline-block;
   position: absolute;
-  width: 300px;
-  height: 200px;
+  width: 250px;
+  height: 150px;
   left: 50%;
   top: 50%;
-  margin-left: -150px;
-  margin-top: -100px;
+  margin-left: -125px;
+  margin-top: -75px;
+  text-align: center;
 
   &.hidden {
     display: none;
@@ -64,7 +65,7 @@
   position: absolute;
   right: 50%;
   bottom: 50%;
-  margin-bottom: -88px;
+  margin-bottom: -54px;
   margin-right: -32px;
 
   &.animated {

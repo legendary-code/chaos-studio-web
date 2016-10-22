@@ -52,7 +52,7 @@ class AttractorFinder {
             this._onStatus("Seed: " + rng.seed);
 
             if (!isSnapshot) {
-                this._onStatus("Picking new coefficients...");
+                this._onStatus("Picking new coefficients");
             }
 
             for (let i = 0; i < numCoefficients; i++) {
@@ -69,7 +69,7 @@ class AttractorFinder {
             let abort = false;
 
             /* settle */
-            this._onStatus(isSnapshot ? "Skipping initial points" : "Settling potential attractor...");
+            this._onStatus(isSnapshot ? "Skipping initial points" : "Settling potential attractor");
             let settlingIterations = isSnapshot ? this._snapshot.startingIteration : this._configuration.settlingIterations;
 
             for (let i = 0; i < settlingIterations; i++) {
@@ -110,7 +110,7 @@ class AttractorFinder {
             }
 
             /* compute bounds */
-            this._onStatus(isSnapshot || criteria.length == 0 ? "Computing bounds..." : "Computing bounds and applying search criteria...");
+            this._onStatus(isSnapshot || criteria.length == 0 ? "Computing bounds" : "Computing bounds with search criteria");
 
             let iterations = isSnapshot ?
                              this._configuration.totalIterations :
@@ -118,7 +118,7 @@ class AttractorFinder {
 
             for (let i = 0; i < iterations; i++) {
                 if (i == this._configuration.searchIterations) {
-                    this._onStatus("Computing bounds...");
+                    this._onStatus("Computing bounds");
                 }
 
                 if (i % 10000 == 0) {
@@ -173,7 +173,7 @@ class AttractorFinder {
             colorizer.reset();
 
             /* search + generate points */
-            this._onStatus(isSnapshot || criteriaWithBounds.length == 0 ? "Generating remaining points" : "Applying search criteria...");
+            this._onStatus(isSnapshot || criteriaWithBounds.length == 0 ? "Generating remaining points" : "Applying search criteria");
 
             for (let i = 0; i < iterations; i++) {
                 if (i == this._configuration.searchIterations) {

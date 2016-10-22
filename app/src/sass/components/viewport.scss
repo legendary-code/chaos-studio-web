@@ -9,12 +9,12 @@
   }
 
   .search-progress-container {
-    width: 128px;
+    width: 300px;
     height: 150px;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: -100px 0 0 -64px;
+    margin: -75px 0 0 -150px;
 
     &.hidden {
       display: none;
@@ -23,7 +23,7 @@
     label {
       text-align: center;
       display: block;
-      color: $dark-white;
+      font-weight: 500;
       padding: 0;
     }
 

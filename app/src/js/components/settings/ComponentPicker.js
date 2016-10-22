@@ -1,4 +1,5 @@
-let React = require('react'),
+let _ = require('underscore'),
+    React = require('react'),
     cx = require('../../utils/ReactUtils').cx,
     Actions = require('../../actions/Actions'),
     Button = require('../Button');
@@ -8,7 +9,9 @@ class ComponentPicker extends React.Component {
         let self = this;
         let hasSelection = false;
 
-        let list = this.props.types.map((type) => {
+        let types = _.sortBy(this.props.types, 'displayName');
+
+        let list = types.map((type) => {
             let selected = !hasSelection && (type === self.props.selected);
             hasSelection |= selected;
 
