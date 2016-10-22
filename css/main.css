@@ -106,7 +106,7 @@ title, .font-title {
   letter-spacing: 0;
   color: black; }
 
-.font-subhead {
+h6, .font-subhead {
   font-family: "Roboto", Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
@@ -114,7 +114,7 @@ title, .font-title {
   letter-spacing: 0;
   color: black; }
   @media only screen and (min-width: 992px) {
-    .font-subhead {
+    h6, .font-subhead {
       font-size: 15px; } }
 
 .font-setting-subhead {
@@ -740,18 +740,18 @@ p, .font-body-1 {
   .viewport canvas {
     background-color: #e0e0e0; }
   .viewport .search-progress-container {
-    width: 128px;
+    width: 300px;
     height: 150px;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: -100px 0 0 -64px; }
+    margin: -75px 0 0 -150px; }
     .viewport .search-progress-container.hidden {
       display: none; }
     .viewport .search-progress-container label {
       text-align: center;
       display: block;
-      color: rgba(255, 255, 255, 0.87);
+      font-weight: 500;
       padding: 0; }
     .viewport .search-progress-container img {
       width: 128px;
@@ -774,8 +774,10 @@ p, .font-body-1 {
 .markdown h5 {
   line-height: 48px; }
 
+.markdown h6 {
+  line-height: 36px; }
+
 .markdown p {
-  text-indent: 26px;
   margin-bottom: 13px; }
 
 .markdown em {
@@ -1397,12 +1399,13 @@ p, .font-body-1 {
 .intro-paper {
   display: inline-block;
   position: absolute;
-  width: 300px;
-  height: 200px;
+  width: 250px;
+  height: 150px;
   left: 50%;
   top: 50%;
-  margin-left: -150px;
-  margin-top: -100px;
+  margin-left: -125px;
+  margin-top: -75px;
+  text-align: center;
   transition: opacity 0.5s;
   -o-transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;
@@ -1416,7 +1419,7 @@ p, .font-body-1 {
   position: absolute;
   right: 50%;
   bottom: 50%;
-  margin-bottom: -88px;
+  margin-bottom: -54px;
   margin-right: -32px; }
   .search-button.animated {
     transition: right 0.5s, bottom 0.5s, margin-right 0.5s, margin-bottom 0.5s;
