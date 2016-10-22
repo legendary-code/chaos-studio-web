@@ -1,4 +1,4 @@
-var _ = require('underscore'),
+let _ = require('underscore'),
     Context = require('./Context'),
     Bounds = require('./Bounds'),
     Point = require('./Point'),

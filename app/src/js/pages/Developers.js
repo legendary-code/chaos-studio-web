@@ -8,7 +8,7 @@ class Developers extends React.Component {
         return <ScrollableContents>
             <div>
                 <Paper className="contents-paper">
-                    <Markdown src="/markdown/pages/Developers.md">
+                    <Markdown src="/markdown/pages/Developers.html">
                     </Markdown>
                 </Paper>
             </div>

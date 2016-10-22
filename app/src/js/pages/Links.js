@@ -8,7 +8,7 @@ class Links extends React.Component {
         return (
             <ScrollableContents>
                 <Paper className="contents-paper">
-                    <Markdown src="/markdown/pages/Links.md">
+                    <Markdown src="/markdown/pages/Links.html">
                     </Markdown>
                 </Paper>
             </ScrollableContents>

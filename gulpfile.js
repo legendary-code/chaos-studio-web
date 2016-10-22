@@ -1,4 +1,6 @@
 var gulp = require('gulp'),
+    dest = require('gulp-dest'),
+    fs = require("fs"),
     webserver = require('gulp-webserver'),
 
     browserify = require('browserify'),
@@ -11,7 +13,14 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
 
     uglify = require('gulp-uglify'),
-    insert = require('gulp-insert');
+    insert = require('gulp-insert'),
+    transform = require('gulp-transform'),
+    Showdown = require('showdown'),
+    hljs = require('highlight.js'),
+    jsdom = require("jsdom"),
+    window = jsdom.jsdom().defaultView,
+    $ = require('jquery')(window);
+
 
 /**
  * Build happens in two phases:
@@ -25,6 +34,25 @@ var bundleLibrary = function(entryFile, targetFile, destination) {
                 .bundle()
                 .pipe(source(targetFile))
                 .pipe(gulp.dest(destination));
+};
+
+var renderMarkdown = function(markdown) {
+    var converter = new Showdown.Converter();
+    var markup = $(converter.makeHtml(markdown));
+
+    // make all non-relative links open in new tab
+    markup.find('a').each(function(i, link) {
+        if (link.host !== window.location.host) {
+            link.target = '_blank';
+        }
+    });
+
+    // syntax highlight
+    markup.find('code').each(function (i, block) {
+        hljs.highlightBlock(block);
+    });
+
+    return $('<div>').append(markup).html();
 };
 
 /* LIBRARIES */
@@ -75,7 +103,9 @@ gulp.task('font', function() {
 
 gulp.task('md', function() {
     return gulp.src('./app/src/markdown/**/*.*')
-        .pipe(gulp.dest('./app/dist/markdown'));
+        .pipe(transform(renderMarkdown, {encoding: 'utf8'}))
+        .pipe(dest('./app/dist/markdown', {ext: 'html'}))
+        .pipe(gulp.dest('./'));
 });
 
 gulp.task('svg', function() {
@@ -93,7 +123,6 @@ gulp.task('favicon', function() {
 });
 
 /* LINK TASKS */
-
 gulp.task('link-js', ['stage'], function() {
     return browserify()
                 .add('./app/link/js/main.js')

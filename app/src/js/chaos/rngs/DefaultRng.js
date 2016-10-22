@@ -1,4 +1,4 @@
-var Rng = require('../Rng');
+let Rng = require('../Rng');
 
 class DefaultRng extends Rng {
     next() {

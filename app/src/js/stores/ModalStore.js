@@ -1,5 +1,4 @@
 let _ = require('underscore'),
-    React = require('react'),
     Store = require('./Store'),
     Actions = require('../actions/Actions'),
     Modal = require('../components/Modal');

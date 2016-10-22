@@ -1,4 +1,4 @@
-var Dispatcher = require('./Dispatcher');
+let Dispatcher = require('./Dispatcher');
 
 class ChaosDispatcher extends Dispatcher {
     static dispatch(type, data) {

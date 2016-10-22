@@ -1,4 +1,4 @@
-var SearchCriterion = require('../SearchCriterion');
+let SearchCriterion = require('../SearchCriterion');
 /*
 class FractalDimension extends SearchCriterion {
 

@@ -1,4 +1,4 @@
-var Map = require('../Map'),
+let Map = require('../Map'),
     Components = require('../Components');
 
 class QuadraticMap extends Map {

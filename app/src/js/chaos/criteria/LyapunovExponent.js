@@ -1,4 +1,4 @@
-var SearchCriterion = require('../SearchCriterion'),
+let SearchCriterion = require('../SearchCriterion'),
     Point = require('../Point'),
     Props = require('../Props'),
     Components = require('../Components');

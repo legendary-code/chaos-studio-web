@@ -8,7 +8,7 @@ class Home extends React.Component {
         return (
             <ScrollableContents>
                 <Paper className="contents-paper">
-                    <Markdown src="/markdown/pages/Home.md">
+                    <Markdown src="/markdown/pages/Home.html">
                     </Markdown>
                 </Paper>
             </ScrollableContents>

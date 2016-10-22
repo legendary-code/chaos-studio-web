@@ -1,4 +1,4 @@
-var Rng = require('../Rng');
+let Rng = require('../Rng');
 
 class MersenneTwister extends Rng {
 
