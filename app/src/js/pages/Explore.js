@@ -119,7 +119,7 @@ class Explore extends React.Component {
         let viewportSize = this.refs.viewport.getViewportSize();
 
         // TODO: use iterations based off configurable pixel density
-        config.totalIterations = viewportSize.width * viewportSize.height;
+        config.totalIterations = (viewportSize.width * viewportSize.height) / window.devicePixelRatio;
 
         let finder = new AttractorFinder(
             config,
