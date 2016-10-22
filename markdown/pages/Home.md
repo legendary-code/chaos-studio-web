@@ -96,4 +96,28 @@ to get a general idea of how it all works.
 Below are some of my favorite strange attractors that I have picked.  Clicking on the image will
 take you to the explore page, where the attractor will be generated for you!
 
-[![Strange Attractor](text)](/#/explore)
+###### Cubic
+[![Cubic](/png/cubic1.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90NDpfbWFwPDg6Q3ViaWNNYXA+NDpfcm5nPDI3OkxpbmVhckNvbmdydWVudGlhbEdlbmVyYXRvcjU6X3NlZWQoMTQ3NzExNjEzOTcwMykyOl94KDE0ODQzMTkyMjI2NjExMik+MTg6X3N0YXJ0aW5nSXRlcmF0aW9uKDIwMDApPg==)
+[![Cubic](/png/cubic2.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90NDpfbWFwPDg6Q3ViaWNNYXA+NDpfcm5nPDI3OkxpbmVhckNvbmdydWVudGlhbEdlbmVyYXRvcjU6X3NlZWQoMTQ3NzE0OTY0MTM1MykyOl94KDUyMDUyODU2MTQzODcyKT4xODpfc3RhcnRpbmdJdGVyYXRpb24oMjAwMCk+)
+[![Cubic](/png/cubic3.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90NDpfbWFwPDg6Q3ViaWNNYXA+NDpfcm5nPDI3OkxpbmVhckNvbmdydWVudGlhbEdlbmVyYXRvcjU6X3NlZWQoMTQ3NzE0OTc4NTg3MSkyOl94KDE0MzgzNTIzMzUxNzU2OCk+MTg6X3N0YXJ0aW5nSXRlcmF0aW9uKDIwMDApPg==)
+
+###### Quadratic
+[![Quadratic](/png/quadratic1.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90NDpfbWFwPDEyOlF1YWRyYXRpY01hcD40Ol9ybmc8Mjc6TGluZWFyQ29uZ3J1ZW50aWFsR2VuZXJhdG9yNTpfc2VlZCgxNDc3MTQ4MzY2MzM1KTI6X3goMTI2NjE5OTMwODUzMzc2KT4xODpfc3RhcnRpbmdJdGVyYXRpb24oMjAwMCk+)
+[![Quadratic](/png/quadratic2.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90NDpfbWFwPDEyOlF1YWRyYXRpY01hcD40Ol9ybmc8Mjc6TGluZWFyQ29uZ3J1ZW50aWFsR2VuZXJhdG9yNTpfc2VlZCgxNDc3MTQ4NTkwMjg4KTI6X3goMTEwNzMwNjk5MzQxODI0KT4xODpfc3RhcnRpbmdJdGVyYXRpb24oMjAwMCk+)
+[![Quadratic](/png/quadratic3.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90NDpfbWFwPDEyOlF1YWRyYXRpY01hcD40Ol9ybmc8Mjc6TGluZWFyQ29uZ3J1ZW50aWFsR2VuZXJhdG9yNTpfc2VlZCgxNDc3MTQ4OTU5MDkwKTI6X3goOTA0OTQ5NjA5MjY3MjApPjE4Ol9zdGFydGluZ0l0ZXJhdGlvbigyMDAwKT4=)
+[![Quadratic](/png/quadratic4.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90NDpfbWFwPDEyOlF1YWRyYXRpY01hcD40Ol9ybmc8Mjc6TGluZWFyQ29uZ3J1ZW50aWFsR2VuZXJhdG9yNTpfc2VlZCgxNDc3MTUzMjQ2MTUxKTI6X3goMjU2MzU4MDA3OTYzNjQ4KT4xODpfc3RhcnRpbmdJdGVyYXRpb24oMjAwMCk+)
+
+###### Clifford
+[![Clifford](/png/clifford1.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90NDpfbWFwPDExOkNsaWZmb3JkTWFwPjQ6X3JuZzwyNzpMaW5lYXJDb25ncnVlbnRpYWxHZW5lcmF0b3I1Ol9zZWVkKDE0NzcxNDk5MTI2MjkpMjpfeCgyNDQ2NTEwMDA4NTY1NzYpPjE4Ol9zdGFydGluZ0l0ZXJhdGlvbigyMDAwKT4=)
+
+###### Peter De Jong
+[![Peter De Jong](/png/peterDeJong1.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90NDpfbWFwPDE0OlBldGVyRGVKb25nTWFwPjQ6X3JuZzwyNzpMaW5lYXJDb25ncnVlbnRpYWxHZW5lcmF0b3I1Ol9zZWVkKDE0NzcxNTAwMjk5ODEpMjpfeCg3OTk2MjYyNzM3NTEwNCk+MTg6X3N0YXJ0aW5nSXRlcmF0aW9uKDIwMDApPg==)
+
+###### Hénon
+[![Hénon](/png/henon1.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90NDpfbWFwPDg6SGVub25NYXA+NDpfcm5nPDI3OkxpbmVhckNvbmdydWVudGlhbEdlbmVyYXRvcjU6X3NlZWQoMTQ3NzE1MDI2MTEzNykyOl94KDE0NTgxNTIxMzQ0MTAyNCk+MTg6X3N0YXJ0aW5nSXRlcmF0aW9uKDIwMDApPg==)
+
+###### Lorenz
+[![Lorenz](/png/lorenz1.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90NDpfbWFwPDk6TG9yZW56TWFwPjQ6X3JuZzwyNzpMaW5lYXJDb25ncnVlbnRpYWxHZW5lcmF0b3I1Ol9zZWVkKDE0NzcxNTA2NTQyNTUpMjpfeCgyNTg4ODc3NDM3MDA5OTIpPjE4Ol9zdGFydGluZ0l0ZXJhdGlvbigyMDAwKT4=)
+
+###### Tent
+[![Tent](/png/tent1.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90NDpfbWFwPDc6VGVudE1hcD40Ol9ybmc8Mjc6TGluZWFyQ29uZ3J1ZW50aWFsR2VuZXJhdG9yNTpfc2VlZCgxNDc3MTUwNzYzNjMwKTI6X3goMzYyOTU2OTQ4NzY2NzIpPjE4Ol9zdGFydGluZ0l0ZXJhdGlvbigyMDAwKT4=)

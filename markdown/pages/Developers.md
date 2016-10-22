@@ -195,12 +195,12 @@ class LinearCongruentialGenerator extends Rng {
 
     // Required, get the seed value
     get seed() {
-        return this._x;
+        return this._seed;
     }
     
     // Required, set the seed and reset internal state
     reset(seed) {
-        this._x = seed;
+        this._seed = this._x = seed;
     }
 
     // Required, generate the next number, [0...1]
