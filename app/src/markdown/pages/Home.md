@@ -1,7 +1,7 @@
 ### Chaos Studio
 
 ##### tl;dr
-Chaos Theory can generate some cool and interesting art. Go [explore](/#/explore) for yourself!
+Chaos Theory can generate some cool and interesting art. Go [explore](http://chaos-studio.io/#/explore) for yourself!
 
 ##### Introduction
 Many years ago when I was a kid, I remember being at a flea market in Vermont, and picking up a 
