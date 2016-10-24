@@ -1,4 +1,12 @@
 # chaos-studio-web
-A rewrite of the original Silverlight version of my Chaos Studio site
+A open-source site that lets you explore many interesting strange attractors generated from various equations.
 
-[The current site](http://legendary.fail)
+It is currently hosted [here](http://chaos-studio.io). 
+ 
+#### Other documentation:
+
+[Home](/app/src/markdown/pages/Home.md)
+
+[Developers](/app/src/markdown/pages/Developers.md)
+
+[Links](/app/src/markdown/pages/Links.md)
