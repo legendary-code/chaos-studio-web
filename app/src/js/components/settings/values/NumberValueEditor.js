@@ -49,7 +49,7 @@ class NumberValueEditor extends React.Component {
 
 Slider.propTypes = {
     target: React.PropTypes.object.isRequired,
-    params: React.PropTypes.object.isRequired
+    params: React.PropTypes.object
 };
 
 

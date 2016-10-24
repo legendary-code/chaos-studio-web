@@ -67,12 +67,12 @@ class SettingsDialog extends React.Component {
             actionBarButtons = [];
 
             if (this.props.defaultSettingsFactory) {
-                actionBarButtons.push(<Button onClick={this._resetAll.bind(this)}>Reset All</Button>);
+                actionBarButtons.push(<Button key="sd-reset-all" onClick={this._resetAll.bind(this)}>Reset All</Button>);
             }
 
-            actionBarButtons.push(<Button onClick={this._closeModal.bind(this)}>Close</Button>);
+            actionBarButtons.push(<Button key="sd-close" onClick={this._closeModal.bind(this)}>Close</Button>);
         } else {
-            actionBarButtons = <Button onClick={this._prev.bind(this)}>Back</Button>;
+            actionBarButtons = <Button key="sd-back" onClick={this._prev.bind(this)}>Back</Button>;
         }
 
         return (

@@ -21,11 +21,11 @@ class IconButton extends React.Component {
 
         if (icon) {
             icon += " left";
-            children.push(<Icon icon={icon} />);
+            children.push(<Icon key="icon" icon={icon} />);
         }
 
         if (label) {
-            children.push(<label className="font-button">{label}</label>);
+            children.push(<label key="label" className="font-button">{label}</label>);
         }
 
         return (
@@ -38,7 +38,7 @@ class IconButton extends React.Component {
 
 IconButton.propTypes = {
     icon: React.PropTypes.string,
-    label: React.PropTypes.string.isRequired,
+    label: React.PropTypes.string,
     left: React.PropTypes.bool,
     right: React.PropTypes.bool,
     raised: React.PropTypes.bool,

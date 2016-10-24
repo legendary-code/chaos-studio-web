@@ -161,7 +161,7 @@ class SettingsPage extends React.Component {
     static get propTypes() {
         return {
             onEditComponent: React.PropTypes.func.isRequired,
-            component: React.PropTypes.object.isRequired,
+            component: React.PropTypes.object,
             className: React.PropTypes.string,
             key: React.PropTypes.string
         }

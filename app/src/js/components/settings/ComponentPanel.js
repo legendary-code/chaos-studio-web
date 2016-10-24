@@ -53,7 +53,7 @@ class ComponentPanel extends React.Component {
             icon: React.PropTypes.string,
             showArrow: React.PropTypes.bool,
             binding: React.PropTypes.object.isRequired,
-            componentType: React.PropTypes.object.isRequired
+            componentType: React.PropTypes.any.isRequired
         };
     }
 }

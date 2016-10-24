@@ -12,7 +12,6 @@ var gulp = require('gulp'),
     es = require('event-stream'),
     sass = require('gulp-sass'),
 
-    uglify = require('gulp-uglify'),
     insert = require('gulp-insert'),
     transform = require('gulp-transform'),
     Showdown = require('showdown'),
@@ -128,7 +127,7 @@ gulp.task('favicon', function() {
 gulp.task('link-js', ['stage'], function() {
     return browserify()
                 .add('./app/link/js/main.js')
-                .transform(reactify, {es6: true, stripTypes: true})
+                .transform(reactify, {es6: true, stripTypes: true, dev: false})
                 .transform(babelify)
                 .transform(globify)
                 .bundle()

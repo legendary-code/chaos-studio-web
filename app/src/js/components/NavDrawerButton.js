@@ -47,7 +47,7 @@ NavDrawerButton.propTypes = {
     icon: React.PropTypes.string.isRequired,
     label: React.PropTypes.string.isRequired,
     route: React.PropTypes.string.isRequired,
-    onClick: React.PropTypes.func.isRequired
+    onClick: React.PropTypes.func
 };
 
 module.exports = NavDrawerButton;

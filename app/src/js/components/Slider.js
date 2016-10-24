@@ -69,14 +69,15 @@ class Slider extends React.Component {
             "disabled": !!this.props.disabled
         });
 
-        let thumbs = [ <div className="slider-track-filled" ref="sliderTrackFilled" style={trackStyle}></div> ];
+        let thumbs = [ <div key="slider-track" className="slider-track-filled" ref="sliderTrackFilled" style={trackStyle}></div> ];
+
         for (let i in this.state.values) {
             let thumbStyle = {
                 left: this._percent(i) + "%"
             };
 
             thumbs.push(
-                <div className="slider-thumb" style={thumbStyle}>
+                <div className="slider-thumb" key={"slider-thumb-"+i} style={thumbStyle}>
                     <div className="slider-outer-thumb">
                     </div>
                     <div className="slider-inner-thumb">

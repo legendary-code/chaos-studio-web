@@ -15,7 +15,11 @@ class SearchConfigurationStore extends Store {
         let configuration;
 
         try {
-            configuration = Configuration.decode(Cookies.get('configuration'));
+            let cookieValue = Cookies.get('configuration');
+
+            if (cookieValue) {
+                configuration = Configuration.decode(cookieValue);
+            }
         } catch (e) {
             console.error("Failed to read configuration from cookies: " + e);
         }
