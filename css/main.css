@@ -471,7 +471,8 @@ p, .font-body-1 {
   height: 100vh;
   width: 90vw;
   z-index: 10001;
-  overflow-y: auto;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
   /* Prevent animation on initial load */ }
   @media only screen and (orientation: portrait) {
@@ -672,7 +673,9 @@ p, .font-body-1 {
 .scrollable-contents {
   position: relative;
   height: 100vh;
-  overflow-y: auto;
+  overflow-y: scroll;
+  /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
   /* Negate margins from app-contents */ }
   @media only screen and (orientation: portrait) {
     .scrollable-contents {
@@ -813,7 +816,8 @@ p, .font-body-1 {
   margin-bottom: 13px;
   white-space: pre; }
   .markdown pre code .scrollable {
-    overflow-x: auto; }
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch; }
   .markdown pre code .hljs-comment,
   .markdown pre code .hljs-meta {
     color: #969896; }
@@ -892,7 +896,8 @@ p, .font-body-1 {
   box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3); }
   .settings-dialog .contents {
     overflow-x: hidden;
-    overflow-y: auto; }
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch; }
   .settings-dialog .contents-container {
     overflow-x: hidden;
     overflow-y: hidden; }
@@ -1032,7 +1037,8 @@ p, .font-body-1 {
   background-color: #ffffff;
   position: fixed;
   box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
-  overflow-y: auto;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   width: 300px;
   height: 360px;
   left: 50%;
