@@ -889,25 +889,17 @@ p, .font-body-1 {
 .settings-dialog {
   background-color: #ffffff;
   position: fixed;
-  box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
-  /*
-  .content-1 {
-    background-color: palegreen;
-  }
-
-  .content-2 {
-    background-color: palevioletred;
-  }
-
-  .content-3 {
-    background-color: paleturquoise;
-  }*/ }
+  box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3); }
   .settings-dialog .contents {
     overflow-x: hidden;
     overflow-y: auto; }
   .settings-dialog .contents-container {
     overflow-x: hidden;
     overflow-y: hidden; }
+  .settings-dialog .app-bar .reset-button {
+    float: right; }
+    .settings-dialog .app-bar .reset-button span {
+      color: rgba(255, 255, 255, 0.87); }
   @media only screen and (orientation: portrait), only screen and (orientation: landscape) {
     .settings-dialog {
       top: 0;
