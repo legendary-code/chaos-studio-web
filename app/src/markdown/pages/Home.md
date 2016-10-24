@@ -97,27 +97,27 @@ Below are some of my favorite strange attractors that I have picked.  Clicking o
 take you to the explore page, where the attractor will be generated for you!
 
 ###### Cubic
-[![Cubic](../png/cubic1.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8ODpDdWJpY01hcD4zOnJuZzwyNzpMaW5lYXJDb25ncnVlbnRpYWxHZW5lcmF0b3I0OnNlZWQoMTQ3NzExNjEzOTcwMyk+MTc6c3RhcnRpbmdJdGVyYXRpb24oMjAwMCk+)
-[![Cubic](../png/cubic2.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8ODpDdWJpY01hcD4zOnJuZzwyNzpMaW5lYXJDb25ncnVlbnRpYWxHZW5lcmF0b3I0OnNlZWQoMTQ3NzE0OTY0MTM1Myk+MTc6c3RhcnRpbmdJdGVyYXRpb24oMjAwMCk+)
-[![Cubic](../png/cubic3.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8ODpDdWJpY01hcD4zOnJuZzwyNzpMaW5lYXJDb25ncnVlbnRpYWxHZW5lcmF0b3I0OnNlZWQoMTQ3NzE0OTc4NTg3MSk+MTc6c3RhcnRpbmdJdGVyYXRpb24oMjAwMCk+)
+[![Cubic](../png/cubic1.png)](http://chaos-studio.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8ODpDdWJpY01hcD4zOnJuZzwyNzpMaW5lYXJDb25ncnVlbnRpYWxHZW5lcmF0b3I0OnNlZWQoMTQ3NzExNjEzOTcwMyk+MTc6c3RhcnRpbmdJdGVyYXRpb24oMjAwMCk+)
+[![Cubic](../png/cubic2.png)](http://chaos-studio.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8ODpDdWJpY01hcD4zOnJuZzwyNzpMaW5lYXJDb25ncnVlbnRpYWxHZW5lcmF0b3I0OnNlZWQoMTQ3NzE0OTY0MTM1Myk+MTc6c3RhcnRpbmdJdGVyYXRpb24oMjAwMCk+)
+[![Cubic](../png/cubic3.png)](http://chaos-studio.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8ODpDdWJpY01hcD4zOnJuZzwyNzpMaW5lYXJDb25ncnVlbnRpYWxHZW5lcmF0b3I0OnNlZWQoMTQ3NzE0OTc4NTg3MSk+MTc6c3RhcnRpbmdJdGVyYXRpb24oMjAwMCk+)
 
 ###### Quadratic
-[![Quadratic](../png/quadratic1.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTI6UXVhZHJhdGljTWFwPjM6cm5nPDI3OkxpbmVhckNvbmdydWVudGlhbEdlbmVyYXRvcjQ6c2VlZCgxNDc3MTQ4MzY2MzM1KT4xNzpzdGFydGluZ0l0ZXJhdGlvbigyMDAwKT4=)
-[![Quadratic](../png/quadratic2.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTI6UXVhZHJhdGljTWFwPjM6cm5nPDI3OkxpbmVhckNvbmdydWVudGlhbEdlbmVyYXRvcjQ6c2VlZCgxNDc3MTQ4NTkwMjg4KT4xNzpzdGFydGluZ0l0ZXJhdGlvbigyMDAwKT4=)
-[![Quadratic](../png/quadratic3.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTI6UXVhZHJhdGljTWFwPjM6cm5nPDI3OkxpbmVhckNvbmdydWVudGlhbEdlbmVyYXRvcjQ6c2VlZCgxNDc3MTQ4OTU5MDkwKT4xNzpzdGFydGluZ0l0ZXJhdGlvbigyMDAwKT4=)
-[![Quadratic](../png/quadratic4.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTI6UXVhZHJhdGljTWFwPjM6cm5nPDI3OkxpbmVhckNvbmdydWVudGlhbEdlbmVyYXRvcjQ6c2VlZCgxNDc3MTUzMjQ2MTUxKT4xNzpzdGFydGluZ0l0ZXJhdGlvbigyMDAwKT4=)
+[![Quadratic](../png/quadratic1.png)](http://chaos-studio.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTI6UXVhZHJhdGljTWFwPjM6cm5nPDI3OkxpbmVhckNvbmdydWVudGlhbEdlbmVyYXRvcjQ6c2VlZCgxNDc3MTQ4MzY2MzM1KT4xNzpzdGFydGluZ0l0ZXJhdGlvbigyMDAwKT4=)
+[![Quadratic](../png/quadratic2.png)](http://chaos-studio.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTI6UXVhZHJhdGljTWFwPjM6cm5nPDI3OkxpbmVhckNvbmdydWVudGlhbEdlbmVyYXRvcjQ6c2VlZCgxNDc3MTQ4NTkwMjg4KT4xNzpzdGFydGluZ0l0ZXJhdGlvbigyMDAwKT4=)
+[![Quadratic](../png/quadratic3.png)](http://chaos-studio.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTI6UXVhZHJhdGljTWFwPjM6cm5nPDI3OkxpbmVhckNvbmdydWVudGlhbEdlbmVyYXRvcjQ6c2VlZCgxNDc3MTQ4OTU5MDkwKT4xNzpzdGFydGluZ0l0ZXJhdGlvbigyMDAwKT4=)
+[![Quadratic](../png/quadratic4.png)](http://chaos-studio.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTI6UXVhZHJhdGljTWFwPjM6cm5nPDI3OkxpbmVhckNvbmdydWVudGlhbEdlbmVyYXRvcjQ6c2VlZCgxNDc3MTUzMjQ2MTUxKT4xNzpzdGFydGluZ0l0ZXJhdGlvbigyMDAwKT4=)
 
 ###### Clifford
-[![Clifford](../png/clifford1.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTE6Q2xpZmZvcmRNYXA+Mzpybmc8Mjc6TGluZWFyQ29uZ3J1ZW50aWFsR2VuZXJhdG9yNDpzZWVkKDE0NzcxNDk5MTI2MjkpPjE3OnN0YXJ0aW5nSXRlcmF0aW9uKDIwMDApPg==)
+[![Clifford](../png/clifford1.png)](http://chaos-studio.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTE6Q2xpZmZvcmRNYXA+Mzpybmc8Mjc6TGluZWFyQ29uZ3J1ZW50aWFsR2VuZXJhdG9yNDpzZWVkKDE0NzcxNDk5MTI2MjkpPjE3OnN0YXJ0aW5nSXRlcmF0aW9uKDIwMDApPg==)
 
 ###### Peter De Jong
-[![Peter De Jong](../png/peterDeJong1.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTQ6UGV0ZXJEZUpvbmdNYXA+Mzpybmc8Mjc6TGluZWFyQ29uZ3J1ZW50aWFsR2VuZXJhdG9yNDpzZWVkKDE0NzcxNTAwMjk5ODEpPjE3OnN0YXJ0aW5nSXRlcmF0aW9uKDIwMDApPg==)
+[![Peter De Jong](../png/peterDeJong1.png)](http://chaos-studio.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTQ6UGV0ZXJEZUpvbmdNYXA+Mzpybmc8Mjc6TGluZWFyQ29uZ3J1ZW50aWFsR2VuZXJhdG9yNDpzZWVkKDE0NzcxNTAwMjk5ODEpPjE3OnN0YXJ0aW5nSXRlcmF0aW9uKDIwMDApPg==)
 
 ###### Hénon
-[![Hénon](../png/henon1.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8ODpIZW5vbk1hcD4zOnJuZzwyNzpMaW5lYXJDb25ncnVlbnRpYWxHZW5lcmF0b3I0OnNlZWQoMTQ3NzE1MDI2MTEzNyk+MTc6c3RhcnRpbmdJdGVyYXRpb24oMjAwMCk+)
+[![Hénon](../png/henon1.png)](http://chaos-studio.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8ODpIZW5vbk1hcD4zOnJuZzwyNzpMaW5lYXJDb25ncnVlbnRpYWxHZW5lcmF0b3I0OnNlZWQoMTQ3NzE1MDI2MTEzNyk+MTc6c3RhcnRpbmdJdGVyYXRpb24oMjAwMCk+)
 
 ###### Lorenz
-[![Lorenz](../png/lorenz1.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8OTpMb3JlbnpNYXA+Mzpybmc8Mjc6TGluZWFyQ29uZ3J1ZW50aWFsR2VuZXJhdG9yNDpzZWVkKDE0NzcxNTA2NTQyNTUpPjE3OnN0YXJ0aW5nSXRlcmF0aW9uKDIwMDApPg==)
+[![Lorenz](../png/lorenz1.png)](http://chaos-studio.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8OTpMb3JlbnpNYXA+Mzpybmc8Mjc6TGluZWFyQ29uZ3J1ZW50aWFsR2VuZXJhdG9yNDpzZWVkKDE0NzcxNTA2NTQyNTUpPjE3OnN0YXJ0aW5nSXRlcmF0aW9uKDIwMDApPg==)
 
 ###### Tent
-[![Tent](../png/tent1.png)](/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8NzpUZW50TWFwPjM6cm5nPDI3OkxpbmVhckNvbmdydWVudGlhbEdlbmVyYXRvcjQ6c2VlZCgxNDc3MTUwNzYzNjMwKT4xNzpzdGFydGluZ0l0ZXJhdGlvbigyMDAwKT4=)
+[![Tent](../png/tent1.png)](http://chaos-studio.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8NzpUZW50TWFwPjM6cm5nPDI3OkxpbmVhckNvbmdydWVudGlhbEdlbmVyYXRvcjQ6c2VlZCgxNDc3MTUwNzYzNjMwKT4xNzpzdGFydGluZ0l0ZXJhdGlvbigyMDAwKT4=)
