@@ -2,7 +2,7 @@
      Actions = require('../actions/Actions'),
      Configuration = require('../chaos/Configuration'),
      Component = require('../chaos/Component'),
-     RandomMap = require('../chaos/maps/RandomMap'),
+     QuadraticMap = require('../chaos/maps/QuadraticMap'),
      LyapunovExponent = require('../chaos/criteria/LyapunovExponent'),
      LinearCongruentialGenerator = require( '../chaos/rngs/LinearCongruentialGenerator'),
      WebGLRenderer = require('../chaos/renderers/WebGLRenderer'),
@@ -31,7 +31,7 @@ class SearchConfigurationStore extends Store {
 
     createDefaultConfiguration() {
         return new Configuration(
-            new RandomMap(),
+            new QuadraticMap(),
             [ new LyapunovExponent() ],
             new LinearCongruentialGenerator(),
             new WebGLRenderer(),
