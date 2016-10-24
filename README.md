@@ -1,5 +1,5 @@
 # chaos-studio-web
-A open-source site that lets you explore many interesting strange attractors generated from various equations.
+An open-source site that lets you explore computer-generated art from chaos-theory equations.
 
 It is currently hosted [here](http://chaos-studio.io). 
  
