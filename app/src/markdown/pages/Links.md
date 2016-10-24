@@ -37,6 +37,8 @@
 
 #### Me
 
+[mailto:gene.trog@gmail.com](mailto:gene.trog@gmail.com)
+
 [https://github.com/eternal0](https://github.com/eternal0)
 
 [https://twitter.com/\_burninator\_](https://twitter.com/_burninator_)
