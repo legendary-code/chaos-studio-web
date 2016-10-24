@@ -11,7 +11,8 @@ let $ = require('jquery'),
     SearchConfigurationStore = require('../stores/SearchConfigurationStore'),
     RouterStore = require('../stores/RouterStore'),
     SettingsDialog = require('../components/SettingsDialog'),
-    Cookies = require('js-cookie');
+    Cookies = require('js-cookie'),
+    GA = require('../utils/GoogleAnalytics');
 
 class Explore extends React.Component {
 
@@ -116,11 +117,13 @@ class Explore extends React.Component {
     }
 
     _cancelSearch() {
+        GA.event("search", "cancel").send();
         this.refs.viewport.hideSearching();
         this.state.task.cancel();
     }
 
     _search() {
+        GA.event("search", "start").send();
         Actions.TRANSITION_TO.invoke("explore");
 
         if (this.state.showIntro) {
@@ -148,6 +151,7 @@ class Explore extends React.Component {
     }
 
     _attractorGenerated(data) {
+        GA.event("search", "finished").send();
         let snapshotId = data.snapshot.encode();
         let link = "#/explore/" + snapshotId;
         this.refs.viewport.hideSearching();
@@ -191,6 +195,7 @@ class Explore extends React.Component {
     }
 
     _saveImage() {
+        GA.event("screenshot", "save").send();
         let canvas = this.refs.viewport.getCanvas();
 
         if (!canvas) {
@@ -235,6 +240,8 @@ class Explore extends React.Component {
             if (this.state.showIntro) {
                 this._hideIntro();
             }
+
+            GA.event("search", "load").send();
 
             this.refs.viewport.showSearching();
             let config = SearchConfigurationStore.state.configuration;

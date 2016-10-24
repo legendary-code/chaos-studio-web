@@ -6,7 +6,9 @@ let $ = require('jquery'),
     Actions = require('../actions/Actions'),
     Button = require('./Button'),
     Paper = require('./Paper'),
-    SettingsPage = require('./settings/SettingsPage');
+    SettingsPage = require('./settings/SettingsPage'),
+    GA = require('../utils/GoogleAnalytics');
+
 
 let Transition = {
     NONE: 0,
@@ -16,6 +18,8 @@ let Transition = {
 
 class SettingsDialog extends React.Component {
     constructor(props) {
+        GA.event("settings", "open").send();
+
         this.state = {
             component: props.component,
             pages: [ props.component ],
@@ -114,6 +118,7 @@ class SettingsDialog extends React.Component {
     }
 
     _closeModal() {
+        GA.event("settings", "close").send();
         Actions.CLOSE_TOPMOST_MODAL.invoke();
 
         if (this.props.onClose) {
@@ -123,6 +128,7 @@ class SettingsDialog extends React.Component {
 
     _resetAll() {
         if (confirm("Reset all settings?")) {
+            GA.event("settings", "reset").send();
             let component = this.props.defaultSettingsFactory();
             this.setState({component: component, pages: [component]});
         }

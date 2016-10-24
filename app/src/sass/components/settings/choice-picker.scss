@@ -7,7 +7,8 @@
   background-color: $paper-color;
   position: fixed;
   @include shadow(5);
-  overflow-y: auto;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 
   width: 300px;
   height: 360px;

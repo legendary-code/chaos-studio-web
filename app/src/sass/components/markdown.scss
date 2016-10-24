@@ -65,7 +65,8 @@
   white-space: pre;
 
   .scrollable {
-    overflow-x: auto;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
   }
 
   .hljs-comment,
