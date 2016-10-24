@@ -17,7 +17,7 @@ class LyapunovExponent extends SearchCriterion {
     static get params() {
         return [
             Props.numberRange("Threshold", "min", "max", -1.0, 1.0, { decimalPlaces: 2 }),
-            Props.number("minIterations", "minimum iterations", 1, 1000, { integral: true, step: 10 })
+            Props.number("minIterations", "minimum iterations", 100, 10000, { integral: true, step: 100 })
         ];
     }
 

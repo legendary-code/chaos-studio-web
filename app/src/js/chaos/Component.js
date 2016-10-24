@@ -1,4 +1,8 @@
 class Component {
+    static checkSupported() {
+        return true;
+    }
+
     static get params() { return []; }
 
     static get displayName() { }

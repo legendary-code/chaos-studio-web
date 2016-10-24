@@ -1,4 +1,5 @@
 @import "../variables/media-queries";
+@import "../variables/colors";
 @import "../variables/shadows";
 @import "../variables/layers";
 @import "../variables/colors";
@@ -19,18 +20,16 @@
     overflow-y: hidden;
   }
 
-  /*
-  .content-1 {
-    background-color: palegreen;
-  }
 
-  .content-2 {
-    background-color: palevioletred;
-  }
+  .app-bar {
+    .reset-button {
+      float: right;
 
-  .content-3 {
-    background-color: paleturquoise;
-  }*/
+      span {
+        color: $dark-white;
+      }
+    }
+  }
 
   @media #{$device-mobile-portrait}, #{$device-mobile-landscape} {
     top: 0;

@@ -114,6 +114,12 @@ module.exports = MyAwesomeMap;
 
 Each base component type may have additional things that may need to be
 implemented, which will be covered in their respective sections below.
+It's worth mentioning that all components must be serializable and all
+internal state that needs to be deserialized must be exposed with a
+getter and setter.  For example, for a random number generator, it is
+likely that the seed will need to be exposed with a getter and setter
+in order for the component to load correctly later on.  See the example
+for `Rng` below.
 
 ##### Map
 This is the heart and soul of all strange attractors.  A map defines the
@@ -196,6 +202,11 @@ class LinearCongruentialGenerator extends Rng {
     // Required, get the seed value
     get seed() {
         return this._seed;
+    }
+    
+    // Needed for seed to be serialized/deserialized properly
+    set seed(val) {
+        this._seed = val;
     }
     
     // Required, set the seed and reset internal state

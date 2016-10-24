@@ -1,8 +1,9 @@
 let Renderer = require('../Renderer'),
     Three = require('three'),
-    Default = require('./webgl/RenderFilter'),
-    PencilSketch = require('./webgl/PencilSketchFilter'),
-    Components = require('../Components');
+    RenderFilter = require('./webgl/RenderFilter'),
+    PencilSketchFilter = require('./webgl/PencilSketchFilter'),
+    Components = require('../Components'),
+    Props = require('../Props');
 
 class WebGLRenderer extends Renderer {
     static get displayName() { return "WebGL Renderer"; }
@@ -20,15 +21,28 @@ class WebGLRenderer extends Renderer {
         }
     }
 
-    static getSupportedColorizers() {
-        return [ Default, PencilSketch ];
+    static get params() {
+        return [
+            Props.component("renderFilter", "Render Filter", RenderFilter)
+        ];
     }
 
-    create(width, height, colorizer) {
+    constructor() {
+        this._renderFilter = new PencilSketchFilter();
+    }
+
+    get renderFilter() {
+        return this._renderFilter;
+    }
+
+    set renderFilter(val) {
+        this._renderFilter = val;
+    }
+
+    create(width, height) {
         this._camera = new Three.OrthographicCamera(-1.5, 1.5, -1.5, 1.5, 0.0001, 1000);
         this._scene = new Three.Scene();
         this._renderer = new Three.WebGLRenderer({alpha: true, preserveDrawingBuffer: true });
-        this._colorizer = new PencilSketch();
 
         this._camera.position.z = 2;
         this._renderer.setSize(width, height);
@@ -42,8 +56,8 @@ class WebGLRenderer extends Renderer {
             this._geometry.dispose();
         }
 
-        this._geometry = this._colorizer.createGeometry(points);
-        let material = this._colorizer.createMaterial();
+        this._geometry = this._renderFilter.createGeometry(points);
+        let material = this._renderFilter.createMaterial();
         this._cloud = new Three.PointCloud(this._geometry, material);
         this._cloud.position.x = 0;
         this._cloud.position.y = 0;

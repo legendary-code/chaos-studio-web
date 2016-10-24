@@ -7,8 +7,9 @@ let _ = require('underscore'),
     AttractorSnapshot = require('./AttractorSnapshot');
 
 class AttractorFinder {
-    constructor(configuration, onStatus, onComplete, onCancel, snapshot) {
+    constructor(configuration, viewportSize, onStatus, onComplete, onCancel, snapshot) {
         this._configuration = configuration;
+        this._viewportSize = viewportSize;
         this._onStatus = onStatus;
         this._onComplete = onComplete;
         this._onCancel = onCancel;
@@ -31,6 +32,7 @@ class AttractorFinder {
     *_find(task) {
         let isSnapshot = !!this._snapshot;
         let map = isSnapshot ? this._snapshot.map : this._configuration.map;
+        map.initialize(isSnapshot);
         let rng = isSnapshot ? this._snapshot.rng : this._configuration.rng;
         let projection = this._configuration.projection;
         let colorizer = this._configuration.colorizer;
@@ -38,6 +40,7 @@ class AttractorFinder {
         let numCoefficients = map.coefficients;
         let criteria = this._configuration.criteria;
         let criteriaWithBounds = _.filter(criteria, c => c.requiresBounds);
+        let totalIterations = this._viewportSize.width * this._viewportSize.height * this._configuration.density / (window.devicePixelRatio || 1.0);
         criteria = _.filter(criteria, c => !c.requiresBounds);
 
         while (true) {
@@ -49,6 +52,7 @@ class AttractorFinder {
             let values = [];
 
             rng.reset(isSnapshot ? rng.seed : Time.now());
+
             this._onStatus("Seed: " + rng.seed);
 
             if (!isSnapshot) {
@@ -113,8 +117,8 @@ class AttractorFinder {
             this._onStatus(isSnapshot || criteria.length == 0 ? "Computing bounds" : "Computing bounds with search criteria");
 
             let iterations = isSnapshot ?
-                             this._configuration.totalIterations :
-                             Math.max(this._configuration.searchIterations, this._configuration.totalIterations);
+                             totalIterations :
+                             Math.max(this._configuration.searchIterations, totalIterations);
 
             for (let i = 0; i < iterations; i++) {
                 if (i == this._configuration.searchIterations) {

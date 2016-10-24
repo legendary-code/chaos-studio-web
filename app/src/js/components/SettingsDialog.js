@@ -17,6 +17,7 @@ let Transition = {
 class SettingsDialog extends React.Component {
     constructor(props) {
         this.state = {
+            component: props.component,
             pages: [ props.component ],
             transition: Transition.NONE,
             state: 0
@@ -61,11 +62,17 @@ class SettingsDialog extends React.Component {
         let appBarIcon = this.state.pages.length == 1 ? "icon-close" : "icon-back";
         let appBarIconClick = this.state.pages.length == 1 ? this._closeModal.bind(this) : this._prev.bind(this);
 
-        let actionBarButton;
+        let actionBarButtons;
         if (this.state.pages.length == 1) {
-            actionBarButton = <Button onClick={this._closeModal.bind(this)}>Close</Button>;
+            actionBarButtons = [];
+
+            if (this.props.defaultSettingsFactory) {
+                actionBarButtons.push(<Button onClick={this._resetAll.bind(this)}>Reset All</Button>);
+            }
+
+            actionBarButtons.push(<Button onClick={this._closeModal.bind(this)}>Close</Button>);
         } else {
-            actionBarButton = <Button onClick={this._prev.bind(this)}>Back</Button>;
+            actionBarButtons = <Button onClick={this._prev.bind(this)}>Back</Button>;
         }
 
         return (
@@ -73,7 +80,9 @@ class SettingsDialog extends React.Component {
                 <AppBar
                     label="Settings"
                     icon={appBarIcon}
-                    onClick={appBarIconClick} />
+                    onClick={appBarIconClick}>
+                    <Button className="reset-button" onClick={this._resetAll.bind(this)}>Reset All</Button>
+                </AppBar>
                 <Paper className="desktop-title-bar">
                     <label className="font-title">Settings</label>
                 </Paper>
@@ -98,7 +107,7 @@ class SettingsDialog extends React.Component {
                         />
                 </div>
                 <Paper className="action-bar">
-                    {actionBarButton}
+                    {actionBarButtons}
                 </Paper>
             </div>
         )
@@ -106,6 +115,17 @@ class SettingsDialog extends React.Component {
 
     _closeModal() {
         Actions.CLOSE_TOPMOST_MODAL.invoke();
+
+        if (this.props.onClose) {
+            this.props.onClose(this.state.component);
+        }
+    }
+
+    _resetAll() {
+        if (confirm("Reset all settings?")) {
+            let component = this.props.defaultSettingsFactory();
+            this.setState({component: component, pages: [component]});
+        }
     }
 
     _prev() {
@@ -146,5 +166,10 @@ class SettingsDialog extends React.Component {
         }.bind(this), 200);
     }
 }
+
+SettingsDialog.propTypes = {
+    defaultSettingsFactory: React.PropTypes.func,
+    onClose: React.PropTypes.func
+};
 
 module.exports = SettingsDialog;

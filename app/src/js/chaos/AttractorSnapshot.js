@@ -1,8 +1,8 @@
-let Components = require('./Components'),
-    JSEncoder = require('jsencode');
+let Component = require('./Component'),
+    Components = require('./Components');
 
 /* Represents the minimum amount of information needed to re-generate an attractor */
-class AttractorSnapshot {
+class AttractorSnapshot extends Component {
     constructor(map, rng, startingIteration) {
         this._map = map;
         this._rng = rng;
@@ -13,12 +13,24 @@ class AttractorSnapshot {
         return this._map;
     }
 
+    set map(val) {
+        this._map = val;
+    }
+
     get rng() {
         return this._rng;
     }
 
+    set rng(val) {
+        this._rng = val;
+    }
+
     get startingIteration() {
         return this._startingIteration;
+    }
+
+    set startingIteration(val) {
+        this._startingIteration = val;
     }
 
     static create(configuration) {
@@ -28,18 +40,7 @@ class AttractorSnapshot {
             configuration.settlingIterations + configuration.searchIterations
         );
     }
-
-    encode() {
-        console.log(this._map);
-        console.log(this._rng);
-        return btoa(AttractorSnapshot.ENCODER.encode(this));
-    }
-
-    static decode(val) {
-        return AttractorSnapshot.ENCODER.decode(atob(val));
-    }
 }
 
-AttractorSnapshot.ENCODER = new JSEncoder({includePrivateFields: true, types : Components.allTypes()});
-AttractorSnapshot.ENCODER.registerTypes(AttractorSnapshot);
+Components.register(AttractorSnapshot, AttractorSnapshot, true);
 module.exports = AttractorSnapshot;

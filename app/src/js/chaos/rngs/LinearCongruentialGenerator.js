@@ -18,6 +18,10 @@ class LinearCongruentialGenerator extends Rng {
         return this._seed;
     }
 
+    set seed(val) {
+        this.reset(val);
+    }
+
     reset(seed) {
         this._seed = seed;
         this._x = seed;

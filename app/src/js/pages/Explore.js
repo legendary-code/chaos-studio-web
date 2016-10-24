@@ -10,7 +10,8 @@ let $ = require('jquery'),
     AttractorSnapshot = require('../chaos/AttractorSnapshot'),
     SearchConfigurationStore = require('../stores/SearchConfigurationStore'),
     RouterStore = require('../stores/RouterStore'),
-    SettingsDialog = require('../components/SettingsDialog');
+    SettingsDialog = require('../components/SettingsDialog'),
+    Cookies = require('js-cookie');
 
 class Explore extends React.Component {
 
@@ -18,7 +19,7 @@ class Explore extends React.Component {
         super.constructor(props);
 
         this.state = {
-            showIntro: true,
+            showIntro: !Cookies.get('hideIntro'),
             searching: false,
             currentSnapshotId: null
         };
@@ -26,21 +27,26 @@ class Explore extends React.Component {
 
     render() {
         let introClassName = cx({
-            "intro-paper": true,
-            "hidden": !this.state.showIntro
+            'intro-paper': true,
+            'hidden': !this.state.showIntro
         });
 
         let searchButtonClassName = cx({
-            "search-button": true,
-            "animated": this.state.showIntro,
-            "translate": !this.state.showIntro,
-            "cancel": this.state.searching
+            'search-button': true,
+            'animated': this.state.showIntro,
+            'translate': !this.state.showIntro,
+            'cancel': this.state.searching
         });
 
         let contextLabelClassName = cx({
-            "context-label": true,
-            "font-caption": true,
-            "translate": !this.state.showIntro
+            'context-label': true,
+            'font-caption': true,
+            'translate': !this.state.showIntro
+        });
+
+        let bottomPaperClassName = cx({
+            'bottom-paper': true,
+            'translate': !this.state.showIntro
         });
 
         return (
@@ -51,7 +57,7 @@ class Explore extends React.Component {
 
                 <Viewport ref="viewport" />
 
-                <Paper className="bottom-paper" ref="bottomPaper">
+                <Paper className={bottomPaperClassName} ref="bottomPaper">
                     <FloatingActionButton
                         className="mini-button"
                         icon="icon-settings-light"
@@ -97,7 +103,16 @@ class Explore extends React.Component {
     }
 
     _showSettings() {
-        Actions.SHOW_MODAL.invoke(<SettingsDialog component={SearchConfigurationStore.configuration} />);
+        Actions.SHOW_MODAL.invoke(
+            <SettingsDialog component={SearchConfigurationStore.configuration}
+                            onClose={this._closeSettings.bind(this)}
+                            defaultSettingsFactory={SearchConfigurationStore.createDefaultConfiguration}
+            />
+        );
+    }
+
+    _closeSettings(configuration) {
+        Actions.SAVE_SEARCH_CONFIGURATION.invoke(configuration);
     }
 
     _cancelSearch() {
@@ -118,11 +133,9 @@ class Explore extends React.Component {
         let config = SearchConfigurationStore.state.configuration;
         let viewportSize = this.refs.viewport.getViewportSize();
 
-        // TODO: use iterations based off configurable pixel density
-        config.totalIterations = (viewportSize.width * viewportSize.height) / window.devicePixelRatio;
-
         let finder = new AttractorFinder(
             config,
+            viewportSize,
             (e) => { this.refs.viewport.updateStatus(e); },
             this._attractorGenerated.bind(this),
             this._searchCancelled.bind(this)
@@ -148,6 +161,8 @@ class Explore extends React.Component {
     }
 
     _hideIntro() {
+        Cookies.set('hideIntro', true);
+
         $(React.findDOMNode(this.refs.introPaper)).addClass("fade-out");
         $(React.findDOMNode(this.refs.searchButton)).addClass("translate");
         $(React.findDOMNode(this.refs.bottomPaper)).addClass("translate");
@@ -225,11 +240,9 @@ class Explore extends React.Component {
             let config = SearchConfigurationStore.state.configuration;
             let viewportSize = this.refs.viewport.getViewportSize();
 
-            // TODO: use iterations based off configurable pixel density
-            config.totalIterations = viewportSize.width * viewportSize.height;
-
             let generator = new AttractorFinder(
                 config,
+                viewportSize,
                 (e) => { this.refs.viewport.updateStatus(e); },
                 this._attractorGenerated.bind(this),
                 this._searchCancelled.bind(this),

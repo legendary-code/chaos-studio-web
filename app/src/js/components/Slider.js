@@ -192,8 +192,6 @@ class Slider extends React.Component {
             this.props.onValueChanged(newValue);
         }
 
-        console.log(newValues);
-
         this.setState({
             values: newValues,
             dragIndex: dragIndex

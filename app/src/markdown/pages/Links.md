@@ -13,6 +13,10 @@
 
 *Explains the Lyapunov exponent well*
 
+[http://www.wahl.org/fe/HTML_version/link/FE4W/c4.htm#box](http://www.wahl.org/fe/HTML_version/link/FE4W/c4.htm#box)
+
+*Explains how to compute fractal dimension*
+
 ##### Developers
 
 [https://github.com/legendary-code/chaos-studio-web](https://github.com/legendary-code/chaos-studio-web)

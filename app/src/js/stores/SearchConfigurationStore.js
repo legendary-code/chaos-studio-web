@@ -1,24 +1,33 @@
  let Store = require('./Store'),
      Actions = require('../actions/Actions'),
      Configuration = require('../chaos/Configuration'),
-     QuadraticMap = require('../chaos/maps/QuadraticMap'),
+     Component = require('../chaos/Component'),
+     RandomMap = require('../chaos/maps/RandomMap'),
      LyapunovExponent = require('../chaos/criteria/LyapunovExponent'),
      LinearCongruentialGenerator = require( '../chaos/rngs/LinearCongruentialGenerator'),
      WebGLRenderer = require('../chaos/renderers/WebGLRenderer'),
      DefaultColorizer = require('../chaos/Colorizer'),
-     DefaultProjection = require('../chaos/Projection');
+     DefaultProjection = require('../chaos/Projection'),
+     Cookies = require('js-cookie');
 
 class SearchConfigurationStore extends Store {
-    // TODO: read from cookies
     getInitialState() {
+        let configuration;
+
+        try {
+            configuration = Configuration.decode(Cookies.get('configuration'));
+        } catch (e) {
+            console.error("Failed to read configuration from cookies: " + e);
+        }
+
         return {
-            configuration: this._createDefaultConfiguration()
+            configuration: configuration || this.createDefaultConfiguration()
         };
     }
 
-    _createDefaultConfiguration() {
+    createDefaultConfiguration() {
         return new Configuration(
-            new QuadraticMap(),
+            new RandomMap(),
             [ new LyapunovExponent() ],
             new LinearCongruentialGenerator(),
             new WebGLRenderer(),
@@ -28,6 +37,16 @@ class SearchConfigurationStore extends Store {
     }
 
     invoke(action) {
+        switch (action.type) {
+            case Actions.RESET_SEARCH_CONFIGURATION.id:
+                this.setState({configuration: this.createDefaultConfiguration()});
+                break;
+
+            case Actions.SAVE_SEARCH_CONFIGURATION.id:
+                Cookies.set('configuration', action.data.encode());
+                this.setState({configuration: action.data});
+                break;
+        }
     }
 
     get configuration() {

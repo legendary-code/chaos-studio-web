@@ -5,18 +5,19 @@ let Actions = {
     /* Search Configuration */
     UPDATE_SEARCH_CONFIGURATION: 1,
     SAVE_SEARCH_CONFIGURATION: 2,
+    RESET_SEARCH_CONFIGURATION: 3,
 
     /* Navigation */
-    SHOW_NAV_DRAWER: 3,
-    HIDE_NAV_DRAWER: 4,
-    TOGGLE_NAV_DRAWER: 5,
-    CHANGE_NAV_LOCATION: 6,
-    RUN_ROUTES: 7,
-    TRANSITION_TO: 8,
+    SHOW_NAV_DRAWER: 4,
+    HIDE_NAV_DRAWER: 5,
+    TOGGLE_NAV_DRAWER: 6,
+    CHANGE_NAV_LOCATION: 7,
+    RUN_ROUTES: 8,
+    TRANSITION_TO: 9,
 
     /* Modal */
-    SHOW_MODAL: 9,
-    CLOSE_TOPMOST_MODAL: 10
+    SHOW_MODAL: 10,
+    CLOSE_TOPMOST_MODAL: 11
 };
 
 /* Modify actions indirectly for better IDE auto completion behavior */

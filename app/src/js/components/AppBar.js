@@ -7,6 +7,7 @@ class AppBar extends React.Component {
             <div className="app-bar container">
                 <IconButton className="app-bar-button" icon={this.props.icon} onClick={this.props.onClick} />
                 <label className="font-title">{this.props.label}</label>
+                {this.props.children}
             </div>
         );
     }

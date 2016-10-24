@@ -1,4 +1,5 @@
 let Component = require('./Component'),
+    Components = require('./Components'),
     Props = require('./Props'),
     Map = require('./Map'),
     SearchCriterion = require('./SearchCriterion'),
@@ -8,7 +9,6 @@ let Component = require('./Component'),
     Colorizer = require('./Colorizer');
 
 /* Configuration required for finding attractors */
-
 class Configuration extends Component {
     static get displayName() {
         return "Settings";
@@ -24,9 +24,9 @@ class Configuration extends Component {
             Props.component("colorizer", "Colorizer", Colorizer),
             Props.group(
                 "Search Options",
-                Props.number("settlingIterations", "Settling Iterations", 0, 10000, { integral: true, step: 100 }),
-                Props.number("searchIterations", "Search Iterations", 0, 100000, { integral: true, step: 1000 }),
-                Props.number("totalIterations", "Total Iterations", 0, 1000000, { integral: true, step: 10000 })
+                Props.number("settlingIterations", "Settling Iterations", 100, 10000, { integral: true, step: 100 }),
+                Props.number("searchIterations", "Search Iterations", 100, 10000, { integral: true, step: 100 }),
+                Props.number("density", "Number of points to draw", 0.1, 5, { decimalPlaces: 1 })
             )
         ];
     }
@@ -34,7 +34,7 @@ class Configuration extends Component {
     constructor(map, criteria, rng, renderer, projection, colorizer) {
         this._settlingIterations = 1000;
         this._searchIterations = 1000;
-        this._totalIterations = 1000000;
+        this._density = 1.0;
         this._map = map;
         this._rng = rng;
         this._criteria = criteria;
@@ -49,17 +49,27 @@ class Configuration extends Component {
     get searchIterations() { return this._searchIterations; }
     set searchIterations(val) { this._searchIterations = val; }
 
-    get totalIterations() { return this._totalIterations; }
-    set totalIterations(val) { this._totalIterations = val; }
+    get density() { return this._density; }
+    set density(val) { this._density = val; }
 
     get map() { return this._map; }
     set map(val) { this._map = val; }
 
     get rng() { return this._rng; }
+    set rng(val) { this._rng = val; }
+
     get criteria() { return this._criteria; }
+    set criteria(val) { this._criteria = val; }
+
     get renderer() { return this._renderer; }
+    set renderer(val) { this._renderer = val; }
+
     get projection() { return this._projection; }
+    set projection(val) { this._projection = val; }
+
     get colorizer() { return this._colorizer; }
+    set colorizer(val) { this._colorizer = val; }
 }
 
+Components.register(Configuration, Configuration, true);
 module.exports = Configuration;
