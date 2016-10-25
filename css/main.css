@@ -1365,7 +1365,7 @@ p, .font-body-1 {
   width: 100vw;
   bottom: 0;
   margin-bottom: -104px;
-  padding-right: 64px;
+  padding-right: 8px;
   height: 32px;
   line-height: 32px;
   transition: margin-bottom 0.25s;
@@ -1378,12 +1378,26 @@ p, .font-body-1 {
     float: right;
     margin-right: 8px;
     top: -36px; }
+  .bottom-paper .search-button {
+    float: right;
+    margin-right: 8px; }
+    @media only screen and (orientation: portrait) {
+      .bottom-paper .search-button {
+        top: -44px; } }
+    @media only screen and (orientation: landscape) {
+      .bottom-paper .search-button {
+        top: -40px; } }
+    @media only screen and (min-width: 992px), only screen and (min-width: 768px) {
+      .bottom-paper .search-button {
+        top: -48px; } }
+    .bottom-paper .search-button.cancel .button {
+      background-color: #ff1744; }
 
 .context-label {
   position: fixed;
   width: 156px;
   bottom: -16px;
-  right: 164px;
+  right: 184px;
   height: 16px;
   line-height: 16px;
   text-align: right;
@@ -1412,33 +1426,14 @@ p, .font-body-1 {
     display: none; }
   .intro-paper.fade-out {
     opacity: 0; }
-
-.search-button {
-  position: absolute;
-  right: 50%;
-  bottom: 50%;
-  margin-bottom: -54px;
-  margin-right: -32px; }
-  .search-button.animated {
-    transition: right 0.5s, bottom 0.5s, margin-right 0.5s, margin-bottom 0.5s;
-    -o-transition: right 0.5s, bottom 0.5s, margin-right 0.5s, margin-bottom 0.5s;
-    -moz-transition: right 0.5s, bottom 0.5s, margin-right 0.5s, margin-bottom 0.5s;
-    -webkit-transition: right 0.5s, bottom 0.5s, margin-right 0.5s, margin-bottom 0.5s; }
-  .search-button.translate {
-    right: 0;
-    bottom: 0;
-    margin-right: 8px; }
-    @media only screen and (orientation: portrait) {
-      .search-button.translate {
-        margin-bottom: 56px; } }
-    @media only screen and (orientation: landscape) {
-      .search-button.translate {
-        margin-bottom: 48px; } }
-    @media only screen and (min-width: 992px), only screen and (min-width: 768px) {
-      .search-button.translate {
-        margin-bottom: 64px; } }
-  .search-button.cancel .button {
-    background-color: #ff1744; }
+  .intro-paper .search-button {
+    position: absolute;
+    left: 97px;
+    bottom: 16px;
+    margin: 0;
+    padding: 0;
+    height: 56px;
+    width: 56px; }
 
 @media only screen and (orientation: portrait) {
   .viewport {

@@ -16,10 +16,13 @@ var React = require("react"),
 
 React.initializeTouchEvents(true);
 
+var PATH_REGEX = /(.*\/#\/[^\/]+)/;
+
 Actions.RUN_ROUTES.invoke({
     routes: Routes,
     callback: function callback(Handler) {
-        GA.pageview({ dl: window.location.href }).send();
+        var groups = PATH_REGEX.exec(window.location.href);
+        GA.pageview({ dl: groups[0] }).send();
         React.render(React.createElement(Handler, null), document.getElementById("app"));
     }
 });
@@ -251,9 +254,9 @@ Object.defineProperty(AttractorFinder.prototype, "_find", { writable: true, conf
 
                 case 58:
                     context$1$0.prev = 58;
-                    context$1$0.t20 = context$1$0["catch"](54);
+                    context$1$0.t0 = context$1$0["catch"](54);
                     _didIteratorError = true;
-                    _iteratorError = context$1$0.t20;
+                    _iteratorError = context$1$0.t0;
 
                 case 62:
                     context$1$0.prev = 62;
@@ -368,9 +371,9 @@ Object.defineProperty(AttractorFinder.prototype, "_find", { writable: true, conf
 
                 case 103:
                     context$1$0.prev = 103;
-                    context$1$0.t21 = context$1$0["catch"](90);
+                    context$1$0.t1 = context$1$0["catch"](90);
                     _didIteratorError2 = true;
-                    _iteratorError2 = context$1$0.t21;
+                    _iteratorError2 = context$1$0.t1;
 
                 case 107:
                     context$1$0.prev = 107;
@@ -450,9 +453,9 @@ Object.defineProperty(AttractorFinder.prototype, "_find", { writable: true, conf
 
                 case 133:
                     context$1$0.prev = 133;
-                    context$1$0.t22 = context$1$0["catch"](129);
+                    context$1$0.t2 = context$1$0["catch"](129);
                     _didIteratorError3 = true;
-                    _iteratorError3 = context$1$0.t22;
+                    _iteratorError3 = context$1$0.t2;
 
                 case 137:
                     context$1$0.prev = 137;
@@ -570,9 +573,9 @@ Object.defineProperty(AttractorFinder.prototype, "_find", { writable: true, conf
 
                 case 179:
                     context$1$0.prev = 179;
-                    context$1$0.t23 = context$1$0["catch"](166);
+                    context$1$0.t3 = context$1$0["catch"](166);
                     _didIteratorError4 = true;
-                    _iteratorError4 = context$1$0.t23;
+                    _iteratorError4 = context$1$0.t3;
 
                 case 183:
                     context$1$0.prev = 183;
@@ -628,9 +631,9 @@ Object.defineProperty(AttractorFinder.prototype, "_find", { writable: true, conf
 
                 case 202:
                     context$1$0.prev = 202;
-                    context$1$0.t24 = context$1$0["catch"](198);
+                    context$1$0.t4 = context$1$0["catch"](198);
                     _didIteratorError5 = true;
-                    _iteratorError5 = context$1$0.t24;
+                    _iteratorError5 = context$1$0.t4;
 
                 case 206:
                     context$1$0.prev = 206;
@@ -2235,13 +2238,13 @@ module.exports = LinearCongruentialGenerator;
 var React = require("react"),
     IconButton = require("./IconButton");
 
-var ____Class2a = React.Component;for (var ____Class2a____Key in ____Class2a) {
-    if (____Class2a.hasOwnProperty(____Class2a____Key)) {
-        AppBar[____Class2a____Key] = ____Class2a[____Class2a____Key];
+var ____Class8 = React.Component;for (var ____Class8____Key in ____Class8) {
+    if (____Class8.hasOwnProperty(____Class8____Key)) {
+        AppBar[____Class8____Key] = ____Class8[____Class8____Key];
     }
-}var ____SuperProtoOf____Class2a = ____Class2a === null ? null : ____Class2a.prototype;AppBar.prototype = Object.create(____SuperProtoOf____Class2a);AppBar.prototype.constructor = AppBar;AppBar.__superConstructor__ = ____Class2a;function AppBar() {
-    "use strict";if (____Class2a !== null) {
-        ____Class2a.apply(this, arguments);
+}var ____SuperProtoOf____Class8 = ____Class8 === null ? null : ____Class8.prototype;AppBar.prototype = Object.create(____SuperProtoOf____Class8);AppBar.prototype.constructor = AppBar;AppBar.__superConstructor__ = ____Class8;function AppBar() {
+    "use strict";if (____Class8 !== null) {
+        ____Class8.apply(this, arguments);
     }
 }
 Object.defineProperty(AppBar.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -2262,13 +2265,13 @@ module.exports = AppBar;
 
 var React = require("react");
 
-var ____Class2f = React.Component;for (var ____Class2f____Key in ____Class2f) {
-    if (____Class2f.hasOwnProperty(____Class2f____Key)) {
-        AppContents[____Class2f____Key] = ____Class2f[____Class2f____Key];
+var ____Classa = React.Component;for (var ____Classa____Key in ____Classa) {
+    if (____Classa.hasOwnProperty(____Classa____Key)) {
+        AppContents[____Classa____Key] = ____Classa[____Classa____Key];
     }
-}var ____SuperProtoOf____Class2f = ____Class2f === null ? null : ____Class2f.prototype;AppContents.prototype = Object.create(____SuperProtoOf____Class2f);AppContents.prototype.constructor = AppContents;AppContents.__superConstructor__ = ____Class2f;function AppContents() {
-    "use strict";if (____Class2f !== null) {
-        ____Class2f.apply(this, arguments);
+}var ____SuperProtoOf____Classa = ____Classa === null ? null : ____Classa.prototype;AppContents.prototype = Object.create(____SuperProtoOf____Classa);AppContents.prototype.constructor = AppContents;AppContents.__superConstructor__ = ____Classa;function AppContents() {
+    "use strict";if (____Classa !== null) {
+        ____Classa.apply(this, arguments);
     }
 }
 Object.defineProperty(AppContents.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -2285,13 +2288,13 @@ var React = require("react"),
     Ripple = require("./effects/Ripple"),
     cx = require("../utils/ReactUtils").cx;
 
-var ____Class2o = React.Component;for (var ____Class2o____Key in ____Class2o) {
-    if (____Class2o.hasOwnProperty(____Class2o____Key)) {
-        Button[____Class2o____Key] = ____Class2o[____Class2o____Key];
+var ____Classk = React.Component;for (var ____Classk____Key in ____Classk) {
+    if (____Classk.hasOwnProperty(____Classk____Key)) {
+        Button[____Classk____Key] = ____Classk[____Classk____Key];
     }
-}var ____SuperProtoOf____Class2o = ____Class2o === null ? null : ____Class2o.prototype;Button.prototype = Object.create(____SuperProtoOf____Class2o);Button.prototype.constructor = Button;Button.__superConstructor__ = ____Class2o;function Button() {
-    "use strict";if (____Class2o !== null) {
-        ____Class2o.apply(this, arguments);
+}var ____SuperProtoOf____Classk = ____Classk === null ? null : ____Classk.prototype;Button.prototype = Object.create(____SuperProtoOf____Classk);Button.prototype.constructor = Button;Button.__superConstructor__ = ____Classk;function Button() {
+    "use strict";if (____Classk !== null) {
+        ____Classk.apply(this, arguments);
     }
 }
 Object.defineProperty(Button.prototype, "componentDidMount", { writable: true, configurable: true, value: function value() {
@@ -2410,13 +2413,13 @@ var React = require("react"),
     cx = require("../utils/ReactUtils").cx,
     join = require("../utils/ReactUtils").join;
 
-var ____Class2j = React.Component;for (var ____Class2j____Key in ____Class2j) {
-    if (____Class2j.hasOwnProperty(____Class2j____Key)) {
-        FloatingActionButton[____Class2j____Key] = ____Class2j[____Class2j____Key];
+var ____Classe = React.Component;for (var ____Classe____Key in ____Classe) {
+    if (____Classe.hasOwnProperty(____Classe____Key)) {
+        FloatingActionButton[____Classe____Key] = ____Classe[____Classe____Key];
     }
-}var ____SuperProtoOf____Class2j = ____Class2j === null ? null : ____Class2j.prototype;FloatingActionButton.prototype = Object.create(____SuperProtoOf____Class2j);FloatingActionButton.prototype.constructor = FloatingActionButton;FloatingActionButton.__superConstructor__ = ____Class2j;function FloatingActionButton() {
-    "use strict";if (____Class2j !== null) {
-        ____Class2j.apply(this, arguments);
+}var ____SuperProtoOf____Classe = ____Classe === null ? null : ____Classe.prototype;FloatingActionButton.prototype = Object.create(____SuperProtoOf____Classe);FloatingActionButton.prototype.constructor = FloatingActionButton;FloatingActionButton.__superConstructor__ = ____Classe;function FloatingActionButton() {
+    "use strict";if (____Classe !== null) {
+        ____Classe.apply(this, arguments);
     }
 }
 Object.defineProperty(FloatingActionButton.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -2462,13 +2465,13 @@ module.exports = FloatingActionButton;
 var _ = require("underscore"),
     React = require("react");
 
-var ____Class2n = React.Component;for (var ____Class2n____Key in ____Class2n) {
-    if (____Class2n.hasOwnProperty(____Class2n____Key)) {
-        Icon[____Class2n____Key] = ____Class2n[____Class2n____Key];
+var ____Classj = React.Component;for (var ____Classj____Key in ____Classj) {
+    if (____Classj.hasOwnProperty(____Classj____Key)) {
+        Icon[____Classj____Key] = ____Classj[____Classj____Key];
     }
-}var ____SuperProtoOf____Class2n = ____Class2n === null ? null : ____Class2n.prototype;Icon.prototype = Object.create(____SuperProtoOf____Class2n);Icon.prototype.constructor = Icon;Icon.__superConstructor__ = ____Class2n;function Icon() {
-    "use strict";if (____Class2n !== null) {
-        ____Class2n.apply(this, arguments);
+}var ____SuperProtoOf____Classj = ____Classj === null ? null : ____Classj.prototype;Icon.prototype = Object.create(____SuperProtoOf____Classj);Icon.prototype.constructor = Icon;Icon.__superConstructor__ = ____Classj;function Icon() {
+    "use strict";if (____Classj !== null) {
+        ____Classj.apply(this, arguments);
     }
 }
 Object.defineProperty(Icon.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -2493,13 +2496,13 @@ var React = require("react"),
     Button = require("./button"),
     Icon = require("./Icon");
 
-var ____Class2k = React.Component;for (var ____Class2k____Key in ____Class2k) {
-    if (____Class2k.hasOwnProperty(____Class2k____Key)) {
-        IconButton[____Class2k____Key] = ____Class2k[____Class2k____Key];
+var ____Classg = React.Component;for (var ____Classg____Key in ____Classg) {
+    if (____Classg.hasOwnProperty(____Classg____Key)) {
+        IconButton[____Classg____Key] = ____Classg[____Classg____Key];
     }
-}var ____SuperProtoOf____Class2k = ____Class2k === null ? null : ____Class2k.prototype;IconButton.prototype = Object.create(____SuperProtoOf____Class2k);IconButton.prototype.constructor = IconButton;IconButton.__superConstructor__ = ____Class2k;function IconButton() {
-    "use strict";if (____Class2k !== null) {
-        ____Class2k.apply(this, arguments);
+}var ____SuperProtoOf____Classg = ____Classg === null ? null : ____Classg.prototype;IconButton.prototype = Object.create(____SuperProtoOf____Classg);IconButton.prototype.constructor = IconButton;IconButton.__superConstructor__ = ____Classg;function IconButton() {
+    "use strict";if (____Classg !== null) {
+        ____Classg.apply(this, arguments);
     }
 }
 Object.defineProperty(IconButton.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -2553,11 +2556,11 @@ var React = require("react"),
     $ = require("jquery");
 
 /* Embeds pre-rendered markdown content */
-var ____Class2i = React.Component;for (var ____Class2i____Key in ____Class2i) {
-    if (____Class2i.hasOwnProperty(____Class2i____Key)) {
-        Markdown[____Class2i____Key] = ____Class2i[____Class2i____Key];
+var ____Class7 = React.Component;for (var ____Class7____Key in ____Class7) {
+    if (____Class7.hasOwnProperty(____Class7____Key)) {
+        Markdown[____Class7____Key] = ____Class7[____Class7____Key];
     }
-}var ____SuperProtoOf____Class2i = ____Class2i === null ? null : ____Class2i.prototype;Markdown.prototype = Object.create(____SuperProtoOf____Class2i);Markdown.prototype.constructor = Markdown;Markdown.__superConstructor__ = ____Class2i;
+}var ____SuperProtoOf____Class7 = ____Class7 === null ? null : ____Class7.prototype;Markdown.prototype = Object.create(____SuperProtoOf____Class7);Markdown.prototype.constructor = Markdown;Markdown.__superConstructor__ = ____Class7;
 function Markdown(props) {
     var _this = this;
 
@@ -2607,13 +2610,13 @@ module.exports = Markdown;
 var React = require("react"),
     Actions = require("../actions/Actions");
 
-var ____Class2r = React.Component;for (var ____Class2r____Key in ____Class2r) {
-    if (____Class2r.hasOwnProperty(____Class2r____Key)) {
-        Modal[____Class2r____Key] = ____Class2r[____Class2r____Key];
+var ____Classn = React.Component;for (var ____Classn____Key in ____Classn) {
+    if (____Classn.hasOwnProperty(____Classn____Key)) {
+        Modal[____Classn____Key] = ____Classn[____Classn____Key];
     }
-}var ____SuperProtoOf____Class2r = ____Class2r === null ? null : ____Class2r.prototype;Modal.prototype = Object.create(____SuperProtoOf____Class2r);Modal.prototype.constructor = Modal;Modal.__superConstructor__ = ____Class2r;function Modal() {
-    "use strict";if (____Class2r !== null) {
-        ____Class2r.apply(this, arguments);
+}var ____SuperProtoOf____Classn = ____Classn === null ? null : ____Classn.prototype;Modal.prototype = Object.create(____SuperProtoOf____Classn);Modal.prototype.constructor = Modal;Modal.__superConstructor__ = ____Classn;function Modal() {
+    "use strict";if (____Classn !== null) {
+        ____Classn.apply(this, arguments);
     }
 }
 Object.defineProperty(Modal.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -2636,14 +2639,14 @@ var _ = require("underscore"),
     React = require("react"),
     ModalStore = require("../stores/ModalStore");
 
-var ____Class2g = React.Component;for (var ____Class2g____Key in ____Class2g) {
-    if (____Class2g.hasOwnProperty(____Class2g____Key)) {
-        Modals[____Class2g____Key] = ____Class2g[____Class2g____Key];
+var ____Classf = React.Component;for (var ____Classf____Key in ____Classf) {
+    if (____Classf.hasOwnProperty(____Classf____Key)) {
+        Modals[____Classf____Key] = ____Classf[____Classf____Key];
     }
-}var ____SuperProtoOf____Class2g = ____Class2g === null ? null : ____Class2g.prototype;Modals.prototype = Object.create(____SuperProtoOf____Class2g);Modals.prototype.constructor = Modals;Modals.__superConstructor__ = ____Class2g;
+}var ____SuperProtoOf____Classf = ____Classf === null ? null : ____Classf.prototype;Modals.prototype = Object.create(____SuperProtoOf____Classf);Modals.prototype.constructor = Modals;Modals.__superConstructor__ = ____Classf;
 function Modals(props) {
     "use strict";
-    ____SuperProtoOf____Class2g.constructor.call(this, props);
+    ____SuperProtoOf____Classf.constructor.call(this, props);
     this.state = { modals: [] };
 }
 
@@ -2678,14 +2681,14 @@ var $ = require("jquery"),
     NavigationDrawerStore = require("../stores/NavigationDrawerStore"),
     Actions = require("../actions/Actions");
 
-var ____Class2b = React.Component;for (var ____Class2b____Key in ____Class2b) {
-    if (____Class2b.hasOwnProperty(____Class2b____Key)) {
-        NavDrawer[____Class2b____Key] = ____Class2b[____Class2b____Key];
+var ____Classd = React.Component;for (var ____Classd____Key in ____Classd) {
+    if (____Classd.hasOwnProperty(____Classd____Key)) {
+        NavDrawer[____Classd____Key] = ____Classd[____Classd____Key];
     }
-}var ____SuperProtoOf____Class2b = ____Class2b === null ? null : ____Class2b.prototype;NavDrawer.prototype = Object.create(____SuperProtoOf____Class2b);NavDrawer.prototype.constructor = NavDrawer;NavDrawer.__superConstructor__ = ____Class2b;
+}var ____SuperProtoOf____Classd = ____Classd === null ? null : ____Classd.prototype;NavDrawer.prototype = Object.create(____SuperProtoOf____Classd);NavDrawer.prototype.constructor = NavDrawer;NavDrawer.__superConstructor__ = ____Classd;
 function NavDrawer(props) {
     "use strict";
-    ____SuperProtoOf____Class2b.constructor.call(this, props);
+    ____SuperProtoOf____Classd.constructor.call(this, props);
 
     this.state = {
         hidden: NavigationDrawerStore.state.hidden,
@@ -2757,13 +2760,13 @@ var React = require("react"),
     RouterStore = require("../stores/RouterStore"),
     NavigationDrawerStore = require("../stores/NavigationDrawerStore");
 
-var ____Class2c = React.Component;for (var ____Class2c____Key in ____Class2c) {
-    if (____Class2c.hasOwnProperty(____Class2c____Key)) {
-        NavDrawerButton[____Class2c____Key] = ____Class2c[____Class2c____Key];
+var ____Classb = React.Component;for (var ____Classb____Key in ____Classb) {
+    if (____Classb.hasOwnProperty(____Classb____Key)) {
+        NavDrawerButton[____Classb____Key] = ____Classb[____Classb____Key];
     }
-}var ____SuperProtoOf____Class2c = ____Class2c === null ? null : ____Class2c.prototype;NavDrawerButton.prototype = Object.create(____SuperProtoOf____Class2c);NavDrawerButton.prototype.constructor = NavDrawerButton;NavDrawerButton.__superConstructor__ = ____Class2c;function NavDrawerButton() {
-    "use strict";if (____Class2c !== null) {
-        ____Class2c.apply(this, arguments);
+}var ____SuperProtoOf____Classb = ____Classb === null ? null : ____Classb.prototype;NavDrawerButton.prototype = Object.create(____SuperProtoOf____Classb);NavDrawerButton.prototype.constructor = NavDrawerButton;NavDrawerButton.__superConstructor__ = ____Classb;function NavDrawerButton() {
+    "use strict";if (____Classb !== null) {
+        ____Classb.apply(this, arguments);
     }
 }
 Object.defineProperty(NavDrawerButton.prototype, "componentDidMount", { writable: true, configurable: true, value: function value() {
@@ -2815,13 +2818,13 @@ module.exports = NavDrawerButton;
 
 var React = require("react");
 
-var ____Class2d = React.Component;for (var ____Class2d____Key in ____Class2d) {
-    if (____Class2d.hasOwnProperty(____Class2d____Key)) {
-        NavDrawerDivider[____Class2d____Key] = ____Class2d[____Class2d____Key];
+var ____Classc = React.Component;for (var ____Classc____Key in ____Classc) {
+    if (____Classc.hasOwnProperty(____Classc____Key)) {
+        NavDrawerDivider[____Classc____Key] = ____Classc[____Classc____Key];
     }
-}var ____SuperProtoOf____Class2d = ____Class2d === null ? null : ____Class2d.prototype;NavDrawerDivider.prototype = Object.create(____SuperProtoOf____Class2d);NavDrawerDivider.prototype.constructor = NavDrawerDivider;NavDrawerDivider.__superConstructor__ = ____Class2d;function NavDrawerDivider() {
-    "use strict";if (____Class2d !== null) {
-        ____Class2d.apply(this, arguments);
+}var ____SuperProtoOf____Classc = ____Classc === null ? null : ____Classc.prototype;NavDrawerDivider.prototype = Object.create(____SuperProtoOf____Classc);NavDrawerDivider.prototype.constructor = NavDrawerDivider;NavDrawerDivider.__superConstructor__ = ____Classc;function NavDrawerDivider() {
+    "use strict";if (____Classc !== null) {
+        ____Classc.apply(this, arguments);
     }
 }
 Object.defineProperty(NavDrawerDivider.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -2837,13 +2840,13 @@ module.exports = NavDrawerDivider;
 var React = require("react"),
     join = require("../utils/ReactUtils").join;
 
-var ____Class2h = React.Component;for (var ____Class2h____Key in ____Class2h) {
-    if (____Class2h.hasOwnProperty(____Class2h____Key)) {
-        Paper[____Class2h____Key] = ____Class2h[____Class2h____Key];
+var ____Class9 = React.Component;for (var ____Class9____Key in ____Class9) {
+    if (____Class9.hasOwnProperty(____Class9____Key)) {
+        Paper[____Class9____Key] = ____Class9[____Class9____Key];
     }
-}var ____SuperProtoOf____Class2h = ____Class2h === null ? null : ____Class2h.prototype;Paper.prototype = Object.create(____SuperProtoOf____Class2h);Paper.prototype.constructor = Paper;Paper.__superConstructor__ = ____Class2h;function Paper() {
-    "use strict";if (____Class2h !== null) {
-        ____Class2h.apply(this, arguments);
+}var ____SuperProtoOf____Class9 = ____Class9 === null ? null : ____Class9.prototype;Paper.prototype = Object.create(____SuperProtoOf____Class9);Paper.prototype.constructor = Paper;Paper.__superConstructor__ = ____Class9;function Paper() {
+    "use strict";if (____Class9 !== null) {
+        ____Class9.apply(this, arguments);
     }
 }
 Object.defineProperty(Paper.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -2864,13 +2867,13 @@ module.exports = Paper;
 
 var React = require("react");
 
-var ____Class2e = React.Component;for (var ____Class2e____Key in ____Class2e) {
-    if (____Class2e.hasOwnProperty(____Class2e____Key)) {
-        ScrollableContents[____Class2e____Key] = ____Class2e[____Class2e____Key];
+var ____Class6 = React.Component;for (var ____Class6____Key in ____Class6) {
+    if (____Class6.hasOwnProperty(____Class6____Key)) {
+        ScrollableContents[____Class6____Key] = ____Class6[____Class6____Key];
     }
-}var ____SuperProtoOf____Class2e = ____Class2e === null ? null : ____Class2e.prototype;ScrollableContents.prototype = Object.create(____SuperProtoOf____Class2e);ScrollableContents.prototype.constructor = ScrollableContents;ScrollableContents.__superConstructor__ = ____Class2e;function ScrollableContents() {
-    "use strict";if (____Class2e !== null) {
-        ____Class2e.apply(this, arguments);
+}var ____SuperProtoOf____Class6 = ____Class6 === null ? null : ____Class6.prototype;ScrollableContents.prototype = Object.create(____SuperProtoOf____Class6);ScrollableContents.prototype.constructor = ScrollableContents;ScrollableContents.__superConstructor__ = ____Class6;function ScrollableContents() {
+    "use strict";if (____Class6 !== null) {
+        ____Class6.apply(this, arguments);
     }
 }
 Object.defineProperty(ScrollableContents.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -2900,11 +2903,11 @@ var Transition = {
     PREV: 2
 };
 
-var ____Class2m = React.Component;for (var ____Class2m____Key in ____Class2m) {
-    if (____Class2m.hasOwnProperty(____Class2m____Key)) {
-        SettingsDialog[____Class2m____Key] = ____Class2m[____Class2m____Key];
+var ____Classi = React.Component;for (var ____Classi____Key in ____Classi) {
+    if (____Classi.hasOwnProperty(____Classi____Key)) {
+        SettingsDialog[____Classi____Key] = ____Classi[____Classi____Key];
     }
-}var ____SuperProtoOf____Class2m = ____Class2m === null ? null : ____Class2m.prototype;SettingsDialog.prototype = Object.create(____SuperProtoOf____Class2m);SettingsDialog.prototype.constructor = SettingsDialog;SettingsDialog.__superConstructor__ = ____Class2m;
+}var ____SuperProtoOf____Classi = ____Classi === null ? null : ____Classi.prototype;SettingsDialog.prototype = Object.create(____SuperProtoOf____Classi);SettingsDialog.prototype.constructor = SettingsDialog;SettingsDialog.__superConstructor__ = ____Classi;
 function SettingsDialog(props) {
     "use strict";
     GA.event("settings", "open").send();
@@ -3062,14 +3065,14 @@ var $ = require("jquery"),
     React = require("react"),
     cx = require("../utils/ReactUtils").cx;
 
-var ____Class2y = React.Component;for (var ____Class2y____Key in ____Class2y) {
-    if (____Class2y.hasOwnProperty(____Class2y____Key)) {
-        Slider[____Class2y____Key] = ____Class2y[____Class2y____Key];
+var ____Classu = React.Component;for (var ____Classu____Key in ____Classu) {
+    if (____Classu.hasOwnProperty(____Classu____Key)) {
+        Slider[____Classu____Key] = ____Classu[____Classu____Key];
     }
-}var ____SuperProtoOf____Class2y = ____Class2y === null ? null : ____Class2y.prototype;Slider.prototype = Object.create(____SuperProtoOf____Class2y);Slider.prototype.constructor = Slider;Slider.__superConstructor__ = ____Class2y;
+}var ____SuperProtoOf____Classu = ____Classu === null ? null : ____Classu.prototype;Slider.prototype = Object.create(____SuperProtoOf____Classu);Slider.prototype.constructor = Slider;Slider.__superConstructor__ = ____Classu;
 function Slider(props) {
     "use strict";
-    ____SuperProtoOf____Class2y.constructor.call(this, props);
+    ____SuperProtoOf____Classu.constructor.call(this, props);
 
     var values = [];
 
@@ -3290,14 +3293,14 @@ var React = require("react"),
     Icon = require("./Icon");
 
 // Represents a button that can be toggled on, off, disabled with icons for each of the possible states
-var ____Class2z = React.Component;for (var ____Class2z____Key in ____Class2z) {
-    if (____Class2z.hasOwnProperty(____Class2z____Key)) {
-        ToggleButton[____Class2z____Key] = ____Class2z[____Class2z____Key];
+var ____Classv = React.Component;for (var ____Classv____Key in ____Classv) {
+    if (____Classv.hasOwnProperty(____Classv____Key)) {
+        ToggleButton[____Classv____Key] = ____Classv[____Classv____Key];
     }
-}var ____SuperProtoOf____Class2z = ____Class2z === null ? null : ____Class2z.prototype;ToggleButton.prototype = Object.create(____SuperProtoOf____Class2z);ToggleButton.prototype.constructor = ToggleButton;ToggleButton.__superConstructor__ = ____Class2z;
+}var ____SuperProtoOf____Classv = ____Classv === null ? null : ____Classv.prototype;ToggleButton.prototype = Object.create(____SuperProtoOf____Classv);ToggleButton.prototype.constructor = ToggleButton;ToggleButton.__superConstructor__ = ____Classv;
 function ToggleButton(props) {
     "use strict";for (var icons = [], $__0 = 1, $__1 = arguments.length; $__0 < $__1; $__0++) icons.push(arguments[$__0]);
-    ____SuperProtoOf____Class2z.constructor.call(this, props);
+    ____SuperProtoOf____Classv.constructor.call(this, props);
     this.state = { toggled: !!this.props.toggled };
     this._toggledIcon = icons[0];
     this._notToggledIcon = icons[1];
@@ -3351,14 +3354,14 @@ var React = require("react"),
 * for rotating attractors, and animates rotating attractors, redrawing only
 * when necessary */
 
-var ____Class2l = React.Component;for (var ____Class2l____Key in ____Class2l) {
-    if (____Class2l.hasOwnProperty(____Class2l____Key)) {
-        Viewport[____Class2l____Key] = ____Class2l[____Class2l____Key];
+var ____Classh = React.Component;for (var ____Classh____Key in ____Classh) {
+    if (____Classh.hasOwnProperty(____Classh____Key)) {
+        Viewport[____Classh____Key] = ____Classh[____Classh____Key];
     }
-}var ____SuperProtoOf____Class2l = ____Class2l === null ? null : ____Class2l.prototype;Viewport.prototype = Object.create(____SuperProtoOf____Class2l);Viewport.prototype.constructor = Viewport;Viewport.__superConstructor__ = ____Class2l;
+}var ____SuperProtoOf____Classh = ____Classh === null ? null : ____Classh.prototype;Viewport.prototype = Object.create(____SuperProtoOf____Classh);Viewport.prototype.constructor = Viewport;Viewport.__superConstructor__ = ____Classh;
 function Viewport(props) {
     "use strict";
-    ____SuperProtoOf____Class2l.constructor.call(this, props);
+    ____SuperProtoOf____Classh.constructor.call(this, props);
 
     this.state = {
         searching: false,
@@ -3546,13 +3549,13 @@ var React = require("react"),
     Ripple = require("./effects/Ripple"),
     cx = require("../utils/ReactUtils").cx;
 
-var ____Class2p = React.Component;for (var ____Class2p____Key in ____Class2p) {
-    if (____Class2p.hasOwnProperty(____Class2p____Key)) {
-        Button[____Class2p____Key] = ____Class2p[____Class2p____Key];
+var ____Classl = React.Component;for (var ____Classl____Key in ____Classl) {
+    if (____Classl.hasOwnProperty(____Classl____Key)) {
+        Button[____Classl____Key] = ____Classl[____Classl____Key];
     }
-}var ____SuperProtoOf____Class2p = ____Class2p === null ? null : ____Class2p.prototype;Button.prototype = Object.create(____SuperProtoOf____Class2p);Button.prototype.constructor = Button;Button.__superConstructor__ = ____Class2p;function Button() {
-    "use strict";if (____Class2p !== null) {
-        ____Class2p.apply(this, arguments);
+}var ____SuperProtoOf____Classl = ____Classl === null ? null : ____Classl.prototype;Button.prototype = Object.create(____SuperProtoOf____Classl);Button.prototype.constructor = Button;Button.__superConstructor__ = ____Classl;function Button() {
+    "use strict";if (____Classl !== null) {
+        ____Classl.apply(this, arguments);
     }
 }
 Object.defineProperty(Button.prototype, "componentDidMount", { writable: true, configurable: true, value: function value() {
@@ -3701,13 +3704,13 @@ module.exports = Ripple;
 var React = require("react"),
     FloatingActionButton = require("../FloatingActionButton");
 
-var ____Class2w = React.Component;for (var ____Class2w____Key in ____Class2w) {
-    if (____Class2w.hasOwnProperty(____Class2w____Key)) {
-        AddComponentPanel[____Class2w____Key] = ____Class2w[____Class2w____Key];
+var ____Classs = React.Component;for (var ____Classs____Key in ____Classs) {
+    if (____Classs.hasOwnProperty(____Classs____Key)) {
+        AddComponentPanel[____Classs____Key] = ____Classs[____Classs____Key];
     }
-}var ____SuperProtoOf____Class2w = ____Class2w === null ? null : ____Class2w.prototype;AddComponentPanel.prototype = Object.create(____SuperProtoOf____Class2w);AddComponentPanel.prototype.constructor = AddComponentPanel;AddComponentPanel.__superConstructor__ = ____Class2w;function AddComponentPanel() {
-    "use strict";if (____Class2w !== null) {
-        ____Class2w.apply(this, arguments);
+}var ____SuperProtoOf____Classs = ____Classs === null ? null : ____Classs.prototype;AddComponentPanel.prototype = Object.create(____SuperProtoOf____Classs);AddComponentPanel.prototype.constructor = AddComponentPanel;AddComponentPanel.__superConstructor__ = ____Classs;function AddComponentPanel() {
+    "use strict";if (____Classs !== null) {
+        ____Classs.apply(this, arguments);
     }
 }
 Object.defineProperty(AddComponentPanel.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -3745,13 +3748,13 @@ var React = require("react"),
     FloatingActionButton = require("../FloatingActionButton"),
     Icon = require("../Icon");
 
-var ____Class2u = React.Component;for (var ____Class2u____Key in ____Class2u) {
-    if (____Class2u.hasOwnProperty(____Class2u____Key)) {
-        ComponentPanel[____Class2u____Key] = ____Class2u[____Class2u____Key];
+var ____Classr = React.Component;for (var ____Classr____Key in ____Classr) {
+    if (____Classr.hasOwnProperty(____Classr____Key)) {
+        ComponentPanel[____Classr____Key] = ____Classr[____Classr____Key];
     }
-}var ____SuperProtoOf____Class2u = ____Class2u === null ? null : ____Class2u.prototype;ComponentPanel.prototype = Object.create(____SuperProtoOf____Class2u);ComponentPanel.prototype.constructor = ComponentPanel;ComponentPanel.__superConstructor__ = ____Class2u;function ComponentPanel() {
-    "use strict";if (____Class2u !== null) {
-        ____Class2u.apply(this, arguments);
+}var ____SuperProtoOf____Classr = ____Classr === null ? null : ____Classr.prototype;ComponentPanel.prototype = Object.create(____SuperProtoOf____Classr);ComponentPanel.prototype.constructor = ComponentPanel;ComponentPanel.__superConstructor__ = ____Classr;function ComponentPanel() {
+    "use strict";if (____Classr !== null) {
+        ____Classr.apply(this, arguments);
     }
 }
 Object.defineProperty(ComponentPanel.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -3806,13 +3809,13 @@ var _ = require("underscore"),
     Actions = require("../../actions/Actions"),
     Button = require("../Button");
 
-var ____Class2x = React.Component;for (var ____Class2x____Key in ____Class2x) {
-    if (____Class2x.hasOwnProperty(____Class2x____Key)) {
-        ComponentPicker[____Class2x____Key] = ____Class2x[____Class2x____Key];
+var ____Classt = React.Component;for (var ____Classt____Key in ____Classt) {
+    if (____Classt.hasOwnProperty(____Classt____Key)) {
+        ComponentPicker[____Classt____Key] = ____Classt[____Classt____Key];
     }
-}var ____SuperProtoOf____Class2x = ____Class2x === null ? null : ____Class2x.prototype;ComponentPicker.prototype = Object.create(____SuperProtoOf____Class2x);ComponentPicker.prototype.constructor = ComponentPicker;ComponentPicker.__superConstructor__ = ____Class2x;function ComponentPicker() {
-    "use strict";if (____Class2x !== null) {
-        ____Class2x.apply(this, arguments);
+}var ____SuperProtoOf____Classt = ____Classt === null ? null : ____Classt.prototype;ComponentPicker.prototype = Object.create(____SuperProtoOf____Classt);ComponentPicker.prototype.constructor = ComponentPicker;ComponentPicker.__superConstructor__ = ____Classt;function ComponentPicker() {
+    "use strict";if (____Classt !== null) {
+        ____Classt.apply(this, arguments);
     }
 }
 Object.defineProperty(ComponentPicker.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -3863,13 +3866,13 @@ module.exports = ComponentPicker;
 
 var React = require("react");
 
-var ____Class2s = React.Component;for (var ____Class2s____Key in ____Class2s) {
-    if (____Class2s.hasOwnProperty(____Class2s____Key)) {
-        Header[____Class2s____Key] = ____Class2s[____Class2s____Key];
+var ____Classo = React.Component;for (var ____Classo____Key in ____Classo) {
+    if (____Classo.hasOwnProperty(____Classo____Key)) {
+        Header[____Classo____Key] = ____Classo[____Classo____Key];
     }
-}var ____SuperProtoOf____Class2s = ____Class2s === null ? null : ____Class2s.prototype;Header.prototype = Object.create(____SuperProtoOf____Class2s);Header.prototype.constructor = Header;Header.__superConstructor__ = ____Class2s;function Header() {
-    "use strict";if (____Class2s !== null) {
-        ____Class2s.apply(this, arguments);
+}var ____SuperProtoOf____Classo = ____Classo === null ? null : ____Classo.prototype;Header.prototype = Object.create(____SuperProtoOf____Classo);Header.prototype.constructor = Header;Header.__superConstructor__ = ____Classo;function Header() {
+    "use strict";if (____Classo !== null) {
+        ____Classo.apply(this, arguments);
     }
 }
 Object.defineProperty(Header.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -3900,13 +3903,13 @@ var $ = require("jquery"),
     Components = require("../../chaos/Components"),
     ComponentPicker = require("./ComponentPicker");
 
-var ____Class2q = React.Component;for (var ____Class2q____Key in ____Class2q) {
-    if (____Class2q.hasOwnProperty(____Class2q____Key)) {
-        SettingsPage[____Class2q____Key] = ____Class2q[____Class2q____Key];
+var ____Classm = React.Component;for (var ____Classm____Key in ____Classm) {
+    if (____Classm.hasOwnProperty(____Classm____Key)) {
+        SettingsPage[____Classm____Key] = ____Classm[____Classm____Key];
     }
-}var ____SuperProtoOf____Class2q = ____Class2q === null ? null : ____Class2q.prototype;SettingsPage.prototype = Object.create(____SuperProtoOf____Class2q);SettingsPage.prototype.constructor = SettingsPage;SettingsPage.__superConstructor__ = ____Class2q;function SettingsPage() {
-    "use strict";if (____Class2q !== null) {
-        ____Class2q.apply(this, arguments);
+}var ____SuperProtoOf____Classm = ____Classm === null ? null : ____Classm.prototype;SettingsPage.prototype = Object.create(____SuperProtoOf____Classm);SettingsPage.prototype.constructor = SettingsPage;SettingsPage.__superConstructor__ = ____Classm;function SettingsPage() {
+    "use strict";if (____Classm !== null) {
+        ____Classm.apply(this, arguments);
     }
 }
 Object.defineProperty(SettingsPage.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -4096,13 +4099,13 @@ module.exports = SettingsPage;
 var React = require("react"),
     Checkbox = require("../../Checkbox");
 
-var ____Class2v = React.Component;for (var ____Class2v____Key in ____Class2v) {
-    if (____Class2v.hasOwnProperty(____Class2v____Key)) {
-        BooleanValueEditor[____Class2v____Key] = ____Class2v[____Class2v____Key];
+var ____Classq = React.Component;for (var ____Classq____Key in ____Classq) {
+    if (____Classq.hasOwnProperty(____Classq____Key)) {
+        BooleanValueEditor[____Classq____Key] = ____Classq[____Classq____Key];
     }
-}var ____SuperProtoOf____Class2v = ____Class2v === null ? null : ____Class2v.prototype;BooleanValueEditor.prototype = Object.create(____SuperProtoOf____Class2v);BooleanValueEditor.prototype.constructor = BooleanValueEditor;BooleanValueEditor.__superConstructor__ = ____Class2v;function BooleanValueEditor() {
-    "use strict";if (____Class2v !== null) {
-        ____Class2v.apply(this, arguments);
+}var ____SuperProtoOf____Classq = ____Classq === null ? null : ____Classq.prototype;BooleanValueEditor.prototype = Object.create(____SuperProtoOf____Classq);BooleanValueEditor.prototype.constructor = BooleanValueEditor;BooleanValueEditor.__superConstructor__ = ____Classq;function BooleanValueEditor() {
+    "use strict";if (____Classq !== null) {
+        ____Classq.apply(this, arguments);
     }
 }
 Object.defineProperty(BooleanValueEditor.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -4124,13 +4127,13 @@ var React = require("react"),
     Icon = require("../../Icon"),
     Slider = require("../../Slider");
 
-var ____Class2t = React.Component;for (var ____Class2t____Key in ____Class2t) {
-    if (____Class2t.hasOwnProperty(____Class2t____Key)) {
-        NumberValueEditor[____Class2t____Key] = ____Class2t[____Class2t____Key];
+var ____Classp = React.Component;for (var ____Classp____Key in ____Classp) {
+    if (____Classp.hasOwnProperty(____Classp____Key)) {
+        NumberValueEditor[____Classp____Key] = ____Classp[____Classp____Key];
     }
-}var ____SuperProtoOf____Class2t = ____Class2t === null ? null : ____Class2t.prototype;NumberValueEditor.prototype = Object.create(____SuperProtoOf____Class2t);NumberValueEditor.prototype.constructor = NumberValueEditor;NumberValueEditor.__superConstructor__ = ____Class2t;function NumberValueEditor() {
-    "use strict";if (____Class2t !== null) {
-        ____Class2t.apply(this, arguments);
+}var ____SuperProtoOf____Classp = ____Classp === null ? null : ____Classp.prototype;NumberValueEditor.prototype = Object.create(____SuperProtoOf____Classp);NumberValueEditor.prototype.constructor = NumberValueEditor;NumberValueEditor.__superConstructor__ = ____Classp;function NumberValueEditor() {
+    "use strict";if (____Classp !== null) {
+        ____Classp.apply(this, arguments);
     }
 }
 Object.defineProperty(NumberValueEditor.prototype, "render", { writable: true, configurable: true, value: (function (_value) {
@@ -5072,13 +5075,13 @@ var React = require("react"),
     Modals = require("../components/Modals"),
     RouteHandler = Router.RouteHandler;
 
-var ____Class24 = React.Component;for (var ____Class24____Key in ____Class24) {
-    if (____Class24.hasOwnProperty(____Class24____Key)) {
-        App[____Class24____Key] = ____Class24[____Class24____Key];
+var ____Class1 = React.Component;for (var ____Class1____Key in ____Class1) {
+    if (____Class1.hasOwnProperty(____Class1____Key)) {
+        App[____Class1____Key] = ____Class1[____Class1____Key];
     }
-}var ____SuperProtoOf____Class24 = ____Class24 === null ? null : ____Class24.prototype;App.prototype = Object.create(____SuperProtoOf____Class24);App.prototype.constructor = App;App.__superConstructor__ = ____Class24;function App() {
-    "use strict";if (____Class24 !== null) {
-        ____Class24.apply(this, arguments);
+}var ____SuperProtoOf____Class1 = ____Class1 === null ? null : ____Class1.prototype;App.prototype = Object.create(____SuperProtoOf____Class1);App.prototype.constructor = App;App.__superConstructor__ = ____Class1;function App() {
+    "use strict";if (____Class1 !== null) {
+        ____Class1.apply(this, arguments);
     }
 }
 Object.defineProperty(App.prototype, "_getRouteTitle", { writable: true, configurable: true, value: function value() {
@@ -5110,13 +5113,13 @@ var React = require("react"),
     ScrollableContents = require("../components/ScrollableContents"),
     Markdown = require("../components/Markdown");
 
-var ____Class29 = React.Component;for (var ____Class29____Key in ____Class29) {
-    if (____Class29.hasOwnProperty(____Class29____Key)) {
-        Developers[____Class29____Key] = ____Class29[____Class29____Key];
+var ____Class4 = React.Component;for (var ____Class4____Key in ____Class4) {
+    if (____Class4.hasOwnProperty(____Class4____Key)) {
+        Developers[____Class4____Key] = ____Class4[____Class4____Key];
     }
-}var ____SuperProtoOf____Class29 = ____Class29 === null ? null : ____Class29.prototype;Developers.prototype = Object.create(____SuperProtoOf____Class29);Developers.prototype.constructor = Developers;Developers.__superConstructor__ = ____Class29;function Developers() {
-    "use strict";if (____Class29 !== null) {
-        ____Class29.apply(this, arguments);
+}var ____SuperProtoOf____Class4 = ____Class4 === null ? null : ____Class4.prototype;Developers.prototype = Object.create(____SuperProtoOf____Class4);Developers.prototype.constructor = Developers;Developers.__superConstructor__ = ____Class4;function Developers() {
+    "use strict";if (____Class4 !== null) {
+        ____Class4.apply(this, arguments);
     }
 }
 Object.defineProperty(Developers.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -5147,15 +5150,15 @@ var $ = require("jquery"),
     Cookies = require("js-cookie"),
     GA = require("../utils/GoogleAnalytics");
 
-var ____Class27 = React.Component;for (var ____Class27____Key in ____Class27) {
-    if (____Class27.hasOwnProperty(____Class27____Key)) {
-        Explore[____Class27____Key] = ____Class27[____Class27____Key];
+var ____Class2 = React.Component;for (var ____Class2____Key in ____Class2) {
+    if (____Class2.hasOwnProperty(____Class2____Key)) {
+        Explore[____Class2____Key] = ____Class2[____Class2____Key];
     }
-}var ____SuperProtoOf____Class27 = ____Class27 === null ? null : ____Class27.prototype;Explore.prototype = Object.create(____SuperProtoOf____Class27);Explore.prototype.constructor = Explore;Explore.__superConstructor__ = ____Class27;
+}var ____SuperProtoOf____Class2 = ____Class2 === null ? null : ____Class2.prototype;Explore.prototype = Object.create(____SuperProtoOf____Class2);Explore.prototype.constructor = Explore;Explore.__superConstructor__ = ____Class2;
 
 function Explore(props) {
     "use strict";
-    ____SuperProtoOf____Class27.constructor.call(this, props);
+    ____SuperProtoOf____Class2.constructor.call(this, props);
 
     this.state = {
         showIntro: !Cookies.get("hideIntro"),
@@ -5173,8 +5176,6 @@ Object.defineProperty(Explore.prototype, "render", { writable: true, configurabl
 
         var searchButtonClassName = cx({
             "search-button": true,
-            animated: this.state.showIntro,
-            translate: !this.state.showIntro,
             cancel: this.state.searching
         });
 
@@ -5189,7 +5190,17 @@ Object.defineProperty(Explore.prototype, "render", { writable: true, configurabl
             translate: !this.state.showIntro
         });
 
-        return React.createElement("div", null, React.createElement(Paper, { className: introClassName, ref: "introPaper" }, React.createElement("h4", null, "Click to start!")), React.createElement(Viewport, { ref: "viewport" }), React.createElement(Paper, { className: bottomPaperClassName, ref: "bottomPaper" }, React.createElement(FloatingActionButton, {
+        return React.createElement("div", null, React.createElement(Paper, { className: introClassName, ref: "introPaper" }, React.createElement("h4", null, "Click to start!"), React.createElement(FloatingActionButton, {
+            className: "search-button",
+            icon: "icon-search-light",
+            onClick: this._search.bind(this) })), React.createElement(Viewport, { ref: "viewport" }), React.createElement(Paper, { className: bottomPaperClassName, ref: "bottomPaper" }, React.createElement(FloatingActionButton, {
+            className: searchButtonClassName,
+            icon: "icon-search-light",
+            ref: "searchButton",
+            onClick: this.state.searching ? this._cancelSearch.bind(this) : this._search.bind(this),
+            onContextShow: this._showContextText.bind(this),
+            onContextHide: this._hideContextText.bind(this),
+            contextText: "Search" }), React.createElement(FloatingActionButton, {
             className: "mini-button",
             icon: "icon-settings-light",
             mini: true,
@@ -5208,14 +5219,7 @@ Object.defineProperty(Explore.prototype, "render", { writable: true, configurabl
             target: "_blank",
             href: "",
             download: "attractor.png",
-            style: { display: "none" } })), React.createElement(FloatingActionButton, {
-            className: searchButtonClassName,
-            icon: "icon-search-light",
-            ref: "searchButton",
-            onClick: this.state.searching ? this._cancelSearch.bind(this) : this._search.bind(this),
-            onContextShow: this._showContextText.bind(this),
-            onContextHide: this._hideContextText.bind(this),
-            contextText: "Search" }), React.createElement("label", { ref: "contextLabel", className: contextLabelClassName }));
+            style: { display: "none" } })), React.createElement("label", { ref: "contextLabel", className: contextLabelClassName }));
     } });
 
 Object.defineProperty(Explore.prototype, "_showSettings", { writable: true, configurable: true, value: function value() {
@@ -5280,10 +5284,9 @@ Object.defineProperty(Explore.prototype, "_searchCancelled", { writable: true, c
 
 Object.defineProperty(Explore.prototype, "_hideIntro", { writable: true, configurable: true, value: function value() {
         "use strict";
-        Cookies.set("hideIntro", true);
+        //Cookies.set('hideIntro', true);
 
         $(React.findDOMNode(this.refs.introPaper)).addClass("fade-out");
-        $(React.findDOMNode(this.refs.searchButton)).addClass("translate");
         $(React.findDOMNode(this.refs.bottomPaper)).addClass("translate");
 
         var self = this;
@@ -5393,13 +5396,13 @@ var React = require("react"),
     Paper = require("../components/Paper"),
     Markdown = require("../components/Markdown");
 
-var ____Class26 = React.Component;for (var ____Class26____Key in ____Class26) {
-    if (____Class26.hasOwnProperty(____Class26____Key)) {
-        Home[____Class26____Key] = ____Class26[____Class26____Key];
+var ____Class0 = React.Component;for (var ____Class0____Key in ____Class0) {
+    if (____Class0.hasOwnProperty(____Class0____Key)) {
+        Home[____Class0____Key] = ____Class0[____Class0____Key];
     }
-}var ____SuperProtoOf____Class26 = ____Class26 === null ? null : ____Class26.prototype;Home.prototype = Object.create(____SuperProtoOf____Class26);Home.prototype.constructor = Home;Home.__superConstructor__ = ____Class26;function Home() {
-    "use strict";if (____Class26 !== null) {
-        ____Class26.apply(this, arguments);
+}var ____SuperProtoOf____Class0 = ____Class0 === null ? null : ____Class0.prototype;Home.prototype = Object.create(____SuperProtoOf____Class0);Home.prototype.constructor = Home;Home.__superConstructor__ = ____Class0;function Home() {
+    "use strict";if (____Class0 !== null) {
+        ____Class0.apply(this, arguments);
     }
 }
 Object.defineProperty(Home.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -5419,13 +5422,13 @@ var React = require("react"),
     Paper = require("../components/Paper"),
     Markdown = require("../components/Markdown");
 
-var ____Class25 = React.Component;for (var ____Class25____Key in ____Class25) {
-    if (____Class25.hasOwnProperty(____Class25____Key)) {
-        Links[____Class25____Key] = ____Class25[____Class25____Key];
+var ____Class5 = React.Component;for (var ____Class5____Key in ____Class5) {
+    if (____Class5.hasOwnProperty(____Class5____Key)) {
+        Links[____Class5____Key] = ____Class5[____Class5____Key];
     }
-}var ____SuperProtoOf____Class25 = ____Class25 === null ? null : ____Class25.prototype;Links.prototype = Object.create(____SuperProtoOf____Class25);Links.prototype.constructor = Links;Links.__superConstructor__ = ____Class25;function Links() {
-    "use strict";if (____Class25 !== null) {
-        ____Class25.apply(this, arguments);
+}var ____SuperProtoOf____Class5 = ____Class5 === null ? null : ____Class5.prototype;Links.prototype = Object.create(____SuperProtoOf____Class5);Links.prototype.constructor = Links;Links.__superConstructor__ = ____Class5;function Links() {
+    "use strict";if (____Class5 !== null) {
+        ____Class5.apply(this, arguments);
     }
 }
 Object.defineProperty(Links.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -5442,13 +5445,13 @@ module.exports = Links;
 
 var React = require("react");
 
-var ____Class28 = React.Component;for (var ____Class28____Key in ____Class28) {
-    if (____Class28.hasOwnProperty(____Class28____Key)) {
-        Settings[____Class28____Key] = ____Class28[____Class28____Key];
+var ____Class3 = React.Component;for (var ____Class3____Key in ____Class3) {
+    if (____Class3.hasOwnProperty(____Class3____Key)) {
+        Settings[____Class3____Key] = ____Class3[____Class3____Key];
     }
-}var ____SuperProtoOf____Class28 = ____Class28 === null ? null : ____Class28.prototype;Settings.prototype = Object.create(____SuperProtoOf____Class28);Settings.prototype.constructor = Settings;Settings.__superConstructor__ = ____Class28;function Settings() {
-    "use strict";if (____Class28 !== null) {
-        ____Class28.apply(this, arguments);
+}var ____SuperProtoOf____Class3 = ____Class3 === null ? null : ____Class3.prototype;Settings.prototype = Object.create(____SuperProtoOf____Class3);Settings.prototype.constructor = Settings;Settings.__superConstructor__ = ____Class3;function Settings() {
+    "use strict";if (____Class3 !== null) {
+        ____Class3.apply(this, arguments);
     }
 }
 Object.defineProperty(Settings.prototype, "render", { writable: true, configurable: true, value: function value() {
