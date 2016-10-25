@@ -3,7 +3,7 @@
 .scrollable-contents {
   position: relative;
   height: 100vh;
-  overflow-y: scroll; /* has to be scroll, not auto */
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 
   /* Negate margins from app-contents */
