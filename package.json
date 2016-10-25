@@ -17,6 +17,7 @@
     "bulkify": "^1.4.2",
     "event-stream": "^3.2.2",
     "gulp": "^3.8.8",
+    "gulp-css-urlencode-inline-svgs": "0.0.5",
     "gulp-dest": "^0.2.3",
     "gulp-insert": "^0.4.0",
     "gulp-sass": "^2.3.2",

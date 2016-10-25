@@ -19,7 +19,8 @@ var gulp = require('gulp'),
     jsdom = require("jsdom"),
     window = jsdom.jsdom().defaultView,
     $ = require('jquery')(window),
-    globify = require('require-globify');
+    globify = require('require-globify'),
+    urlencode = require('gulp-css-urlencode-inline-svgs');
 
 /**
  * Build happens in two phases:
@@ -141,6 +142,7 @@ gulp.task('link-js', ['stage'], function() {
 gulp.task('link-sass', ['stage'], function() {
     return gulp.src('./app/link/sass/main.scss')
         .pipe(sass())
+        .pipe(urlencode())
         .pipe(gulp.dest('./app/dist/css'));
 });
 
