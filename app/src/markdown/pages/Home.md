@@ -5,7 +5,8 @@ Chaos Theory can generate some cool and interesting art. Go [explore](http://cha
 
 ##### Introduction
 Many years ago when I was a kid, I remember being at a flea market in Vermont, and picking up a 
-[book](http://sprott.physics.wisc.edu/sa.htm) that had intrigued me.  Inside of it were 
+book [(Strange Attractors:
+Creating Patterns in Chaos by Julien C. Sprott)](http://sprott.physics.wisc.edu/sa.htm) that had intrigued me.  Inside of it were 
 depictions of very exotic looking figures, stringy line art, and patterned blobs.  As I delved 
 deeper into the book, I realized that it provided step-by-step BASIC code for generating these 
 figures and finding new ones!  At the time I had only dabbled a tiny bit in BASIC, so I thought 
