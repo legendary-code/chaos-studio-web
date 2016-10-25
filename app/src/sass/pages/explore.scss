@@ -7,7 +7,7 @@
   width: 100vw;
   bottom: 0;
   margin-bottom: -104px;
-  padding-right: 64px;
+  padding-right: 8px;
 
   height: 32px;
   line-height: 32px;
@@ -22,13 +22,39 @@
     margin-right: 8px;
     top: -36px;
   }
+
+  .search-button {
+    float: right;
+    margin-right: 8px;
+
+    @media #{$device-mobile-portrait} {
+      top: -44px;
+      //margin-bottom: 56px;
+    }
+
+    @media #{$device-mobile-landscape} {
+      top: -40px;
+      //margin-bottom: 48px;
+    }
+
+    @media #{$device-desktop}, #{$device-tablet} {
+      top: -48px;
+      //margin-bottom: 64px;
+    }
+
+    &.cancel {
+      .button {
+        background-color: $red-A400;
+      }
+    }
+  }
 }
 
 .context-label {
   position: fixed;
   width: 156px;
   bottom: -16px;
-  right: 164px;
+  right: 184px;
 
   height: 16px;
   line-height: 16px;
@@ -59,41 +85,15 @@
   &.fade-out {
     opacity: 0;
   }
-}
 
-.search-button {
-  position: absolute;
-  right: 50%;
-  bottom: 50%;
-  margin-bottom: -54px;
-  margin-right: -32px;
-
-  &.animated {
-    @include transition(right 0.5s, bottom 0.5s, margin-right 0.5s, margin-bottom 0.5s);
-  }
-
-  &.translate {
-    right: 0;
-    bottom: 0;
-    margin-right: 8px;
-
-    @media #{$device-mobile-portrait} {
-      margin-bottom: 56px;
-    }
-
-    @media #{$device-mobile-landscape} {
-      margin-bottom: 48px;
-    }
-
-    @media #{$device-desktop}, #{$device-tablet} {
-      margin-bottom: 64px;
-    }
-  }
-
-  &.cancel {
-    .button {
-      background-color: $red-A400;
-    }
+  .search-button {
+    position: absolute;
+    left: 97px;
+    bottom: 16px;
+    margin: 0;
+    padding: 0;
+    height: 56px;
+    width: 56px;
   }
 }
 

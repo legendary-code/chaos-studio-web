@@ -13,10 +13,13 @@ let React = require('react'),
 
 React.initializeTouchEvents(true);
 
+const PATH_REGEX = /(.*\/#\/[^\/]+)/;
+
 Actions.RUN_ROUTES.invoke({
     routes: Routes,
     callback: (Handler) => {
-        GA.pageview({dl: window.location.href}).send();
+        let groups = PATH_REGEX.exec(window.location.href);
+        GA.pageview({dl: groups[0]}).send();
         React.render(<Handler />, document.getElementById('app'));
     }
 });

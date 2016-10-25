@@ -34,8 +34,6 @@ class Explore extends React.Component {
 
         let searchButtonClassName = cx({
             'search-button': true,
-            'animated': this.state.showIntro,
-            'translate': !this.state.showIntro,
             'cancel': this.state.searching
         });
 
@@ -54,11 +52,26 @@ class Explore extends React.Component {
             <div>
                 <Paper className={introClassName} ref="introPaper">
                     <h4>Click to start!</h4>
+                    <FloatingActionButton
+                        className="search-button"
+                        icon="icon-search-light"
+                        onClick={this._search.bind(this)}
+                    />
                 </Paper>
 
                 <Viewport ref="viewport" />
 
                 <Paper className={bottomPaperClassName} ref="bottomPaper">
+                    <FloatingActionButton
+                        className={searchButtonClassName}
+                        icon="icon-search-light"
+                        ref="searchButton"
+                        onClick={this.state.searching ? this._cancelSearch.bind(this) : this._search.bind(this)}
+                        onContextShow={this._showContextText.bind(this)}
+                        onContextHide={this._hideContextText.bind(this)}
+                        contextText="Search"
+                    />
+
                     <FloatingActionButton
                         className="mini-button"
                         icon="icon-settings-light"
@@ -86,17 +99,8 @@ class Explore extends React.Component {
                         download="attractor.png"
                         style={{display: "none"}}>
                     </a>
-                </Paper>
 
-                <FloatingActionButton
-                    className={searchButtonClassName}
-                    icon="icon-search-light"
-                    ref="searchButton"
-                    onClick={this.state.searching ? this._cancelSearch.bind(this) : this._search.bind(this)}
-                    onContextShow={this._showContextText.bind(this)}
-                    onContextHide={this._hideContextText.bind(this)}
-                    contextText="Search"
-                />
+                </Paper>
 
                 <label ref="contextLabel" className={contextLabelClassName} />
             </div>
@@ -165,10 +169,9 @@ class Explore extends React.Component {
     }
 
     _hideIntro() {
-        Cookies.set('hideIntro', true);
+        //Cookies.set('hideIntro', true);
 
         $(React.findDOMNode(this.refs.introPaper)).addClass("fade-out");
-        $(React.findDOMNode(this.refs.searchButton)).addClass("translate");
         $(React.findDOMNode(this.refs.bottomPaper)).addClass("translate");
 
         let self = this;
