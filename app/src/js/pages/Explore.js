@@ -169,7 +169,7 @@ class Explore extends React.Component {
     }
 
     _hideIntro() {
-        //Cookies.set('hideIntro', true);
+        Cookies.set('hideIntro', true);
 
         $(React.findDOMNode(this.refs.introPaper)).addClass("fade-out");
         $(React.findDOMNode(this.refs.bottomPaper)).addClass("translate");
