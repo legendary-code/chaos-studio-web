@@ -130,7 +130,7 @@ A map has two getters that can be overridden, and a method for transforming
 a single point.  If we wanted to implement a map for the Logistic Equation,
 it might look something like this:
 
-```
+```js
 let Map = require('../Map'),
     Components = require('../Components');
 
@@ -180,7 +180,7 @@ used to generate the random coefficients of the map and perhaps other values.
 A common random number generator is the linear congruential generator, which
 uses modulo arithmetic to generate numbers.  It's implemented like this:
 
-```
+```js
 let Rng = require('../Rng'),
     Components = require('../Components');
 
@@ -248,7 +248,7 @@ computations to find attractors and may slow the search significiantly.
 If you wanted to create a criterion to test for only positive-valued points
 it could look something like this:
 
-```
+```js
 var SearchCriterion = require('../SearchCriterion'),
     Props = require('../Props'),
     Components = require('../Components');
@@ -324,7 +324,7 @@ This is analogous to a geometry shader in the shader pipeline of a GPU.
 If you wanted to implement a projection that distorts the points by taking
 the square root of the coordinate values, it would look something like this:
 
-```
+```js
 let _ = require('underscore'),
     Projection = require('../Projection'),
     Components = require('../Components');
@@ -372,7 +372,7 @@ and is analogous to the raster or fragment shader in a shader pipeline of
 a GPU.  If you wanted to create a colorizer that makes all points red, it
 might look something like this:
 
-```
+```js
 let Colorizer = require('../Colorizer'),
     Components = require('../Components');
 
@@ -416,7 +416,7 @@ colorized points to an HTML canvas.  Implementing one is fairly complex
 and the given WebGLRenderer will suit most of your needs.  Below is the
 base component definition:
 
-```
+```js
 let Component = require('./Component');
 
 /* Implemented to define a renderer that is capable of rendering colored vertices to a canvas */
