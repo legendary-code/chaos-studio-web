@@ -63,11 +63,17 @@ class Slider extends React.Component {
             width: this.props.range ? (this._percent(1) - this._percent(0)) + '%' : this._percent(0) + '%'
         };
 
-        let sliderClass = cx({
+        let sliderClasses = {
             "slider": true,
             "enabled": !this.props.disabled,
             "disabled": !!this.props.disabled
-        });
+        };
+
+        if (this.props.className) {
+            sliderClasses[this.props.className] = true;
+        }
+
+        let sliderClass = cx(sliderClasses);
 
         let thumbs = [ <div key="slider-track" className="slider-track-filled" ref="sliderTrackFilled" style={trackStyle}></div> ];
 
@@ -201,6 +207,7 @@ class Slider extends React.Component {
 }
 
 Slider.propTypes = {
+    className: React.PropTypes.string,
     min: React.PropTypes.number.isRequired,
     max: React.PropTypes.number.isRequired,
     integral: React.PropTypes.bool,

@@ -7,7 +7,8 @@ let React = require('react'),
     Explore = require('./pages/Explore'),
     Settings = require('./pages/Settings'),
     Developers = require('./pages/Developers'),
-    Links = require('./pages/Links');
+    Links = require('./pages/Links'),
+    LogisticGraph = require('./pages/LogisticGraph');
 
 let Routes = (
     <Route handler={App}>
@@ -17,6 +18,7 @@ let Routes = (
         <Route name="settings" handler={Settings} />
         <Route name="developers" handler={Developers} />
         <Route name="links" handler={Links} />
+        <Route name="logistic" handler={LogisticGraph} />
         <Redirect from="/" to="/home" />
     </Route>
 

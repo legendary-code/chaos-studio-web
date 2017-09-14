@@ -1,0 +1,58 @@
+@import "../variables/mixins";
+@import "../variables/colors";
+@import "../variables/media-queries";
+
+.logistic-settings {
+  height: 36px;
+  width: 100vw;
+  overflow: hidden;
+  bottom: 0;
+  position: fixed;
+  padding: 0;
+}
+
+.logistic-setting {
+  display: inline-block;
+  border: none;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  .font-setting-value-label {
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    float: left;
+  }
+
+  .binding-value {
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    float: left;
+  }
+
+  .slider {
+
+    &.initial-value {
+      width: 100px;
+    }
+
+    &.iterations {
+      width: 100px;
+    }
+
+    &.constant {
+      width: 500px;
+    }
+
+    display: inline-block;
+    float: left;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+.graph {
+  width: 100vw;
+  height: 100vh;
+}
