@@ -1,4 +1,5 @@
-# chaos-studio-web
+![Lorenz Attractor](http://chaos-studio.io/svg/lorenz.svg)
+# Chaos Studio
 An open-source site that lets you explore computer-generated art from chaos-theory equations.
 
 It is currently hosted [here](http://chaos-studio.io). 
