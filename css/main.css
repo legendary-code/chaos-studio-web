@@ -361,6 +361,9 @@ sub {
 .icon-add {
   background: url('data:image/svg+xml;charset=utf8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23616161%22%20d%3D%22M12%202c-5.525%200-10%204.475-10%2010s4.475%2010%2010%2010%2010-4.475%2010-10-4.475-10-10-10zM17%2013h-4v4h-2v-4h-4v-2h4v-4h2v4h4v2z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E') no-repeat 0 0/24px 24px; }
 
+.icon-pencil {
+  background: url('data:image/svg+xml;charset=utf8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20fill%3D%22%23616161%22%20d%3D%22M20.25%200c2.071%200%203.75%201.679%203.75%203.75%200%200.844-0.279%201.623-0.75%202.25l-1.5%201.5-5.25-5.25%201.5-1.5c0.627-0.471%201.406-0.75%202.25-0.75zM1.5%2017.25l-1.5%206.75%206.75-1.5%2013.875-13.875-5.25-5.25-13.875%2013.875zM16.771%208.521l-10.5%2010.5-1.293-1.293%2010.5-10.5%201.293%201.293z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E') no-repeat 0 0/24px 24px; }
+
 .icon {
   width: 24px;
   height: 24px;
@@ -794,6 +797,16 @@ sub {
 
 .markdown img {
   border: 1px solid gray; }
+
+.markdown ul {
+  padding-left: 18px; }
+
+.markdown li {
+  list-style-type: circle; }
+
+.markdown sup {
+  font-size: smaller;
+  vertical-align: super; }
 
 .markdown pre * {
   font: 13px monospace; }
