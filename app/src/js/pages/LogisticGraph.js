@@ -22,13 +22,6 @@ class LogisticGraph extends React.Component {
                     </div>
                     <Paper className="logistic-settings">
                         <div className="component-panel logistic-setting">
-                            <label className="font-setting-value-label"
-                                   dangerouslySetInnerHTML={{__html: 'X<sub>n+1</sub> = R * X<sub>n</sub> * (1 - X<sub>n</sub>)'}} />
-                        </div>
-                        <div className="component-panel logistic-setting">
-                            <label className="font-setting-value-label">{'Period: ' + this._calculatePeriod()}</label>
-                        </div>
-                        <div className="component-panel logistic-setting">
                             <label className="font-setting-value-label">R</label>
                             <Slider
                                 min={2.0}
@@ -66,6 +59,13 @@ class LogisticGraph extends React.Component {
                                 className="iterations"
                             />
                             <div className="binding-value font-caption-medium">{this.state.iterations}</div>
+                        </div>
+                        <div className="component-panel logistic-setting">
+                            <label className="font-setting-value-label"
+                                   dangerouslySetInnerHTML={{__html: 'X<sub>n+1</sub> = R * X<sub>n</sub> * (1 - X<sub>n</sub>)'}} />
+                        </div>
+                        <div className="component-panel logistic-setting">
+                            <label className="font-setting-value-label">{'Period: ' + this._calculatePeriod()}</label>
                         </div>
                     </Paper>
                 </div>
