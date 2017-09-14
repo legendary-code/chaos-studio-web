@@ -7,7 +7,7 @@ class LogisticGraph extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            r: 1.0,
+            r: 2.0,
             x0: 0.11111111,
             iterations: 10
         };
