@@ -10,3 +10,5 @@ It is currently hosted [here](http://chaos-studio.io).
 [Developers](/app/src/markdown/pages/Developers.md)
 
 [Links](/app/src/markdown/pages/Links.md)
+
+[Changelog](/app/src/markdown/pages/Changelog.md)
