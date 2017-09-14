@@ -30,6 +30,7 @@ class App extends React.Component {
                     <NavDrawerButton icon="icon-github" label="Developers" route="developers"/>
                     <NavDrawerDivider />
                     <NavDrawerButton icon="icon-info-outline" label="Links" route="links"/>
+                    <NavDrawerButton icon="icon-pencil" label="Changelog" route="changelog"/>
                 </NavDrawer>
                 <AppContents>
                     <RouteHandler />

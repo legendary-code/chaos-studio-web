@@ -36,6 +36,19 @@
   img {
     border: 1px solid gray;
   }
+
+  ul {
+    padding-left: 18px;
+  }
+
+  li {
+    list-style-type: circle;
+  }
+
+  sup {
+    font-size: smaller;
+    vertical-align: super;
+  }
 }
 
 .markdown pre &* {

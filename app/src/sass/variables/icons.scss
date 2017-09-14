@@ -43,6 +43,7 @@ $icon-delete: 'data:image/svg+xml;charset=utf8,<svg version="1.1" xmlns="http://
 $icon-more-horiz: 'data:image/svg+xml;charset=utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24"><path fill="#{$dark-icon-color}" d="M6 10c-1.105 0-2 0.895-2 2s0.895 2 2 2 2-0.895 2-2-0.895-2-2-2zM18 10c-1.105 0-2 0.895-2 2s0.895 2 2 2 2-0.895 2-2-0.895-2-2-2zM12 10c-1.105 0-2 0.895-2 2s0.895 2 2 2 2-0.895 2-2-0.895-2-2-2z"></path></svg>';
 $icon-add: 'data:image/svg+xml;charset=utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24"><path fill="#{$dark-icon-color}" d="M12 2c-5.525 0-10 4.475-10 10s4.475 10 10 10 10-4.475 10-10-4.475-10-10-10zM17 13h-4v4h-2v-4h-4v-2h4v-4h2v4h4v2z"></path></svg>';
 
+$icon-pencil: 'data:image/svg+xml;charset=utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24"><path fill="#{$dark-icon-color}" d="M20.25 0c2.071 0 3.75 1.679 3.75 3.75 0 0.844-0.279 1.623-0.75 2.25l-1.5 1.5-5.25-5.25 1.5-1.5c0.627-0.471 1.406-0.75 2.25-0.75zM1.5 17.25l-1.5 6.75 6.75-1.5 13.875-13.875-5.25-5.25-13.875 13.875zM16.771 8.521l-10.5 10.5-1.293-1.293 10.5-10.5 1.293 1.293z"></path></svg>';
 
 .icon-menu { background: url($icon-menu) no-repeat 0 0/24px 24px; }
 .icon-home { background: url($icon-home) no-repeat 0 0/24px 24px; }
@@ -78,3 +79,5 @@ $icon-add: 'data:image/svg+xml;charset=utf8,<svg version="1.1" xmlns="http://www
 .icon-delete { background: url($icon-delete) no-repeat 0 0/24px 24px; }
 .icon-more-horiz { background: url($icon-more-horiz) no-repeat 0 0/24px 24px; }
 .icon-add { background: url($icon-add) no-repeat 0 0/24px 24px; }
+
+.icon-pencil { background: url($icon-pencil) no-repeat 0 0/24px 24px; }
