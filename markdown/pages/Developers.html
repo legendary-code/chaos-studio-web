@@ -133,29 +133,29 @@ a randomly selected set of coefficients.</p>
 a single point.  If we wanted to implement a map for the Logistic Equation,
 it might look something like this:</p>
 
-<pre><code class="hljs cs"><div class="scrollable"><span class="hljs-keyword">let</span> Map = require(<span class="hljs-string">'../Map'</span>),
-    Components = require(<span class="hljs-string">'../Components'</span>);
+<pre><code class="js language-js hljs javascript"><div class="scrollable"><span class="hljs-keyword">let</span> <span class="hljs-built_in">Map</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Map'</span>),
+    Components = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Components'</span>);
 
-<span class="hljs-keyword">class</span> <span class="hljs-title">LogisticMap</span> <span class="hljs-title">extends</span> <span class="hljs-title">Map</span> {
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LogisticMap</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Map</span> </span>{
     <span class="hljs-comment">// Required</span>
-    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">get</span> <span class="hljs-title">displayName</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">static</span> get displayName() {
         <span class="hljs-keyword">return</span> <span class="hljs-string">"Logistic"</span>;
     }
 
     <span class="hljs-comment">// Required</span>
-    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">get</span> <span class="hljs-title">description</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">static</span> get description() {
         <span class="hljs-keyword">return</span> <span class="hljs-string">"A map of the Logistic Equation"</span>;
     }
 
     <span class="hljs-comment">// Optional, default returns 3</span>
     <span class="hljs-comment">// (Using a value other than 3 is untested as some old code may</span>
     <span class="hljs-comment">// still assume everything is 3 dimensions.)</span>
-    <span class="hljs-function"><span class="hljs-keyword">get</span> <span class="hljs-title">dimensions</span>(<span class="hljs-params"></span>) </span>{
+    get dimensions() {
         <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
     }
 
     <span class="hljs-comment">// Required, the number of coefficients your map uses</span>
-    <span class="hljs-function"><span class="hljs-keyword">get</span> <span class="hljs-title">coefficients</span>(<span class="hljs-params"></span>) </span>{
+    get coefficients() {
         <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
     }
 
@@ -167,8 +167,8 @@ it might look something like this:</p>
     }
 }
 
-Components.register(Map, LogisticMap, <span class="hljs-literal">false</span>);
-module.exports = LogisticMap;
+Components.register(<span class="hljs-built_in">Map</span>, LogisticMap, <span class="hljs-literal">false</span>);
+<span class="hljs-built_in">module</span>.exports = LogisticMap;
 </div></code></pre>
 
 <p>Note that <code class="hljs ebnf"><span class="hljs-attribute">dimensions</span></code> and <code class="hljs ebnf"><span class="hljs-attribute">coefficients</span></code> here are not static.  This means
@@ -183,32 +183,32 @@ used to generate the random coefficients of the map and perhaps other values.</p
 <p>A common random number generator is the linear congruential generator, which
 uses modulo arithmetic to generate numbers.  It's implemented like this:</p>
 
-<pre><code class="hljs kotlin"><div class="scrollable">let Rng = require(<span class="hljs-string">'../Rng'</span>),
-    Components = require(<span class="hljs-string">'../Components'</span>);
+<pre><code class="js language-js hljs javascript"><div class="scrollable"><span class="hljs-keyword">let</span> Rng = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Rng'</span>),
+    Components = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Components'</span>);
 
-const M = Math.pow(<span class="hljs-number">2</span>, <span class="hljs-number">48</span>);
-const A = <span class="hljs-number">25214903917</span>;
-const C = <span class="hljs-number">11</span>;
+<span class="hljs-keyword">const</span> M = <span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">2</span>, <span class="hljs-number">48</span>);
+<span class="hljs-keyword">const</span> A = <span class="hljs-number">25214903917</span>;
+<span class="hljs-keyword">const</span> C = <span class="hljs-number">11</span>;
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LinearCongruentialGenerator</span> <span class="hljs-title">extends</span> <span class="hljs-title">Rng</span> </span>{
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LinearCongruentialGenerator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Rng</span> </span>{
     <span class="hljs-comment">// Required</span>
-    static <span class="hljs-keyword">get</span> displayName() {
+    <span class="hljs-keyword">static</span> get displayName() {
         <span class="hljs-keyword">return</span> <span class="hljs-string">"Linear Congruential Generator"</span>;
     }
 
     <span class="hljs-comment">// Required</span>
-    static <span class="hljs-keyword">get</span> description() {
+    <span class="hljs-keyword">static</span> get description() {
         <span class="hljs-keyword">return</span> <span class="hljs-string">"Modulo arithmetic generated numbers"</span>;
     }
 
     <span class="hljs-comment">// Required, get the seed value</span>
-    <span class="hljs-keyword">get</span> seed() {
+    get seed() {
         <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._seed;
     }
 
     <span class="hljs-comment">// Needed for seed to be serialized/deserialized properly</span>
-    <span class="hljs-keyword">set</span> seed(<span class="hljs-keyword">val</span>) {
-        <span class="hljs-keyword">this</span>._seed = <span class="hljs-keyword">val</span>;
+    set seed(val) {
+        <span class="hljs-keyword">this</span>._seed = val;
     }
 
     <span class="hljs-comment">// Required, set the seed and reset internal state</span>
@@ -224,7 +224,7 @@ const C = <span class="hljs-number">11</span>;
 }
 
 Components.register(Rng, LinearCongruentialGenerator, <span class="hljs-literal">true</span>);
-module.exports = LinearCongruentialGenerator;
+<span class="hljs-built_in">module</span>.exports = LinearCongruentialGenerator;
 </div></code></pre>
 
 <p>Currently, the seed is picked using the system time and will always be
@@ -251,25 +251,25 @@ computations to find attractors and may slow the search significiantly.</p>
 <p>If you wanted to create a criterion to test for only positive-valued points
 it could look something like this:</p>
 
-<pre><code class="hljs kotlin"><div class="scrollable"><span class="hljs-keyword">var</span> SearchCriterion = require(<span class="hljs-string">'../SearchCriterion'</span>),
-    Props = require(<span class="hljs-string">'../Props'</span>),
-    Components = require(<span class="hljs-string">'../Components'</span>);
+<pre><code class="js language-js hljs javascript"><div class="scrollable"><span class="hljs-keyword">var</span> SearchCriterion = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../SearchCriterion'</span>),
+    Props = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Props'</span>),
+    Components = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Components'</span>);
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PositiveOnly</span> <span class="hljs-title">extends</span> <span class="hljs-title">SearchCriterion</span> </span>{
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PositiveOnly</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">SearchCriterion</span> </span>{
     <span class="hljs-comment">// Required</span>
-    static <span class="hljs-keyword">get</span> displayName() {
+    <span class="hljs-keyword">static</span> get displayName() {
         <span class="hljs-keyword">return</span> <span class="hljs-string">"Positive Only"</span>;
     }
 
     <span class="hljs-comment">// Required</span>
-    static <span class="hljs-keyword">get</span> description() {
+    <span class="hljs-keyword">static</span> get description() {
         <span class="hljs-keyword">return</span> <span class="hljs-string">"An exponent that describes stability"</span>;
     }
 
     <span class="hljs-comment">// Optional</span>
-    static <span class="hljs-keyword">get</span> params() {
+    <span class="hljs-keyword">static</span> get params() {
         <span class="hljs-keyword">return</span> [
-            Props.number(<span class="hljs-string">"minIterations"</span>, <span class="hljs-string">"Minimum Iterations"</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1000</span>, { integral: <span class="hljs-literal">true</span>, step: <span class="hljs-number">10</span> })
+            Props.number(<span class="hljs-string">"minIterations"</span>, <span class="hljs-string">"Minimum Iterations"</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1000</span>, { <span class="hljs-attr">integral</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">step</span>: <span class="hljs-number">10</span> })
         ];
     }
 
@@ -279,7 +279,7 @@ it could look something like this:</p>
     }
 
     <span class="hljs-comment">// Optional</span>
-    static <span class="hljs-keyword">get</span> requiresBounds() { 
+    <span class="hljs-keyword">static</span> get requiresBounds() { 
         <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; 
     }
 
@@ -298,7 +298,7 @@ it could look something like this:</p>
             <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
         }
 
-        nextValue.forEach(function(value) {
+        nextValue.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) </span>{
             <span class="hljs-keyword">if</span> (value &gt; <span class="hljs-number">0</span>) {
                 <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
             }
@@ -307,7 +307,7 @@ it could look something like this:</p>
 }
 
 Components.register(SearchCriterion, PositiveOnly, <span class="hljs-literal">false</span>);
-module.exports = PositiveOnly;
+<span class="hljs-built_in">module</span>.exports = PositiveOnly;
 </div></code></pre>
 
 <p>In this code sample, we add a parameter <code class="hljs ebnf"><span class="hljs-attribute">minIterations</span></code>, which is used to
@@ -327,7 +327,7 @@ This is analogous to a geometry shader in the shader pipeline of a GPU.
 If you wanted to implement a projection that distorts the points by taking
 the square root of the coordinate values, it would look something like this:</p>
 
-<pre><code class="hljs javascript"><div class="scrollable"><span class="hljs-keyword">let</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">'underscore'</span>),
+<pre><code class="js language-js hljs javascript"><div class="scrollable"><span class="hljs-keyword">let</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">'underscore'</span>),
     Projection = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Projection'</span>),
     Components = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Components'</span>);
 
@@ -375,17 +375,17 @@ and is analogous to the raster or fragment shader in a shader pipeline of
 a GPU.  If you wanted to create a colorizer that makes all points red, it
 might look something like this:</p>
 
-<pre><code class="hljs scala"><div class="scrollable">let <span class="hljs-type">Colorizer</span> = require('../<span class="hljs-type">Colorizer</span>'),
-    <span class="hljs-type">Components</span> = require('../<span class="hljs-type">Components</span>');
+<pre><code class="js language-js hljs javascript"><div class="scrollable"><span class="hljs-keyword">let</span> Colorizer = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Colorizer'</span>),
+    Components = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../Components'</span>);
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RedShade</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Colorizer</span> </span>{
     <span class="hljs-comment">// Required</span>
-    static get displayName() {
+    <span class="hljs-keyword">static</span> get displayName() {
         <span class="hljs-keyword">return</span> <span class="hljs-string">"Red Shade"</span>;
     }
 
     <span class="hljs-comment">// Required</span>
-    static get description() {
+    <span class="hljs-keyword">static</span> get description() {
         <span class="hljs-keyword">return</span> <span class="hljs-string">"Colorizes pixels red"</span>;
     }
 
@@ -403,8 +403,8 @@ might look something like this:</p>
     }
 }
 
-<span class="hljs-type">Components</span>.register(<span class="hljs-type">Colorizer</span>, <span class="hljs-type">RedShade</span>, <span class="hljs-literal">false</span>);
-module.exports = <span class="hljs-type">Colorizer</span>;
+Components.register(Colorizer, RedShade, <span class="hljs-literal">false</span>);
+<span class="hljs-built_in">module</span>.exports = Colorizer;
 </div></code></pre>
 
 <p>Note that the format of the output vertices is highly dependent on the
@@ -419,12 +419,12 @@ colorized points to an HTML canvas.  Implementing one is fairly complex
 and the given WebGLRenderer will suit most of your needs.  Below is the
 base component definition:</p>
 
-<pre><code class="hljs scala"><div class="scrollable">let <span class="hljs-type">Component</span> = require('./<span class="hljs-type">Component</span>');
+<pre><code class="js language-js hljs javascript"><div class="scrollable"><span class="hljs-keyword">let</span> Component = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./Component'</span>);
 
 <span class="hljs-comment">/* Implemented to define a renderer that is capable of rendering colored vertices to a canvas */</span>
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Renderer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
     <span class="hljs-comment">/* Tests whether this renderer is supported by the browser */</span>
-    static checkSupported() {
+    <span class="hljs-keyword">static</span> checkSupported() {
         <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
     }
 
@@ -445,7 +445,7 @@ base component definition:</p>
     resize(width, height) { }
 }
 
-module.exports = <span class="hljs-type">Renderer</span>;
+<span class="hljs-built_in">module</span>.exports = Renderer;
 </div></code></pre>
 
 <h4 id="conclusion">Conclusion</h4>
