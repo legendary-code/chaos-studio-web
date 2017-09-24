@@ -2283,13 +2283,13 @@ module.exports = MersenneTwister;
 var React = require("react"),
     IconButton = require("./IconButton");
 
-var ____Classa = React.Component;for (var ____Classa____Key in ____Classa) {
-    if (____Classa.hasOwnProperty(____Classa____Key)) {
-        AppBar[____Classa____Key] = ____Classa[____Classa____Key];
+var ____Classf = React.Component;for (var ____Classf____Key in ____Classf) {
+    if (____Classf.hasOwnProperty(____Classf____Key)) {
+        AppBar[____Classf____Key] = ____Classf[____Classf____Key];
     }
-}var ____SuperProtoOf____Classa = ____Classa === null ? null : ____Classa.prototype;AppBar.prototype = Object.create(____SuperProtoOf____Classa);AppBar.prototype.constructor = AppBar;AppBar.__superConstructor__ = ____Classa;function AppBar() {
-    "use strict";if (____Classa !== null) {
-        ____Classa.apply(this, arguments);
+}var ____SuperProtoOf____Classf = ____Classf === null ? null : ____Classf.prototype;AppBar.prototype = Object.create(____SuperProtoOf____Classf);AppBar.prototype.constructor = AppBar;AppBar.__superConstructor__ = ____Classf;function AppBar() {
+    "use strict";if (____Classf !== null) {
+        ____Classf.apply(this, arguments);
     }
 }
 Object.defineProperty(AppBar.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -2310,13 +2310,13 @@ module.exports = AppBar;
 
 var React = require("react");
 
-var ____Classc = React.Component;for (var ____Classc____Key in ____Classc) {
-    if (____Classc.hasOwnProperty(____Classc____Key)) {
-        AppContents[____Classc____Key] = ____Classc[____Classc____Key];
+var ____Classd = React.Component;for (var ____Classd____Key in ____Classd) {
+    if (____Classd.hasOwnProperty(____Classd____Key)) {
+        AppContents[____Classd____Key] = ____Classd[____Classd____Key];
     }
-}var ____SuperProtoOf____Classc = ____Classc === null ? null : ____Classc.prototype;AppContents.prototype = Object.create(____SuperProtoOf____Classc);AppContents.prototype.constructor = AppContents;AppContents.__superConstructor__ = ____Classc;function AppContents() {
-    "use strict";if (____Classc !== null) {
-        ____Classc.apply(this, arguments);
+}var ____SuperProtoOf____Classd = ____Classd === null ? null : ____Classd.prototype;AppContents.prototype = Object.create(____SuperProtoOf____Classd);AppContents.prototype.constructor = AppContents;AppContents.__superConstructor__ = ____Classd;function AppContents() {
+    "use strict";if (____Classd !== null) {
+        ____Classd.apply(this, arguments);
     }
 }
 Object.defineProperty(AppContents.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -2458,13 +2458,13 @@ var React = require("react"),
     cx = require("../utils/ReactUtils").cx,
     join = require("../utils/ReactUtils").join;
 
-var ____Classi = React.Component;for (var ____Classi____Key in ____Classi) {
-    if (____Classi.hasOwnProperty(____Classi____Key)) {
-        FloatingActionButton[____Classi____Key] = ____Classi[____Classi____Key];
+var ____Class8 = React.Component;for (var ____Class8____Key in ____Class8) {
+    if (____Class8.hasOwnProperty(____Class8____Key)) {
+        FloatingActionButton[____Class8____Key] = ____Class8[____Class8____Key];
     }
-}var ____SuperProtoOf____Classi = ____Classi === null ? null : ____Classi.prototype;FloatingActionButton.prototype = Object.create(____SuperProtoOf____Classi);FloatingActionButton.prototype.constructor = FloatingActionButton;FloatingActionButton.__superConstructor__ = ____Classi;function FloatingActionButton() {
-    "use strict";if (____Classi !== null) {
-        ____Classi.apply(this, arguments);
+}var ____SuperProtoOf____Class8 = ____Class8 === null ? null : ____Class8.prototype;FloatingActionButton.prototype = Object.create(____SuperProtoOf____Class8);FloatingActionButton.prototype.constructor = FloatingActionButton;FloatingActionButton.__superConstructor__ = ____Class8;function FloatingActionButton() {
+    "use strict";if (____Class8 !== null) {
+        ____Class8.apply(this, arguments);
     }
 }
 Object.defineProperty(FloatingActionButton.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -2541,13 +2541,13 @@ var React = require("react"),
     Button = require("./button"),
     Icon = require("./Icon");
 
-var ____Classh = React.Component;for (var ____Classh____Key in ____Classh) {
-    if (____Classh.hasOwnProperty(____Classh____Key)) {
-        IconButton[____Classh____Key] = ____Classh[____Classh____Key];
+var ____Class9 = React.Component;for (var ____Class9____Key in ____Class9) {
+    if (____Class9.hasOwnProperty(____Class9____Key)) {
+        IconButton[____Class9____Key] = ____Class9[____Class9____Key];
     }
-}var ____SuperProtoOf____Classh = ____Classh === null ? null : ____Classh.prototype;IconButton.prototype = Object.create(____SuperProtoOf____Classh);IconButton.prototype.constructor = IconButton;IconButton.__superConstructor__ = ____Classh;function IconButton() {
-    "use strict";if (____Classh !== null) {
-        ____Classh.apply(this, arguments);
+}var ____SuperProtoOf____Class9 = ____Class9 === null ? null : ____Class9.prototype;IconButton.prototype = Object.create(____SuperProtoOf____Class9);IconButton.prototype.constructor = IconButton;IconButton.__superConstructor__ = ____Class9;function IconButton() {
+    "use strict";if (____Class9 !== null) {
+        ____Class9.apply(this, arguments);
     }
 }
 Object.defineProperty(IconButton.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -2601,11 +2601,11 @@ var React = require("react"),
     $ = require("jquery");
 
 /* Embeds pre-rendered markdown content */
-var ____Class9 = React.Component;for (var ____Class9____Key in ____Class9) {
-    if (____Class9.hasOwnProperty(____Class9____Key)) {
-        Markdown[____Class9____Key] = ____Class9[____Class9____Key];
+var ____Classi = React.Component;for (var ____Classi____Key in ____Classi) {
+    if (____Classi.hasOwnProperty(____Classi____Key)) {
+        Markdown[____Classi____Key] = ____Classi[____Classi____Key];
     }
-}var ____SuperProtoOf____Class9 = ____Class9 === null ? null : ____Class9.prototype;Markdown.prototype = Object.create(____SuperProtoOf____Class9);Markdown.prototype.constructor = Markdown;Markdown.__superConstructor__ = ____Class9;
+}var ____SuperProtoOf____Classi = ____Classi === null ? null : ____Classi.prototype;Markdown.prototype = Object.create(____SuperProtoOf____Classi);Markdown.prototype.constructor = Markdown;Markdown.__superConstructor__ = ____Classi;
 function Markdown(props) {
     var _this = this;
 
@@ -2684,14 +2684,14 @@ var _ = require("underscore"),
     React = require("react"),
     ModalStore = require("../stores/ModalStore");
 
-var ____Classg = React.Component;for (var ____Classg____Key in ____Classg) {
-    if (____Classg.hasOwnProperty(____Classg____Key)) {
-        Modals[____Classg____Key] = ____Classg[____Classg____Key];
+var ____Classh = React.Component;for (var ____Classh____Key in ____Classh) {
+    if (____Classh.hasOwnProperty(____Classh____Key)) {
+        Modals[____Classh____Key] = ____Classh[____Classh____Key];
     }
-}var ____SuperProtoOf____Classg = ____Classg === null ? null : ____Classg.prototype;Modals.prototype = Object.create(____SuperProtoOf____Classg);Modals.prototype.constructor = Modals;Modals.__superConstructor__ = ____Classg;
+}var ____SuperProtoOf____Classh = ____Classh === null ? null : ____Classh.prototype;Modals.prototype = Object.create(____SuperProtoOf____Classh);Modals.prototype.constructor = Modals;Modals.__superConstructor__ = ____Classh;
 function Modals(props) {
     "use strict";
-    ____SuperProtoOf____Classg.constructor.call(this, props);
+    ____SuperProtoOf____Classh.constructor.call(this, props);
     this.state = { modals: [] };
 }
 
@@ -2726,14 +2726,14 @@ var $ = require("jquery"),
     NavigationDrawerStore = require("../stores/NavigationDrawerStore"),
     Actions = require("../actions/Actions");
 
-var ____Classb = React.Component;for (var ____Classb____Key in ____Classb) {
-    if (____Classb.hasOwnProperty(____Classb____Key)) {
-        NavDrawer[____Classb____Key] = ____Classb[____Classb____Key];
+var ____Classe = React.Component;for (var ____Classe____Key in ____Classe) {
+    if (____Classe.hasOwnProperty(____Classe____Key)) {
+        NavDrawer[____Classe____Key] = ____Classe[____Classe____Key];
     }
-}var ____SuperProtoOf____Classb = ____Classb === null ? null : ____Classb.prototype;NavDrawer.prototype = Object.create(____SuperProtoOf____Classb);NavDrawer.prototype.constructor = NavDrawer;NavDrawer.__superConstructor__ = ____Classb;
+}var ____SuperProtoOf____Classe = ____Classe === null ? null : ____Classe.prototype;NavDrawer.prototype = Object.create(____SuperProtoOf____Classe);NavDrawer.prototype.constructor = NavDrawer;NavDrawer.__superConstructor__ = ____Classe;
 function NavDrawer(props) {
     "use strict";
-    ____SuperProtoOf____Classb.constructor.call(this, props);
+    ____SuperProtoOf____Classe.constructor.call(this, props);
 
     this.state = {
         hidden: NavigationDrawerStore.state.hidden,
@@ -2805,13 +2805,13 @@ var React = require("react"),
     RouterStore = require("../stores/RouterStore"),
     NavigationDrawerStore = require("../stores/NavigationDrawerStore");
 
-var ____Classe = React.Component;for (var ____Classe____Key in ____Classe) {
-    if (____Classe.hasOwnProperty(____Classe____Key)) {
-        NavDrawerButton[____Classe____Key] = ____Classe[____Classe____Key];
+var ____Classc = React.Component;for (var ____Classc____Key in ____Classc) {
+    if (____Classc.hasOwnProperty(____Classc____Key)) {
+        NavDrawerButton[____Classc____Key] = ____Classc[____Classc____Key];
     }
-}var ____SuperProtoOf____Classe = ____Classe === null ? null : ____Classe.prototype;NavDrawerButton.prototype = Object.create(____SuperProtoOf____Classe);NavDrawerButton.prototype.constructor = NavDrawerButton;NavDrawerButton.__superConstructor__ = ____Classe;function NavDrawerButton() {
-    "use strict";if (____Classe !== null) {
-        ____Classe.apply(this, arguments);
+}var ____SuperProtoOf____Classc = ____Classc === null ? null : ____Classc.prototype;NavDrawerButton.prototype = Object.create(____SuperProtoOf____Classc);NavDrawerButton.prototype.constructor = NavDrawerButton;NavDrawerButton.__superConstructor__ = ____Classc;function NavDrawerButton() {
+    "use strict";if (____Classc !== null) {
+        ____Classc.apply(this, arguments);
     }
 }
 Object.defineProperty(NavDrawerButton.prototype, "componentDidMount", { writable: true, configurable: true, value: function value() {
@@ -2863,13 +2863,13 @@ module.exports = NavDrawerButton;
 
 var React = require("react");
 
-var ____Classd = React.Component;for (var ____Classd____Key in ____Classd) {
-    if (____Classd.hasOwnProperty(____Classd____Key)) {
-        NavDrawerDivider[____Classd____Key] = ____Classd[____Classd____Key];
+var ____Classg = React.Component;for (var ____Classg____Key in ____Classg) {
+    if (____Classg.hasOwnProperty(____Classg____Key)) {
+        NavDrawerDivider[____Classg____Key] = ____Classg[____Classg____Key];
     }
-}var ____SuperProtoOf____Classd = ____Classd === null ? null : ____Classd.prototype;NavDrawerDivider.prototype = Object.create(____SuperProtoOf____Classd);NavDrawerDivider.prototype.constructor = NavDrawerDivider;NavDrawerDivider.__superConstructor__ = ____Classd;function NavDrawerDivider() {
-    "use strict";if (____Classd !== null) {
-        ____Classd.apply(this, arguments);
+}var ____SuperProtoOf____Classg = ____Classg === null ? null : ____Classg.prototype;NavDrawerDivider.prototype = Object.create(____SuperProtoOf____Classg);NavDrawerDivider.prototype.constructor = NavDrawerDivider;NavDrawerDivider.__superConstructor__ = ____Classg;function NavDrawerDivider() {
+    "use strict";if (____Classg !== null) {
+        ____Classg.apply(this, arguments);
     }
 }
 Object.defineProperty(NavDrawerDivider.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -2885,13 +2885,13 @@ module.exports = NavDrawerDivider;
 var React = require("react"),
     join = require("../utils/ReactUtils").join;
 
-var ____Class8 = React.Component;for (var ____Class8____Key in ____Class8) {
-    if (____Class8.hasOwnProperty(____Class8____Key)) {
-        Paper[____Class8____Key] = ____Class8[____Class8____Key];
+var ____Classa = React.Component;for (var ____Classa____Key in ____Classa) {
+    if (____Classa.hasOwnProperty(____Classa____Key)) {
+        Paper[____Classa____Key] = ____Classa[____Classa____Key];
     }
-}var ____SuperProtoOf____Class8 = ____Class8 === null ? null : ____Class8.prototype;Paper.prototype = Object.create(____SuperProtoOf____Class8);Paper.prototype.constructor = Paper;Paper.__superConstructor__ = ____Class8;function Paper() {
-    "use strict";if (____Class8 !== null) {
-        ____Class8.apply(this, arguments);
+}var ____SuperProtoOf____Classa = ____Classa === null ? null : ____Classa.prototype;Paper.prototype = Object.create(____SuperProtoOf____Classa);Paper.prototype.constructor = Paper;Paper.__superConstructor__ = ____Classa;function Paper() {
+    "use strict";if (____Classa !== null) {
+        ____Classa.apply(this, arguments);
     }
 }
 Object.defineProperty(Paper.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -2912,13 +2912,13 @@ module.exports = Paper;
 
 var React = require("react");
 
-var ____Class7 = React.Component;for (var ____Class7____Key in ____Class7) {
-    if (____Class7.hasOwnProperty(____Class7____Key)) {
-        ScrollableContents[____Class7____Key] = ____Class7[____Class7____Key];
+var ____Classj = React.Component;for (var ____Classj____Key in ____Classj) {
+    if (____Classj.hasOwnProperty(____Classj____Key)) {
+        ScrollableContents[____Classj____Key] = ____Classj[____Classj____Key];
     }
-}var ____SuperProtoOf____Class7 = ____Class7 === null ? null : ____Class7.prototype;ScrollableContents.prototype = Object.create(____SuperProtoOf____Class7);ScrollableContents.prototype.constructor = ScrollableContents;ScrollableContents.__superConstructor__ = ____Class7;function ScrollableContents() {
-    "use strict";if (____Class7 !== null) {
-        ____Class7.apply(this, arguments);
+}var ____SuperProtoOf____Classj = ____Classj === null ? null : ____Classj.prototype;ScrollableContents.prototype = Object.create(____SuperProtoOf____Classj);ScrollableContents.prototype.constructor = ScrollableContents;ScrollableContents.__superConstructor__ = ____Classj;function ScrollableContents() {
+    "use strict";if (____Classj !== null) {
+        ____Classj.apply(this, arguments);
     }
 }
 Object.defineProperty(ScrollableContents.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -2948,11 +2948,11 @@ var Transition = {
     PREV: 2
 };
 
-var ____Classk = React.Component;for (var ____Classk____Key in ____Classk) {
-    if (____Classk.hasOwnProperty(____Classk____Key)) {
-        SettingsDialog[____Classk____Key] = ____Classk[____Classk____Key];
+var ____Classb = React.Component;for (var ____Classb____Key in ____Classb) {
+    if (____Classb.hasOwnProperty(____Classb____Key)) {
+        SettingsDialog[____Classb____Key] = ____Classb[____Classb____Key];
     }
-}var ____SuperProtoOf____Classk = ____Classk === null ? null : ____Classk.prototype;SettingsDialog.prototype = Object.create(____SuperProtoOf____Classk);SettingsDialog.prototype.constructor = SettingsDialog;SettingsDialog.__superConstructor__ = ____Classk;
+}var ____SuperProtoOf____Classb = ____Classb === null ? null : ____Classb.prototype;SettingsDialog.prototype = Object.create(____SuperProtoOf____Classb);SettingsDialog.prototype.constructor = SettingsDialog;SettingsDialog.__superConstructor__ = ____Classb;
 function SettingsDialog(props) {
     "use strict";
     GA.event("settings", "open").send();
@@ -3110,14 +3110,14 @@ var $ = require("jquery"),
     React = require("react"),
     cx = require("../utils/ReactUtils").cx;
 
-var ____Classf = React.Component;for (var ____Classf____Key in ____Classf) {
-    if (____Classf.hasOwnProperty(____Classf____Key)) {
-        Slider[____Classf____Key] = ____Classf[____Classf____Key];
+var ____Classk = React.Component;for (var ____Classk____Key in ____Classk) {
+    if (____Classk.hasOwnProperty(____Classk____Key)) {
+        Slider[____Classk____Key] = ____Classk[____Classk____Key];
     }
-}var ____SuperProtoOf____Classf = ____Classf === null ? null : ____Classf.prototype;Slider.prototype = Object.create(____SuperProtoOf____Classf);Slider.prototype.constructor = Slider;Slider.__superConstructor__ = ____Classf;
+}var ____SuperProtoOf____Classk = ____Classk === null ? null : ____Classk.prototype;Slider.prototype = Object.create(____SuperProtoOf____Classk);Slider.prototype.constructor = Slider;Slider.__superConstructor__ = ____Classk;
 function Slider(props) {
     "use strict";
-    ____SuperProtoOf____Classf.constructor.call(this, props);
+    ____SuperProtoOf____Classk.constructor.call(this, props);
 
     var values = [];
 
@@ -3406,14 +3406,14 @@ var React = require("react"),
 * for rotating attractors, and animates rotating attractors, redrawing only
 * when necessary */
 
-var ____Classj = React.Component;for (var ____Classj____Key in ____Classj) {
-    if (____Classj.hasOwnProperty(____Classj____Key)) {
-        Viewport[____Classj____Key] = ____Classj[____Classj____Key];
+var ____Class7 = React.Component;for (var ____Class7____Key in ____Class7) {
+    if (____Class7.hasOwnProperty(____Class7____Key)) {
+        Viewport[____Class7____Key] = ____Class7[____Class7____Key];
     }
-}var ____SuperProtoOf____Classj = ____Classj === null ? null : ____Classj.prototype;Viewport.prototype = Object.create(____SuperProtoOf____Classj);Viewport.prototype.constructor = Viewport;Viewport.__superConstructor__ = ____Classj;
+}var ____SuperProtoOf____Class7 = ____Class7 === null ? null : ____Class7.prototype;Viewport.prototype = Object.create(____SuperProtoOf____Class7);Viewport.prototype.constructor = Viewport;Viewport.__superConstructor__ = ____Class7;
 function Viewport(props) {
     "use strict";
-    ____Classj.call(this, props);
+    ____Class7.call(this, props);
 
     this.state = {
         searching: false,
@@ -3765,13 +3765,13 @@ module.exports = Ripple;
 var React = require("react"),
     FloatingActionButton = require("../FloatingActionButton");
 
-var ____Classt = React.Component;for (var ____Classt____Key in ____Classt) {
-    if (____Classt.hasOwnProperty(____Classt____Key)) {
-        AddComponentPanel[____Classt____Key] = ____Classt[____Classt____Key];
+var ____Classv = React.Component;for (var ____Classv____Key in ____Classv) {
+    if (____Classv.hasOwnProperty(____Classv____Key)) {
+        AddComponentPanel[____Classv____Key] = ____Classv[____Classv____Key];
     }
-}var ____SuperProtoOf____Classt = ____Classt === null ? null : ____Classt.prototype;AddComponentPanel.prototype = Object.create(____SuperProtoOf____Classt);AddComponentPanel.prototype.constructor = AddComponentPanel;AddComponentPanel.__superConstructor__ = ____Classt;function AddComponentPanel() {
-    "use strict";if (____Classt !== null) {
-        ____Classt.apply(this, arguments);
+}var ____SuperProtoOf____Classv = ____Classv === null ? null : ____Classv.prototype;AddComponentPanel.prototype = Object.create(____SuperProtoOf____Classv);AddComponentPanel.prototype.constructor = AddComponentPanel;AddComponentPanel.__superConstructor__ = ____Classv;function AddComponentPanel() {
+    "use strict";if (____Classv !== null) {
+        ____Classv.apply(this, arguments);
     }
 }
 Object.defineProperty(AddComponentPanel.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -3809,13 +3809,13 @@ var React = require("react"),
     FloatingActionButton = require("../FloatingActionButton"),
     Icon = require("../Icon");
 
-var ____Classr = React.Component;for (var ____Classr____Key in ____Classr) {
-    if (____Classr.hasOwnProperty(____Classr____Key)) {
-        ComponentPanel[____Classr____Key] = ____Classr[____Classr____Key];
+var ____Classt = React.Component;for (var ____Classt____Key in ____Classt) {
+    if (____Classt.hasOwnProperty(____Classt____Key)) {
+        ComponentPanel[____Classt____Key] = ____Classt[____Classt____Key];
     }
-}var ____SuperProtoOf____Classr = ____Classr === null ? null : ____Classr.prototype;ComponentPanel.prototype = Object.create(____SuperProtoOf____Classr);ComponentPanel.prototype.constructor = ComponentPanel;ComponentPanel.__superConstructor__ = ____Classr;function ComponentPanel() {
-    "use strict";if (____Classr !== null) {
-        ____Classr.apply(this, arguments);
+}var ____SuperProtoOf____Classt = ____Classt === null ? null : ____Classt.prototype;ComponentPanel.prototype = Object.create(____SuperProtoOf____Classt);ComponentPanel.prototype.constructor = ComponentPanel;ComponentPanel.__superConstructor__ = ____Classt;function ComponentPanel() {
+    "use strict";if (____Classt !== null) {
+        ____Classt.apply(this, arguments);
     }
 }
 Object.defineProperty(ComponentPanel.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -3870,13 +3870,13 @@ var _ = require("underscore"),
     Actions = require("../../actions/Actions"),
     Button = require("../Button");
 
-var ____Classv = React.Component;for (var ____Classv____Key in ____Classv) {
-    if (____Classv.hasOwnProperty(____Classv____Key)) {
-        ComponentPicker[____Classv____Key] = ____Classv[____Classv____Key];
+var ____Classu = React.Component;for (var ____Classu____Key in ____Classu) {
+    if (____Classu.hasOwnProperty(____Classu____Key)) {
+        ComponentPicker[____Classu____Key] = ____Classu[____Classu____Key];
     }
-}var ____SuperProtoOf____Classv = ____Classv === null ? null : ____Classv.prototype;ComponentPicker.prototype = Object.create(____SuperProtoOf____Classv);ComponentPicker.prototype.constructor = ComponentPicker;ComponentPicker.__superConstructor__ = ____Classv;function ComponentPicker() {
-    "use strict";if (____Classv !== null) {
-        ____Classv.apply(this, arguments);
+}var ____SuperProtoOf____Classu = ____Classu === null ? null : ____Classu.prototype;ComponentPicker.prototype = Object.create(____SuperProtoOf____Classu);ComponentPicker.prototype.constructor = ComponentPicker;ComponentPicker.__superConstructor__ = ____Classu;function ComponentPicker() {
+    "use strict";if (____Classu !== null) {
+        ____Classu.apply(this, arguments);
     }
 }
 Object.defineProperty(ComponentPicker.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -4162,13 +4162,13 @@ module.exports = SettingsPage;
 var React = require("react"),
     Checkbox = require("../../Checkbox");
 
-var ____Classu = React.Component;for (var ____Classu____Key in ____Classu) {
-    if (____Classu.hasOwnProperty(____Classu____Key)) {
-        BooleanValueEditor[____Classu____Key] = ____Classu[____Classu____Key];
+var ____Classs = React.Component;for (var ____Classs____Key in ____Classs) {
+    if (____Classs.hasOwnProperty(____Classs____Key)) {
+        BooleanValueEditor[____Classs____Key] = ____Classs[____Classs____Key];
     }
-}var ____SuperProtoOf____Classu = ____Classu === null ? null : ____Classu.prototype;BooleanValueEditor.prototype = Object.create(____SuperProtoOf____Classu);BooleanValueEditor.prototype.constructor = BooleanValueEditor;BooleanValueEditor.__superConstructor__ = ____Classu;function BooleanValueEditor() {
-    "use strict";if (____Classu !== null) {
-        ____Classu.apply(this, arguments);
+}var ____SuperProtoOf____Classs = ____Classs === null ? null : ____Classs.prototype;BooleanValueEditor.prototype = Object.create(____SuperProtoOf____Classs);BooleanValueEditor.prototype.constructor = BooleanValueEditor;BooleanValueEditor.__superConstructor__ = ____Classs;function BooleanValueEditor() {
+    "use strict";if (____Classs !== null) {
+        ____Classs.apply(this, arguments);
     }
 }
 Object.defineProperty(BooleanValueEditor.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -4190,13 +4190,13 @@ var React = require("react"),
     Icon = require("../../Icon"),
     Slider = require("../../Slider");
 
-var ____Classs = React.Component;for (var ____Classs____Key in ____Classs) {
-    if (____Classs.hasOwnProperty(____Classs____Key)) {
-        NumberValueEditor[____Classs____Key] = ____Classs[____Classs____Key];
+var ____Classr = React.Component;for (var ____Classr____Key in ____Classr) {
+    if (____Classr.hasOwnProperty(____Classr____Key)) {
+        NumberValueEditor[____Classr____Key] = ____Classr[____Classr____Key];
     }
-}var ____SuperProtoOf____Classs = ____Classs === null ? null : ____Classs.prototype;NumberValueEditor.prototype = Object.create(____SuperProtoOf____Classs);NumberValueEditor.prototype.constructor = NumberValueEditor;NumberValueEditor.__superConstructor__ = ____Classs;function NumberValueEditor() {
-    "use strict";if (____Classs !== null) {
-        ____Classs.apply(this, arguments);
+}var ____SuperProtoOf____Classr = ____Classr === null ? null : ____Classr.prototype;NumberValueEditor.prototype = Object.create(____SuperProtoOf____Classr);NumberValueEditor.prototype.constructor = NumberValueEditor;NumberValueEditor.__superConstructor__ = ____Classr;function NumberValueEditor() {
+    "use strict";if (____Classr !== null) {
+        ____Classr.apply(this, arguments);
     }
 }
 Object.defineProperty(NumberValueEditor.prototype, "render", { writable: true, configurable: true, value: (function (_value) {
@@ -5176,13 +5176,13 @@ var React = require("react"),
     Paper = require("../components/Paper"),
     Markdown = require("../components/Markdown");
 
-var ____Class6 = React.Component;for (var ____Class6____Key in ____Class6) {
-    if (____Class6.hasOwnProperty(____Class6____Key)) {
-        Changelog[____Class6____Key] = ____Class6[____Class6____Key];
+var ____Class5 = React.Component;for (var ____Class5____Key in ____Class5) {
+    if (____Class5.hasOwnProperty(____Class5____Key)) {
+        Changelog[____Class5____Key] = ____Class5[____Class5____Key];
     }
-}var ____SuperProtoOf____Class6 = ____Class6 === null ? null : ____Class6.prototype;Changelog.prototype = Object.create(____SuperProtoOf____Class6);Changelog.prototype.constructor = Changelog;Changelog.__superConstructor__ = ____Class6;function Changelog() {
-    "use strict";if (____Class6 !== null) {
-        ____Class6.apply(this, arguments);
+}var ____SuperProtoOf____Class5 = ____Class5 === null ? null : ____Class5.prototype;Changelog.prototype = Object.create(____SuperProtoOf____Class5);Changelog.prototype.constructor = Changelog;Changelog.__superConstructor__ = ____Class5;function Changelog() {
+    "use strict";if (____Class5 !== null) {
+        ____Class5.apply(this, arguments);
     }
 }
 Object.defineProperty(Changelog.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -5239,15 +5239,15 @@ var $ = require("jquery"),
     Cookies = require("js-cookie"),
     GA = require("../utils/GoogleAnalytics");
 
-var ____Class3 = React.Component;for (var ____Class3____Key in ____Class3) {
-    if (____Class3.hasOwnProperty(____Class3____Key)) {
-        Explore[____Class3____Key] = ____Class3[____Class3____Key];
+var ____Class0 = React.Component;for (var ____Class0____Key in ____Class0) {
+    if (____Class0.hasOwnProperty(____Class0____Key)) {
+        Explore[____Class0____Key] = ____Class0[____Class0____Key];
     }
-}var ____SuperProtoOf____Class3 = ____Class3 === null ? null : ____Class3.prototype;Explore.prototype = Object.create(____SuperProtoOf____Class3);Explore.prototype.constructor = Explore;Explore.__superConstructor__ = ____Class3;
+}var ____SuperProtoOf____Class0 = ____Class0 === null ? null : ____Class0.prototype;Explore.prototype = Object.create(____SuperProtoOf____Class0);Explore.prototype.constructor = Explore;Explore.__superConstructor__ = ____Class0;
 
 function Explore(props) {
     "use strict";
-    ____Class3.call(this, props);
+    ____Class0.call(this, props);
 
     this.state = {
         showIntro: !Cookies.get("hideIntro"),
@@ -5486,13 +5486,13 @@ var React = require("react"),
     Paper = require("../components/Paper"),
     Markdown = require("../components/Markdown");
 
-var ____Class0 = React.Component;for (var ____Class0____Key in ____Class0) {
-    if (____Class0.hasOwnProperty(____Class0____Key)) {
-        Home[____Class0____Key] = ____Class0[____Class0____Key];
+var ____Class2 = React.Component;for (var ____Class2____Key in ____Class2) {
+    if (____Class2.hasOwnProperty(____Class2____Key)) {
+        Home[____Class2____Key] = ____Class2[____Class2____Key];
     }
-}var ____SuperProtoOf____Class0 = ____Class0 === null ? null : ____Class0.prototype;Home.prototype = Object.create(____SuperProtoOf____Class0);Home.prototype.constructor = Home;Home.__superConstructor__ = ____Class0;function Home() {
-    "use strict";if (____Class0 !== null) {
-        ____Class0.apply(this, arguments);
+}var ____SuperProtoOf____Class2 = ____Class2 === null ? null : ____Class2.prototype;Home.prototype = Object.create(____SuperProtoOf____Class2);Home.prototype.constructor = Home;Home.__superConstructor__ = ____Class2;function Home() {
+    "use strict";if (____Class2 !== null) {
+        ____Class2.apply(this, arguments);
     }
 }
 Object.defineProperty(Home.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -5512,13 +5512,13 @@ var React = require("react"),
     Paper = require("../components/Paper"),
     Markdown = require("../components/Markdown");
 
-var ____Class5 = React.Component;for (var ____Class5____Key in ____Class5) {
-    if (____Class5.hasOwnProperty(____Class5____Key)) {
-        Links[____Class5____Key] = ____Class5[____Class5____Key];
+var ____Class3 = React.Component;for (var ____Class3____Key in ____Class3) {
+    if (____Class3.hasOwnProperty(____Class3____Key)) {
+        Links[____Class3____Key] = ____Class3[____Class3____Key];
     }
-}var ____SuperProtoOf____Class5 = ____Class5 === null ? null : ____Class5.prototype;Links.prototype = Object.create(____SuperProtoOf____Class5);Links.prototype.constructor = Links;Links.__superConstructor__ = ____Class5;function Links() {
-    "use strict";if (____Class5 !== null) {
-        ____Class5.apply(this, arguments);
+}var ____SuperProtoOf____Class3 = ____Class3 === null ? null : ____Class3.prototype;Links.prototype = Object.create(____SuperProtoOf____Class3);Links.prototype.constructor = Links;Links.__superConstructor__ = ____Class3;function Links() {
+    "use strict";if (____Class3 !== null) {
+        ____Class3.apply(this, arguments);
     }
 }
 Object.defineProperty(Links.prototype, "render", { writable: true, configurable: true, value: function value() {
@@ -5537,15 +5537,15 @@ var React = require("react"),
     Paper = require("../components/Paper"),
     Slider = require("../components/Slider");
 
-var ____Class2 = React.Component;for (var ____Class2____Key in ____Class2) {
-    if (____Class2.hasOwnProperty(____Class2____Key)) {
-        LogisticGraph[____Class2____Key] = ____Class2[____Class2____Key];
+var ____Class6 = React.Component;for (var ____Class6____Key in ____Class6) {
+    if (____Class6.hasOwnProperty(____Class6____Key)) {
+        LogisticGraph[____Class6____Key] = ____Class6[____Class6____Key];
     }
-}var ____SuperProtoOf____Class2 = ____Class2 === null ? null : ____Class2.prototype;LogisticGraph.prototype = Object.create(____SuperProtoOf____Class2);LogisticGraph.prototype.constructor = LogisticGraph;LogisticGraph.__superConstructor__ = ____Class2;
+}var ____SuperProtoOf____Class6 = ____Class6 === null ? null : ____Class6.prototype;LogisticGraph.prototype = Object.create(____SuperProtoOf____Class6);LogisticGraph.prototype.constructor = LogisticGraph;LogisticGraph.__superConstructor__ = ____Class6;
 
 function LogisticGraph(props) {
     "use strict";
-    ____Class2.call(this, props);
+    ____Class6.call(this, props);
     this.state = {
         r: 2,
         x0: 0.11111111,
@@ -49410,7 +49410,7 @@ return jQuery;
 },{}],272:[function(require,module,exports){
 (function (global){
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.JSEncode = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-"use strict";function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,r=Array(e.length);t<e.length;t++)r[t]=e[t];return r}return Array.from(e)}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(exports,"__esModule",{value:!0});var _createClass=function(){function e(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),DecodeStream=function(){function e(t){_classCallCheck(this,e),this._text=t,this._index=0}return _createClass(e,[{key:"reset",value:function(){this._index=0}},{key:"peek",value:function(){return this._index<this._text.length?this._text[this._index]:null}},{key:"next",value:function(){return this._index<this._text.length?this._text[this._index++]:null}},{key:"expect",value:function(e){this.expectNotEof(),this._expect(e,this.next())}},{key:"_expect",value:function(e,t){if(t!==e)throw"expected '"+e+"' at offset "+this._index}},{key:"expectEof",value:function(){if(!this.isEof())throw"expected end of input"}},{key:"expectNotEof",value:function(){if(this.isEof())throw"unexpected end of input"}},{key:"isEof",value:function(){return this._index>=this._text.length}}]),e}(),JSEncoder=function(){function e(t){_classCallCheck(this,e),this._types={},this._includePrivateFields=!1,this._ignoreUnregisteredTypes=!1,t&&(t.types&&this.registerTypes.apply(this,_toConsumableArray(t.types)),this._includePrivateFields=!!t.includePrivateFields,this._ignoreUnregisteredTypes=!!t.ignoreUnregisteredTypes)}return _createClass(e,[{key:"registerTypes",value:function(){var e=!0,t=!1,r=void 0;try{for(var n=arguments.length,o=Array(n),i=0;i<n;i++)o[i]=arguments[i];for(var a,c=o[Symbol.iterator]();!(e=(a=c.next()).done);e=!0){var u=a.value;if(u.constructor!==Function)throw"type"+u+" must be a Function";var s=this._getTypeName(u);if(!s)throw"anonymous type cannot be registered";if(this._types.hasOwnProperty(s))throw"type "+s+" already registered";this._types[s]=u}}catch(e){t=!0,r=e}finally{try{!e&&c.return&&c.return()}finally{if(t)throw r}}}},{key:"encode",value:function(e){return this._encodeAny(e)}},{key:"_getTypeName",value:function(e){var t=e.name;return void 0===t?this._guessTypeName(e):t||null}},{key:"_guessTypeName",value:function(e){var t=/function\s([^(]{1,})\(/,r=t.exec(e.toString());return r&&r.length>1?r[1].trim():null}},{key:"_hasSetter",value:function(e,t){var r=Object.getOwnPropertyDescriptor(e,t);return!r.get||r.set}},{key:"_getPropertyNames",value:function(e){if(!Object||!Object.getOwnPropertyNames){var t=[];for(var r in e)e.hasOwnProperty(r)&&t.push(r);return t}var n=e.constructor.prototype;if(e.constructor===Object||!n){var o=[],i=!0,a=!1,c=void 0;try{for(var u,s=Object.getOwnPropertyNames(e)[Symbol.iterator]();!(i=(u=s.next()).done);i=!0){var l=u.value;e.hasOwnProperty(l)&&this._hasSetter(e,l)&&o.push(l)}}catch(e){a=!0,c=e}finally{try{!i&&s.return&&s.return()}finally{if(a)throw c}}return o}var d={},y=!0,f=!1,h=void 0;try{for(var v,_=Object.getOwnPropertyNames(e)[Symbol.iterator]();!(y=(v=_.next()).done);y=!0){var p=v.value;e.hasOwnProperty(p)&&this._hasSetter(e,p)&&(d[p]=!0)}}catch(e){f=!0,h=e}finally{try{!y&&_.return&&_.return()}finally{if(f)throw h}}var x=!0,g=!1,k=void 0;try{for(var m,w=Object.getOwnPropertyNames(n)[Symbol.iterator]();!(x=(m=w.next()).done);x=!0){var b=m.value;n.hasOwnProperty(b)&&this._hasSetter(n,b)&&(d[b]=!0)}}catch(e){g=!0,k=e}finally{try{!x&&w.return&&w.return()}finally{if(g)throw k}}var N=[];for(var S in d)d.hasOwnProperty(S)&&N.push(S);return N}},{key:"_canEncode",value:function(e){if(void 0===e||null==e)return!0;switch(e.constructor){case String:case Number:case Boolean:case Array:case Object:return!0;case Function:return!1}return e.constructor.constructor===Function}},{key:"_encodeAny",value:function(e){if(void 0===e)return this._encodeUndefined();if(null===e)return this._encodeNull();switch(e.constructor){case String:return this._encodeString(e);case Number:return this._encodeNumber(e);case Boolean:return this._encodeBoolean(e);case Array:return this._encodeArray(e);case Object:return this._encodeDictionary(e);case Function:throw"cannot encode Function"}if(e.constructor.constructor===Function)return this._encodeObject(e);throw"unable to encode unsupported type "+e.constructor.name}},{key:"_encodeUndefined",value:function(){return"u"}},{key:"_encodeNull",value:function(){return"n"}},{key:"_encodeString",value:function(e){return e.length+":"+e}},{key:"_encodeNumber",value:function(e){return"("+e+")"}},{key:"_encodeBoolean",value:function(e){return e?"t":"f"}},{key:"_encodeArray",value:function(e){var t="[",r=!0,n=!1,o=void 0;try{for(var i,a=e[Symbol.iterator]();!(r=(i=a.next()).done);r=!0){var c=i.value;this._canEncode(c)&&(t+=this._encodeAny(c))}}catch(e){n=!0,o=e}finally{try{!r&&a.return&&a.return()}finally{if(n)throw o}}return t+"]"}},{key:"_encodeDictionary",value:function(e){var t="{",r=!0,n=!1,o=void 0;try{for(var i,a=this._getPropertyNames(e)[Symbol.iterator]();!(r=(i=a.next()).done);r=!0){var c=i.value;this._canEncode(e[c])&&(t+=this._encodeString(c),t+=this._encodeAny(e[c]))}}catch(e){n=!0,o=e}finally{try{!r&&a.return&&a.return()}finally{if(n)throw o}}return t+"}"}},{key:"_encodeObject",value:function(e){var t=this._getTypeName(e.constructor);if(!t)throw"could not determine type for constructor: "+e.constructor+", value: "+JSON.stringify(e);var r="<"+this._encodeString(t),n=!0,o=!1,i=void 0;try{for(var a,c=this._getPropertyNames(e)[Symbol.iterator]();!(n=(a=c.next()).done);n=!0){var u=a.value;this._shouldEncodeField(e,u)&&(r+=this._encodeString(u),r+=this._encodeAny(e[u]))}}catch(e){o=!0,i=e}finally{try{!n&&c.return&&c.return()}finally{if(o)throw i}}return r+">"}},{key:"_allowedFieldName",value:function(e){return!(!e||e.constructor!==String)&&(0!==e.indexOf("_")||this._includePrivateFields)}},{key:"_shouldEncodeField",value:function(e,t){return!!this._canEncode(e[t])&&this._allowedFieldName(t)}},{key:"decode",value:function(e){var t=new DecodeStream(e),r=this._decodeAny(t);return t.expectEof(),r}},{key:"_decodeAny",value:function(e){switch(e.expectNotEof(),e.peek()){case"u":return this._decodeUndefined(e);case"n":return this._decodeNull(e);case"(":return this._decodeNumber(e);case"t":case"f":return this._decodeBoolean(e);case"[":return this._decodeArray(e);case"{":return this._decodeDictionary(e);case"<":return this._decodeObject(e)}return this._decodeString(e)}},{key:"_decodeUndefined",value:function(e){e.expect("u")}},{key:"_decodeNull",value:function(e){return e.expect("n"),null}},{key:"_decodeString",value:function(e){for(var t="",r="";!e.isEof()&&this._isNumber(e.peek());)t+=e.next();var n=Number(t);if(Math.floor(n)!==n||n<0)throw t+" is not a valid length value for string";e.expect(":");for(var o=0;o<n;++o)e.expectNotEof(),r+=e.next();return r}},{key:"_decodeNumber",value:function(e){var t="";for(e.expect("(");!e.isEof()&&")"!=e.peek();)t+=e.next();e.expect(")");var r=Number(t);if(isNaN(r))throw t+" is not a valid Number value";return r}},{key:"_decodeBoolean",value:function(e){if(e.expectNotEof(),e.peek("t")||e.peek("f"))return"t"===e.next();throw e.peek()+" is not a valid Boolean value"}},{key:"_decodeArray",value:function(e){var t=[];for(e.expect("[");!e.isEof()&&"]"!=e.peek();)t.push(this._decodeAny(e));return e.expect("]"),t}},{key:"_decodeDictionary",value:function(e){var t={};for(e.expect("{");!e.isEof()&&"}"!=e.peek();){var r=this._decodeString(e);t[r]=this._decodeAny(e)}return e.expect("}"),t}},{key:"_decodeObject",value:function(e){e.expect("<");var t=this._decodeString(e);if(!this._types.hasOwnProperty(t)&&!this._ignoreUnregisteredTypes)throw t+" is not a known registered type";for(var r=this._types[t],n=r?new r:{};!e.isEof()&&">"!==e.peek();){var o=this._decodeString(e),i=this._decodeAny(e);this._allowedFieldName(o)&&(n[o]=i)}return e.expect(">"),n}},{key:"_isNumber",value:function(e){return!isNaN(Number(e))}}]),e}();exports.default=JSEncoder,module.exports=exports.default;
+"use strict";function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,r=Array(e.length);t<e.length;t++)r[t]=e[t];return r}return Array.from(e)}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(exports,"__esModule",{value:!0});var _createClass=function(){function e(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),DecodeStream=function(){function e(t){_classCallCheck(this,e),this._text=t,this._index=0}return _createClass(e,[{key:"reset",value:function(){this._index=0}},{key:"peek",value:function(){return this._index<this._text.length?this._text[this._index]:null}},{key:"next",value:function(){return this._index<this._text.length?this._text[this._index++]:null}},{key:"expect",value:function(e){this.expectNotEof(),this._expect(e,this.next())}},{key:"_expect",value:function(e,t){if(t!==e)throw"expected '"+e+"' at offset "+this._index}},{key:"expectEof",value:function(){if(!this.isEof())throw"expected end of input"}},{key:"expectNotEof",value:function(){if(this.isEof())throw"unexpected end of input"}},{key:"isEof",value:function(){return this._index>=this._text.length}}]),e}(),JSEncoder=function(){function e(t){_classCallCheck(this,e),this._types={},this._includePrivateFields=!1,this._ignoreUnregisteredTypes=!1,t&&(t.types&&this.registerTypes.apply(this,_toConsumableArray(t.types)),this._includePrivateFields=!!t.includePrivateFields,this._ignoreUnregisteredTypes=!!t.ignoreUnregisteredTypes)}return _createClass(e,[{key:"registerTypes",value:function(){var e=!0,t=!1,r=void 0;try{for(var n=arguments.length,o=Array(n),i=0;i<n;i++)o[i]=arguments[i];for(var a,c=o[Symbol.iterator]();!(e=(a=c.next()).done);e=!0){var u=a.value;if(u.constructor!==Function)throw"type"+u+" must be a Function";var s=this._getTypeName(u);if(!s)throw"anonymous type cannot be registered";if(this._types.hasOwnProperty(s))throw"type "+s+" already registered";this._types[s]=u}}catch(e){t=!0,r=e}finally{try{!e&&c.return&&c.return()}finally{if(t)throw r}}}},{key:"encode",value:function(e){return this._encodeAny(e)}},{key:"_getTypeName",value:function(e){var t=e.name;return void 0===t?this._guessTypeName(e):t||null}},{key:"_guessTypeName",value:function(e){var t=/function\s([^(]{1,})\(/,r=t.exec(e.toString());return r&&r.length>1?r[1].trim():null}},{key:"_hasSetter",value:function(e,t){var r=Object.getOwnPropertyDescriptor(e,t);return!r.get||r.set}},{key:"_getPropertyNames",value:function(e){if(!Object||!Object.getOwnPropertyNames){var t=[];for(var r in e)e.hasOwnProperty(r)&&t.push(r);return t}var n=e.constructor.prototype;if(e.constructor===Object||!n){var o=[],i=!0,a=!1,c=void 0;try{for(var u,s=Object.getOwnPropertyNames(e)[Symbol.iterator]();!(i=(u=s.next()).done);i=!0){var l=u.value;e.hasOwnProperty(l)&&this._hasSetter(e,l)&&o.push(l)}}catch(e){a=!0,c=e}finally{try{!i&&s.return&&s.return()}finally{if(a)throw c}}return o}var d={},y=!0,f=!1,h=void 0;try{for(var v,_=Object.getOwnPropertyNames(e)[Symbol.iterator]();!(y=(v=_.next()).done);y=!0){var p=v.value;e.hasOwnProperty(p)&&this._hasSetter(e,p)&&(d[p]=!0)}}catch(e){f=!0,h=e}finally{try{!y&&_.return&&_.return()}finally{if(f)throw h}}var x=!0,g=!1,k=void 0;try{for(var m,w=Object.getOwnPropertyNames(n)[Symbol.iterator]();!(x=(m=w.next()).done);x=!0){var b=m.value;n.hasOwnProperty(b)&&this._hasSetter(n,b)&&(d[b]=!0)}}catch(e){g=!0,k=e}finally{try{!x&&w.return&&w.return()}finally{if(g)throw k}}var N=[];for(var S in d)d.hasOwnProperty(S)&&N.push(S);return N}},{key:"_canEncode",value:function(e){if(void 0===e||null==e)return!0;switch(e.constructor){case String:case Number:case Boolean:case Array:case Object:return!0;case Function:return!1}return e.constructor.constructor===Function}},{key:"_encodeAny",value:function(e){if(void 0===e)return this._encodeUndefined();if(null===e)return this._encodeNull();switch(e.constructor){case String:return this._encodeString(e);case Number:return this._encodeNumber(e);case Boolean:return this._encodeBoolean(e);case Array:return this._encodeArray(e);case Object:return this._encodeDictionary(e);case Function:throw"cannot encode Function"}if(e.constructor.constructor===Function)return this._encodeObject(e);throw"unable to encode unsupported type "+e.constructor.name}},{key:"_encodeUndefined",value:function(){return"u"}},{key:"_encodeNull",value:function(){return"n"}},{key:"_encodeString",value:function(e){return e.length+":"+e}},{key:"_encodeNumber",value:function(e){return"("+e+")"}},{key:"_encodeBoolean",value:function(e){return e?"t":"f"}},{key:"_encodeArray",value:function(e){var t="[",r=!0,n=!1,o=void 0;try{for(var i,a=e[Symbol.iterator]();!(r=(i=a.next()).done);r=!0){var c=i.value;this._canEncode(c)&&(t+=this._encodeAny(c))}}catch(e){n=!0,o=e}finally{try{!r&&a.return&&a.return()}finally{if(n)throw o}}return t+"]"}},{key:"_encodeDictionary",value:function(e){var t="{",r=!0,n=!1,o=void 0;try{for(var i,a=this._getPropertyNames(e)[Symbol.iterator]();!(r=(i=a.next()).done);r=!0){var c=i.value;this._canEncode(e[c])&&(t+=this._encodeString(c),t+=this._encodeAny(e[c]))}}catch(e){n=!0,o=e}finally{try{!r&&a.return&&a.return()}finally{if(n)throw o}}return t+"}"}},{key:"_encodeObject",value:function(e){var t=this._getTypeName(e.constructor);if(!t)throw"could not determine type for constructor: "+e.constructor+", value: "+JSON.stringify(e);var r="<"+this._encodeString(t),n=!0,o=!1,i=void 0;try{for(var a,c=this._getPropertyNames(e)[Symbol.iterator]();!(n=(a=c.next()).done);n=!0){var u=a.value;this._shouldEncodeField(e,u)&&(r+=this._encodeString(u),r+=this._encodeAny(e[u]))}}catch(e){o=!0,i=e}finally{try{!n&&c.return&&c.return()}finally{if(o)throw i}}return r+">"}},{key:"_allowedFieldName",value:function(e){return!(!e||e.constructor!==String)&&(0!==e.indexOf("_")||this._includePrivateFields)}},{key:"_shouldEncodeField",value:function(e,t){return!!this._canEncode(e[t])&&this._allowedFieldName(t)}},{key:"decode",value:function(e){var t=new DecodeStream(e),r=this._decodeAny(t);return t.expectEof(),r}},{key:"_decodeAny",value:function(e){switch(e.expectNotEof(),e.peek()){case"u":return this._decodeUndefined(e);case"n":return this._decodeNull(e);case"(":return this._decodeNumber(e);case"t":case"f":return this._decodeBoolean(e);case"[":return this._decodeArray(e);case"{":return this._decodeDictionary(e);case"<":return this._decodeObject(e)}return this._decodeString(e)}},{key:"_decodeUndefined",value:function(e){e.expect("u")}},{key:"_decodeNull",value:function(e){return e.expect("n"),null}},{key:"_decodeString",value:function(e){for(var t="",r="";!e.isEof()&&this._isNumber(e.peek());)t+=e.next();var n=Number(t);if(Math.floor(n)!==n||n<0)throw t+" is not a valid length value for string";e.expect(":");for(var o=0;o<n;++o)e.expectNotEof(),r+=e.next();return r}},{key:"_decodeNumber",value:function(e){var t="";for(e.expect("(");!e.isEof()&&")"!=e.peek();)t+=e.next();e.expect(")");var r=Number(t);if(isNaN(r))throw t+" is not a valid Number value";return r}},{key:"_decodeBoolean",value:function(e){if(e.expectNotEof(),e.peek("t")||e.peek("f"))return"t"===e.next();throw e.peek()+" is not a valid Boolean value"}},{key:"_decodeArray",value:function(e){var t=[];for(e.expect("[");!e.isEof()&&"]"!=e.peek();)t.push(this._decodeAny(e));return e.expect("]"),t}},{key:"_decodeDictionary",value:function(e){var t={};for(e.expect("{");!e.isEof()&&"}"!=e.peek();){var r=this._decodeString(e);t[r]=this._decodeAny(e)}return e.expect("}"),t}},{key:"_decodeObject",value:function(e){e.expect("<");var t=this._decodeString(e),r=!1;if(!this._types.hasOwnProperty(t)){if(!this._ignoreUnregisteredTypes)throw t+" is not a known registered type";r=!0}for(var n=this._types[t],o=n?new n:{};!e.isEof()&&">"!==e.peek();){var i=this._decodeString(e),a=this._decodeAny(e);this._allowedFieldName(i)&&(o[i]=a)}return e.expect(">"),r?null:o}},{key:"_isNumber",value:function(e){return!isNaN(Number(e))}}]),e}();exports.default=JSEncoder,module.exports=exports.default;
 
 },{}]},{},[1])(1)
 });
