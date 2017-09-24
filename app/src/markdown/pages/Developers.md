@@ -104,6 +104,7 @@ class MyAwesomeMap extends Map {
 
     // Can be used for default param values 
     constructor() {
+        super()
         this._theta = 0.4;
     }
 }
@@ -160,7 +161,7 @@ class LogisticMap extends Map {
     // Required, apply the function
     apply(v, c) {
         return [
-            c[0] * v[0] * (1 - v[0]);
+            c[0] * v[0] * (1 - v[0])
         ];
     }
 }
@@ -273,6 +274,7 @@ class PositiveOnly extends SearchCriterion {
     
     // Can be used for default param values 
     constructor() {
+        super();
         this._minIterations = 1000;
     }
     
