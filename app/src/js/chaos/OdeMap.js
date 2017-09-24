@@ -1,10 +1,7 @@
-let Component = require('./Component');
+let Map = require('./Map');
 
 /* Implements a map for an ODE solved using the Euler method */
-class OdeMap extends Component {
-    get dimensions() { return 3; }
-    get coefficients() { }
-
+class OdeMap extends Map {
     get epsilon() { return 0.01; }
 
     apply(val, coefficients) {
@@ -19,9 +16,6 @@ class OdeMap extends Component {
     }
 
     applyOde(val, coefficients) { }
-
-    // initialize the map before beginning search, if needed
-    initialize(isSnapshot) { }
 }
 
 module.exports = OdeMap;
