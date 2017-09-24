@@ -30,7 +30,7 @@
     "jquery": "^2.1.3",
     "js-cookie": "^2.1.3",
     "jsdom": "^9.8.0",
-    "jsencode": "^1.0.11",
+    "jsencode": "^1.0.12",
     "pseudo-worker": "^1.1.1",
     "react": "^0.13.2",
     "react-router": "^0.13.2",
