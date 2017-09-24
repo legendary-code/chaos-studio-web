@@ -106,6 +106,7 @@ the <code class="hljs ebnf"><span class="hljs-attribute">Components</span></code
 
     <span class="hljs-comment">// Can be used for default param values </span>
     <span class="hljs-keyword">constructor</span>() {
+        <span class="hljs-keyword">super</span>()
         <span class="hljs-keyword">this</span>._theta = <span class="hljs-number">0.4</span>;
     }
 }
@@ -162,7 +163,7 @@ it might look something like this:</p>
     <span class="hljs-comment">// Required, apply the function</span>
     apply(v, c) {
         <span class="hljs-keyword">return</span> [
-            c[<span class="hljs-number">0</span>] * v[<span class="hljs-number">0</span>] * (<span class="hljs-number">1</span> - v[<span class="hljs-number">0</span>]);
+            c[<span class="hljs-number">0</span>] * v[<span class="hljs-number">0</span>] * (<span class="hljs-number">1</span> - v[<span class="hljs-number">0</span>])
         ];
     }
 }
@@ -275,6 +276,7 @@ it could look something like this:</p>
 
     <span class="hljs-comment">// Can be used for default param values </span>
     <span class="hljs-keyword">constructor</span>() {
+        <span class="hljs-keyword">super</span>();
         <span class="hljs-keyword">this</span>._minIterations = <span class="hljs-number">1000</span>;
     }
 
