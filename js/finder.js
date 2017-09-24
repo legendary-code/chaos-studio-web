@@ -2268,17 +2268,9 @@ Object.defineProperty(WebGLNativeRenderer, "checkSupported", { writable: true, c
 Object.defineProperty(WebGLNativeRenderer.prototype, "create", { writable: true, configurable: true, value: function value(viewport) {
         "use strict";
         var canvas = document.createElement("canvas");
-        var width = viewport.width * viewport.devicePixelRatio;
-        var height = viewport.height * viewport.devicePixelRatio;
-
-        canvas.width = width;
-        canvas.height = height;
-        canvas.style.width = width;
-        canvas.style.height = height;
-
         var gl = canvas.getContext("webgl", { preserveDrawingBuffer: true }) || canvas.getContext("experimental-webgl", { preserveDrawingBuffer: true });
-        var buffer = gl.createBuffer();
 
+        var buffer = gl.createBuffer();
         var program = createShaderProgram(gl);
         var positionIndex = gl.getAttribLocation(program, "position");
         var colorIndex = gl.getAttribLocation(program, "color");
@@ -2299,9 +2291,8 @@ Object.defineProperty(WebGLNativeRenderer.prototype, "create", { writable: true,
         gl.enable(gl.BLEND);
         gl.blendEquation(gl.FUNC_ADD);
         gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
-        gl.viewport(0, 0, width, height);
 
-        var projectionMatrix = m4.translate(m4.perspective(degToRad(60), width / height, 0.0001, 100), 0, 0, -2.5);
+        //const projectionMatrix = m4.translate(m4.perspective(degToRad(60), width / height, 0.0001, 100), 0, 0, -2.5);
         var orthographicMatrix = m4.orthographic(-1.5, 1.5, -1.5, 1.5, -2, 2);
         var projectionLocation = gl.getUniformLocation(program, "projection");
         gl.uniformMatrix4fv(projectionLocation, false, orthographicMatrix);
@@ -2310,6 +2301,7 @@ Object.defineProperty(WebGLNativeRenderer.prototype, "create", { writable: true,
 
         this._gl = gl;
         this._buffer = buffer;
+        this.resize(viewport);
 
         return canvas;
     } });
@@ -2379,8 +2371,14 @@ Object.defineProperty(WebGLNativeRenderer.prototype, "destroy", { writable: true
         "use strict";
     } });
 
-Object.defineProperty(WebGLNativeRenderer.prototype, "resize", { writable: true, configurable: true, value: function value(width, height) {
+Object.defineProperty(WebGLNativeRenderer.prototype, "resize", { writable: true, configurable: true, value: function value(viewport) {
         "use strict";
+        var width = viewport.width * viewport.devicePixelRatio;
+        var height = viewport.height * viewport.devicePixelRatio;
+        this._gl.canvas.width = width;
+        this._gl.canvas.height = height;
+        this._gl.canvas.style.width = viewport.width + "px";
+        this._gl.canvas.style.height = viewport.height + "px";
         this._gl.viewport(0, 0, width, height);
     } });
 
