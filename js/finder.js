@@ -308,9 +308,6 @@ function doWork(configuration, viewport, snapshot) {
             }
         }
 
-        console.log(snapshot.rng.seed);
-        console.log(snapshot.encode());
-
         self.postMessage({
             event: "complete",
             snapshot: snapshot.encode(),
@@ -1455,7 +1452,7 @@ Object.defineProperty(CubicMap, "displayName", { configurable: true, get: functi
 
 Object.defineProperty(CubicMap, "description", { configurable: true, get: function get() {
         "use strict";
-        return "A polynomial map with a degree of 3";
+        return "A polynomial map of degree 3";
     } });
 
 Object.defineProperty(CubicMap.prototype, "coefficients", { configurable: true, get: function get() {
@@ -1498,7 +1495,7 @@ Object.defineProperty(CubicOdeMap, "displayName", { configurable: true, get: fun
 
 Object.defineProperty(CubicOdeMap, "description", { configurable: true, get: function get() {
         "use strict";
-        return "A cubic ODE map";
+        return "A polynomial ODE of degree 3";
     } });
 
 Object.defineProperty(CubicOdeMap.prototype, "coefficients", { configurable: true, get: function get() {
@@ -1846,7 +1843,7 @@ Object.defineProperty(PolynomialOdeMap, "displayName", { configurable: true, get
 
 Object.defineProperty(PolynomialOdeMap, "description", { configurable: true, get: function get() {
         "use strict";
-        return "A polynomial ODE map of variable degree";
+        return "A polynomial ODE of variable degree";
     } });
 
 Object.defineProperty(PolynomialOdeMap, "params", { configurable: true, get: function get() {
@@ -1985,7 +1982,7 @@ Object.defineProperty(QuadraticMap, "displayName", { configurable: true, get: fu
 
 Object.defineProperty(QuadraticMap, "description", { configurable: true, get: function get() {
         "use strict";
-        return "A polynomial map with a degree of 2";
+        return "A polynomial map of degree 2";
     } });
 
 Object.defineProperty(QuadraticMap.prototype, "coefficients", { configurable: true, get: function get() {
@@ -2024,7 +2021,7 @@ Object.defineProperty(QuadraticOdeMap, "displayName", { configurable: true, get:
 
 Object.defineProperty(QuadraticOdeMap, "description", { configurable: true, get: function get() {
         "use strict";
-        return "A quadratic ODE map";
+        return "A polynomial ODE of degree 2";
     } });
 
 Object.defineProperty(QuadraticOdeMap.prototype, "coefficients", { configurable: true, get: function get() {
@@ -2099,11 +2096,16 @@ Object.defineProperty(RandomMap.prototype, "initialize", { writable: true, confi
         }
 
         var types = _.filter(Components.findTypes(Map), function (type) {
-            return type != RandomMap;
+            return type !== RandomMap;
         });
         var TMap = types[_.random(0, types.length - 1)];
         this._map = new TMap();
         this._map.initialize(isSnapshot);
+    } });
+
+Object.defineProperty(RandomMap.prototype, "reset", { writable: true, configurable: true, value: function value() {
+        "use strict";
+        this._map.reset();
     } });
 
 Components.register(Map, RandomMap, true);
