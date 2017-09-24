@@ -751,13 +751,19 @@ sub {
   background-color: #e0e0e0; }
   .viewport canvas {
     background-color: #e0e0e0; }
+  .viewport .attractor-stats {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4px; }
   .viewport .search-progress-container {
     width: 300px;
     height: 150px;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: -75px 0 0 -150px; }
+    margin: -75px 0 0 -150px;
+    pointer-events: none; }
     .viewport .search-progress-container.hidden {
       display: none; }
     .viewport .search-progress-container label {
