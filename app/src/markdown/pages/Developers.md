@@ -104,7 +104,7 @@ class MyAwesomeMap extends Map {
 
     // Can be used for default param values 
     constructor() {
-        super()
+        super();
         this._theta = 0.4;
     }
 }
