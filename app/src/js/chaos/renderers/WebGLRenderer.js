@@ -74,18 +74,10 @@ class WebGLNativeRenderer extends Renderer {
 
     create(viewport) {
         const canvas = document.createElement('canvas');
-        const width = viewport.width * viewport.devicePixelRatio;
-        const height = viewport.height * viewport.devicePixelRatio;
-
-        canvas.width = width;
-        canvas.height = height;
-        canvas.style.width = width;
-        canvas.style.height = height;
-
         const gl = canvas.getContext('webgl', { preserveDrawingBuffer: true }) ||
                    canvas.getContext('experimental-webgl', { preserveDrawingBuffer: true });
-        const buffer = gl.createBuffer();
 
+        const buffer = gl.createBuffer();
         const program = createShaderProgram(gl);
         const positionIndex = gl.getAttribLocation(program, 'position');
         const colorIndex = gl.getAttribLocation(program, 'color');
@@ -106,9 +98,8 @@ class WebGLNativeRenderer extends Renderer {
         gl.enable(gl.BLEND);
         gl.blendEquation(gl.FUNC_ADD);
         gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
-        gl.viewport(0, 0, width, height);
 
-        const projectionMatrix = m4.translate(m4.perspective(degToRad(60), width / height, 0.0001, 100), 0, 0, -2.5);
+        //const projectionMatrix = m4.translate(m4.perspective(degToRad(60), width / height, 0.0001, 100), 0, 0, -2.5);
         const orthographicMatrix = m4.orthographic(-1.5, 1.5, -1.5, 1.5, -2, 2);
         const projectionLocation = gl.getUniformLocation(program, 'projection');
         gl.uniformMatrix4fv(projectionLocation, false, orthographicMatrix);
@@ -117,6 +108,7 @@ class WebGLNativeRenderer extends Renderer {
 
         this._gl = gl;
         this._buffer = buffer;
+        this.resize(viewport);
 
         return canvas;
     }
@@ -163,7 +155,13 @@ class WebGLNativeRenderer extends Renderer {
     destroy() {
     }
 
-    resize(width, height) {
+    resize(viewport) {
+        const width = viewport.width * viewport.devicePixelRatio;
+        const height = viewport.height * viewport.devicePixelRatio;
+        this._gl.canvas.width = width;
+        this._gl.canvas.height = height;
+        this._gl.canvas.style.width = viewport.width + 'px';
+        this._gl.canvas.style.height = viewport.height + 'px';
         this._gl.viewport(0, 0, width, height);
     }
 

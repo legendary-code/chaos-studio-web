@@ -86,13 +86,11 @@ class Viewport extends React.Component {
             return;
         }
 
-        const viewport = React.findDOMNode(this.refs.viewport);
-        const width = viewport.clientWidth;
-        const height = viewport.clientHeight;
+        const viewport = this.getViewport();
         const renderer = this.state.renderer;
 
         if (renderer) {
-            renderer.resize(width, height);
+            renderer.resize(viewport);
             this.renderScene();
         }
     }
