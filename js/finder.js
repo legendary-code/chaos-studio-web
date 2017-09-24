@@ -276,7 +276,7 @@ function doWork(configuration, viewport, snapshot) {
             }
         }
 
-        snapshot = AttractorSnapshot.create(configuration);
+        snapshot = new AttractorSnapshot(map, rng);
 
         var stats = [];
         stats.push("C = " + numCoefficients);
@@ -307,6 +307,9 @@ function doWork(configuration, viewport, snapshot) {
                 }
             }
         }
+
+        console.log(snapshot.rng.seed);
+        console.log(snapshot.encode());
 
         self.postMessage({
             event: "complete",
@@ -363,11 +366,6 @@ Object.defineProperty(AttractorSnapshot.prototype, "rng", { configurable: true, 
 Object.defineProperty(AttractorSnapshot.prototype, "rng", { configurable: true, set: function set(val) {
         "use strict";
         this._rng = val;
-    } });
-
-Object.defineProperty(AttractorSnapshot, "create", { writable: true, configurable: true, value: function value(configuration) {
-        "use strict";
-        return new AttractorSnapshot(configuration.map, configuration.rng);
     } });
 
 Components.register(AttractorSnapshot, AttractorSnapshot, true);
