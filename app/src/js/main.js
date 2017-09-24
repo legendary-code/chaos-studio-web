@@ -1,6 +1,7 @@
 window.__DEV__ = true;
 
 require('babel/polyfill');
+require('pseudo-worker/polyfill');
 window.jQuery = require('jquery');
 require('./jquery.mobile.custom');
 require('inobounce');

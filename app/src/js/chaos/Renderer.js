@@ -1,4 +1,5 @@
-let Component = require('./Component');
+const Component = require('./Component'),
+      Components = require('./Components');
 
 /* Implemented to define a renderer that is capable of rendering colored vertices to a canvas */
 class Renderer extends Component {
@@ -24,4 +25,5 @@ class Renderer extends Component {
     resize(width, height) { }
 }
 
+Components.register(Renderer, Renderer, true);
 module.exports = Renderer;

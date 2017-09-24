@@ -17,5 +17,4 @@ class Colorizer extends Component {
 }
 
 Components.register(Colorizer, Colorizer, true);
-
 module.exports = Colorizer;

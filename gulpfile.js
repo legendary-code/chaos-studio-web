@@ -139,6 +139,20 @@ gulp.task('link-js', ['stage'], function() {
                 .pipe(gulp.dest('./app/dist/js'));
 });
 
+gulp.task('link-finder-js', ['stage'], function() {
+    return browserify()
+        .add('./app/link/js/finder.js')
+        .transform(reactify, {es6: true, stripTypes: true, dev: false})
+        .transform(babelify)
+        .transform(globify)
+        .bundle()
+        .on('error', function(err) {
+            console.error(err);
+        })
+        .pipe(source('finder.js'))
+        .pipe(gulp.dest('./app/dist/js'));
+});
+
 gulp.task('link-sass', ['stage'], function() {
     return gulp.src('./app/link/sass/main.scss')
         .pipe(sass())
@@ -152,7 +166,7 @@ gulp.task('libs', ['three', 'jquery']);
 
 gulp.task('stage', ['libs', 'html', 'sass', 'md', 'js', 'svg', 'png', 'font', 'favicon']);
 
-gulp.task('link', ['stage', 'link-js', 'link-sass']);
+gulp.task('link', ['stage', 'link-js', 'link-finder-js', 'link-sass']);
 
 /* SERVER & BROWSER TASKS */
 

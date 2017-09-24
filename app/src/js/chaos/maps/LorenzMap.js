@@ -1,7 +1,8 @@
 let Map = require('../Map'),
+    OdeMap = require('../OdeMap'),
     Components = require('../Components');
 
-class LorenzMap extends Map {
+class LorenzMap extends OdeMap {
     static get displayName() {
         return "Lorenz";
     }
@@ -11,19 +12,22 @@ class LorenzMap extends Map {
     }
 
     get coefficients() {
-        return 4;
+        return 3;
     }
 
-    apply(v, c) {
-        let dt = c[0] * 0.01;
-        let sigma = c[1] * 10.0;
-        let rho = c[2] * 28.0;
-        let beta = c[3] * 2.66666666667;
+    get epsilon() {
+        return 0.01;
+    }
+
+    applyOde(v, c) {
+        let sigma = c[0] * 10.0;
+        let rho = c[1] * 28.0;
+        let beta = c[2] * 2.66666666667;
 
         return [
-            v[0] + (dt * sigma * (v[1] - v[0])),
-            v[1] + (dt * ((v[0] * (rho - v[2])) - v[1])),
-            v[2] + (dt * ((v[0] * v[1]) - (beta * v[2])))
+            sigma * (v[1] - v[0]),
+            (v[0] * (rho - v[2])) - v[1],
+            (v[0] * v[1]) - (beta * v[2])
         ];
     }
 }

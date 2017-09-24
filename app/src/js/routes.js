@@ -5,7 +5,6 @@ let React = require('react'),
     App = require('./pages/App'),
     Home = require('./pages/Home'),
     Explore = require('./pages/Explore'),
-    Settings = require('./pages/Settings'),
     Developers = require('./pages/Developers'),
     Links = require('./pages/Links'),
     Changelog = require('./pages/Changelog'),
@@ -16,7 +15,6 @@ let Routes = (
         <Route name="home" handler={Home}/>
         <Route path="/explore/:snapshotId" handler={Explore}/>
         <Route name="explore" handler={Explore}/>
-        <Route name="settings" handler={Settings}/>
         <Route name="developers" handler={Developers}/>
         <Route name="links" handler={Links}/>
         <Route name="changelog" handler={Changelog}/>

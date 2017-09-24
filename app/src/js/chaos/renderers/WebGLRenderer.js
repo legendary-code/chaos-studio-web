@@ -28,6 +28,7 @@ class WebGLRenderer extends Renderer {
     }
 
     constructor() {
+        super();
         this._renderFilter = new PencilSketchFilter();
     }
 

@@ -10,8 +10,8 @@ class Rotation {
     reset() {
         this._x = 0;
         this._y = 0;
-        this._dx = 0.005;
-        this._dy = 0;
+        this._dx = 0.001;
+        this._dy = 0.0;
         this._dragging = false;
     }
 

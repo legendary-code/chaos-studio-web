@@ -4,6 +4,7 @@ let Component = require('./Component');
 class Map extends Component {
     get dimensions() { return 3; }
     get coefficients() { }
+    reset() { }
     apply(val, coefficients) { }
 
     // initialize the map before beginning search, if needed

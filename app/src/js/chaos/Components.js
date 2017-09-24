@@ -71,7 +71,11 @@ class Components {
     }
 
     static _encoder() {
-        return new JSEncoder({includePrivateFields: false, types : Components.allTypes()});
+        return new JSEncoder({
+            includePrivateFields: false,
+            ignoreUnregisteredTypes: true,
+            types : Components.allTypes()
+        });
     }
 }
 
@@ -80,3 +84,7 @@ module.exports = Components;
 
 /* Include registered plug-ins automatically */
 require('./maps/**/*.js', {glob:true});
+require('./criteria/**/*.js', {glob:true});
+require('./renderers/**/*.js', {glob:true});
+require('./rngs/**/*.js', {glob:true});
+

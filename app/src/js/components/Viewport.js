@@ -9,7 +9,7 @@ let React = require('react'),
 
 class Viewport extends React.Component {
     constructor(props) {
-        super.constructor(props);
+        super(props);
 
         this.state = {
             searching: false,
@@ -37,6 +37,7 @@ class Viewport extends React.Component {
                 onTouchCancel={this._dragStop.bind(this)}
                 onTouchLeave={this._dragStop.bind(this)}
                 onTouchMove={this._drag.bind(this)}>
+                <label className="attractor-stats font-caption-medium">{this.state.stats}</label>
                 <div className={progressClassName}>
                     <img src="./svg/lorenz.svg" />
                     <label className="font-subhead">{this.state.statusMessage}</label>
@@ -154,9 +155,17 @@ class Viewport extends React.Component {
         this._startAnimation();
     }
 
-    getViewportSize() {
-        var viewport = React.findDOMNode(this.refs.viewport);
-        return { width: viewport.clientWidth, height: viewport.clientHeight };
+    setStats(stats) {
+        this.setState({stats: stats.join(', ')});
+    }
+
+    getViewport() {
+        const viewport = React.findDOMNode(this.refs.viewport);
+        return {
+            width: viewport.clientWidth,
+            height: viewport.clientHeight,
+            devicePixelRatio: window.devicePixelRatio || 1.0
+        };
     }
 
     showSearching() {

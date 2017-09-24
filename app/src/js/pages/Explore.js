@@ -17,13 +17,23 @@ let $ = require('jquery'),
 class Explore extends React.Component {
 
     constructor(props) {
-        super.constructor(props);
+        super(props);
 
         this.state = {
             showIntro: !Cookies.get('hideIntro'),
             searching: false,
             currentSnapshotId: null
         };
+
+        this.finder = new AttractorFinder(
+            (e) => { this.refs.viewport.updateStatus(e); },
+            this._attractorGenerated.bind(this),
+            this._searchCancelled.bind(this)
+        )
+    }
+
+    componentWillUnmount() {
+        this.finder.cancel();
     }
 
     render() {
@@ -123,7 +133,7 @@ class Explore extends React.Component {
     _cancelSearch() {
         GA.event("search", "cancel").send();
         this.refs.viewport.hideSearching();
-        this.state.task.cancel();
+        this.finder.cancel();
     }
 
     _search() {
@@ -138,28 +148,19 @@ class Explore extends React.Component {
 
         this.refs.viewport.showSearching();
         let config = SearchConfigurationStore.state.configuration;
-        let viewportSize = this.refs.viewport.getViewportSize();
+        let viewport = this.refs.viewport.getViewport();
 
-        let finder = new AttractorFinder(
-            config,
-            viewportSize,
-            (e) => { this.refs.viewport.updateStatus(e); },
-            this._attractorGenerated.bind(this),
-            this._searchCancelled.bind(this)
-        );
-
-        this.setState({
-            task: finder.find(),
-            searching: true
-        });
+        this.setState({searching: true});
+        this.finder.start(config, viewport);
     }
 
     _attractorGenerated(data) {
         GA.event("search", "finished").send();
-        let snapshotId = data.snapshot.encode();
+        let snapshotId = data.snapshot;
         let link = "#/explore/" + snapshotId;
         this.refs.viewport.hideSearching();
         this.refs.viewport.setRenderData(data.values);
+        this.refs.viewport.setStats(data.stats);
         window.history.pushState(null, null, link);
         this.setState({currentSnapshotId: snapshotId, searching: false});
     }
@@ -224,7 +225,7 @@ class Explore extends React.Component {
             let snapshotId = routeParams.snapshotId;
 
             // are we still looking at the same attractor?
-            if (snapshotId == this.state.currentSnapshotId) {
+            if (snapshotId === this.state.currentSnapshotId) {
                 return;
             }
 
@@ -248,22 +249,14 @@ class Explore extends React.Component {
 
             this.refs.viewport.showSearching();
             let config = SearchConfigurationStore.state.configuration;
-            let viewportSize = this.refs.viewport.getViewportSize();
-
-            let generator = new AttractorFinder(
-                config,
-                viewportSize,
-                (e) => { this.refs.viewport.updateStatus(e); },
-                this._attractorGenerated.bind(this),
-                this._searchCancelled.bind(this),
-                snapshot
-            );
+            let viewport = this.refs.viewport.getViewport();
 
             this.setState({
                 currentSnapshotId: snapshotId,
-                task: generator.find(),
                 searching: true
             });
+
+            this.finder.start(config, viewport, snapshot);
         }
     }
 }

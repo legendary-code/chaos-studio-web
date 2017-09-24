@@ -3,10 +3,10 @@ let Component = require('./Component'),
 
 /* Represents the minimum amount of information needed to re-generate an attractor */
 class AttractorSnapshot extends Component {
-    constructor(map, rng, startingIteration) {
+    constructor(map, rng) {
+        super();
         this._map = map;
         this._rng = rng;
-        this._startingIteration = startingIteration;
     }
 
     get map() {
@@ -25,19 +25,10 @@ class AttractorSnapshot extends Component {
         this._rng = val;
     }
 
-    get startingIteration() {
-        return this._startingIteration;
-    }
-
-    set startingIteration(val) {
-        this._startingIteration = val;
-    }
-
     static create(configuration) {
         return new AttractorSnapshot(
             configuration.map,
-            configuration.rng,
-            configuration.settlingIterations + configuration.searchIterations
+            configuration.rng
         );
     }
 }

@@ -33,7 +33,7 @@ class Bounds {
     isValid() {
         let extents = this.extents();
 
-        if (!Point.isValid(this._min) || Point.isValid(this._max)) {
+        if (!Point.isValid(this._min) || !Point.isValid(this._max)) {
             return false;
         }
 
@@ -42,6 +42,8 @@ class Bounds {
                 return false;
             }
         }
+
+        return true;
     }
 
     extents() {
@@ -53,6 +55,17 @@ class Bounds {
         }
 
         return e;
+    }
+
+    diagonalSquared() {
+        let diagonal = 0;
+
+        for (let i=0; i<this._dimensions; ++i) {
+            let d = this._max[i] - this._min[i];
+            diagonal += d*d;
+        }
+
+        return diagonal;
     }
 }
 

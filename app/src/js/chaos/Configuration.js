@@ -24,16 +24,13 @@ class Configuration extends Component {
             Props.component("colorizer", "Colorizer", Colorizer),
             Props.group(
                 "Search Options",
-                Props.number("settlingIterations", "Settling Iterations", 100, 10000, { integral: true, step: 100 }),
-                Props.number("searchIterations", "Search Iterations", 100, 10000, { integral: true, step: 100 }),
-                Props.number("density", "Number of points to draw", 0.1, 5, { decimalPlaces: 1 })
+                Props.number("density", "Number of points or lines to draw", 0.1, 5, { decimalPlaces: 1 })
             )
         ];
     }
 
     constructor(map, criteria, rng, renderer, projection, colorizer) {
-        this._settlingIterations = 1000;
-        this._searchIterations = 1000;
+        super();
         this._density = 1.0;
         this._map = map;
         this._rng = rng;
@@ -42,12 +39,6 @@ class Configuration extends Component {
         this._projection = projection;
         this._colorizer = colorizer;
     }
-
-    get settlingIterations() { return this._settlingIterations; }
-    set settlingIterations(val) { this._settlingIterations = val; }
-
-    get searchIterations() { return this._searchIterations; }
-    set searchIterations(val) { this._searchIterations = val; }
 
     get density() { return this._density; }
     set density(val) { this._density = val; }
