@@ -46,7 +46,7 @@ function doWork(configuration, viewport, snapshot) {
     var dimensions = map.dimensions;
     var numCoefficients = map.coefficients;
     var criteria = configuration.criteria;
-    var totalIterations = viewport.width * viewport.height * configuration.density / viewport.devicePixelRatio;
+    var totalIterations = viewport.width * viewport.height * configuration.density * viewport.devicePixelRatio;
 
     var work = function work() {
         var coefficients = [];
