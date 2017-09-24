@@ -47,7 +47,8 @@ function doWork(configuration, viewport, snapshot) {
     let dimensions = map.dimensions;
     let numCoefficients = map.coefficients;
     let criteria = configuration.criteria;
-    let totalIterations = viewport.width * viewport.height * configuration.density * viewport.devicePixelRatio;
+    let devicePixelRatioSquared = viewport.devicePixelRatio * viewport.devicePixelRatio;
+    let totalIterations = viewport.width * viewport.height * configuration.density * devicePixelRatioSquared;
 
     let work = () => {
         let coefficients = [];
