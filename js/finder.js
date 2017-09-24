@@ -1019,7 +1019,7 @@ Object.defineProperty(Renderer, "checkSupported", { writable: true, configurable
     } });
 
 /* Returns a DOM element (canvas) that acts as the rendering surface */
-Object.defineProperty(Renderer.prototype, "create", { writable: true, configurable: true, value: function value(width, height) {
+Object.defineProperty(Renderer.prototype, "create", { writable: true, configurable: true, value: function value(viewport) {
         "use strict";
     } });
 
@@ -2265,11 +2265,16 @@ Object.defineProperty(WebGLNativeRenderer, "checkSupported", { writable: true, c
         }
     } });
 
-Object.defineProperty(WebGLNativeRenderer.prototype, "create", { writable: true, configurable: true, value: function value(width, height) {
+Object.defineProperty(WebGLNativeRenderer.prototype, "create", { writable: true, configurable: true, value: function value(viewport) {
         "use strict";
         var canvas = document.createElement("canvas");
+        var width = viewport.width * viewport.devicePixelRatio;
+        var height = viewport.height * viewport.devicePixelRatio;
+
         canvas.width = width;
         canvas.height = height;
+        canvas.style.width = width;
+        canvas.style.height = height;
 
         var gl = canvas.getContext("webgl", { preserveDrawingBuffer: true }) || canvas.getContext("experimental-webgl", { preserveDrawingBuffer: true });
         var buffer = gl.createBuffer();
