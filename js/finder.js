@@ -817,25 +817,18 @@ module.exports = { fact: fact, ipow: ipow };
 },{}],11:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
-var Component = require("./Component");
+var Map = require("./Map");
 
 /* Implements a map for an ODE solved using the Euler method */
-for (var Component____Key in Component) {
-    if (Component.hasOwnProperty(Component____Key)) {
-        OdeMap[Component____Key] = Component[Component____Key];
+for (var Map____Key in Map) {
+    if (Map.hasOwnProperty(Map____Key)) {
+        OdeMap[Map____Key] = Map[Map____Key];
     }
-}var ____SuperProtoOfComponent = Component === null ? null : Component.prototype;OdeMap.prototype = Object.create(____SuperProtoOfComponent);OdeMap.prototype.constructor = OdeMap;OdeMap.__superConstructor__ = Component;function OdeMap() {
-    "use strict";if (Component !== null) {
-        Component.apply(this, arguments);
+}var ____SuperProtoOfMap = Map === null ? null : Map.prototype;OdeMap.prototype = Object.create(____SuperProtoOfMap);OdeMap.prototype.constructor = OdeMap;OdeMap.__superConstructor__ = Map;function OdeMap() {
+    "use strict";if (Map !== null) {
+        Map.apply(this, arguments);
     }
 }
-Object.defineProperty(OdeMap.prototype, "dimensions", { configurable: true, get: function get() {
-        "use strict";return 3;
-    } });
-Object.defineProperty(OdeMap.prototype, "coefficients", { configurable: true, get: function get() {
-        "use strict";
-    } });
-
 Object.defineProperty(OdeMap.prototype, "epsilon", { configurable: true, get: function get() {
         "use strict";return 0.01;
     } });
@@ -852,14 +845,9 @@ Object.defineProperty(OdeMap.prototype, "applyOde", { writable: true, configurab
         "use strict";
     } });
 
-// initialize the map before beginning search, if needed
-Object.defineProperty(OdeMap.prototype, "initialize", { writable: true, configurable: true, value: function value(isSnapshot) {
-        "use strict";
-    } });
-
 module.exports = OdeMap;
 
-},{"./Component":5}],12:[function(require,module,exports){
+},{"./Map":9}],12:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var _ = require("underscore");
