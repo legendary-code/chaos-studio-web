@@ -25,3 +25,10 @@
     * Coefficients (C)
     * Lyapunov Exponent (L)
     * Fractal Dimension (F)
+
+#### September 24<sup>th</sup>, 2017
+*   Re-write WebGLRenderer
+    *   Removed Three.js
+    *   Custom vertex shader
+    *   Custom fragment shader
+

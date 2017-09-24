@@ -37,7 +37,6 @@
     "reactify": "^1.1.0",
     "require-globify": "^1.4.1",
     "showdown": "^1.4.3",
-    "three": "^0.69.0",
     "underscore": "^1.8.2",
     "universal-analytics": "^0.4.6",
     "vinyl-source-stream": "^1.0.0"
