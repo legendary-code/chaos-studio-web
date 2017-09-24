@@ -18,7 +18,7 @@ class SearchConfigurationStore extends Store {
             let cookieValue = Cookies.get('configuration');
 
             if (cookieValue) {
-                configuration = Configuration.decode(cookieValue);
+                configuration = this.ensureDefaults(Configuration.decode(cookieValue));
             }
         } catch (e) {
             console.error("Failed to read configuration from cookies: " + e);
@@ -27,6 +27,19 @@ class SearchConfigurationStore extends Store {
         return {
             configuration: configuration || this.createDefaultConfiguration()
         };
+    }
+
+    ensureDefaults(configuration) {
+        if (!configuration) {
+            return configuration;
+        }
+
+        configuration.map |= new QuadraticMap();
+        configuration.criteria = configuration.criteria ? configuration.criteria : [ new LyapunovExponent() ];
+        configuration.rng |= new LinearCongruentialGenerator();
+        configuration.renderer |= new WebGLRenderer();
+        configuration.projection |= new DefaultProjection();
+        configuration.colorizer |= new DefaultColorizer();
     }
 
     createDefaultConfiguration() {
