@@ -12,7 +12,7 @@ class PolynomialOdeMap extends OdeMap {
     }
 
     static get description() {
-        return "A polynomial ODE map of variable degree";
+        return "A polynomial ODE of variable degree";
     }
 
     static get params() {

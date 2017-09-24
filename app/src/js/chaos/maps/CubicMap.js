@@ -7,7 +7,7 @@ class CubicMap extends Map {
     }
 
     static get description() {
-        return "A polynomial map with a degree of 3";
+        return "A polynomial map of degree 3";
     }
 
     get coefficients() {

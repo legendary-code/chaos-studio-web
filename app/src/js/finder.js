@@ -183,9 +183,6 @@ function doWork(configuration, viewport, snapshot) {
             }
         }
 
-        console.log(snapshot.rng.seed);
-        console.log(snapshot.encode());
-
         self.postMessage({
             event: 'complete',
             snapshot: snapshot.encode(),

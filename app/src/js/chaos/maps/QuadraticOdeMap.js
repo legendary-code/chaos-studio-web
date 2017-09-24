@@ -8,7 +8,7 @@ class QuadraticOdeMap extends OdeMap {
     }
 
     static get description() {
-        return "A quadratic ODE map";
+        return "A polynomial ODE of degree 2";
     }
 
     get coefficients() {

@@ -24,7 +24,7 @@ class RandomMap extends Map {
     }
 
     apply(v, c) {
-        return this._map.apply(v,c);
+        return this._map.apply(v, c);
     }
 
     initialize(isSnapshot) {
@@ -33,10 +33,14 @@ class RandomMap extends Map {
             return;
         }
 
-        let types = _.filter(Components.findTypes(Map), (type) => type != RandomMap);
+        let types = _.filter(Components.findTypes(Map), (type) => type !== RandomMap);
         let TMap = types[_.random(0, types.length - 1)];
         this._map = new TMap();
         this._map.initialize(isSnapshot);
+    }
+
+    reset() {
+        this._map.reset();
     }
 }
 

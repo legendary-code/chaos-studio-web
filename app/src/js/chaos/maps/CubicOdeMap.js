@@ -8,7 +8,7 @@ class CubicOdeMap extends OdeMap {
     }
 
     static get description() {
-        return "A cubic ODE map";
+        return "A polynomial ODE of degree 3";
     }
 
     get coefficients() {
