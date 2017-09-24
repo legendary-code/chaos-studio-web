@@ -1,3 +1,5 @@
+let AttractorSnapshot = require('./AttractorSnapshot');
+
 class AttractorFinder {
     constructor(onStatus, onComplete, onCancel) {
         this._onStatus = onStatus;
@@ -42,7 +44,9 @@ class AttractorFinder {
         if (this._onCancel) {
             this._onCancel();
         }
-        this._worker.terminate();
+        if (this._worker) {
+            this._worker.terminate();
+        }
         this._worker = null;
     }
 }

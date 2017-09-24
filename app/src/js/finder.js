@@ -172,7 +172,7 @@ function doWork(configuration, viewport, snapshot) {
             }
         }
 
-        snapshot = AttractorSnapshot.create(configuration);
+        snapshot = new AttractorSnapshot(map, rng);
 
         const stats = [];
         stats.push('C = ' + numCoefficients);
@@ -182,6 +182,9 @@ function doWork(configuration, viewport, snapshot) {
                 stats.push(stat);
             }
         }
+
+        console.log(snapshot.rng.seed);
+        console.log(snapshot.encode());
 
         self.postMessage({
             event: 'complete',

@@ -24,13 +24,6 @@ class AttractorSnapshot extends Component {
     set rng(val) {
         this._rng = val;
     }
-
-    static create(configuration) {
-        return new AttractorSnapshot(
-            configuration.map,
-            configuration.rng
-        );
-    }
 }
 
 Components.register(AttractorSnapshot, AttractorSnapshot, true);
