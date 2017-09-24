@@ -1,5 +1,4 @@
-let $ = require('jquery'),
-    _ = require('underscore'),
+let _ = require('underscore'),
     React = require('react'),
     Modals = require('../Modals'),
     Actions = require('../../actions/Actions'),
@@ -119,7 +118,8 @@ class SettingsPage extends React.Component {
 
     _addComponent(binding, componentType) {
         let items = binding.val || [];
-        let supportedTypes = _.without(Components.findTypes(componentType), items);
+        let itemTypes = _.map(items, item => item.type);
+        let supportedTypes = _.difference(Components.findTypes(componentType), itemTypes);
         let self = this;
 
         let valueChanged = TComponent => {
