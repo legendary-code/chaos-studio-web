@@ -9,7 +9,7 @@ class Renderer extends Component {
     }
 
     /* Returns a DOM element (canvas) that acts as the rendering surface */
-    create(width, height) { }
+    create(viewport) { }
 
     /* Destroys rendering surface and any additional state */
     destroy() { }

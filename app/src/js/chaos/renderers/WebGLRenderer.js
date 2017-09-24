@@ -72,10 +72,15 @@ class WebGLNativeRenderer extends Renderer {
         }
     }
 
-    create(width, height) {
+    create(viewport) {
         const canvas = document.createElement('canvas');
+        const width = viewport.width * viewport.devicePixelRatio;
+        const height = viewport.height * viewport.devicePixelRatio;
+
         canvas.width = width;
         canvas.height = height;
+        canvas.style.width = width;
+        canvas.style.height = height;
 
         const gl = canvas.getContext('webgl', { preserveDrawingBuffer: true }) ||
                    canvas.getContext('experimental-webgl', { preserveDrawingBuffer: true });

@@ -31,4 +31,4 @@
     *   Removed Three.js
     *   Custom vertex shader
     *   Custom fragment shader
-
+    *   Use devicePixelRatio for proper pixel scaling

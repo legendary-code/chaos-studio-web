@@ -86,10 +86,10 @@ class Viewport extends React.Component {
             return;
         }
 
-        var viewport = React.findDOMNode(this.refs.viewport);
-        var width = viewport.clientWidth;
-        var height = viewport.clientHeight;
-        var renderer = this.state.renderer;
+        const viewport = React.findDOMNode(this.refs.viewport);
+        const width = viewport.clientWidth;
+        const height = viewport.clientHeight;
+        const renderer = this.state.renderer;
 
         if (renderer) {
             renderer.resize(width, height);
@@ -98,15 +98,13 @@ class Viewport extends React.Component {
     }
 
     componentDidMount() {
-        var viewport = React.findDOMNode(this.refs.viewport);
-        let width = viewport.clientWidth;
-        let height = viewport.clientHeight;
+        const viewport = this.getViewport();
         let renderer = ConfigurationStore.state.configuration.renderer;
-        let surface = renderer.create(width, height);
+        let surface = renderer.create(viewport);
 
-        viewport.appendChild(surface);
-
+        React.findDOMNode(this.refs.viewport).appendChild(surface);
         this.setState({ renderer: renderer, surface: surface });
+
         window.addEventListener('resize', this._handleResize.bind(this));
         this._startAnimation();
     }
