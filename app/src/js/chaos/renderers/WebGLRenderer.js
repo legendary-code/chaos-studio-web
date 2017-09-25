@@ -113,7 +113,7 @@ class WebGLNativeRenderer extends Renderer {
         return canvas;
     }
 
-    setRenderData(points) {
+    setRenderData(viewport, points) {
         const gl = this._gl;
         const buffer = this._buffer;
 
@@ -141,7 +141,7 @@ class WebGLNativeRenderer extends Renderer {
             if (point.length > 6) {
                 floats.push(point[6]);
             } else {
-                floats.push(0.1);
+                floats.push(0.1 * viewport.devicePixelRatio);
             }
         }
 

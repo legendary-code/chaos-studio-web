@@ -146,7 +146,7 @@ class Viewport extends React.Component {
     }
 
     setRenderData(points) {
-        this.state.renderer.setRenderData(points);
+        this.state.renderer.setRenderData(this.getViewport(), points);
         this.state.rotation.reset();
         this._startAnimation();
     }

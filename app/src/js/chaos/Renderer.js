@@ -15,14 +15,14 @@ class Renderer extends Component {
     destroy() { }
 
     /* Sets rendering data to be rendered */
-    setRenderData(points) { }
+    setRenderData(viewport, points) { }
 
     /* Render to surface */
     render(rotationX, rotationY) { }
 
     /* Resizes rendering surface.  The actual surface doesn't need to be resized,
        but the scene needs to know what size the surface is in order to render correctly. */
-    resize(width, height) { }
+    resize(viewport) { }
 }
 
 Components.register(Renderer, Renderer, true);
