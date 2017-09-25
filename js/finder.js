@@ -46,8 +46,7 @@ function doWork(configuration, viewport, snapshot) {
     var dimensions = map.dimensions;
     var numCoefficients = map.coefficients;
     var criteria = configuration.criteria;
-    var devicePixelRatioSquared = viewport.devicePixelRatio * viewport.devicePixelRatio;
-    var totalIterations = viewport.width * viewport.height * configuration.density * devicePixelRatioSquared;
+    var totalIterations = viewport.width * viewport.height * configuration.density;
 
     var work = function work() {
         var coefficients = [];
@@ -1030,7 +1029,7 @@ Object.defineProperty(Renderer.prototype, "destroy", { writable: true, configura
     } });
 
 /* Sets rendering data to be rendered */
-Object.defineProperty(Renderer.prototype, "setRenderData", { writable: true, configurable: true, value: function value(points) {
+Object.defineProperty(Renderer.prototype, "setRenderData", { writable: true, configurable: true, value: function value(viewport, points) {
         "use strict";
     } });
 
@@ -1041,7 +1040,7 @@ Object.defineProperty(Renderer.prototype, "render", { writable: true, configurab
 
 /* Resizes rendering surface.  The actual surface doesn't need to be resized,
    but the scene needs to know what size the surface is in order to render correctly. */
-Object.defineProperty(Renderer.prototype, "resize", { writable: true, configurable: true, value: function value(width, height) {
+Object.defineProperty(Renderer.prototype, "resize", { writable: true, configurable: true, value: function value(viewport) {
         "use strict";
     } });
 
@@ -2307,7 +2306,7 @@ Object.defineProperty(WebGLNativeRenderer.prototype, "create", { writable: true,
         return canvas;
     } });
 
-Object.defineProperty(WebGLNativeRenderer.prototype, "setRenderData", { writable: true, configurable: true, value: function value(points) {
+Object.defineProperty(WebGLNativeRenderer.prototype, "setRenderData", { writable: true, configurable: true, value: function value(viewport, points) {
         "use strict";
         var gl = this._gl;
         var buffer = this._buffer;
@@ -2343,7 +2342,7 @@ Object.defineProperty(WebGLNativeRenderer.prototype, "setRenderData", { writable
                 if (point.length > 6) {
                     floats.push(point[6]);
                 } else {
-                    floats.push(0.1);
+                    floats.push(0.1 * viewport.devicePixelRatio * viewport.devicePixelRatio);
                 }
             }
         } catch (err) {
