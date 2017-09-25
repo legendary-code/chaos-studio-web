@@ -2342,7 +2342,7 @@ Object.defineProperty(WebGLNativeRenderer.prototype, "setRenderData", { writable
                 if (point.length > 6) {
                     floats.push(point[6]);
                 } else {
-                    floats.push(0.1 * viewport.devicePixelRatio * viewport.devicePixelRatio);
+                    floats.push(0.1 * viewport.devicePixelRatio);
                 }
             }
         } catch (err) {
