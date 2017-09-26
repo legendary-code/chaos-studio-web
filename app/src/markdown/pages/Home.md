@@ -157,7 +157,7 @@ take you to the explore page, where the attractor will be generated for you!
 [![Cubic ODE](../png/cubicode1.png)](http://chaos-studio.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTE6Q3ViaWNPZGVNYXA+Mzpybmc8Mjc6TGluZWFyQ29uZ3J1ZW50aWFsR2VuZXJhdG9yNDpzZWVkKDE1MDYyMDUxMDUwNDkpPj4=)
 [![Cubic ODE](../png/cubicode2.png)](http://chaos-studio.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTE6Q3ViaWNPZGVNYXA+Mzpybmc8Mjc6TGluZWFyQ29uZ3J1ZW50aWFsR2VuZXJhdG9yNDpzZWVkKDE1MDYyMDUxNzA0NzIpPj4=)
 [![Cubic ODE](../png/cubicode3.png)](http://chaos-studio.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTE6Q3ViaWNPZGVNYXA+Mzpybmc8Mjc6TGluZWFyQ29uZ3J1ZW50aWFsR2VuZXJhdG9yNDpzZWVkKDE1MDYyMDUyNzkzNTcpPj4=)
-[![Cubic ODE](../png/cubicode4.png)](http://chaos-studio.io/#/explore/)
+[![Cubic ODE](../png/cubicode4.png)](http://chaos-studio.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTE6Q3ViaWNPZGVNYXA+Mzpybmc8Mjc6TGluZWFyQ29uZ3J1ZW50aWFsR2VuZXJhdG9yNDpzZWVkKDE1MDYzOTcyNDk0MzUpPj4=)
 
 ###### Quartic ODE (Polynomial ODE, degree=4)
 [![Quartic ODE](../png/quarticode1.png)](http://chaos-studio.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTY6UG9seW5vbWlhbE9kZU1hcDY6ZGVncmVlKDQpPjM6cm5nPDI3OkxpbmVhckNvbmdydWVudGlhbEdlbmVyYXRvcjQ6c2VlZCgxNTA2MjE0OTg1Mjg4KT4+)
