@@ -32,3 +32,7 @@
     *   Custom vertex shader
     *   Custom fragment shader
     *   Use devicePixelRatio for proper pixel scaling
+    
+##### October 1<sup>st</sup>, 2017
+*   Added a new radial hue colorizer
+*   Fixed configuration not being loaded on refresh 
