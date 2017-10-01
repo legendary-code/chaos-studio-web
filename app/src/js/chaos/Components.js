@@ -87,4 +87,5 @@ require('./maps/**/*.js', {glob:true});
 require('./criteria/**/*.js', {glob:true});
 require('./renderers/**/*.js', {glob:true});
 require('./rngs/**/*.js', {glob:true});
+require('./colorizers/**/*.js', {glob:true});
 

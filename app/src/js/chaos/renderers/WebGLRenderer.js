@@ -28,10 +28,6 @@ void main() {
 }
 `;
 
-function degToRad(d) {
-    return d * Math.PI / 180;
-}
-
 function createShader(gl, type, source) {
     const shader = gl.createShader(type);
     gl.shaderSource(shader, source);
@@ -129,13 +125,16 @@ class WebGLNativeRenderer extends Renderer {
             //floats.push(1.0);
 
             // color
-            for (let i = 0; i < 3; ++i) {
-                if (point.length > 3) {
+            if (point.length > 3 && point.length <= 7) {
+                for (let i = 3; i < 6; ++i) {
                     floats.push(point[i]);
-                } else {
-                    floats.push(0.0);
                 }
+            } else {
+                floats.push(0.0);
+                floats.push(0.0);
+                floats.push(0.0);
             }
+
 
             // a
             if (point.length > 6) {

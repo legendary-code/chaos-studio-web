@@ -34,12 +34,14 @@ class SearchConfigurationStore extends Store {
             return configuration;
         }
 
-        configuration.map |= new QuadraticMap();
+        configuration.map = configuration.map || new QuadraticMap();
         configuration.criteria = configuration.criteria ? configuration.criteria : [ new LyapunovExponent() ];
-        configuration.rng |= new LinearCongruentialGenerator();
-        configuration.renderer |= new WebGLRenderer();
-        configuration.projection |= new DefaultProjection();
-        configuration.colorizer |= new DefaultColorizer();
+        configuration.rng = configuration.rng || new LinearCongruentialGenerator();
+        configuration.renderer = configuration.renderer || new WebGLRenderer();
+        configuration.projection = configuration.projection || new DefaultProjection();
+        configuration.colorizer = configuration.colorizer || new DefaultColorizer();
+
+        return configuration;
     }
 
     createDefaultConfiguration() {

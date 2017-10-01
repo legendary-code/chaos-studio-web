@@ -18,6 +18,7 @@ let Transition = {
 
 class SettingsDialog extends React.Component {
     constructor(props) {
+        super();
         GA.event("settings", "open").send();
 
         this.state = {
@@ -39,9 +40,9 @@ class SettingsDialog extends React.Component {
     render() {
         let content;
 
-        let page1 = this.state.transition == Transition.PREV ? this._page(-1) : null;
-        let page2 = this.state.transition == Transition.NEXT ? this._page(-1) : this._page(0);
-        let page3 = this.state.transition == Transition.NEXT ? this._page(0) : null;
+        let page1 = this.state.transition === Transition.PREV ? this._page(-1) : null;
+        let page2 = this.state.transition === Transition.NEXT ? this._page(-1) : this._page(0);
+        let page3 = this.state.transition === Transition.NEXT ? this._page(0) : null;
 
         let animClass = "";
         switch (this.state.transition) {
@@ -63,11 +64,11 @@ class SettingsDialog extends React.Component {
         let contentClass = "contents " + animClass + " " + contentKey;
         let afterClass = "contents after " + animClass + " " + afterKey;
 
-        let appBarIcon = this.state.pages.length == 1 ? "icon-close" : "icon-back";
-        let appBarIconClick = this.state.pages.length == 1 ? this._closeModal.bind(this) : this._prev.bind(this);
+        let appBarIcon = this.state.pages.length === 1 ? "icon-close" : "icon-back";
+        let appBarIconClick = this.state.pages.length === 1 ? this._closeModal.bind(this) : this._prev.bind(this);
 
         let actionBarButtons;
-        if (this.state.pages.length == 1) {
+        if (this.state.pages.length === 1) {
             actionBarButtons = [];
 
             if (this.props.defaultSettingsFactory) {
@@ -135,7 +136,7 @@ class SettingsDialog extends React.Component {
     }
 
     _prev() {
-        if (this.state.pages.length <= 1 || this.state.transition != Transition.NONE) {
+        if (this.state.pages.length <= 1 || this.state.transition !== Transition.NONE) {
             return;
         }
 
@@ -152,7 +153,7 @@ class SettingsDialog extends React.Component {
     }
 
     _next(component) {
-        if(this.state.transition != Transition.NONE) {
+        if(this.state.transition !== Transition.NONE) {
             return;
         }
 
