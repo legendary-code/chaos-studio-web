@@ -608,8 +608,9 @@ require('./maps/AndOrMap.js');require('./maps/CliffordMap.js');require('./maps/C
 require('./criteria/FractalDimension.js');require('./criteria/LyapunovExponent.js');
 require('./renderers/WebGLRenderer.js');
 require('./rngs/DefaultRng.js');require('./rngs/LinearCongruentialGenerator.js');require('./rngs/MersenneTwister.js');
+require('./colorizers/RadialHueColorizer.js');
 
-},{"./Component":5,"./criteria/FractalDimension.js":19,"./criteria/LyapunovExponent.js":20,"./maps/AndOrMap.js":21,"./maps/CliffordMap.js":22,"./maps/CubicMap.js":23,"./maps/CubicOdeMap.js":24,"./maps/ExponentMap.js":25,"./maps/HenonMap.js":26,"./maps/LorenzMap.js":27,"./maps/PeterDeJongMap.js":28,"./maps/PolynomialMap.js":29,"./maps/PolynomialOdeMap.js":30,"./maps/QuadraticMap.js":31,"./maps/QuadraticOdeMap.js":32,"./maps/RandomMap.js":33,"./maps/RosslerMap.js":34,"./maps/TentMap.js":35,"./renderers/WebGLRenderer.js":36,"./rngs/DefaultRng.js":37,"./rngs/LinearCongruentialGenerator.js":38,"./rngs/MersenneTwister.js":39,"jsencode":41}],7:[function(require,module,exports){
+},{"./Component":5,"./colorizers/RadialHueColorizer.js":19,"./criteria/FractalDimension.js":20,"./criteria/LyapunovExponent.js":21,"./maps/AndOrMap.js":22,"./maps/CliffordMap.js":23,"./maps/CubicMap.js":24,"./maps/CubicOdeMap.js":25,"./maps/ExponentMap.js":26,"./maps/HenonMap.js":27,"./maps/LorenzMap.js":28,"./maps/PeterDeJongMap.js":29,"./maps/PolynomialMap.js":30,"./maps/PolynomialOdeMap.js":31,"./maps/QuadraticMap.js":32,"./maps/QuadraticOdeMap.js":33,"./maps/RandomMap.js":34,"./maps/RosslerMap.js":35,"./maps/TentMap.js":36,"./renderers/WebGLRenderer.js":37,"./rngs/DefaultRng.js":38,"./rngs/LinearCongruentialGenerator.js":39,"./rngs/MersenneTwister.js":40,"jsencode":43}],7:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var Component = require("./Component"),
@@ -865,12 +866,12 @@ Object.defineProperty(Point, "distanceSquared", { writable: true, configurable: 
         "use strict";
         var d2 = 0;
 
-        if (p1.length !== p2.length) {
+        if (p1 && p2 && p1.length !== p2.length) {
             return NaN;
         }
 
         for (var i = 0; i < p1.length; ++i) {
-            var dv = p1[i] - p2[i];
+            var dv = p1[i] - (p2 && p2[i] || 0);
             d2 += dv * dv;
         }
 
@@ -882,9 +883,28 @@ Object.defineProperty(Point, "distance", { writable: true, configurable: true, v
         return Math.sqrt(Point.distanceSquared(p1, p2));
     } });
 
+Object.defineProperty(Point, "unit", { writable: true, configurable: true, value: function value(dimensions) {
+        "use strict";
+        var point = [];
+        for (var i = 0; i < dimensions; ++i) {
+            point.push(1);
+        }
+        return point;
+    } });
+
+Object.defineProperty(Point, "unitDistance", { writable: true, configurable: true, value: function value(dimensions) {
+        "use strict";
+        return Math.sqrt(dimensions);
+    } });
+
+Object.defineProperty(Point, "distanceNormalized", { writable: true, configurable: true, value: function value(p1, p2) {
+        "use strict";
+        return Math.sqrt(Point.distanceSquared(p1, p2)) / Point.unitDistance(p1.length);
+    } });
+
 module.exports = Point;
 
-},{"underscore":42}],13:[function(require,module,exports){
+},{"underscore":44}],13:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var Component = require("./Component"),
@@ -996,7 +1016,7 @@ Object.defineProperty(Props, "group", { writable: true, configurable: true, valu
 
 module.exports = Props;
 
-},{"underscore":42}],15:[function(require,module,exports){
+},{"underscore":44}],15:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var Component = require("./Component"),
@@ -1121,6 +1141,118 @@ module.exports = Time;
 },{}],19:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
+var Colorizer = require("../Colorizer"),
+    Point = require("../Point"),
+    Props = require("../Props"),
+    Component = require("../Component"),
+    Components = require("../Components"),
+    $__0 = require("../../utils/color"),
+    hslToRgb = $__0.hslToRgb;
+
+/* Implemented to define colorizer, which affects color and alpha of vertices.
+ * This does not affect things like alpha-blending, shading, etc.
+ * since those are renderer specific features.  A renderer may choose
+ * to ignore the color generated altogether */
+for (var Component____Key in Component) {
+    if (Component.hasOwnProperty(Component____Key)) {
+        RadialHueColorizer[Component____Key] = Component[Component____Key];
+    }
+}var ____SuperProtoOfComponent = Component === null ? null : Component.prototype;RadialHueColorizer.prototype = Object.create(____SuperProtoOfComponent);RadialHueColorizer.prototype.constructor = RadialHueColorizer;RadialHueColorizer.__superConstructor__ = Component;
+Object.defineProperty(RadialHueColorizer, "displayName", { configurable: true, get: function get() {
+        "use strict";return "Radial Hue";
+    } });
+
+Object.defineProperty(RadialHueColorizer, "description", { configurable: true, get: function get() {
+        "use strict";
+        return "Varying hue out from the center";
+    } });
+
+Object.defineProperty(RadialHueColorizer, "params", { configurable: true, get: function get() {
+        "use strict";
+        return [Props.number("saturation", "Saturation", 0, 1, { decimalPlaces: 2 }), Props.number("lightness", "Lightness", 0, 1, { decimalPlaces: 2 }), Props.number("alpha", "Alpha", 0, 1, { decimalPlaces: 2 })];
+    } });
+
+function RadialHueColorizer() {
+    "use strict";
+    Component.call(this);
+    this._saturation = 1;
+    this._lightness = 0.03;
+    this._alpha = 0.1;
+}
+
+Object.defineProperty(RadialHueColorizer.prototype, "saturation", { configurable: true, get: function get() {
+        "use strict";
+        return this._saturation;
+    } });
+
+Object.defineProperty(RadialHueColorizer.prototype, "saturation", { configurable: true, set: function set(val) {
+        "use strict";
+        this._saturation = val;
+    } });
+
+Object.defineProperty(RadialHueColorizer.prototype, "lightness", { configurable: true, get: function get() {
+        "use strict";
+        return this._lightness;
+    } });
+
+Object.defineProperty(RadialHueColorizer.prototype, "lightness", { configurable: true, set: function set(val) {
+        "use strict";
+        this._lightness = val;
+    } });
+
+Object.defineProperty(RadialHueColorizer.prototype, "alpha", { configurable: true, get: function get() {
+        "use strict";
+        return this._alpha;
+    } });
+
+Object.defineProperty(RadialHueColorizer.prototype, "alpha", { configurable: true, set: function set(val) {
+        "use strict";
+        this._alpha = val;
+    } });
+
+Object.defineProperty(RadialHueColorizer.prototype, "apply", { writable: true, configurable: true, value: function value(context, vertex) {
+        "use strict";
+        var hue = Point.distanceNormalized(vertex) * 360;
+        var rgb = hslToRgb(hue, this._saturation, this._lightness);
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+            for (var _iterator = rgb[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                var color = _step.value;
+
+                vertex.push(color);
+            }
+        } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion && _iterator["return"]) {
+                    _iterator["return"]();
+                }
+            } finally {
+                if (_didIteratorError) {
+                    throw _iteratorError;
+                }
+            }
+        }
+
+        vertex.push(this._alpha);
+        return vertex;
+    } });
+
+Object.defineProperty(RadialHueColorizer.prototype, "reset", { writable: true, configurable: true, value: function value() {
+        "use strict";
+    } });
+
+Components.register(Colorizer, RadialHueColorizer, false);
+module.exports = RadialHueColorizer;
+
+},{"../../utils/color":41,"../Colorizer":4,"../Component":5,"../Components":6,"../Point":12,"../Props":14}],20:[function(require,module,exports){
+/** @preventMunge */"use strict";
+
 var SearchCriterion = require("../SearchCriterion"),
     Point = require("../Point"),
     Props = require("../Props"),
@@ -1241,7 +1373,7 @@ Object.defineProperty(FractalDimension.prototype, "renderStats", { writable: tru
 Components.register(SearchCriterion, FractalDimension, false);
 module.exports = FractalDimension;
 
-},{"../Components":6,"../OdeMap":11,"../Point":12,"../Props":14,"../SearchCriterion":17,"../rngs/LinearCongruentialGenerator":38}],20:[function(require,module,exports){
+},{"../Components":6,"../OdeMap":11,"../Point":12,"../Props":14,"../SearchCriterion":17,"../rngs/LinearCongruentialGenerator":39}],21:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var SearchCriterion = require("../SearchCriterion"),
@@ -1354,7 +1486,7 @@ Object.defineProperty(LyapunovExponent.prototype, "renderStats", { writable: tru
 Components.register(SearchCriterion, LyapunovExponent, true);
 module.exports = LyapunovExponent;
 
-},{"../Components":6,"../OdeMap":11,"../Point":12,"../Props":14,"../SearchCriterion":17}],21:[function(require,module,exports){
+},{"../Components":6,"../OdeMap":11,"../Point":12,"../Props":14,"../SearchCriterion":17}],22:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var Map = require("../Map"),
@@ -1392,7 +1524,7 @@ Object.defineProperty(AndOrMap.prototype, "apply", { writable: true, configurabl
 Components.register(Map, AndOrMap, false);
 module.exports = AndOrMap;
 
-},{"../Components":6,"../Map":9}],22:[function(require,module,exports){
+},{"../Components":6,"../Map":9}],23:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var Map = require("../Map"),
@@ -1430,7 +1562,7 @@ Object.defineProperty(CliffordMap.prototype, "apply", { writable: true, configur
 Components.register(Map, CliffordMap, false);
 module.exports = CliffordMap;
 
-},{"../Components":6,"../Map":9}],23:[function(require,module,exports){
+},{"../Components":6,"../Map":9}],24:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var Map = require("../Map"),
@@ -1472,7 +1604,7 @@ Object.defineProperty(CubicMap.prototype, "apply", { writable: true, configurabl
 Components.register(Map, CubicMap, true);
 module.exports = CubicMap;
 
-},{"../Components":6,"../Map":9}],24:[function(require,module,exports){
+},{"../Components":6,"../Map":9}],25:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var Map = require("../Map"),
@@ -1520,7 +1652,7 @@ Object.defineProperty(CubicOdeMap.prototype, "applyOde", { writable: true, confi
 Components.register(Map, CubicOdeMap, true);
 module.exports = CubicOdeMap;
 
-},{"../Components":6,"../Map":9,"../OdeMap":11}],25:[function(require,module,exports){
+},{"../Components":6,"../Map":9,"../OdeMap":11}],26:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var Map = require("../Map"),
@@ -1562,7 +1694,7 @@ Object.defineProperty(ExponentMap.prototype, "apply", { writable: true, configur
 Components.register(Map, ExponentMap, false);
 module.exports = ExponentMap;
 
-},{"../Components":6,"../Map":9}],26:[function(require,module,exports){
+},{"../Components":6,"../Map":9}],27:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var Map = require("../Map"),
@@ -1600,7 +1732,7 @@ Object.defineProperty(HenonMap.prototype, "apply", { writable: true, configurabl
 Components.register(Map, HenonMap, false);
 module.exports = HenonMap;
 
-},{"../Components":6,"../Map":9}],27:[function(require,module,exports){
+},{"../Components":6,"../Map":9}],28:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var Map = require("../Map"),
@@ -1648,7 +1780,7 @@ Object.defineProperty(LorenzMap.prototype, "applyOde", { writable: true, configu
 Components.register(Map, LorenzMap, false);
 module.exports = LorenzMap;
 
-},{"../Components":6,"../Map":9,"../OdeMap":11}],28:[function(require,module,exports){
+},{"../Components":6,"../Map":9,"../OdeMap":11}],29:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var Map = require("../Map"),
@@ -1686,7 +1818,7 @@ Object.defineProperty(PeterDeJongMap.prototype, "apply", { writable: true, confi
 Components.register(Map, PeterDeJongMap, false);
 module.exports = PeterDeJongMap;
 
-},{"../Components":6,"../Map":9}],29:[function(require,module,exports){
+},{"../Components":6,"../Map":9}],30:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var Map = require("../Map"),
@@ -1820,7 +1952,7 @@ Object.defineProperty(PolynomialMap.prototype, "apply", { writable: true, config
 Components.register(Map, PolynomialMap, false);
 module.exports = PolynomialMap;
 
-},{"../Components":6,"../Map":9,"../MathExt":10,"../Props":14}],30:[function(require,module,exports){
+},{"../Components":6,"../Map":9,"../MathExt":10,"../Props":14}],31:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var Map = require("../Map"),
@@ -1960,7 +2092,7 @@ Object.defineProperty(PolynomialOdeMap.prototype, "applyOde", { writable: true, 
 Components.register(Map, PolynomialOdeMap, false);
 module.exports = PolynomialOdeMap;
 
-},{"../Components":6,"../Map":9,"../MathExt":10,"../OdeMap":11,"../Props":14}],31:[function(require,module,exports){
+},{"../Components":6,"../Map":9,"../MathExt":10,"../OdeMap":11,"../Props":14}],32:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var Map = require("../Map"),
@@ -1998,7 +2130,7 @@ Object.defineProperty(QuadraticMap.prototype, "apply", { writable: true, configu
 Components.register(Map, QuadraticMap, true);
 module.exports = QuadraticMap;
 
-},{"../Components":6,"../Map":9}],32:[function(require,module,exports){
+},{"../Components":6,"../Map":9}],33:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var Map = require("../Map"),
@@ -2042,7 +2174,7 @@ Object.defineProperty(QuadraticOdeMap.prototype, "applyOde", { writable: true, c
 Components.register(Map, QuadraticOdeMap, true);
 module.exports = QuadraticOdeMap;
 
-},{"../Components":6,"../Map":9,"../OdeMap":11}],33:[function(require,module,exports){
+},{"../Components":6,"../Map":9,"../OdeMap":11}],34:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var _ = require("underscore"),
@@ -2111,7 +2243,7 @@ Object.defineProperty(RandomMap.prototype, "reset", { writable: true, configurab
 Components.register(Map, RandomMap, true);
 module.exports = RandomMap;
 
-},{"../Components":6,"../Map":9,"underscore":42}],34:[function(require,module,exports){
+},{"../Components":6,"../Map":9,"underscore":44}],35:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var Map = require("../Map"),
@@ -2159,7 +2291,7 @@ Object.defineProperty(RosslerMap.prototype, "applyOde", { writable: true, config
 Components.register(Map, RosslerMap, false);
 module.exports = RosslerMap;
 
-},{"../Components":6,"../Map":9,"../OdeMap":11}],35:[function(require,module,exports){
+},{"../Components":6,"../Map":9,"../OdeMap":11}],36:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var Map = require("../Map"),
@@ -2197,7 +2329,7 @@ Object.defineProperty(TentMap.prototype, "apply", { writable: true, configurable
 Components.register(Map, TentMap, false);
 module.exports = TentMap;
 
-},{"../Components":6,"../Map":9}],36:[function(require,module,exports){
+},{"../Components":6,"../Map":9}],37:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var m4 = require("../../utils/matrix"),
@@ -2208,10 +2340,6 @@ var m4 = require("../../utils/matrix"),
 var VERTEX_PROGRAM = "\nuniform mat4 rotation;\nuniform mat4 projection;\nattribute vec4 position;\nattribute vec4 color;\n\nvarying vec4 vColor;\n\nvoid main() {\n    gl_Position = projection * rotation * position;\n    gl_PointSize = 1.0;\n    vColor = color;\n}\n";
 
 var FRAGMENT_PROGRAM = "\nprecision mediump float;\n\nvarying vec4 vColor;\n\nvoid main() {\n    gl_FragColor = vColor;\n}\n";
-
-function degToRad(d) {
-    return d * Math.PI / 180;
-}
 
 function createShader(gl, type, source) {
     var shader = gl.createShader(type);
@@ -2330,12 +2458,14 @@ Object.defineProperty(WebGLNativeRenderer.prototype, "setRenderData", { writable
                 //floats.push(1.0);
 
                 // color
-                for (var i = 0; i < 3; ++i) {
-                    if (point.length > 3) {
+                if (point.length > 3 && point.length <= 7) {
+                    for (var i = 3; i < 6; ++i) {
                         floats.push(point[i]);
-                    } else {
-                        floats.push(0);
                     }
+                } else {
+                    floats.push(0);
+                    floats.push(0);
+                    floats.push(0);
                 }
 
                 // a
@@ -2400,7 +2530,7 @@ Object.defineProperty(WebGLNativeRenderer.prototype, "render", { writable: true,
 Components.register(Renderer, WebGLNativeRenderer, true);
 module.exports = WebGLNativeRenderer;
 
-},{"../../utils/matrix":40,"../Components":6,"../Props":14,"../Renderer":15}],37:[function(require,module,exports){
+},{"../../utils/matrix":42,"../Components":6,"../Props":14,"../Renderer":15}],38:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var Rng = require("../Rng");
@@ -2421,7 +2551,7 @@ Object.defineProperty(DefaultRng.prototype, "next", { writable: true, configurab
 
 module.exports = DefaultRng;
 
-},{"../Rng":16}],38:[function(require,module,exports){
+},{"../Rng":16}],39:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var Rng = require("../Rng"),
@@ -2475,7 +2605,7 @@ Object.defineProperty(LinearCongruentialGenerator.prototype, "next", { writable:
 Components.register(Rng, LinearCongruentialGenerator, true);
 module.exports = LinearCongruentialGenerator;
 
-},{"../Components":6,"../Rng":16}],39:[function(require,module,exports){
+},{"../Components":6,"../Rng":16}],40:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 var Rng = require("../Rng");
@@ -2492,7 +2622,51 @@ for (var Rng____Key in Rng) {
 
 module.exports = MersenneTwister;
 
-},{"../Rng":16}],40:[function(require,module,exports){
+},{"../Rng":16}],41:[function(require,module,exports){
+/** @preventMunge */"use strict";
+
+function hslToRgb(h, s, l) {
+    // h should be in degrees
+    var c = (1 - Math.abs(2 * l - 1)) * s;
+    var f = h / 60;
+    var x = c * (1 - Math.abs(f % 2 - 1));
+    var r = undefined,
+        g = undefined,
+        b = undefined;
+
+    switch (Math.floor(f)) {
+        case 0:
+            r = c;g = x;b = 0;
+            break;
+        case 1:
+            r = x;g = c;b = 0;
+            break;
+        case 2:
+            r = 0;g = c;b = x;
+            break;
+        case 3:
+            r = 0;g = x;b = c;
+            break;
+        case 4:
+            r = x;g = 0;b = c;
+            break;
+        case 5:
+            r = c;g = 0;b = x;
+            break;
+        default:
+            r = 0;g = 0;b = 0;
+            break;
+    }
+
+    var m = l - 0.5 * c;
+    return [r + m, g + m, b + m];
+}
+
+module.exports = {
+    hslToRgb: hslToRgb
+};
+
+},{}],42:[function(require,module,exports){
 /** @preventMunge */"use strict";
 
 module.exports = {
@@ -2610,7 +2784,7 @@ module.exports = {
     }
 };
 
-},{}],41:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 (function (global){
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.JSEncode = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,r=Array(e.length);t<e.length;t++)r[t]=e[t];return r}return Array.from(e)}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(exports,"__esModule",{value:!0});var _createClass=function(){function e(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),DecodeStream=function(){function e(t){_classCallCheck(this,e),this._text=t,this._index=0}return _createClass(e,[{key:"reset",value:function(){this._index=0}},{key:"peek",value:function(){return this._index<this._text.length?this._text[this._index]:null}},{key:"next",value:function(){return this._index<this._text.length?this._text[this._index++]:null}},{key:"expect",value:function(e){this.expectNotEof(),this._expect(e,this.next())}},{key:"_expect",value:function(e,t){if(t!==e)throw"expected '"+e+"' at offset "+this._index}},{key:"expectEof",value:function(){if(!this.isEof())throw"expected end of input"}},{key:"expectNotEof",value:function(){if(this.isEof())throw"unexpected end of input"}},{key:"isEof",value:function(){return this._index>=this._text.length}}]),e}(),JSEncoder=function(){function e(t){_classCallCheck(this,e),this._types={},this._includePrivateFields=!1,this._ignoreUnregisteredTypes=!1,t&&(t.types&&this.registerTypes.apply(this,_toConsumableArray(t.types)),this._includePrivateFields=!!t.includePrivateFields,this._ignoreUnregisteredTypes=!!t.ignoreUnregisteredTypes)}return _createClass(e,[{key:"registerTypes",value:function(){var e=!0,t=!1,r=void 0;try{for(var n=arguments.length,o=Array(n),i=0;i<n;i++)o[i]=arguments[i];for(var a,c=o[Symbol.iterator]();!(e=(a=c.next()).done);e=!0){var u=a.value;if(u.constructor!==Function)throw"type"+u+" must be a Function";var s=this._getTypeName(u);if(!s)throw"anonymous type cannot be registered";if(this._types.hasOwnProperty(s))throw"type "+s+" already registered";this._types[s]=u}}catch(e){t=!0,r=e}finally{try{!e&&c.return&&c.return()}finally{if(t)throw r}}}},{key:"encode",value:function(e){return this._encodeAny(e)}},{key:"_getTypeName",value:function(e){var t=e.name;return void 0===t?this._guessTypeName(e):t||null}},{key:"_guessTypeName",value:function(e){var t=/function\s([^(]{1,})\(/,r=t.exec(e.toString());return r&&r.length>1?r[1].trim():null}},{key:"_hasSetter",value:function(e,t){var r=Object.getOwnPropertyDescriptor(e,t);return!r.get||r.set}},{key:"_getPropertyNames",value:function(e){if(!Object||!Object.getOwnPropertyNames){var t=[];for(var r in e)e.hasOwnProperty(r)&&t.push(r);return t}var n=e.constructor.prototype;if(e.constructor===Object||!n){var o=[],i=!0,a=!1,c=void 0;try{for(var u,s=Object.getOwnPropertyNames(e)[Symbol.iterator]();!(i=(u=s.next()).done);i=!0){var l=u.value;e.hasOwnProperty(l)&&this._hasSetter(e,l)&&o.push(l)}}catch(e){a=!0,c=e}finally{try{!i&&s.return&&s.return()}finally{if(a)throw c}}return o}var d={},y=!0,f=!1,h=void 0;try{for(var v,_=Object.getOwnPropertyNames(e)[Symbol.iterator]();!(y=(v=_.next()).done);y=!0){var p=v.value;e.hasOwnProperty(p)&&this._hasSetter(e,p)&&(d[p]=!0)}}catch(e){f=!0,h=e}finally{try{!y&&_.return&&_.return()}finally{if(f)throw h}}var x=!0,g=!1,k=void 0;try{for(var m,w=Object.getOwnPropertyNames(n)[Symbol.iterator]();!(x=(m=w.next()).done);x=!0){var b=m.value;n.hasOwnProperty(b)&&this._hasSetter(n,b)&&(d[b]=!0)}}catch(e){g=!0,k=e}finally{try{!x&&w.return&&w.return()}finally{if(g)throw k}}var N=[];for(var S in d)d.hasOwnProperty(S)&&N.push(S);return N}},{key:"_canEncode",value:function(e){if(void 0===e||null==e)return!0;switch(e.constructor){case String:case Number:case Boolean:case Array:case Object:return!0;case Function:return!1}return e.constructor.constructor===Function}},{key:"_encodeAny",value:function(e){if(void 0===e)return this._encodeUndefined();if(null===e)return this._encodeNull();switch(e.constructor){case String:return this._encodeString(e);case Number:return this._encodeNumber(e);case Boolean:return this._encodeBoolean(e);case Array:return this._encodeArray(e);case Object:return this._encodeDictionary(e);case Function:throw"cannot encode Function"}if(e.constructor.constructor===Function)return this._encodeObject(e);throw"unable to encode unsupported type "+e.constructor.name}},{key:"_encodeUndefined",value:function(){return"u"}},{key:"_encodeNull",value:function(){return"n"}},{key:"_encodeString",value:function(e){return e.length+":"+e}},{key:"_encodeNumber",value:function(e){return"("+e+")"}},{key:"_encodeBoolean",value:function(e){return e?"t":"f"}},{key:"_encodeArray",value:function(e){var t="[",r=!0,n=!1,o=void 0;try{for(var i,a=e[Symbol.iterator]();!(r=(i=a.next()).done);r=!0){var c=i.value;this._canEncode(c)&&(t+=this._encodeAny(c))}}catch(e){n=!0,o=e}finally{try{!r&&a.return&&a.return()}finally{if(n)throw o}}return t+"]"}},{key:"_encodeDictionary",value:function(e){var t="{",r=!0,n=!1,o=void 0;try{for(var i,a=this._getPropertyNames(e)[Symbol.iterator]();!(r=(i=a.next()).done);r=!0){var c=i.value;this._canEncode(e[c])&&(t+=this._encodeString(c),t+=this._encodeAny(e[c]))}}catch(e){n=!0,o=e}finally{try{!r&&a.return&&a.return()}finally{if(n)throw o}}return t+"}"}},{key:"_encodeObject",value:function(e){var t=this._getTypeName(e.constructor);if(!t)throw"could not determine type for constructor: "+e.constructor+", value: "+JSON.stringify(e);var r="<"+this._encodeString(t),n=!0,o=!1,i=void 0;try{for(var a,c=this._getPropertyNames(e)[Symbol.iterator]();!(n=(a=c.next()).done);n=!0){var u=a.value;this._shouldEncodeField(e,u)&&(r+=this._encodeString(u),r+=this._encodeAny(e[u]))}}catch(e){o=!0,i=e}finally{try{!n&&c.return&&c.return()}finally{if(o)throw i}}return r+">"}},{key:"_allowedFieldName",value:function(e){return!(!e||e.constructor!==String)&&(0!==e.indexOf("_")||this._includePrivateFields)}},{key:"_shouldEncodeField",value:function(e,t){return!!this._canEncode(e[t])&&this._allowedFieldName(t)}},{key:"decode",value:function(e){var t=new DecodeStream(e),r=this._decodeAny(t);return t.expectEof(),r}},{key:"_decodeAny",value:function(e){switch(e.expectNotEof(),e.peek()){case"u":return this._decodeUndefined(e);case"n":return this._decodeNull(e);case"(":return this._decodeNumber(e);case"t":case"f":return this._decodeBoolean(e);case"[":return this._decodeArray(e);case"{":return this._decodeDictionary(e);case"<":return this._decodeObject(e)}return this._decodeString(e)}},{key:"_decodeUndefined",value:function(e){e.expect("u")}},{key:"_decodeNull",value:function(e){return e.expect("n"),null}},{key:"_decodeString",value:function(e){for(var t="",r="";!e.isEof()&&this._isNumber(e.peek());)t+=e.next();var n=Number(t);if(Math.floor(n)!==n||n<0)throw t+" is not a valid length value for string";e.expect(":");for(var o=0;o<n;++o)e.expectNotEof(),r+=e.next();return r}},{key:"_decodeNumber",value:function(e){var t="";for(e.expect("(");!e.isEof()&&")"!=e.peek();)t+=e.next();e.expect(")");var r=Number(t);if(isNaN(r))throw t+" is not a valid Number value";return r}},{key:"_decodeBoolean",value:function(e){if(e.expectNotEof(),e.peek("t")||e.peek("f"))return"t"===e.next();throw e.peek()+" is not a valid Boolean value"}},{key:"_decodeArray",value:function(e){var t=[];for(e.expect("[");!e.isEof()&&"]"!=e.peek();)t.push(this._decodeAny(e));return e.expect("]"),t}},{key:"_decodeDictionary",value:function(e){var t={};for(e.expect("{");!e.isEof()&&"}"!=e.peek();){var r=this._decodeString(e);t[r]=this._decodeAny(e)}return e.expect("}"),t}},{key:"_decodeObject",value:function(e){e.expect("<");var t=this._decodeString(e),r=!1;if(!this._types.hasOwnProperty(t)){if(!this._ignoreUnregisteredTypes)throw t+" is not a known registered type";r=!0}for(var n=this._types[t],o=n?new n:{};!e.isEof()&&">"!==e.peek();){var i=this._decodeString(e),a=this._decodeAny(e);this._allowedFieldName(i)&&(o[i]=a)}return e.expect(">"),r?null:o}},{key:"_isNumber",value:function(e){return!isNaN(Number(e))}}]),e}();exports.default=JSEncoder,module.exports=exports.default;
@@ -2618,7 +2792,7 @@ module.exports = {
 },{}]},{},[1])(1)
 });
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],42:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
