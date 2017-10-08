@@ -36,3 +36,6 @@
 ##### October 1<sup>st</sup>, 2017
 *   Added a new radial hue colorizer
 *   Fixed configuration not being loaded on refresh 
+
+##### October 8<sup>th</sup>, 2017
+*   Fix links for decic and decic ODE attractors

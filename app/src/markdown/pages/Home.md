@@ -173,9 +173,9 @@ take you to the explore page, where the attractor will be generated for you!
 
 ###### Decic ODE (Polynomial, degree=10)
 [![Decic ODE](../png/decicode1.png)](http://chaos-stud.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTY6UG9seW5vbWlhbE9kZU1hcDY6ZGVncmVlKDEwKT4zOnJuZzwyNzpMaW5lYXJDb25ncnVlbnRpYWxHZW5lcmF0b3I0OnNlZWQoMTUwNjIxODEzMDYwMSk+Pg==)
-[![Decic ODE](../png/decicode2.png)](http://chaos-stud.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTY6UG9seW5vbWlhbE9kZU1hcDk6ZGVncmVlKDEwKT4zOnJuZzwyNzpMaW5lYXJDb25ncnVlbnRpYWxHZW5lcmF0b3I0OnNlZWQoMTUwNjIxODM1MjQwNSk+Pg==)
-[![Decic ODE](../png/decicode3.png)](http://chaos-stud.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTY6UG9seW5vbWlhbE9kZU1hcDk6ZGVncmVlKDEwKT4zOnJuZzwyNzpMaW5lYXJDb25ncnVlbnRpYWxHZW5lcmF0b3I0OnNlZWQoMTUwNjIxODQ5MzE3MSk+Pg==)
-[![Decic ODE](../png/decicode4.png)](http://chaos-stud.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTY6UG9seW5vbWlhbE9kZU1hcDk6ZGVncmVlKDEwKT4zOnJuZzwyNzpMaW5lYXJDb25ncnVlbnRpYWxHZW5lcmF0b3I0OnNlZWQoMTUwNjIxODgxNDM3OCk+Pg==)
+[![Decic ODE](../png/decicode2.png)](http://chaos-stud.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTY6UG9seW5vbWlhbE9kZU1hcDY6ZGVncmVlKDEwKT4zOnJuZzwyNzpMaW5lYXJDb25ncnVlbnRpYWxHZW5lcmF0b3I0OnNlZWQoMTUwNjIxODM1MjQwNSk+Pg==)
+[![Decic ODE](../png/decicode3.png)](http://chaos-stud.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTY6UG9seW5vbWlhbE9kZU1hcDY6ZGVncmVlKDEwKT4zOnJuZzwyNzpMaW5lYXJDb25ncnVlbnRpYWxHZW5lcmF0b3I0OnNlZWQoMTUwNjIxODQ5MzE3MSk+Pg==)
+[![Decic ODE](../png/decicode4.png)](http://chaos-stud.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTY6UG9seW5vbWlhbE9kZU1hcDY6ZGVncmVlKDEwKT4zOnJuZzwyNzpMaW5lYXJDb25ncnVlbnRpYWxHZW5lcmF0b3I0OnNlZWQoMTUwNjIxODgxNDM3OCk+Pg==)
 
 ###### Clifford
 [![Clifford](../png/clifford1.png)](http://chaos-stud.io/#/explore/PDE3OkF0dHJhY3RvclNuYXBzaG90MzptYXA8MTE6Q2xpZmZvcmRNYXA+Mzpybmc8Mjc6TGluZWFyQ29uZ3J1ZW50aWFsR2VuZXJhdG9yNDpzZWVkKDE1MDYxOTc2NTM5NTQpPj4=)

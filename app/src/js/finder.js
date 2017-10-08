@@ -56,7 +56,7 @@ function doWork(configuration, viewport, snapshot) {
         let values = [];
 
         rng.reset(snapshot ? rng.seed : Time.now());
-        map.reset();
+        map.reset(rng);
 
         for (let i = 0; i < numCoefficients; i++) {
             coefficients.push(rng.next() * 2 - 1);
