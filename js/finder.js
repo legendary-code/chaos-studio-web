@@ -55,7 +55,7 @@ function doWork(configuration, viewport, snapshot) {
         var values = [];
 
         rng.reset(snapshot ? rng.seed : Time.now());
-        map.reset();
+        map.reset(rng);
 
         for (var i = 0; i < numCoefficients; i++) {
             coefficients.push(rng.next() * 2 - 1);
@@ -760,7 +760,7 @@ Object.defineProperty(Map.prototype, "dimensions", { configurable: true, get: fu
 Object.defineProperty(Map.prototype, "coefficients", { configurable: true, get: function get() {
         "use strict";
     } });
-Object.defineProperty(Map.prototype, "reset", { writable: true, configurable: true, value: function value() {
+Object.defineProperty(Map.prototype, "reset", { writable: true, configurable: true, value: function value(rng) {
         "use strict";
     } });
 Object.defineProperty(Map.prototype, "apply", { writable: true, configurable: true, value: function value(val, coefficients) {
