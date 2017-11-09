@@ -62,7 +62,7 @@ class SearchConfigurationStore extends Store {
                 break;
 
             case Actions.SAVE_SEARCH_CONFIGURATION.id:
-                Cookies.set('configuration', action.data.encode());
+                Cookies.set('configuration', action.data.encode(), { expires: 100 * 365 });
                 this.setState({configuration: action.data});
                 break;
         }
