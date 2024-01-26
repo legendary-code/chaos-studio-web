@@ -1,4 +1,4 @@
-![Lorenz Attractor](http://chaos-stud.io/svg/lorenz.svg)
+![Lorenz Attractor](/app/src/svg/lorenz.svg)
 # Chaos Studio
 An open-source site that lets you explore computer-generated art from chaos-theory equations.
 
