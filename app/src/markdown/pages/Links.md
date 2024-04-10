@@ -37,12 +37,12 @@
 
 #### Me
 
-[mailto:gene.trog@gmail.com](mailto:gene.trog@gmail.com)
+[mailto:gene.heinrich.83@gmail.com](mailto:gene.heinrich.83@gmail.com)
 
-[https://github.com/eternal0](https://github.com/eternal0)
+[https://github.com/eternal0](https://github.com/heindor0)
 
-[https://twitter.com/\_burninator\_](https://twitter.com/_burninator_)
+[https://twitter.com/gene\_heinrich](https://twitter.com/gene_heinrich)
 
-[https://www.facebook.com/gene.trog](https://www.facebook.com/gene.trog)
+[https://www.facebook.com/gene.heinrich.83](https://www.facebook.com/gene.heinrich.83)
 
-[https://www.linkedin.com/in/gene-trog-6192064](https://www.linkedin.com/in/gene-trog-6192064)
+[https://www.linkedin.com/in/gene-heinrich-6192064](https://www.linkedin.com/in/gene-heinrich-6192064)
