@@ -39,7 +39,7 @@
 
 [mailto:gene.heinrich.83@gmail.com](mailto:gene.heinrich.83@gmail.com)
 
-[https://github.com/eternal0](https://github.com/heindor0)
+[https://github.com/heindor0](https://github.com/heindor0)
 
 [https://twitter.com/gene\_heinrich](https://twitter.com/gene_heinrich)
 
